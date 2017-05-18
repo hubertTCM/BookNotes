@@ -5,3 +5,11 @@ https://bitbucket.org/xerial/sqlite-jdbc
 git:
 http://stackoverflow.com/questions/20654719/push-eclipse-project-to-github-with-egit
 http://stackoverflow.com/questions/17552457/how-do-i-upload-eclipse-projects-to-github
+
+set username and password in local: (http://stackoverflow.com/questions/6565357/git-push-requires-username-and-password)
+git remote -v  // to get the repository address
+git config credential.helper store
+git push   %repository%//https://github.com/repo.git
+Username for 'https://github.com': <USERNAME>
+Password for 'https://USERNAME@github.com': <PASSWORD>
+git config --global credential.helper 'cache --timeout 7200' //After enabling credential caching, it will be cached for 7200 seconds (2 hour).
