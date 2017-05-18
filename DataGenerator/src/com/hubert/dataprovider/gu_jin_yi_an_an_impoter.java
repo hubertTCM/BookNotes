@@ -120,8 +120,7 @@ public class gu_jin_yi_an_an_impoter {
 
 	private void parseContent(SectionEntity section, String content) throws SQLException {
 		if (content.indexOf("[") == 0) {
-			// prescription;
-			// TODO:
+			parsePrescription(content);
 			return;
 		}
 
@@ -131,6 +130,10 @@ public class gu_jin_yi_an_an_impoter {
 		_currentBlock.section = section;
 		// section.blocks.add(_currentBlock);
 		_blockDao.createOrUpdate(_currentBlock);
+	}
+	
+	private void parsePrescription(String content){
+		
 	}
 
 	// 1.卷一

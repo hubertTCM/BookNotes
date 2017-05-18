@@ -19,9 +19,9 @@ public class DbBuilder {
 			TableUtils.createTable(connectionSource, BookEntity.class);
 			TableUtils.createTable(connectionSource, SectionEntity.class);
 			TableUtils.createTable(connectionSource, BlockEntity.class);
-			// TableUtils.createTable(connectionSource, NoteEntity.class);
 			TableUtils.createTable(connectionSource, PrescriptionEntity.class);
 			TableUtils.createTable(connectionSource, PrescriptionUnitEntity.class);
+			TableUtils.createTable(connectionSource, PrescriptionBlockLinkEntity.class);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
