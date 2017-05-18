@@ -23,5 +23,5 @@ public class SectionEntity {
     public SectionEntity parent;    
 
     @ForeignCollectionField(eager = true)
-    ForeignCollection<SectionEntity> childSections;
+    public ForeignCollection<SectionEntity> childSections;
 }

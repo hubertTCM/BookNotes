@@ -3,7 +3,7 @@ package com.hubert.dataprovider;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.hubert.dal.Constant;
 import com.hubert.dal.entity.*;
@@ -31,7 +31,8 @@ public class gu_jin_yi_an_an_impoter {
 			dao.assignEmptyForeignCollection(_book, "sections");
 			dao.create(_book);
 
-			loadSections();
+			loadSections(null, _bookDirectory);
+
 			save();
 
 			_connectionSource.close();
@@ -44,24 +45,44 @@ public class gu_jin_yi_an_an_impoter {
 		}
 	}
 
-	private void loadSections() throws SQLException {
-		File[] listOfFiles = _bookDirectory.listFiles();
-		long order = 1;
+	private void loadSections(SectionEntity parent, File directory) throws SQLException {
+		// long order = 1;
+		File[] listOfFiles = directory.listFiles();
+		Arrays.sort(listOfFiles);
+
+		
 		for (File file : listOfFiles) {
 			if (file.isDirectory()) {
 				String sectionName = getSectionName(file.getName());
-				SectionEntity section = new SectionEntity();
-				section.book = _book;
-				section.name = sectionName;
-				section.order = order;
+				SectionEntity section = createSection(parent, sectionName);
 
-				Dao<SectionEntity, Integer> dao = DaoManager.createDao(_connectionSource, SectionEntity.class);
-				dao.assignEmptyForeignCollection(section, "childSections");
+				loadSections(section, file);
 
-				_book.sections.add(section);
+				// order += 1;
 			}
 		}
-		// http://stackoverflow.com/questions/12885499/problems-saving-collection-using-ormlite-on-android
+	}
+
+	private SectionEntity createSection(SectionEntity parent, String sectionName) throws SQLException {
+		SectionEntity section = new SectionEntity();
+		section.book = _book;
+		section.name = sectionName;
+		if (parent == null) {
+			section.order = _book.sections.size() + 1;
+		} else {
+			section.order = parent.childSections.size() + 1;
+		}
+
+		Dao<SectionEntity, Integer> dao = DaoManager.createDao(_connectionSource, SectionEntity.class);
+		dao.assignEmptyForeignCollection(section, "childSections");
+
+		if (parent != null) {
+			section.parent = parent;
+			parent.childSections.add(section);
+		}
+		dao.create(section);
+		_book.sections.add(section);
+		return section;
 	}
 
 	private String getSectionName(String folderName) {
