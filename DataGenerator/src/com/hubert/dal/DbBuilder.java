@@ -1,7 +1,7 @@
 package com.hubert.dal;
 
 import java.io.File;
-import java.nio.file.Files;
+import java.nio.file.*;
 import java.sql.SQLException;
 
 import com.hubert.dal.entity.*;
@@ -16,12 +16,15 @@ public class DbBuilder {
 			file.delete();
 
 			JdbcConnectionSource connectionSource = new JdbcConnectionSource(Constant.DATABASE_URL);
+			
+			TableUtils.createTable(connectionSource, PrescriptionAliasEntity.class);
 			TableUtils.createTable(connectionSource, BookEntity.class);
 			TableUtils.createTable(connectionSource, SectionEntity.class);
 			TableUtils.createTable(connectionSource, BlockEntity.class);
 			TableUtils.createTable(connectionSource, PrescriptionEntity.class);
 			TableUtils.createTable(connectionSource, PrescriptionUnitEntity.class);
 			TableUtils.createTable(connectionSource, PrescriptionBlockLinkEntity.class);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

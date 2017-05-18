@@ -7,8 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import com.hubert.dal.Constant;
 import com.hubert.dal.entity.*;
@@ -29,9 +28,8 @@ public class gu_jin_yi_an_an_impoter {
 	public void doImport() {
 		try {
 			_connectionSource = new JdbcConnectionSource(Constant.DATABASE_URL);
-			_bookDao = DaoManager.createDao(_connectionSource, BookEntity.class);
-			_sectionDao = DaoManager.createDao(_connectionSource, SectionEntity.class);
-			_blockDao = DaoManager.createDao(_connectionSource, BlockEntity.class);
+
+			initDaoObjects();
 
 			_book = new BookEntity();
 			_book.name = getName();
@@ -49,6 +47,17 @@ public class gu_jin_yi_an_an_impoter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	private void initDaoObjects() throws SQLException {
+		_bookDao = DaoManager.createDao(_connectionSource, BookEntity.class);
+		_sectionDao = DaoManager.createDao(_connectionSource, SectionEntity.class);
+		_blockDao = DaoManager.createDao(_connectionSource, BlockEntity.class);
+
+		_prescriptionDao = DaoManager.createDao(_connectionSource, PrescriptionEntity.class);
+		_prescriptionUnitDao = DaoManager.createDao(_connectionSource, PrescriptionUnitEntity.class);
+		_prescriptionBlockLinkDao = DaoManager.createDao(_connectionSource, PrescriptionBlockLinkEntity.class);
+		_prescriptionAliasDao = DaoManager.createDao(_connectionSource, PrescriptionAliasEntity.class);
 	}
 
 	private void loadSections(SectionEntity parent, File directory) throws SQLException, IOException {
@@ -131,9 +140,41 @@ public class gu_jin_yi_an_an_impoter {
 		// section.blocks.add(_currentBlock);
 		_blockDao.createOrUpdate(_currentBlock);
 	}
-	
-	private void parsePrescription(String content){
-		
+
+	private void parsePrescription(String content) throws SQLException {
+		String prescriptionName = content.substring(1);
+		int nameEndIndex = prescriptionName.indexOf(']');
+
+		Map.Entry<String, List<String>> alias = parsePrescriptionAlias(prescriptionName.substring(0, nameEndIndex));
+		for (String item : alias.getValue()) {
+			PrescriptionAliasEntity aliasEntity = new PrescriptionAliasEntity();
+			aliasEntity.alias = item;
+			aliasEntity.name = alias.getKey();
+			_prescriptionAliasDao.createOrUpdate(aliasEntity);
+		}
+
+		PrescriptionEntity prescription = new PrescriptionEntity();
+		prescription.name = alias.getKey();
+		_prescriptionDao.createOrUpdate(prescription);
+
+		String prescriptionDetail = prescriptionName.substring(nameEndIndex + 1);
+
+		PrescriptionBlockLinkEntity prescriptionBlockLink = new PrescriptionBlockLinkEntity();
+		prescriptionBlockLink.block = _currentBlock;
+		prescriptionBlockLink.prescription = prescription;
+		_prescriptionBlockLinkDao.createOrUpdate(prescriptionBlockLink);
+
+	}
+
+	private Map.Entry<String, List<String>> parsePrescriptionAlias(String content) {
+		int aliasStartIndex = content.indexOf('(');
+		if (aliasStartIndex < 0) {
+			return new AbstractMap.SimpleEntry<String, List<String>>(content, new ArrayList<String>());
+		}
+
+		String name = content.substring(0, aliasStartIndex);
+		String[] temp = content.substring(aliasStartIndex + 1, content.length() - 1).split(" ");
+		return new AbstractMap.SimpleEntry<String, List<String>>(name, Arrays.asList(temp));
 	}
 
 	// 1.卷一
@@ -152,6 +193,11 @@ public class gu_jin_yi_an_an_impoter {
 	Dao<BookEntity, Integer> _bookDao;
 	Dao<SectionEntity, Integer> _sectionDao;
 	Dao<BlockEntity, Integer> _blockDao;
+
+	Dao<PrescriptionEntity, Integer> _prescriptionDao;
+	Dao<PrescriptionUnitEntity, Integer> _prescriptionUnitDao;
+	Dao<PrescriptionBlockLinkEntity, Integer> _prescriptionBlockLinkDao;
+	Dao<PrescriptionAliasEntity, Integer> _prescriptionAliasDao;
 
 	private BookEntity _book;
 	private BlockEntity _currentBlock;
