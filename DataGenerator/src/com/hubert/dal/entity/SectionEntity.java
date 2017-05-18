@@ -24,4 +24,7 @@ public class SectionEntity {
 
     @ForeignCollectionField(eager = true)
     public ForeignCollection<SectionEntity> childSections;
+
+    @ForeignCollectionField(eager = true)
+    public ForeignCollection<BlockEntity> blocks;
 }
