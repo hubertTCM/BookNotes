@@ -1,5 +1,7 @@
 package com.hubert.dal;
 
+import java.io.File;
+import java.nio.file.Files;
 import java.sql.SQLException;
 
 import com.hubert.dal.entity.*;
@@ -10,6 +12,9 @@ public class DbBuilder {
 
 	public void build() {
 		try {
+			File file = new File("db/tcm.db");
+			file.delete();
+			
 			JdbcConnectionSource connectionSource = new JdbcConnectionSource(Constant.DATABASE_URL);
 			TableUtils.createTable(connectionSource, BookEntity.class);
 			TableUtils.createTable(connectionSource, SectionEntity.class);

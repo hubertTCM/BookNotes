@@ -14,5 +14,5 @@ public class BookEntity {
     public String name;
     
     @ForeignCollectionField(eager = true)
-    ForeignCollection<SectionEntity> sections;
+    public ForeignCollection<SectionEntity> sections;
 }
