@@ -88,9 +88,9 @@ public class gu_jin_yi_an_an_impoter {
 
 		if (parent != null) {
 			section.parent = parent;
-			//parent.childSections.add(section);
+			// parent.childSections.add(section);
 		}
-		//_book.sections.add(section);
+		// _book.sections.add(section);
 		// section may updated when _book.sections is created
 		_sectionDao.createOrUpdate(section);
 		return section;
@@ -99,37 +99,37 @@ public class gu_jin_yi_an_an_impoter {
 	private void loadBlocks(SectionEntity parentSection, File file) throws IOException, SQLException {
 		Path filePath = Paths.get(file.getAbsolutePath());
 		Charset utf8 = Charset.forName("UTF-8");
-		
+
 		String sectionName = getSectionName(file.getName());
 		SectionEntity section = createSection(parentSection, sectionName);
-		
+
 		List<String> lines = Files.readAllLines(filePath, utf8);
 		for (String line : lines) {
 			if (line.indexOf("comment") > 0) {
 				continue;
 			}
-			
-			line  = line.trim();
-			if (line.isEmpty()){
+
+			line = line.trim();
+			if (line.isEmpty()) {
 				continue;
 			}
-			
+
 			parseContent(section, line);
 		}
 	}
 
 	private void parseContent(SectionEntity section, String content) throws SQLException {
-		if (content.indexOf("[") == 0){
+		if (content.indexOf("[") == 0) {
 			// prescription;
 			// TODO:
 			return;
 		}
-		
+
 		_currentBlock = new BlockEntity();
 		_currentBlock.content = content;
 		_currentBlock.order = section.blocks.size() + 1;
 		_currentBlock.section = section;
-		//section.blocks.add(_currentBlock);
+		// section.blocks.add(_currentBlock);
 		_blockDao.createOrUpdate(_currentBlock);
 	}
 
@@ -138,9 +138,9 @@ public class gu_jin_yi_an_an_impoter {
 	private String getSectionName(String fileName) {
 		int index = fileName.indexOf(".");
 		fileName = fileName.substring(index + 1).trim();
-		
+
 		index = fileName.indexOf(".");
-		if (index > 0){
+		if (index > 0) {
 			return fileName.substring(0, index);
 		}
 		return fileName;
