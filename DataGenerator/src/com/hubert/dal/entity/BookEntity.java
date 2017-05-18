@@ -7,12 +7,12 @@ import com.j256.ormlite.table.*;
 @DatabaseTable(tableName = "book")
 public class BookEntity {
 
-    @DatabaseField(generatedId = true)
+	@DatabaseField(generatedId = true)
 	public long id;
 
-    @DatabaseField(width=256)
-    public String name;
-    
-    @ForeignCollectionField(eager = true)
-    public ForeignCollection<SectionEntity> sections;
+	@DatabaseField(width = 256)
+	public String name;
+
+	@ForeignCollectionField(eager = true)
+	public ForeignCollection<SectionEntity> sections;
 }
