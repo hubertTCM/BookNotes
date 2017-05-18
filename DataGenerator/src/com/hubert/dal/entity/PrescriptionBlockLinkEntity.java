@@ -13,4 +13,8 @@ public class PrescriptionBlockLinkEntity {
 
 	@DatabaseField(canBeNull = true, foreign = true)
 	public PrescriptionEntity prescription;
+
+	// TODO: block used to explain the prescription or block is medical notes...
+	//@DatabaseField(width = 256)
+	//public String linkType;
 }
