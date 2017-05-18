@@ -20,10 +20,4 @@ public class PrescriptionEntity {
 	// cache the composition, easy to analyze
 	@DatabaseField(width = 1500)
 	public String summary;
-
-	@DatabaseField()
-	public long order;
-
-	@DatabaseField(canBeNull = true, foreign = true)
-	public BlockEntity block;
 }
