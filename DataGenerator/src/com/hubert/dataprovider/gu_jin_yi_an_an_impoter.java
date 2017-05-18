@@ -2,8 +2,13 @@ package com.hubert.dataprovider;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.List;
 
 import com.hubert.dal.Constant;
 import com.hubert.dal.entity.*;
@@ -24,16 +29,17 @@ public class gu_jin_yi_an_an_impoter {
 	public void doImport() {
 		try {
 			_connectionSource = new JdbcConnectionSource(Constant.DATABASE_URL);
+			_bookDao = DaoManager.createDao(_connectionSource, BookEntity.class);
+			_sectionDao = DaoManager.createDao(_connectionSource, SectionEntity.class);
+			_blockDao = DaoManager.createDao(_connectionSource, BlockEntity.class);
+
 			_book = new BookEntity();
 			_book.name = getName();
 
-			Dao<BookEntity, Integer> dao = DaoManager.createDao(_connectionSource, BookEntity.class);
-			dao.assignEmptyForeignCollection(_book, "sections");
-			dao.create(_book);
+			_bookDao.assignEmptyForeignCollection(_book, "sections");
+			_bookDao.create(_book);
 
 			loadSections(null, _bookDirectory);
-
-			save();
 
 			_connectionSource.close();
 		} catch (SQLException e) {
@@ -45,20 +51,24 @@ public class gu_jin_yi_an_an_impoter {
 		}
 	}
 
-	private void loadSections(SectionEntity parent, File directory) throws SQLException {
-		// long order = 1;
-		File[] listOfFiles = directory.listFiles();
-		Arrays.sort(listOfFiles);
+	private void loadSections(SectionEntity parent, File directory) throws SQLException, IOException {
+		File[] files = directory.listFiles();
+		Arrays.sort(files);
 
-		
-		for (File file : listOfFiles) {
+		for (File file : files) {
+			String fileName = file.getName();
+			if (fileName.indexOf("summary") > 0) {
+				continue;
+			}
+
 			if (file.isDirectory()) {
-				String sectionName = getSectionName(file.getName());
+				String sectionName = getSectionName(fileName);
 				SectionEntity section = createSection(parent, sectionName);
-
 				loadSections(section, file);
+			}
 
-				// order += 1;
+			if (file.isFile()) {
+				loadBlocks(parent, file);
 			}
 		}
 	}
@@ -73,29 +83,75 @@ public class gu_jin_yi_an_an_impoter {
 			section.order = parent.childSections.size() + 1;
 		}
 
-		Dao<SectionEntity, Integer> dao = DaoManager.createDao(_connectionSource, SectionEntity.class);
-		dao.assignEmptyForeignCollection(section, "childSections");
+		_sectionDao.assignEmptyForeignCollection(section, "childSections");
+		_sectionDao.assignEmptyForeignCollection(section, "blocks");
 
 		if (parent != null) {
 			section.parent = parent;
-			parent.childSections.add(section);
+			//parent.childSections.add(section);
 		}
-		dao.create(section);
-		_book.sections.add(section);
+		//_book.sections.add(section);
+		// section may updated when _book.sections is created
+		_sectionDao.createOrUpdate(section);
 		return section;
 	}
 
-	private String getSectionName(String folderName) {
-		int index = folderName.indexOf(".");
-		return folderName.substring(index + 1).trim();
+	private void loadBlocks(SectionEntity parentSection, File file) throws IOException, SQLException {
+		Path filePath = Paths.get(file.getAbsolutePath());
+		Charset utf8 = Charset.forName("UTF-8");
+		
+		String sectionName = getSectionName(file.getName());
+		SectionEntity section = createSection(parentSection, sectionName);
+		
+		List<String> lines = Files.readAllLines(filePath, utf8);
+		for (String line : lines) {
+			if (line.indexOf("comment") > 0) {
+				continue;
+			}
+			
+			line  = line.trim();
+			if (line.isEmpty()){
+				continue;
+			}
+			
+			parseContent(section, line);
+		}
 	}
 
-	// http://stackoverflow.com/questions/12885499/problems-saving-collection-using-ormlite-on-android
-	private void save() throws SQLException, IOException {
-
+	private void parseContent(SectionEntity section, String content) throws SQLException {
+		if (content.indexOf("[") == 0){
+			// prescription;
+			// TODO:
+			return;
+		}
+		
+		_currentBlock = new BlockEntity();
+		_currentBlock.content = content;
+		_currentBlock.order = section.blocks.size() + 1;
+		_currentBlock.section = section;
+		//section.blocks.add(_currentBlock);
+		_blockDao.createOrUpdate(_currentBlock);
 	}
+
+	// 1.卷一
+	// 2.中风.txt
+	private String getSectionName(String fileName) {
+		int index = fileName.indexOf(".");
+		fileName = fileName.substring(index + 1).trim();
+		
+		index = fileName.indexOf(".");
+		if (index > 0){
+			return fileName.substring(0, index);
+		}
+		return fileName;
+	}
+
+	Dao<BookEntity, Integer> _bookDao;
+	Dao<SectionEntity, Integer> _sectionDao;
+	Dao<BlockEntity, Integer> _blockDao;
 
 	private BookEntity _book;
+	private BlockEntity _currentBlock;
 	private ConnectionSource _connectionSource;
 	private File _bookDirectory;
 }

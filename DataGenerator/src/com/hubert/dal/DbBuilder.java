@@ -19,7 +19,7 @@ public class DbBuilder {
 			TableUtils.createTable(connectionSource, BookEntity.class);
 			TableUtils.createTable(connectionSource, SectionEntity.class);
 			TableUtils.createTable(connectionSource, BlockEntity.class);
-			TableUtils.createTable(connectionSource, NoteEntity.class);
+			//TableUtils.createTable(connectionSource, NoteEntity.class);
 			TableUtils.createTable(connectionSource, PrescriptionEntity.class);
 			TableUtils.createTable(connectionSource, PrescriptionUnitEntity.class);
 		} catch (SQLException e) {

@@ -1,8 +1,10 @@
 package com.hubert.dal.entity;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 // 处方
+@DatabaseTable(tableName = "prescription")
 public class PrescriptionEntity {
     @DatabaseField(generatedId = true)
 	public long id;
