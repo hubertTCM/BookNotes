@@ -14,4 +14,8 @@ public class PrescriptionAliasEntity {
 
 	@DatabaseField(width = 100)
 	public String alias;
+
+	// prescription name is duplicate some times.
+	@DatabaseField(canBeNull = false, foreign = true)
+	public PrescriptionEntity prescription;
 }

@@ -9,10 +9,13 @@ import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.*;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.hubert.dal.Constant;
 import com.hubert.dal.entity.*;
 import com.j256.ormlite.dao.*;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 
 public class gu_jin_yi_an_an_impoter {
@@ -118,7 +121,7 @@ public class gu_jin_yi_an_an_impoter {
 				continue;
 			}
 
-			line = line.trim();
+			line = StringUtils.strip(line);// line.trim();
 			if (line.isEmpty()) {
 				continue;
 			}
@@ -145,25 +148,60 @@ public class gu_jin_yi_an_an_impoter {
 		String prescriptionName = content.substring(1);
 		int nameEndIndex = prescriptionName.indexOf(']');
 
+		String prescriptionDetail = prescriptionName.substring(nameEndIndex + 1);
+
 		Map.Entry<String, List<String>> alias = parsePrescriptionAlias(prescriptionName.substring(0, nameEndIndex));
-		for (String item : alias.getValue()) {
-			PrescriptionAliasEntity aliasEntity = new PrescriptionAliasEntity();
-			aliasEntity.alias = item;
-			aliasEntity.name = alias.getKey();
-			_prescriptionAliasDao.createOrUpdate(aliasEntity);
+
+		// QueryBuilder<Account, String> queryBuilder = dao.queryBuilder();
+		// queryBuilder.where().eq(Account.PASSWORD_FIELD_NAME, "qwerty");
+		PrescriptionEntity prescription = null;
+		prescriptionName = alias.getKey();
+		QueryBuilder<PrescriptionEntity, Integer> queryBuilder = _prescriptionDao.queryBuilder();
+		queryBuilder.where().eq(Constant.FILED_NAME, prescriptionName);
+		List<PrescriptionEntity> existingValue = queryBuilder.query();
+		if (existingValue != null && !existingValue.isEmpty()) {
+			prescription = existingValue.get(0);
+		}
+		if (prescription == null) {
+			prescription = new PrescriptionEntity();
+			prescription.name = alias.getKey();
+			_prescriptionDao.createOrUpdate(prescription);
 		}
 
-		PrescriptionEntity prescription = new PrescriptionEntity();
-		prescription.name = alias.getKey();
-		_prescriptionDao.createOrUpdate(prescription);
-
-		String prescriptionDetail = prescriptionName.substring(nameEndIndex + 1);
+		for (String item : alias.getValue()) {
+			/*
+			 * PrescriptionAliasEntity aliasEntity = new
+			 * PrescriptionAliasEntity(); aliasEntity.alias = item;
+			 * aliasEntity.name = alias.getKey(); aliasEntity.prescription =
+			 * prescription; _prescriptionAliasDao.createOrUpdate(aliasEntity);
+			 */
+			createOrUpdatePrescriptionAlias(prescription, item);
+		}
 
 		PrescriptionBlockLinkEntity prescriptionBlockLink = new PrescriptionBlockLinkEntity();
 		prescriptionBlockLink.block = _currentBlock;
 		prescriptionBlockLink.prescription = prescription;
 		_prescriptionBlockLinkDao.createOrUpdate(prescriptionBlockLink);
 
+	}
+
+	private void createOrUpdatePrescriptionAlias(PrescriptionEntity prescription, String alias) throws SQLException {
+
+		if (prescription.id > 0) {
+			QueryBuilder<PrescriptionAliasEntity, Integer> queryBuilder = _prescriptionAliasDao.queryBuilder();
+			queryBuilder.where().eq(Constant.FILED_NAME, prescription.name).and()
+					.eq(Constant.FIELD_PRESCRIPTION_ID, prescription.id).and().eq(Constant.FILED_ALIAS, alias);
+			List<PrescriptionAliasEntity> existingValue = queryBuilder.query();
+			if (!existingValue.isEmpty()) {
+				return;
+			}
+		}
+
+		PrescriptionAliasEntity aliasEntity = new PrescriptionAliasEntity();
+		aliasEntity.alias = alias;
+		aliasEntity.name = prescription.name;
+		aliasEntity.prescription = prescription;
+		_prescriptionAliasDao.createOrUpdate(aliasEntity);
 	}
 
 	private Map.Entry<String, List<String>> parsePrescriptionAlias(String content) {

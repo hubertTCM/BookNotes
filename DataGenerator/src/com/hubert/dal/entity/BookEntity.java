@@ -13,6 +13,6 @@ public class BookEntity {
 	@DatabaseField(width = 256)
 	public String name;
 
-	@ForeignCollectionField(eager = true)
+	@ForeignCollectionField(eager = false)
 	public ForeignCollection<SectionEntity> sections;
 }

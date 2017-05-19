@@ -22,9 +22,9 @@ public class SectionEntity {
 	@DatabaseField(canBeNull = true, foreign = true)
 	public SectionEntity parent;
 
-	@ForeignCollectionField(eager = true)
+	@ForeignCollectionField(eager = false)
 	public ForeignCollection<SectionEntity> childSections;
 
-	@ForeignCollectionField(eager = true)
+	@ForeignCollectionField(eager = false)
 	public ForeignCollection<BlockEntity> blocks;
 }
