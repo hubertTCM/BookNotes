@@ -146,8 +146,8 @@ public class gu_jin_yi_an_an_impoter {
 
 	}
 
-	// 1.卷一
-	// 2.中风.txt
+	// 1.å�·ä¸€
+	// 2.ä¸­é£Ž.txt
 	private String getSectionName(String fileName) {
 		int index = fileName.indexOf(".");
 		fileName = fileName.substring(index + 1).trim();
