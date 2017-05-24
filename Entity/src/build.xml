@@ -1,7 +1,0 @@
-<?xml version="1.0" ?>
-<!-- Configuration of the Ant build system to generate a Jar file --> 
-<project name="DAL" default="CreateJar">
-  <target name="CreateJar" description="Create Jar file">
-        <jar jarfile="Entity.jar" basedir="." includes="*.class" />
-  </target>
-</project>
