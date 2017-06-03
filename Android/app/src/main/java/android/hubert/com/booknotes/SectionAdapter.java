@@ -29,11 +29,15 @@ public class SectionAdapter extends ArrayAdapter<SectionEntity> {
         SectionEntity section = this.getItem(position);
 
         if(convertView == null){
-            convertView = _inflater.inflate(R.layout.block, null);
+            convertView = _inflater.inflate(R.layout.section, parent, false);
         }
-        ListView listViewBlock = (ListView) convertView.findViewById(R.id.listViewBlock);
-        BlockAdapter adapter = new BlockAdapter(this._context, section.blocks);
-        listViewBlock.setAdapter(adapter);
+       // ListView listViewBlock = (ListView) convertView.findViewById(R.id.listViewBlock);
+       // BlockAdapter adapter = new BlockAdapter(this._context, section.blocks);
+       // listViewBlock.setAdapter(adapter);
+
+        TextView titleView = (TextView)convertView.findViewById(R.id.textViewTitle);
+        titleView.setText(section.name);
+
         return convertView;
     }
 }
