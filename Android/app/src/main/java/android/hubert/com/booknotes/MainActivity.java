@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity
 
         ListView listViewSection = (ListView)findViewById(R.id.listViewSection);
         SectionAdapter adapter = new SectionAdapter(this, bookEntity.sections);
+        listViewSection.setAdapter(adapter);
     }
 
     @Override
