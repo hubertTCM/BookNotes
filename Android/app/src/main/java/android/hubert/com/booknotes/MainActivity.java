@@ -50,10 +50,11 @@ public class MainActivity extends AppCompatActivity
 
         BookEntity bookEntity = databaseHelper.load(1);
 
-
-        ListView listViewSection = (ListView)findViewById(R.id.listViewSection);
-        SectionAdapter adapter = new SectionAdapter(this, bookEntity.sections);
-        listViewSection.setAdapter(adapter);
+        SectionUI currentSection = (SectionUI)findViewById(R.id.currentSection);
+        currentSection.setEntity(bookEntity.sections.iterator().next());
+        //ListView listViewSection = (ListView)findViewById(R.id.listViewSection);
+        //SectionAdapter adapter = new SectionAdapter(this, bookEntity.sections);
+        //listViewSection.setAdapter(adapter);
     }
 
     @Override
