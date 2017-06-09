@@ -15,12 +15,15 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.hubert.dal.entity.BookEntity;
+import com.hubert.dal.entity.SectionEntity;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DatabaseHelper databaseHelper = null;
+    private SectionUI mSectionUI = null;
+    private SectionEntity mSectionEntity = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +53,9 @@ public class MainActivity extends AppCompatActivity
 
         BookEntity bookEntity = databaseHelper.load(1);
 
-        SectionUI currentSection = (SectionUI)findViewById(R.id.currentSection);
-        currentSection.setEntity(bookEntity.sections.iterator().next());
-        //ListView listViewSection = (ListView)findViewById(R.id.listViewSection);
-        //SectionAdapter adapter = new SectionAdapter(this, bookEntity.sections);
-        //listViewSection.setAdapter(adapter);
+        mSectionUI = (SectionUI)findViewById(R.id.currentSection);
+        mSectionEntity = bookEntity.sections.iterator().next();
+        mSectionUI.setEntity(mSectionEntity);
     }
 
     @Override
