@@ -19,6 +19,8 @@ import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 
 public class gu_jin_yi_an_an_impoter {
+	private OrderGenerator mSectionOrderGenerator = new OrderGenerator();
+	private OrderGenerator mBlockOrderGenerator  = new OrderGenerator();
 
 	public gu_jin_yi_an_an_impoter() {
 		_bookDirectory = new File("resource/古今医案按");
@@ -89,11 +91,8 @@ public class gu_jin_yi_an_an_impoter {
 		SectionEntity section = new SectionEntity();
 		section.book = _book;
 		section.name = sectionName;
-		if (parent == null) {
-			section.order = _book.sections.size() + 1;
-		} else {
-			section.order = parent.childSections.size() + 1;
-		}
+		
+		section.order = mSectionOrderGenerator.nextOrder();
 
 		_sectionDao.assignEmptyForeignCollection(section, "childSections");
 		_sectionDao.assignEmptyForeignCollection(section, "blocks");
@@ -138,7 +137,7 @@ public class gu_jin_yi_an_an_impoter {
 
 			_currentBlock = new BlockEntity();
 			_currentBlock.content = content;
-			_currentBlock.order = section.blocks.size() + 1;
+			_currentBlock.order = mBlockOrderGenerator.nextOrder();//section.blocks.size() + 1;
 			_currentBlock.section = section;
 			// section.blocks.add(_currentBlock);
 			_blockDao.createOrUpdate(_currentBlock);

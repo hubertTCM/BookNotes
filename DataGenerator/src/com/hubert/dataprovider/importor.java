@@ -11,6 +11,8 @@ public class importor {
 
 		gu_jin_yi_an_an_impoter importor = new gu_jin_yi_an_an_impoter();
 		importor.doImport();
+		
+		System.out.println("done");
 	}
 
 }
