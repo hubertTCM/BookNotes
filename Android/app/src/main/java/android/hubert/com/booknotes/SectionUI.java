@@ -3,11 +3,14 @@ package android.hubert.com.booknotes;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.hubert.dal.entity.BlockEntity;
 import com.hubert.dal.entity.BookEntity;
 import com.hubert.dal.entity.SectionEntity;
 
@@ -16,8 +19,10 @@ import com.hubert.dal.entity.SectionEntity;
  */
 
 public class SectionUI extends LinearLayout {
-    private SectionEntity mEntity;
-    ListView mBlockView;
+    private SectionEntity mSectionEntity;
+    private TextView mTitleView;
+    private ListView mBlockView;
+    private BlockAdapter mBlockAdapter;
 
     public SectionUI(Context context) {
         super(context);
@@ -30,16 +35,21 @@ public class SectionUI extends LinearLayout {
     }
 
     public void setEntity(SectionEntity entity) {
-        mEntity = findLowestSection(entity);
-        if (mEntity == null) {
+        mSectionEntity = findLowestSection(entity);
+        if (mSectionEntity == null) {
             return;
         }
 
-        TextView titleView = (TextView) findViewById(R.id.textViewTitle);
-        titleView.setText(mEntity.name);
 
-        BlockAdapter adapter = new BlockAdapter(getContext(), mEntity.blocks);
-        mBlockView.setAdapter(adapter);
+        mTitleView.setText(mSectionEntity.name);
+
+        if (mBlockAdapter == null) {
+            mBlockAdapter = new BlockAdapter(getContext(), mSectionEntity.blocks);
+            mBlockView.setAdapter(mBlockAdapter);
+        }
+        else{
+            mBlockAdapter.addAll(mSectionEntity.blocks);
+        }
     }
 
     private void setUp(Context context) {
@@ -47,6 +57,7 @@ public class SectionUI extends LinearLayout {
         inflater.inflate(R.layout.section, this);
 
         mBlockView = (ListView) findViewById(R.id.listViewBlock);
+        mTitleView = (TextView) findViewById(R.id.textViewTitle);
 
         mBlockView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -64,10 +75,24 @@ public class SectionUI extends LinearLayout {
                 setEntity(next);
             }
         });
+
+        mBlockView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                BlockEntity blockEntity  = mBlockAdapter.getItem(position);
+                mTitleView.setText(blockEntity.section.name);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private static SectionEntity findLowestSection(SectionEntity entity) {
-        if (entity == null){
+        if (entity == null) {
             return null;
         }
 
@@ -85,19 +110,19 @@ public class SectionUI extends LinearLayout {
     }
 
     private SectionEntity findNextSection() {
-        if (mEntity.parent != null) {
-            for (SectionEntity temp : mEntity.parent.childSections) {
-                if (temp.order > mEntity.order) {
+        if (mSectionEntity.parent != null) {
+            for (SectionEntity temp : mSectionEntity.parent.childSections) {
+                if (temp.order > mSectionEntity.order) {
                     return temp;
                 }
             }
         }
 
-        BookEntity book = mEntity.book;
-        SectionEntity parent = mEntity;
-        while(book == null || book.sections == null || book.sections.isEmpty()){
+        BookEntity book = mSectionEntity.book;
+        SectionEntity parent = mSectionEntity;
+        while (book == null || book.sections == null || book.sections.isEmpty()) {
             parent = parent.parent;
-            if (parent == null){
+            if (parent == null) {
                 return null;
             }
             book = parent.book;
@@ -107,7 +132,7 @@ public class SectionUI extends LinearLayout {
             if (temp.parent != null) {
                 continue;
             }
-            if (temp.order > mEntity.order) {
+            if (temp.order > mSectionEntity.order) {
                 return temp;
             }
         }
