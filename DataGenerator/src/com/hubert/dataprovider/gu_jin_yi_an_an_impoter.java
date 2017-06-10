@@ -155,7 +155,7 @@ public class gu_jin_yi_an_an_impoter {
 		if (index > 0) {
 			return fileName.substring(0, index);
 		}
-		return fileName;
+		return StringUtils.strip(fileName);
 	}
 
 	Dao<BookEntity, Integer> _bookDao;
