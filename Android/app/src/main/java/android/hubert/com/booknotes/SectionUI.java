@@ -80,8 +80,8 @@ public class SectionUI extends LinearLayout {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 BlockEntity blockEntity  = mBlockAdapter.getItem(position);
-                mTitleView.setText(blockEntity.section.name);
-
+                mSectionEntity = blockEntity.section;
+                mTitleView.setText(mSectionEntity.name);
             }
 
             @Override
@@ -110,6 +110,9 @@ public class SectionUI extends LinearLayout {
     }
 
     private SectionEntity findNextSection() {
+        if (mSectionEntity == null){
+            return null;
+        }
         if (mSectionEntity.parent != null) {
             for (SectionEntity temp : mSectionEntity.parent.childSections) {
                 if (temp.order > mSectionEntity.order) {
