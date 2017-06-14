@@ -15,7 +15,7 @@ import com.hubert.dal.Constant;
 import com.hubert.dal.entity.*;
 import com.j256.ormlite.dao.*;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
-import com.j256.ormlite.stmt.QueryBuilder;
+//import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 
 public class gu_jin_yi_an_an_impoter {

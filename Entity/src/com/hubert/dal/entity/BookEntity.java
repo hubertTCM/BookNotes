@@ -1,6 +1,8 @@
 package com.hubert.dal.entity;
 
-import com.j256.ormlite.dao.*;
+import java.util.Collection;
+
+//import com.j256.ormlite.dao.*;
 import com.j256.ormlite.field.*;
 import com.j256.ormlite.table.*;
 
@@ -14,5 +16,6 @@ public class BookEntity {
 	public String name;
 
 	@ForeignCollectionField(eager = false)
-	public ForeignCollection<SectionEntity> sections;
+	public Collection<SectionEntity> sections;
+	//public ForeignCollection<SectionEntity> sections;
 }
