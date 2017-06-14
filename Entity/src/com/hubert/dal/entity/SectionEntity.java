@@ -1,6 +1,8 @@
 package com.hubert.dal.entity;
 
-import com.j256.ormlite.dao.ForeignCollection;
+import java.util.Collection;
+
+//import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.*;
 import com.j256.ormlite.table.*;
 
@@ -23,8 +25,10 @@ public class SectionEntity {
 	public SectionEntity parent;
 
 	@ForeignCollectionField(eager = false)
-	public ForeignCollection<SectionEntity> childSections;
+	public Collection<SectionEntity> childSections;
+	//public ForeignCollection<SectionEntity> childSections;
 
 	@ForeignCollectionField(eager = false)
-	public ForeignCollection<BlockEntity> blocks;
+	public Collection<BlockEntity> blocks;
+	//public ForeignCollection<BlockEntity> blocks;
 }
