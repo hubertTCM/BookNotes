@@ -1,6 +1,6 @@
 package com.hubert.dal.entity;
 
-import java.util.Collection;
+import java.util.*;
 
 //import com.j256.ormlite.dao.*;
 import com.j256.ormlite.field.*;

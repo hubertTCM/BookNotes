@@ -9,7 +9,7 @@ public class importor {
 		DbBuilder builder = new DbBuilder();
 		builder.build();
 
-		gu_jin_yi_an_an_impoter importor = new gu_jin_yi_an_an_impoter();
+		gu_jin_yi_an_an_importer importor = new gu_jin_yi_an_an_importer();
 		importor.doImport();
 		
 		System.out.println("done");
