@@ -15,7 +15,7 @@ import com.hubert.dal.entity.*;
 
 public class BookGenerator {
 
-	public BookGenerator(String name, BlockParser parser) {
+	public BookGenerator(String name, AbstractBlockParser parser) {
 		mBookDirectory = new File("resource/" + name);
 		mBook.name = name;
 		mBook.sections = new ArrayList<SectionEntity>();
@@ -100,5 +100,5 @@ public class BookGenerator {
 	protected BookEntity mBook;
 	protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
 
-	protected BlockParser mBlockParser;
+	protected AbstractBlockParser mBlockParser;
 }
