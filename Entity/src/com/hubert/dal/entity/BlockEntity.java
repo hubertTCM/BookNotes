@@ -1,5 +1,7 @@
 package com.hubert.dal.entity;
 
+import java.util.*;
+
 import com.j256.ormlite.field.*;
 import com.j256.ormlite.table.*;
 
@@ -18,4 +20,7 @@ public class BlockEntity {
 
 	@DatabaseField()
 	public long order;
+	
+	@ForeignCollectionField(eager = false)
+	public Collection<PrescriptionBlockLinkEntity> prescriptions;
 }

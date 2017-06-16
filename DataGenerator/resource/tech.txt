@@ -16,3 +16,5 @@ git config --global credential.helper 'cache --timeout 7200' //After enabling cr
 
 
 https://stackoverflow.com/questions/16398921/dynamic-listview-adding-load-more-items-at-the-end-of-scroll
+
+https://stackoverflow.com/questions/4188250/how-to-create-multiple-android-apps-from-one-code-base
