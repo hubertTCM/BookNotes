@@ -5,44 +5,28 @@ import java.util.*;
 import com.hubert.dal.entity.*;
 
 public class YiAnDetailParser extends AbstractSingleLineParser {
-	enum State{
-		Init,
-		BeginParsePrescription,
-		ParsingPrescription,
-	}
-	
 	public YiAnDetailParser(YiAnParser yianParser, List<String> adjustedTexts) {
 		super(adjustedTexts);
 		mYiAnParser = yianParser;
 	}
 
 	@Override
-	public void internalParse(String line) {
-		// line is not empty here. 
-		// start of yian,  or 
-		// line start with "又"
+	public AbstractSingleLineParser parse(String line) {		
+		if (line.isEmpty()){
+			return mYiAnParser.parse(line);
+		}
 		
 		if (mCurrentYiAnDetail != null) {
 			mYiAn.details.add(mCurrentYiAnDetail);
 		}
 		mCurrentYiAnDetail = new YiAnDetailEntity();
+		mCurrentYiAnDetail.content = line;
+		mCurrentYiAnDetail.prescriptions = new ArrayList<YiAnPrescriptionEntity>();
 		
-		this.mCurrentState = State.BeginParsePrescription;
+		YiAnPrescriptionParser yiAnPrescriptionParser = new YiAnPrescriptionParser(this, mAdjustedTexts);
+		return yiAnPrescriptionParser;
 	}
 	
-	@Override
-	public AbstractSingleLineParser getNext(){
-		if (this.mCurrentState == State.BeginParsePrescription){
-			this.mCurrentState = State.ParsingPrescription;
-			
-			// to prescription.
-		}
-		if (this.mCurrentState == State.ParsingPrescription){
-			// prescription is ready.
-			return mYiAnParser;
-		}
-		return null;
-	}
 	
 	public static boolean isNextYiAnDetail(String line){
 		return line.indexOf("又") == 0;
@@ -51,6 +35,6 @@ public class YiAnDetailParser extends AbstractSingleLineParser {
 	//private SectionEntity mParentSection;
 	private YiAnDetailEntity mCurrentYiAnDetail;
 	private YiAnEntity mYiAn;
-	private State mCurrentState = State.Init;
+	//private State mCurrentState = State.Init;
 	private YiAnParser mYiAnParser;
 }
