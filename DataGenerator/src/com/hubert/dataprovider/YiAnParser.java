@@ -22,13 +22,12 @@ public class YiAnParser extends AbstractSingleLineParser {
 	
 	public YiAnParser() {
 		super(new ArrayList<String>());
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void internalParse(String line) {
+	public AbstractSingleLineParser parse(String line) {
 		if (line.isEmpty()){
-			return;
+			return this;
 		}
 		
 		if (mCurrentYiAn != null){
@@ -39,7 +38,9 @@ public class YiAnParser extends AbstractSingleLineParser {
 		mCurrentYiAn.details = new ArrayList<YiAnDetailEntity>();
 		
 		YiAnDetailParser parser = new YiAnDetailParser(this, mAdjustedTexts);
-		parser.parse(line);
+		//parser.parse(line);
+		
+		return parser.parse(line);
 	}
 
 	//@Override

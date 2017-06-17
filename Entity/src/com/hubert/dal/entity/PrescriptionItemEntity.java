@@ -3,16 +3,16 @@ package com.hubert.dal.entity;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "yianprescriptionentity")
-public class YiAnPrescriptionItemEntity {
+@DatabaseTable(tableName = "prescriptionitem")
+public class PrescriptionItemEntity {
 	@DatabaseField(generatedId = true)
 	public long id;
 
 	@DatabaseField()
-	public String herb;
+	public double quantity;
 
 	@DatabaseField()
-	public double quantity;
+	public String herb;
 
 	@DatabaseField()
 	public String unit;
@@ -22,6 +22,6 @@ public class YiAnPrescriptionItemEntity {
 	public String comment;
 
 	@DatabaseField(canBeNull = false, foreign = true)
-	public YiAnPrescriptionEntity yian;
+	public PrescriptionEntity prescription;
 
 }

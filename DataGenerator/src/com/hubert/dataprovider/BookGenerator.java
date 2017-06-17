@@ -15,12 +15,15 @@ import com.hubert.dal.entity.*;
 
 public class BookGenerator {
 
-	public BookGenerator(String name, AbstractBlockParser parser) {
+	public BookGenerator(String name, AbstractSingleLineParser parser/*AbstractBlockParser parser*/) {
 		mBookDirectory = new File("resource/" + name);
+		mBook = new BookEntity();
 		mBook.name = name;
 		mBook.sections = new ArrayList<SectionEntity>();
+		
+		this.mSingleLineParser = parser;
 
-		mBlockParser = parser;
+		//mBlockParser = parser;
 	}
 
 	public void doImport() {
@@ -59,11 +62,13 @@ public class BookGenerator {
 		Path filePath = Paths.get(file.getAbsolutePath());
 		Charset utf8 = Charset.forName("UTF-8");
 		
-		mBlockParser.SetSection(parent);
+		//mBlockParser.SetSection(parent);
 
 		List<String> lines = Files.readAllLines(filePath, utf8);
+		AbstractSingleLineParser temp = mSingleLineParser;
 		for (String line : lines) {
-			mBlockParser.parse(line);
+			//mBlockParser.parse(line);
+			temp = temp.parse(line);
 		}
 	}
 
@@ -100,5 +105,6 @@ public class BookGenerator {
 	protected BookEntity mBook;
 	protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
 
-	protected AbstractBlockParser mBlockParser;
+	//protected AbstractBlockParser mBlockParser;
+	protected AbstractSingleLineParser mSingleLineParser = null;
 }
