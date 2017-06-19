@@ -19,35 +19,35 @@ example:
     炒杞子 桂圆肉 炒菊花 炙黑甘草 黄芪（去心） 牡蛎
 */
 public class YiAnParser extends AbstractSingleLineParser {
-	
+
 	public YiAnParser() {
 		super(new ArrayList<String>());
 	}
 
 	@Override
 	public AbstractSingleLineParser parse(String line) {
-		if (line.isEmpty()){
+		if (line.isEmpty() || line.startsWith("// comment")) {
 			return this;
 		}
-		
-		if (mCurrentYiAn != null){
+
+		if (mCurrentYiAn != null) {
 			mYiAns.add(mCurrentYiAn);
 		}
-		
-		if (line.startsWith("[comment]")){
+
+		if (line.startsWith("[comment]")) {
 			return this;
 		}
-		
+
 		mCurrentYiAn = new YiAnEntity();
 		mCurrentYiAn.details = new ArrayList<YiAnDetailEntity>();
-		
+
 		YiAnDetailParser parser = new YiAnDetailParser(this, mCurrentYiAn, mAdjustedTexts);
-		//parser.parse(line);
-		
+		// parser.parse(line);
+
 		return parser.parse(line);
 	}
 
-	//@Override
+	// @Override
 	public void save() {
 		// TODO Auto-generated method stub
 
@@ -56,5 +56,5 @@ public class YiAnParser extends AbstractSingleLineParser {
 	protected List<String> mAdjustedTexts = new ArrayList<String>();
 	private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
 	private YiAnEntity mCurrentYiAn;
-	//private YiAnDetailParser mYiAnDetailParser;
+	// private YiAnDetailParser mYiAnDetailParser;
 }
