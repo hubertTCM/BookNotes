@@ -22,16 +22,17 @@ public class YiAnDetailParser extends AbstractSingleLineParser {
 		}
 		
 		mCurrentYiAnDetail = new YiAnDetailEntity();
+		mCurrentYiAnDetail.order = mYiAn.details.size() + 1;
 		mCurrentYiAnDetail.prescriptions = new ArrayList<YiAnPrescriptionEntity>();
 		YiAnPrescriptionParser yiAnPrescriptionParser = new YiAnPrescriptionParser(this, mCurrentYiAnDetail, mAdjustedTexts);
 		
 		String presciptionOnly  = "又[]";
 		int index = line.indexOf(presciptionOnly);
-		if (index < 0){
-			mCurrentYiAnDetail.content = line;
-			return yiAnPrescriptionParser;
+		if (index == 0){
+			return yiAnPrescriptionParser.parse(line.substring(presciptionOnly.length(), line.length()));
 		}
-		return yiAnPrescriptionParser.parse(line.substring(presciptionOnly.length(), line.length()));
+		mCurrentYiAnDetail.content = line;
+		return yiAnPrescriptionParser;
 		
 	}
 	
