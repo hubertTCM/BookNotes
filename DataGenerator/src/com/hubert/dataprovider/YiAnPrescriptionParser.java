@@ -21,6 +21,7 @@ public class YiAnPrescriptionParser extends AbstractSingleLineParser {
 	private void createYiAnPrescriptionEntity() {
 		mYiAnPrescriptionEntity = new YiAnPrescriptionEntity();
 		mYiAnPrescriptionEntity.items = new ArrayList<YiAnPrescriptionItemEntity>();
+		mYiAnPrescriptionEntity.order = mYiAnDetailEntity.prescriptions.size() + 1;
 	}
 
 	@Override
