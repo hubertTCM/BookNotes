@@ -10,7 +10,7 @@ public class YiAnPrescriptionParser extends AbstractSingleLineParser {
 
 	public YiAnPrescriptionParser(YiAnDetailParser yianDetailParser, List<String> adjustedTexts) {
 		super(adjustedTexts);
-		mPrescriptionItemParser = new PrescriptionItemParser();
+		mPrescriptionItemParser = new PrescriptionItemsParser();
 		
 		mYiAnDetailParser = yianDetailParser;
 
@@ -43,7 +43,7 @@ public class YiAnPrescriptionParser extends AbstractSingleLineParser {
 		return this;
 	}
 
-	private PrescriptionItemParser mPrescriptionItemParser;
+	private PrescriptionItemsParser mPrescriptionItemParser;
 	private YiAnDetailParser mYiAnDetailParser;
 	private YiAnPrescriptionEntity mYiAnPrescriptionEntity;
 }

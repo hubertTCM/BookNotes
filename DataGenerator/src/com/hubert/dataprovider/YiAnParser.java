@@ -34,10 +34,14 @@ public class YiAnParser extends AbstractSingleLineParser {
 			mYiAns.add(mCurrentYiAn);
 		}
 		
+		if (line.startsWith("[comment]")){
+			return this;
+		}
+		
 		mCurrentYiAn = new YiAnEntity();
 		mCurrentYiAn.details = new ArrayList<YiAnDetailEntity>();
 		
-		YiAnDetailParser parser = new YiAnDetailParser(this, mAdjustedTexts);
+		YiAnDetailParser parser = new YiAnDetailParser(this, mCurrentYiAn, mAdjustedTexts);
 		//parser.parse(line);
 		
 		return parser.parse(line);

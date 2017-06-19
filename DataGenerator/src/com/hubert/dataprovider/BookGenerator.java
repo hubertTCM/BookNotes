@@ -65,8 +65,13 @@ public class BookGenerator {
 		//mBlockParser.SetSection(parent);
 
 		List<String> lines = Files.readAllLines(filePath, utf8);
+		
+		String text = "[comment]风为百病之长，故医书咸以中风列于首门。";
+		mSingleLineParser.parse(text);
+		
 		AbstractSingleLineParser temp = mSingleLineParser;
 		for (String line : lines) {
+			line = StringUtils.strip(line);
 			//mBlockParser.parse(line);
 			temp = temp.parse(line);
 		}

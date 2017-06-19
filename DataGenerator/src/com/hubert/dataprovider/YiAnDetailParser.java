@@ -5,8 +5,9 @@ import java.util.*;
 import com.hubert.dal.entity.*;
 
 public class YiAnDetailParser extends AbstractSingleLineParser {
-	public YiAnDetailParser(YiAnParser yianParser, List<String> adjustedTexts) {
+	public YiAnDetailParser(YiAnParser yianParser, YiAnEntity yian, List<String> adjustedTexts) {
 		super(adjustedTexts);
+		mYiAn = yian;
 		mYiAnParser = yianParser;
 	}
 
