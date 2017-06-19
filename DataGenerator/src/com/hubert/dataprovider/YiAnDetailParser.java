@@ -20,12 +20,19 @@ public class YiAnDetailParser extends AbstractSingleLineParser {
 		if (mCurrentYiAnDetail != null) {
 			mYiAn.details.add(mCurrentYiAnDetail);
 		}
-		mCurrentYiAnDetail = new YiAnDetailEntity();
-		mCurrentYiAnDetail.content = line;
-		mCurrentYiAnDetail.prescriptions = new ArrayList<YiAnPrescriptionEntity>();
 		
-		YiAnPrescriptionParser yiAnPrescriptionParser = new YiAnPrescriptionParser(this, mAdjustedTexts);
-		return yiAnPrescriptionParser;
+		mCurrentYiAnDetail = new YiAnDetailEntity();
+		mCurrentYiAnDetail.prescriptions = new ArrayList<YiAnPrescriptionEntity>();
+		YiAnPrescriptionParser yiAnPrescriptionParser = new YiAnPrescriptionParser(this, mCurrentYiAnDetail, mAdjustedTexts);
+		
+		String presciptionOnly  = "又[]";
+		int index = line.indexOf(presciptionOnly);
+		if (index < 0){
+			mCurrentYiAnDetail.content = line;
+			return yiAnPrescriptionParser;
+		}
+		return yiAnPrescriptionParser.parse(line.substring(presciptionOnly.length(), line.length()));
+		
 	}
 	
 	
