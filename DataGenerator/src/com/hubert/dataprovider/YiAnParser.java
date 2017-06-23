@@ -70,6 +70,22 @@ public class YiAnParser extends AbstractSingleLineParser {
 		r.create(mYiAns);
 	}
 
+	public void adjust() {
+
+		for (YiAnEntity entity : mYiAns) {
+			for (YiAnDetailEntity detail : entity.details) {
+				for (YiAnPrescriptionEntity prescription : detail.prescriptions) {
+					prescription.summary = "";
+					for (YiAnPrescriptionItemEntity item : prescription.items) {
+						prescription.summary += " " + item.herb;
+					}
+					prescription.summary = StringUtils.strip(prescription.summary);
+				}
+			}
+		}
+
+	}
+
 	public void validate() {
 		for (YiAnEntity entity : mYiAns) {
 			if (entity.details.isEmpty()) {

@@ -59,6 +59,10 @@ public class Repository {
 
 		for (YiAnPrescriptionEntity item : yiAnDetailEntity.prescriptions) {
 			item.yian = yiAnDetailEntity;
+			if (item.items.isEmpty()){
+				System.out.println("ignore empty prescription");
+				continue;
+			}
 			saveYiAnPrescription(item);
 		}
 	}

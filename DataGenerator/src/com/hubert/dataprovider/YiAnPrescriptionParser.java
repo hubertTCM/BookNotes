@@ -48,30 +48,41 @@ public class YiAnPrescriptionParser extends AbstractSingleLineParser {
 //	    上末，用竹沥一杯，姜汁十匙，法丸，食远开水服三钱。
 
 		
+		// [RC]（丸方） 何首乌 生白芍 黑芝麻 冬桑叶 天冬 女贞子 茯神 青盐
 		String recipeHeaderPrefix = "[RH]";
 		if (line.startsWith(recipeHeaderPrefix)){
-			mYiAnDetailEntity.prescriptions.add(mYiAnPrescriptionEntity);
 			createYiAnPrescriptionEntity();
 			return this;
 		}
 		
+		String recipeContentPrefix = "[RC]";
+		if (line.startsWith(recipeContentPrefix)){
+			createYiAnPrescriptionEntity();
+			fillYiAnPrescription(line.substring(recipeContentPrefix.length(), line.length()));
+			return this;
+		}
+		
 		if (mYiAnPrescriptionEntity.items.isEmpty()){
-			Collection<PrescriptionItemEntity> items = mPrescriptionItemParser.parse(line);
-			for(PrescriptionItemEntity temp : items){
-				YiAnPrescriptionItemEntity entity = new YiAnPrescriptionItemEntity();
-				entity.herb = temp.herb;
-				entity.quantity = temp.quantity;
-				entity.unit = temp.unit;
-				entity.comment = temp.comment;
-				entity.yian = mYiAnPrescriptionEntity;
-				mYiAnPrescriptionEntity.items.add(entity);
-			}
+			fillYiAnPrescription(line);
 			// first time
 			return this;
 		}
 
 		mYiAnPrescriptionEntity.comment = mYiAnPrescriptionEntity.comment + " " + line; 
 		return this;
+	}
+
+	private void fillYiAnPrescription(String line) {
+		Collection<PrescriptionItemEntity> items = mPrescriptionItemParser.parse(line);
+		for(PrescriptionItemEntity temp : items){
+			YiAnPrescriptionItemEntity entity = new YiAnPrescriptionItemEntity();
+			entity.herb = temp.herb;
+			entity.quantity = temp.quantity;
+			entity.unit = temp.unit;
+			entity.comment = temp.comment;
+			entity.yian = mYiAnPrescriptionEntity;
+			mYiAnPrescriptionEntity.items.add(entity);
+		}
 	}
 
 	private PrescriptionItemsParser mPrescriptionItemParser;

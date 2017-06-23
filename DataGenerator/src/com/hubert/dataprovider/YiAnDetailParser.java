@@ -20,7 +20,7 @@ public class YiAnDetailParser extends AbstractSingleLineParser {
 			}
 			return mYiAnParser.parse(line);
 		}
-		
+				
 		mCurrentYiAnDetail = new YiAnDetailEntity();
 		mCurrentYiAnDetail.order = mYiAn.details.size() + 1;
 		mCurrentYiAnDetail.prescriptions = new ArrayList<YiAnPrescriptionEntity>();
