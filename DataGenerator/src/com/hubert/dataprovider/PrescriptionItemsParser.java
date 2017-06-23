@@ -40,6 +40,14 @@ public class PrescriptionItemsParser {
 		} else {
 			entity.herb = text.substring(0, index);
 		}
+		
+		if (entity.herb == null){
+			entity.herb = "";
+		}
+		entity.herb = StringUtils.strip(entity.herb);
+		if (entity.herb.isEmpty()){
+			return null;
+		}
 		//System.out.println(entity.herb);
 		return entity;
 	}
