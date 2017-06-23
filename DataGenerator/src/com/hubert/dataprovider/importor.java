@@ -12,7 +12,7 @@ public class importor {
 		//gu_jin_yi_an_an_importer importor = new gu_jin_yi_an_an_importer();
 		//importor.doImport();
 		
-		BookGenerator generator = new BookGenerator("临证指南医案", new YiAnParser());
+		BookGenerator generator = new BookGenerator("临证指南医案");
 		generator.doImport();
 		
 		System.out.println("done");
