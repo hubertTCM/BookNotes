@@ -30,8 +30,9 @@ public class BookGenerator {
 			loadSections(null, mBookDirectory);
 
 			// TODO: requires better design here.
+			mYiAnParser.adjust();
 			mYiAnParser.validate();
-			//mYiAnParser.save();
+			mYiAnParser.save();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
