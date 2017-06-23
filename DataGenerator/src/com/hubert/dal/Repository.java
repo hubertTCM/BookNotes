@@ -56,9 +56,7 @@ public class Repository {
 
 	private void saveYiAnDetail(YiAnDetailEntity yiAnDetailEntity) throws SQLException {
 		create(yiAnDetailEntity, YiAnDetailEntity.class);
-		if (yiAnDetailEntity.prescriptions.isEmpty()) {
-			System.out.println("error");
-		}
+
 		for (YiAnPrescriptionEntity item : yiAnDetailEntity.prescriptions) {
 			item.yian = yiAnDetailEntity;
 			saveYiAnPrescription(item);
