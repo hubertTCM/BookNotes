@@ -40,7 +40,7 @@ public class PrescriptionItemsParser {
 		} else {
 			entity.herb = text.substring(0, index);
 		}
-		System.out.println(entity.herb);
+		//System.out.println(entity.herb);
 		return entity;
 	}
 }

@@ -25,6 +25,11 @@ public class DbBuilder {
 			TableUtils.createTable(connectionSource, PrescriptionUnitEntity.class);
 			TableUtils.createTable(connectionSource, PrescriptionBlockLinkEntity.class);
 			
+			TableUtils.createTable(connectionSource, YiAnEntity.class);
+			TableUtils.createTable(connectionSource, YiAnDetailEntity.class);
+			TableUtils.createTable(connectionSource, YiAnPrescriptionEntity.class);
+			TableUtils.createTable(connectionSource, YiAnPrescriptionItemEntity.class);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

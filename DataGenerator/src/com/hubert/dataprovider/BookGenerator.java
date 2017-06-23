@@ -15,20 +15,22 @@ import com.hubert.dal.entity.*;
 
 public class BookGenerator {
 
-	public BookGenerator(String name, AbstractSingleLineParser parser/*AbstractBlockParser parser*/) {
+	public BookGenerator(String name) {
 		mBookDirectory = new File("resource/" + name);
 		mBook = new BookEntity();
 		mBook.name = name;
 		mBook.sections = new ArrayList<SectionEntity>();
-		
-		this.mSingleLineParser = parser;
 
-		//mBlockParser = parser;
+		// TODO: requires better design here.
+		mYiAnParser = new YiAnParser();
 	}
 
 	public void doImport() {
 		try {
 			loadSections(null, mBookDirectory);
+
+			// TODO: requires better design here.
+			mYiAnParser.save();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,6 +55,10 @@ public class BookGenerator {
 			}
 
 			if (file.isFile()) {
+				if (!fileName.endsWith(".txt")){
+					System.out.println("ignore " + fileName);
+					continue;
+				}
 				loadBlocks(parent, file);
 			}
 		}
@@ -66,10 +72,10 @@ public class BookGenerator {
 
 		List<String> lines = Files.readAllLines(filePath, utf8);
 		
-		String text = "[comment]风为百病之长，故医书咸以中风列于首门。";
-		mSingleLineParser.parse(text);
+		// TODO: requires better design here.
+		mYiAnParser.setParentSection(parent); 
 		
-		AbstractSingleLineParser temp = mSingleLineParser;
+		AbstractSingleLineParser temp = mYiAnParser;
 		for (String line : lines) {
 			line = StringUtils.strip(line);
 			//mBlockParser.parse(line);
@@ -110,6 +116,5 @@ public class BookGenerator {
 	protected BookEntity mBook;
 	protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
 
-	//protected AbstractBlockParser mBlockParser;
-	protected AbstractSingleLineParser mSingleLineParser = null;
+	protected YiAnParser mYiAnParser = null;
 }

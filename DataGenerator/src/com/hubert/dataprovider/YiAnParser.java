@@ -4,9 +4,11 @@ import java.util.*;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.hubert.dal.Repository;
 import com.hubert.dal.entity.*;
 
 /* 
+description
 prescription
 [prescription comment]
 
@@ -26,35 +28,51 @@ public class YiAnParser extends AbstractSingleLineParser {
 
 	@Override
 	public AbstractSingleLineParser parse(String line) {
-		if (line.isEmpty() || line.startsWith("// comment")) {
+		//System.out.println(line);
+		if (line.startsWith("// comment")) {
 			return this;
 		}
 
-		if (mCurrentYiAn != null) {
-			mYiAns.add(mCurrentYiAn);
+		if (line.isEmpty()) {
+			if (mCurrentYiAn != null) {
+				if (mCurrentYiAn.details.size() == 0) {
+					System.out.println("error " + line);
+				}
+			}
+			mCurrentYiAn = null;
+			return this;
 		}
 
 		if (line.startsWith("[comment]")) {
 			return this;
 		}
 
+		if (mCurrentYiAn != null) {
+			System.out.println("error " + line);
+		}
+
 		mCurrentYiAn = new YiAnEntity();
 		mCurrentYiAn.details = new ArrayList<YiAnDetailEntity>();
+		mYiAns.add(mCurrentYiAn);
 
 		YiAnDetailParser parser = new YiAnDetailParser(this, mCurrentYiAn, mAdjustedTexts);
-		// parser.parse(line);
-
 		return parser.parse(line);
 	}
 
-	// @Override
-	public void save() {
-		// TODO Auto-generated method stub
+	//
+	public void setParentSection(SectionEntity sectionEntity) {
+		mParentSection = sectionEntity;
+	}
 
+	// find better way to save the yiAn and section to db. make the design clean
+	public void save() {
+		Repository r = new Repository();
+		r.create(mYiAns);
 	}
 
 	protected List<String> mAdjustedTexts = new ArrayList<String>();
 	private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
 	private YiAnEntity mCurrentYiAn;
-	// private YiAnDetailParser mYiAnDetailParser;
+
+	private SectionEntity mParentSection = null;
 }

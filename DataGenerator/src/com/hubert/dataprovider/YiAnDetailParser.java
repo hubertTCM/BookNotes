@@ -14,16 +14,17 @@ public class YiAnDetailParser extends AbstractSingleLineParser {
 	@Override
 	public AbstractSingleLineParser parse(String line) {		
 		if (line.isEmpty()){
+			if (mCurrentYiAnDetail == null) {
+				System.out.println("## error");
+			}
 			return mYiAnParser.parse(line);
-		}
-		
-		if (mCurrentYiAnDetail != null) {
-			mYiAn.details.add(mCurrentYiAnDetail);
 		}
 		
 		mCurrentYiAnDetail = new YiAnDetailEntity();
 		mCurrentYiAnDetail.order = mYiAn.details.size() + 1;
 		mCurrentYiAnDetail.prescriptions = new ArrayList<YiAnPrescriptionEntity>();
+		mCurrentYiAnDetail.yian = mYiAn;
+		mYiAn.details.add(mCurrentYiAnDetail);
 		YiAnPrescriptionParser yiAnPrescriptionParser = new YiAnPrescriptionParser(this, mCurrentYiAnDetail, mAdjustedTexts);
 		
 		String presciptionOnly  = "又[]";
@@ -38,7 +39,10 @@ public class YiAnDetailParser extends AbstractSingleLineParser {
 	
 	
 	public static boolean isNextYiAnDetail(String line){
-		return line.indexOf("又") == 0;
+		if( line.indexOf("又") == 0){
+			return true;
+		}
+		return false;
 	}
 
 	//private SectionEntity mParentSection;
