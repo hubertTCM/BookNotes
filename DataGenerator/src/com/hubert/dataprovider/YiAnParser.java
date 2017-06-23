@@ -28,7 +28,7 @@ public class YiAnParser extends AbstractSingleLineParser {
 
 	@Override
 	public AbstractSingleLineParser parse(String line) {
-		//System.out.println(line);
+		// System.out.println(line);
 		if (line.startsWith("// comment")) {
 			return this;
 		}
@@ -68,6 +68,28 @@ public class YiAnParser extends AbstractSingleLineParser {
 	public void save() {
 		Repository r = new Repository();
 		r.create(mYiAns);
+	}
+
+	public void validate() {
+		for (YiAnEntity entity : mYiAns) {
+			if (entity.details.isEmpty()) {
+				System.out.println("YiAn Detail is empty");
+			}
+			for (YiAnDetailEntity detail : entity.details) {
+				if (detail.prescriptions.isEmpty()) {
+					System.out.println("no prescription");
+				}
+
+				for (YiAnPrescriptionEntity prescription : detail.prescriptions) {
+					if (prescription.items.isEmpty()) {
+						System.out.println("no prescrption " + detail.content);
+					}
+					for (YiAnPrescriptionItemEntity item : prescription.items) {
+
+					}
+				}
+			}
+		}
 	}
 
 	protected List<String> mAdjustedTexts = new ArrayList<String>();

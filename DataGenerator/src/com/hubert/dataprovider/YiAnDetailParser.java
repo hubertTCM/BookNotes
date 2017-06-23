@@ -11,6 +11,7 @@ public class YiAnDetailParser extends AbstractSingleLineParser {
 		mYiAnParser = yianParser;
 	}
 
+	// error 吴 脉弦小数，形体日瘦，口舌糜碎，肩背掣痛，肢节麻木，肤腠瘙痒，目眩晕耳鸣，已有数年
 	@Override
 	public AbstractSingleLineParser parse(String line) {		
 		if (line.isEmpty()){
