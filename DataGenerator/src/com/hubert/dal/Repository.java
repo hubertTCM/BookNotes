@@ -69,9 +69,6 @@ public class Repository {
 
 	private void saveYiAnPrescription(YiAnPrescriptionEntity entity) throws SQLException {
 		create(entity, YiAnPrescriptionEntity.class);
-		if (entity.items.isEmpty()) {
-			System.out.println("error");
-		}
 
 		for (YiAnPrescriptionItemEntity item : entity.items) {
 			item.yian = entity;
