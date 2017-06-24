@@ -32,7 +32,7 @@ public class BookGenerator {
 			// TODO: requires better design here.
 			mYiAnParser.adjust();
 			mYiAnParser.validate();
-			mYiAnParser.save();
+			// mYiAnParser.save();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,7 +57,7 @@ public class BookGenerator {
 			}
 
 			if (file.isFile()) {
-				if (!fileName.endsWith(".txt")){
+				if (!fileName.endsWith(".txt")) {
 					System.out.println("ignore " + fileName);
 					continue;
 				}
@@ -69,18 +69,18 @@ public class BookGenerator {
 	private void loadBlocks(SectionEntity parent, File file) throws IOException {
 		Path filePath = Paths.get(file.getAbsolutePath());
 		Charset utf8 = Charset.forName("UTF-8");
-		
-		//mBlockParser.SetSection(parent);
+
+		// mBlockParser.SetSection(parent);
 
 		List<String> lines = Files.readAllLines(filePath, utf8);
-		
+
 		// TODO: requires better design here.
-		mYiAnParser.setParentSection(parent); 
-		
+		mYiAnParser.setParentSection(parent);
+
 		AbstractSingleLineParser temp = mYiAnParser;
 		for (String line : lines) {
 			line = StringUtils.strip(line);
-			//mBlockParser.parse(line);
+			// mBlockParser.parse(line);
 			temp = temp.parse(line);
 		}
 	}

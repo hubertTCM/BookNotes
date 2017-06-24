@@ -71,15 +71,22 @@ public class YiAnParser extends AbstractSingleLineParser {
 	}
 
 	public void adjust() {
-
 		for (YiAnEntity entity : mYiAns) {
 			for (YiAnDetailEntity detail : entity.details) {
+				List<YiAnPrescriptionEntity> toBeDeleted = new ArrayList<YiAnPrescriptionEntity>();
 				for (YiAnPrescriptionEntity prescription : detail.prescriptions) {
 					prescription.summary = "";
 					for (YiAnPrescriptionItemEntity item : prescription.items) {
 						prescription.summary += " " + item.herb;
 					}
 					prescription.summary = StringUtils.strip(prescription.summary);
+					
+					if (prescription.summary.isEmpty()){
+						toBeDeleted.add(prescription);
+					}
+				}
+				for(YiAnPrescriptionEntity prescription : toBeDeleted){
+					detail.prescriptions.remove(prescription);
 				}
 			}
 		}
@@ -93,12 +100,12 @@ public class YiAnParser extends AbstractSingleLineParser {
 			}
 			for (YiAnDetailEntity detail : entity.details) {
 				if (detail.prescriptions.isEmpty()) {
-					System.out.println("no prescription");
+					System.out.println("no prescription " + detail.content);
 				}
 
 				for (YiAnPrescriptionEntity prescription : detail.prescriptions) {
 					if (prescription.items.isEmpty()) {
-						System.out.println("no prescrption " + detail.content);
+						System.out.println("no prescrption item: " + detail.content);
 					}
 					for (YiAnPrescriptionItemEntity item : prescription.items) {
 
