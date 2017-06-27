@@ -7,7 +7,7 @@ public class JaccardDistanceCalculator<T> implements IDistanceCalculator<Set<T>>
 	@Override
 	public double distance(Set<T> x, Set<T> y) {
 		double intersectionCount = 0.0;
-		double unionCount = x.size();
+		double unionCount = y.size();
 
 		for (T item : x) {
 			if (y.contains(item)) {

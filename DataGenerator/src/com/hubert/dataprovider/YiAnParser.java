@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.hubert.dal.Repository;
 import com.hubert.dal.entity.*;
+import com.hubert.training.*;
 
 /* 
 description
@@ -71,6 +72,7 @@ public class YiAnParser extends AbstractSingleLineParser {
 	}
 
 	public void adjust() {
+		List<String> allPrescriptions = new ArrayList<String>();
 		for (YiAnEntity entity : mYiAns) {
 			for (YiAnDetailEntity detail : entity.details) {
 				List<YiAnPrescriptionEntity> toBeDeleted = new ArrayList<YiAnPrescriptionEntity>();
@@ -83,7 +85,10 @@ public class YiAnParser extends AbstractSingleLineParser {
 					
 					if (prescription.summary.isEmpty()){
 						toBeDeleted.add(prescription);
+						continue;
 					}
+					
+					allPrescriptions.add(prescription.summary);
 				}
 				for(YiAnPrescriptionEntity prescription : toBeDeleted){
 					detail.prescriptions.remove(prescription);
@@ -91,6 +96,12 @@ public class YiAnParser extends AbstractSingleLineParser {
 			}
 		}
 
+		PrescriptionAnalyzer a = new PrescriptionAnalyzer(allPrescriptions);
+		for(String item : a.getBestOption()){
+			System.out.print(item + " ");
+		}
+		
+		System.out.println(" ****");
 	}
 
 	public void validate() {
