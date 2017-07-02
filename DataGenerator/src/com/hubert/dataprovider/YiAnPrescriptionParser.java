@@ -74,15 +74,21 @@ public class YiAnPrescriptionParser extends AbstractSingleLineParser {
 
 	private void fillYiAnPrescription(String line) {
 		Collection<PrescriptionItemEntity> items = mPrescriptionItemParser.parse(line);
+		
+		HerbAliasManager herbAliasManager = HerbAliasManager.getInstance();
+		mYiAnPrescriptionEntity.summary = "";
 		for(PrescriptionItemEntity temp : items){
 			YiAnPrescriptionItemEntity entity = new YiAnPrescriptionItemEntity();
 			entity.herb = temp.herb;
 			entity.quantity = temp.quantity;
 			entity.unit = temp.unit;
 			entity.comment = temp.comment;
-			entity.yian = mYiAnPrescriptionEntity;
+			entity.yiAnPrescription = mYiAnPrescriptionEntity;
 			mYiAnPrescriptionEntity.items.add(entity);
+			
+			mYiAnPrescriptionEntity.summary += " " + herbAliasManager.getStandardName(temp.herb);
 		}
+		mYiAnPrescriptionEntity.summary = StringUtils.strip(mYiAnPrescriptionEntity.summary);
 	}
 
 	private PrescriptionItemsParser mPrescriptionItemParser;

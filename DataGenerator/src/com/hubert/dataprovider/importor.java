@@ -15,9 +15,9 @@ public class importor {
 		BookGenerator generator = new BookGenerator("临证指南医案");
 		generator.doImport();
 		
-		HerbAliasManager  aliasManager  = new HerbAliasManager();
-		aliasManager.load();
-		
+		//HerbAliasManager  aliasManager  = new HerbAliasManager();
+		//aliasManager.load();
+		HerbAliasManager.getInstance().trace();
 		System.out.println("done");
 	}
 
