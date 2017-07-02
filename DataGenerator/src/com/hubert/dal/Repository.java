@@ -71,7 +71,7 @@ public class Repository {
 		create(entity, YiAnPrescriptionEntity.class);
 
 		for (YiAnPrescriptionItemEntity item : entity.items) {
-			item.yian = entity;
+			item.yiAnPrescription = entity;
 			create(item, YiAnPrescriptionItemEntity.class);
 		}
 	}

@@ -48,6 +48,9 @@ public class PrescriptionItemsParser {
 		if (entity.herb.isEmpty()){
 			return null;
 		}
+		if (entity.herb.length() <= 1){
+			System.out.println("care");
+		}
 		//System.out.println(entity.herb);
 		return entity;
 	}

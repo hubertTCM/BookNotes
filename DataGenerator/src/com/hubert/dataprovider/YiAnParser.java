@@ -77,9 +77,8 @@ public class YiAnParser extends AbstractSingleLineParser {
 			for (YiAnDetailEntity detail : entity.details) {
 				List<YiAnPrescriptionEntity> toBeDeleted = new ArrayList<YiAnPrescriptionEntity>();
 				for (YiAnPrescriptionEntity prescription : detail.prescriptions) {
-					prescription.summary = "";
-					for (YiAnPrescriptionItemEntity item : prescription.items) {
-						prescription.summary += " " + item.herb;
+					if (prescription.summary == null){
+						prescription.summary = "";
 					}
 					prescription.summary = StringUtils.strip(prescription.summary);
 					

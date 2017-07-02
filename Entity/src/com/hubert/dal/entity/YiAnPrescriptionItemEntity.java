@@ -22,6 +22,6 @@ public class YiAnPrescriptionItemEntity {
 	public String comment;
 
 	@DatabaseField(canBeNull = false, foreign = true)
-	public YiAnPrescriptionEntity yian;
+	public YiAnPrescriptionEntity yiAnPrescription;
 
 }

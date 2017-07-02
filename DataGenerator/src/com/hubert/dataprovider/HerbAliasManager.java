@@ -1,6 +1,6 @@
 package com.hubert.dataprovider;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.*;
 import java.util.*;
@@ -9,7 +9,17 @@ import org.apache.commons.lang3.StringUtils;
 
 public class HerbAliasManager {
 
-	public void load() {
+	private static HerbAliasManager sInstance = new HerbAliasManager();
+
+	private HerbAliasManager() {
+		load();
+	}
+
+	public static HerbAliasManager getInstance() {
+		return sInstance;
+	}
+
+	private void load() {
 		Charset utf8 = Charset.forName("UTF-8");
 		Path filePath = Paths.get("resource/" + _fileName);
 		try {
@@ -24,6 +34,7 @@ public class HerbAliasManager {
 		}
 	}
 
+	// used for debug
 	int _lineIndex = 0;
 
 	private void parse(String line) {
@@ -34,7 +45,7 @@ public class HerbAliasManager {
 			return;
 		}
 		_lineIndex += 1;
-		if (line.isEmpty()){
+		if (line.isEmpty()) {
 			return;
 		}
 
@@ -55,18 +66,114 @@ public class HerbAliasManager {
 		}
 
 		String aliaString = line.substring(aliasIndex + aliasPrefix.length(), line.length());
-		String[] temp = line.split("、");
+		String[] temp = aliaString.split("、");
 		List<String> alias = new ArrayList<String>();
 		for (String item : temp) {
-			alias.add(getHerb(item));
+			item = getHerb(item);
+			if (item == name) {
+				continue;
+			}
+			alias.add(item);
 		}
-		_alias.put(name, alias);
+		mAliasStorage.put(name, alias);
 	}
 
-	private String getHerb(String from) {
-		return from;
+	private String getHerb(String herb) {
+		return herb.replaceAll("\\s", "");
+	}
+
+	public String getStandardName(String alias) {
+		String standardName = getStandardName(alias, mHitCache);
+		if (!standardName.isEmpty()) {
+			return standardName;
+		}
+
+		standardName = getStandardName(alias, mAliasStorage);
+
+		if (!standardName.isEmpty()) {
+			List<String> cache = mHitCache.get(standardName);
+			if (cache == null) {
+				cache = new ArrayList<String>();
+				mHitCache.put(standardName, cache);
+			}
+			cache.add(alias);
+
+			return standardName;
+		}
+
+		mUnknownHerbs.add(alias);
+		return alias;
+	}
+
+	public void trace() {
+		try {
+			traceCache();
+			traceUnknownHerb();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void traceCache() throws IOException {
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+
+		fw = new FileWriter("resource/Herb/used.txt");
+		bw = new BufferedWriter(fw);
+
+		for (String herb : mHitCache.keySet()) {
+			bw.write(herb + ": ");
+			boolean first = true;
+
+			for (String alias : mHitCache.get(herb)) {
+				if (!first) {
+					bw.write("、 " + alias);
+				} else {
+					bw.write(alias);
+				}
+				first = false;
+			}
+			bw.write("\r\n");
+		}
+
+		bw.close();
+		fw.close();
+	}
+
+	private void traceUnknownHerb() throws IOException {
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+
+		fw = new FileWriter("resource/Herb/Unknow.txt");
+		bw = new BufferedWriter(fw);
+
+		for (String herb : mUnknownHerbs) {
+			bw.write(herb + "\r\n");
+		}
+
+		bw.close();
+		fw.close();
+	}
+
+	private String getStandardName(String herb, HashMap<String, List<String>> container) {
+		if (container.containsKey(herb)) {
+			return herb;
+		}
+
+		for (String key : container.keySet()) {
+			List<String> alias = container.get(key);
+			for (String temp : alias) {
+				if (temp.equals(herb)) {
+					return key;
+				}
+			}
+		}
+		return "";
 	}
 
 	private String _fileName = "常用中药处方别名.txt";
-	private HashMap<String, List<String>> _alias = new HashMap<String, List<String>>();
+	private HashMap<String, List<String>> mAliasStorage = new HashMap<String, List<String>>();
+	private HashMap<String, List<String>> mHitCache = new HashMap<String, List<String>>();
+	private HashSet<String> mUnknownHerbs = new HashSet<String>();
 }
