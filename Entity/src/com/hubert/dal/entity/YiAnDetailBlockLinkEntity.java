@@ -13,4 +13,6 @@ public class YiAnDetailBlockLinkEntity {
 
 	@DatabaseField(canBeNull = true, foreign = true)
 	public YiAnDetailEntity yian;
+	
+	// public String BlockType; // Description, Prescription, etc 
 }
