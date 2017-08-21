@@ -35,6 +35,11 @@ public class YiAnLexer {
 				previousToken = null;
 				continue;
 			}
+			
+			if (line.startsWith("[comment]") || line.startsWith("徐评")){
+				tokens.add(new Token(TokenType.SummaryComment, line));
+				continue;
+			}
 
 			if (previousToken == null) {
 				ImmutablePair<String, String> pair = splitYiAnDescription(line);
@@ -45,7 +50,7 @@ public class YiAnLexer {
 
 				Token token = new Token(TokenType.YiAnDescription, pair.getLeft());
 				tokens.add(token);
-
+				
 				previousToken = token;
 				continue;
 			}
@@ -53,16 +58,7 @@ public class YiAnLexer {
 			previousToken = tokens.get(tokens.size() - 1);
 
 			if (line.startsWith("[RH]")) {
-				tokens.add(new Token(TokenType.PrescriptionDescription, line));
-				continue;
-			}
-
-			if (line.startsWith("[RC]")) {
-				ImmutablePair<String, Boolean> pair  = splitPrescriptionDescription(line);
-				if (pair.getRight()){
-					tokens.add(new Token(TokenType.YiAnDescription, ""));
-				}
-				tokens.add(new Token(TokenType.PrescriptionFormatted, pair.getLeft()));
+				tokens.add(new Token(TokenType.PrescriptionHeader, line));
 				continue;
 			}
 
@@ -72,9 +68,37 @@ public class YiAnLexer {
 			}
 
 			if (line.startsWith("[format]")) {
+				ImmutablePair<String, Boolean> pair = splitPrescriptionDescription(line);
+				if (pair.getRight()) {
+					tokens.add(new Token(TokenType.YiAnDescription, ""));
+				}
+				tokens.add(new Token(TokenType.PrescriptionFormatted, pair.getLeft()));
+				continue;
+			}
+			// （丸方） 人参（二两） 茯苓（三两，生） 盐水炒黄连（五钱） 半夏（醋炒，水洗净，一两半） ....
+			String tempTag = "（丸方）";
+			if (line.startsWith(tempTag)) {
+				tokens.add(new Token(TokenType.PrescriptionFormatted, line.substring(tempTag.length())));
+				continue;
+			}
+
+			if (line.startsWith("又")) {
+				tokens.add(new Token(TokenType.YiAnDescription, line));
+				continue;
+			}
+
+			if (previousToken.getType() == TokenType.YiAnDescription) {
 				tokens.add(new Token(TokenType.PrescriptionFormatted, line));
 				continue;
 			}
+
+			if (previousToken.getType() == TokenType.PrescriptionFormatted) {
+				tokens.add(new Token(TokenType.PrescriptionComment, line));
+				continue;
+			}
+
+			// #error:
+			System.out.println(" **** Unknow Token: " + line);
 		}
 
 		return tokens;
@@ -104,12 +128,16 @@ public class YiAnLexer {
 	}
 
 	private ImmutablePair<String, Boolean> splitPrescriptionDescription(String source) {
-		if (!source.startsWith("[RC]")) {
+		String tag = "[format]";
+		if (!source.startsWith(tag)) {
 			return null;
 		}
-		return null;
+		String text = StringUtils.trim(source.substring(tag.length()));
+		if (text.startsWith("又")) {
+			return new ImmutablePair<String, Boolean>(text.substring(1), true);
+		}
+		return new ImmutablePair<String, Boolean>(text, false);
 	}
 
 	private String mFullPath;
-	// private Token mPreviousToken;
 }

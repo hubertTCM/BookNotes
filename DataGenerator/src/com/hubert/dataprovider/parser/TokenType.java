@@ -4,10 +4,11 @@ public enum TokenType {
 	None,
 	SectionName,
 	YiAnDescription,
-	PrescriptionDescription,
+	PrescriptionHeader, // RH
 	PrescriptionAbbreviation,
 	PrescriptionFormatted,
 	PrescriptionComment,
 	YiAnComment,
+	SummaryComment,
 	BlankSpace,
 }
