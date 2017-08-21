@@ -35,8 +35,8 @@ public class YiAnLexer {
 				previousToken = null;
 				continue;
 			}
-			
-			if (line.startsWith("[comment]") || line.startsWith("徐评")){
+
+			if (line.startsWith("[comment]") || line.startsWith("徐评")) {
 				tokens.add(new Token(TokenType.SummaryComment, line));
 				continue;
 			}
@@ -50,7 +50,7 @@ public class YiAnLexer {
 
 				Token token = new Token(TokenType.YiAnDescription, pair.getLeft());
 				tokens.add(token);
-				
+
 				previousToken = token;
 				continue;
 			}
@@ -87,7 +87,8 @@ public class YiAnLexer {
 				continue;
 			}
 
-			if (previousToken.getType() == TokenType.YiAnDescription) {
+			if (previousToken.getType() == TokenType.YiAnDescription
+					|| previousToken.getType() == TokenType.PrescriptionHeader) {
 				tokens.add(new Token(TokenType.PrescriptionFormatted, line));
 				continue;
 			}
@@ -107,24 +108,34 @@ public class YiAnLexer {
 	// 钱 偏枯在左，血虚不萦筋骨，内风袭络，脉左缓大。（肝肾虚内风动。）
 	// https://stackoverflow.com/questions/3481828/how-to-split-a-string-in-java
 	private static ImmutablePair<String, String> splitYiAnDescription(String source) {
+		// 沈（四九） 脉细而数，细为脏阴之亏，数为营液之耗。上年夏秋病伤，更因冬暖失藏....
+		if (!source.endsWith("）")) {
+			return new ImmutablePair<String, String>(source, "");
+		}
 		String delimiter = "（";
 		if (!source.contains(delimiter)) {
 			return new ImmutablePair<String, String>(source, "");
 		}
-		String[] parts = source.split(delimiter);
-		if (parts.length != 2) {
-			return null;
-		}
 
-		String text = parts[0];
-		String sectionName = StringUtils.trim(parts[1]);
-		parts = sectionName.split("。");
-		if (parts.length != 2) {
+		// 汪（五三） 左肢麻木，膝盖中牵纵，忽如针刺。中年后，精血内虚，虚风自动，乃阴中之阳损伤。（阴中阳虚。）
+		int index = source.lastIndexOf(delimiter);
+		if (index <= 0) {
+			System.out.println(" ****" + source);
 			return null;
 		}
-		sectionName = StringUtils.trim(parts[0]);
-		ImmutablePair<String, String> pair = new ImmutablePair<String, String>(text, sectionName);
-		return pair;
+		String text = StringUtils.trim(source.substring(0, index));
+		String sectionName = StringUtils.trim(source.substring(index + 1));
+		if (sectionName.contains("。")) {
+			String[] parts = sectionName.split("。");
+			if (parts.length != 2) {
+				System.out.println(" ****" + source);
+				return null;
+			}
+			sectionName = StringUtils.trim(parts[0]);
+			return new ImmutablePair<String, String>(text, sectionName);
+		}
+		// 某 内风，乃身中阳气之动变，甘酸之属宜之。（肝阴虚）
+		return new ImmutablePair<String, String>(text, sectionName.substring(0, sectionName.length() - 1));
 	}
 
 	private ImmutablePair<String, Boolean> splitPrescriptionDescription(String source) {
