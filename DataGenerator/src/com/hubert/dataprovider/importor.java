@@ -17,8 +17,8 @@ public class importor {
 		
 		//HerbAliasManager  aliasManager  = new HerbAliasManager();
 		//aliasManager.load();
-		HerbAliasManager.getInstance().trace();
-		System.out.println("done");
+		//HerbAliasManager.getInstance().trace();
+		//System.out.println("done");
 	}
 
 }

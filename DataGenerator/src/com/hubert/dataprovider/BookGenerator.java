@@ -12,6 +12,7 @@ import java.util.*;
 import org.apache.commons.lang3.StringUtils;
 
 import com.hubert.dal.entity.*;
+import com.hubert.dataprovider.parser.*;
 
 public class BookGenerator {
 
@@ -30,8 +31,8 @@ public class BookGenerator {
 			loadSections(null, mBookDirectory);
 
 			// TODO: requires better design here.
-			mYiAnParser.adjust();
-			mYiAnParser.validate();
+			// mYiAnParser.adjust();
+			// mYiAnParser.validate();
 			// mYiAnParser.save();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -46,7 +47,8 @@ public class BookGenerator {
 
 		for (File file : files) {
 			String fileName = file.getName();
-			if (fileName.indexOf("summary") > 0) {
+			if (fileName.indexOf("summary") > 0 || fileName.indexOf("ignore") > 0) {
+				System.out.println("ignore " + fileName);
 				continue;
 			}
 
@@ -67,22 +69,26 @@ public class BookGenerator {
 	}
 
 	private void loadBlocks(SectionEntity parent, File file) throws IOException {
-		Path filePath = Paths.get(file.getAbsolutePath());
-		Charset utf8 = Charset.forName("UTF-8");
+		YiAnLexer lexer = new YiAnLexer(file.getAbsolutePath());
+		lexer.parse();
+		return;
 
-		// mBlockParser.SetSection(parent);
-
-		List<String> lines = Files.readAllLines(filePath, utf8);
-
-		// TODO: requires better design here.
-		mYiAnParser.setParentSection(parent);
-
-		AbstractSingleLineParser temp = mYiAnParser;
-		for (String line : lines) {
-			line = StringUtils.strip(line);
-			// mBlockParser.parse(line);
-			temp = temp.parse(line);
-		}
+		// Path filePath = Paths.get(file.getAbsolutePath());
+		// Charset utf8 = Charset.forName("UTF-8");
+		//
+		// // mBlockParser.SetSection(parent);
+		//
+		// List<String> lines = Files.readAllLines(filePath, utf8);
+		//
+		// // TODO: requires better design here.
+		// mYiAnParser.setParentSection(parent);
+		//
+		// AbstractSingleLineParser temp = mYiAnParser;
+		// for (String line : lines) {
+		// line = StringUtils.strip(line);
+		// // mBlockParser.parse(line);
+		// temp = temp.parse(line);
+		// }
 	}
 
 	private SectionEntity createSection(SectionEntity parent, String sectionName) {
