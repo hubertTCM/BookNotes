@@ -14,14 +14,19 @@ public class TagTokenExtractor implements ITokenExtractor {
 	public void registerTag(String tag, boolean isRawTag) {
 		mTags.add(new Pair<String, Boolean>(tag, isRawTag));
 	}
+	
+	public void registerTag(String tag){
+		boolean isRawTag = !tag.startsWith("[");
+		registerTag(tag, isRawTag);
+	}
 
 	@Override
-	public boolean extract(String text, Collection<Token> container) {
+	public Pair<Boolean, String> extract(String text, List<Token> container) {
 		// TODO Auto-generated method stub
 		return extractCore(text, container);
 	}
 
-	protected boolean extractCore(String text, Collection<Token> container) {
+	protected Pair<Boolean, String> extractCore(String text, Collection<Token> container) {
 		for (Pair<String, Boolean> temp : mTags) {
 			if (!text.startsWith(temp.getKey())) {
 				continue;
@@ -29,14 +34,14 @@ public class TagTokenExtractor implements ITokenExtractor {
 
 			if (temp.getValue()) {
 				container.add(new Token(mTokenType, text));
-				return true;
+				return new Pair<>(true, text);
 			}
 
 			String formattedText = text.substring(temp.getKey().length());
 			container.add(new Token(mTokenType, formattedText));
-			return true;
+			return new Pair<>(true, formattedText);
 		}
-		return false;
+		return new Pair<>(false, "");
 	}
 
 	// isRawTag

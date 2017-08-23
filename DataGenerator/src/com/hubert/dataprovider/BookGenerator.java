@@ -69,7 +69,8 @@ public class BookGenerator {
 	}
 
 	private void loadBlocks(SectionEntity parent, File file) throws IOException {
-		YiAnLexer lexer = new YiAnLexer(file.getAbsolutePath());
+		com.hubert.dataprovider.parser.tokenextractor.YiAnLexer lexer = 
+				new com.hubert.dataprovider.parser.tokenextractor.YiAnLexer(file.getAbsolutePath());
 		lexer.parse();
 		return;
 

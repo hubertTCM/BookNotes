@@ -4,10 +4,10 @@ import java.util.*;
 
 import com.hubert.dataprovider.parser.*;
 
-//import javafx.util.Pair;
+import javafx.util.Pair;
 
 public interface ITokenExtractor {
 	//public Pair<Token, String> extract(String source);
 	//public Collection<Token> extract(String source);
-	public boolean extract(String text, Collection<Token> container);
+	public Pair<Boolean, String> extract(String text, List<Token> container);
 }
