@@ -14,12 +14,13 @@ import org.apache.commons.lang3.StringUtils;
 import com.hubert.dataprovider.parser.Token;
 import com.hubert.dataprovider.parser.TokenType;
 
-public class YiAnLexer {
+import javafx.util.Pair;
 
+public class YiAnLexer {
 	public YiAnLexer(String fileFullPath) {
 		mFullPath = fileFullPath;
 		mTokenExtractors = new ArrayList<ITokenExtractor>();
-		
+
 		initTokenExtractors();
 	}
 
@@ -31,17 +32,21 @@ public class YiAnLexer {
 		List<String> lines = Files.readAllLines(filePath, utf8);
 
 		for (String temp : lines) {
-			String line  = StringUtils.trim(temp);
-			
+			String line = StringUtils.trim(temp);
+
 			boolean isValid = false;
-			for(ITokenExtractor extractor : mTokenExtractors){
-				isValid = extractor.extract(line, mTokens);
-				if (isValid){
+			for (ITokenExtractor extractor : mTokenExtractors) {
+				Pair<Boolean, String> extractResult = extractor.extract(line, mTokens);
+				if (extractResult == null) {
+					continue;
+				}
+				isValid = extractResult.getKey();
+				if (isValid) {
 					break;
 				}
 			}
-			
-			if (!isValid){
+
+			if (!isValid) {
 				System.out.println(" **** Unknow Token: " + line);
 				continue;
 			}
@@ -49,9 +54,32 @@ public class YiAnLexer {
 
 		return mTokens;
 	}
-	
-	private void initTokenExtractors(){
+
+	private void initTokenExtractors() {
+		mTokenExtractors.add(new IgnoreTokenExtractor());
+		mTokenExtractors.add(new BlankLineTokenExtractor());
+		mTokenExtractors.add(new YiAnDescriptionExtractor());
+		
 		TagTokenExtractor comment = new TagTokenExtractor(TokenType.SummaryComment);
+		comment.registerTag("[comment]", false);
+		comment.registerTag("徐评", true);
+		mTokenExtractors.add(comment);
+
+		TagTokenExtractor abbreviation = new TagTokenExtractor(TokenType.PrescriptionAbbreviation);
+		abbreviation.registerTag("[abbr]");
+		mTokenExtractors.add(abbreviation);
+
+		TagTokenExtractor prescriptionHeader = new TagTokenExtractor(TokenType.PrescriptionHeader);
+		prescriptionHeader.registerTag("[RH]");
+		mTokenExtractors.add(prescriptionHeader);
+
+		NewYiAnTagExtractor yiAnTagExtractor = new NewYiAnTagExtractor();
+		mTokenExtractors.add(yiAnTagExtractor);
+
+		FormattedPrescriptionExtractor formattedPrescriptionExtractor = new FormattedPrescriptionExtractor();
+		mTokenExtractors.add(formattedPrescriptionExtractor);	
+		
+		mTokenExtractors.add(new PrescriptionTokenExtractor());	
 	}
 
 	private String mFullPath;
