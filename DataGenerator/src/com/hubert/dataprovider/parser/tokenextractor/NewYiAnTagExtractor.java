@@ -21,6 +21,7 @@ public class NewYiAnTagExtractor implements ITokenExtractor {
 		if (!text.startsWith(tag)) {
 			return new Pair<>(false, "");
 		}
+		// TODO: add check here
 		if (mParentTokenType == TokenType.None){
 			container.add(new Token(TokenType.YiAnDescription, text));
 			return new Pair<>(true, text);

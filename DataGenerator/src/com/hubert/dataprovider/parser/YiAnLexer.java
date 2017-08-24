@@ -10,6 +10,9 @@ import java.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.*;
 
+import com.hubert.dataprovider.parser.tokenextractor.Token;
+import com.hubert.dataprovider.parser.tokenextractor.TokenType;
+
 public class YiAnLexer {
 	public YiAnLexer(String fileFullPath) {
 		mFullPath = fileFullPath;

@@ -1,9 +1,10 @@
-package com.hubert.dataprovider.parser;
+package com.hubert.dataprovider.parser.tokenextractor;
 
 public enum TokenType {
 	None,
 	SectionName,
 	YiAnDescription,
+	//NewYiAnDescription,
 	PrescriptionHeader, // RH
 	PrescriptionAbbreviation,
 	PrescriptionFormatted,
