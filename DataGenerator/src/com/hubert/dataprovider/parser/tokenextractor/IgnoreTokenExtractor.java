@@ -2,8 +2,6 @@ package com.hubert.dataprovider.parser.tokenextractor;
 
 import java.util.*;
 
-import com.hubert.dataprovider.parser.Token;
-
 import javafx.util.Pair;
 
 public class IgnoreTokenExtractor implements ITokenExtractor {

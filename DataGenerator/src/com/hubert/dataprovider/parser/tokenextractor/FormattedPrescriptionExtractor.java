@@ -2,9 +2,6 @@ package com.hubert.dataprovider.parser.tokenextractor;
 
 import java.util.*;
 
-import com.hubert.dataprovider.parser.Token;
-import com.hubert.dataprovider.parser.TokenType;
-
 import javafx.util.Pair;
 
 public class FormattedPrescriptionExtractor implements ITokenExtractor {

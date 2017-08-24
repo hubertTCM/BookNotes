@@ -11,9 +11,6 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.hubert.dataprovider.parser.Token;
-import com.hubert.dataprovider.parser.TokenType;
-
 import javafx.util.Pair;
 
 public class YiAnLexer {

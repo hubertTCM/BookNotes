@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.hubert.dal.entity.*;
+import com.hubert.dataprovider.parser.tokenextractor.*;
 
 public class YiAnSectionFileParser {
 	public YiAnSectionFileParser(BookEntity book, String fileFullPath) {
@@ -23,15 +24,70 @@ public class YiAnSectionFileParser {
 		initSection(parentSection.childSections);
 		mSection.parent = parentSection;
 	}
+	
+	
 
-	public void parse() throws IOException {
-		Path filePath = Paths.get(mSectionFileFullPath);
-		Charset utf8 = Charset.forName("UTF-8");
-		List<String> lines = Files.readAllLines(filePath, utf8);
-		
-		for (String line : lines) {
-			
+	public void parse(List<Token> tokens) throws IOException {
+		mYiAns = new ArrayList<YiAnEntity>();
+		if (tokens == null || tokens.isEmpty()){
+			return;
 		}
+		
+		YiAnEntity currentYiAn = createYiAn();
+		
+		YiAnDetailEntity currentDetail = null;
+		YiAnPrescriptionEntity currentPrescription = null;
+		//SectionEntity currentSection = mSection;
+//		for(Token token : tokens){
+//			TokenType tokenType = token.getType();
+//			if (tokenType == TokenType.BlankSpace){
+//				currentYiAn = createYiAn();
+//				continue;
+//			}
+//			// TODO:
+//			if (tokenType == TokenType.SectionName){
+//				continue;
+//			}
+//			
+//			if (tokenType == TokenType.YiAnDescription){
+//				currentDetail  = createYiAnDetail(currentYiAn);
+//				continue;
+//			}
+//			
+//			if (tokenType== TokenType.PrescriptionFormatted){
+//				currentPrescription = createYiAnPrescription(currentDetail);
+//				continue;
+//			}
+//		}
+	}
+
+	/**
+	 * @param currentYiAn
+	 */
+	protected YiAnDetailEntity createYiAnDetail(YiAnEntity currentYiAn) {
+		YiAnDetailEntity currentDetail = new YiAnDetailEntity();
+		currentDetail.yian = currentYiAn;
+		currentDetail.order = currentYiAn.details.size();
+		
+		currentDetail.prescriptions = new ArrayList<YiAnPrescriptionEntity>();
+		return currentDetail;
+	}
+	
+	protected YiAnPrescriptionEntity createYiAnPrescription(YiAnDetailEntity yiAnDetail){
+		YiAnPrescriptionEntity prescription = new YiAnPrescriptionEntity();
+		yiAnDetail.prescriptions.add(prescription);
+		prescription.yian = yiAnDetail;
+		return prescription;
+	}
+
+	/**
+	 * @return
+	 */
+	protected YiAnEntity createYiAn() {
+		YiAnEntity currentYiAn = new YiAnEntity();
+		currentYiAn.details = new ArrayList<YiAnDetailEntity>();
+		mYiAns.add(currentYiAn);
+		return currentYiAn;
 	}
 
 	public ArrayList<YiAnEntity> getYiAn() {
@@ -51,4 +107,5 @@ public class YiAnSectionFileParser {
 
 	private String mSectionFileFullPath;
 	private SectionEntity mSection;
+	private ArrayList<YiAnEntity> mYiAns;
 }

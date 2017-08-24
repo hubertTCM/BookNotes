@@ -28,5 +28,5 @@ public class YiAnDetailEntity {
 	public Collection<YiAnPrescriptionEntity> prescriptions;
 
 	@ForeignCollectionField(eager = false)
-	public Collection<YiAnDetailBlockLinkEntity> yiandetails;
+	public Collection<YiAnDetailBlockLinkEntity> blockLinks;
 }

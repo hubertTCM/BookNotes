@@ -5,9 +5,6 @@ import java.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 
-import com.hubert.dataprovider.parser.Token;
-import com.hubert.dataprovider.parser.TokenType;
-
 import javafx.util.Pair;
 
 public class YiAnDescriptionExtractor implements ITokenExtractor {
