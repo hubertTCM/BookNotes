@@ -8,6 +8,10 @@ public enum TokenType {
 	PrescriptionHeader, // RH
 	PrescriptionAbbreviation,
 	PrescriptionFormatted,
+	Herb,
+	HerbQuantity,
+	Unit,
+	HerbComment,
 	PrescriptionComment,
 	YiAnComment,
 	SummaryComment,

@@ -20,11 +20,12 @@ public class BlankLineTokenExtractor implements ITokenExtractor {
 		// Token previousToken = container.get(container.size() - 1);
 
 		Token previousToken = container.get(container.size() - 1);
-		if (previousToken.getType() != TokenType.PrescriptionFormatted
+		if (!PrescriptionTokenExtractor.isHerb(previousToken)
 				&& previousToken.getType() != TokenType.PrescriptionComment) {
 
-			System.out.println(" **** Warning format incorrect? no prescription found in previous Yi An. previous token type: " + previousToken.getType()
-					+ " previous token value: " + previousToken.getValue());
+			System.out.println(
+					" **** Warning format incorrect? no prescription found in previous Yi An. previous token type: "
+							+ previousToken.getType() + " previous token value: " + previousToken.getValue());
 		}
 
 		container.add(new Token(TokenType.BlankSpace, text));

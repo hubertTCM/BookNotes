@@ -73,10 +73,12 @@ public class YiAnLexer {
 		NewYiAnTagExtractor yiAnTagExtractor = new NewYiAnTagExtractor();
 		mTokenExtractors.add(yiAnTagExtractor);
 
-		FormattedPrescriptionExtractor formattedPrescriptionExtractor = new FormattedPrescriptionExtractor();
+		PrescriptionItemTokenExtractor prescriptionItemToken = new PrescriptionItemTokenExtractor();
+		FormattedPrescriptionExtractor formattedPrescriptionExtractor = 
+				new FormattedPrescriptionExtractor(prescriptionItemToken);
 		mTokenExtractors.add(formattedPrescriptionExtractor);	
 		
-		mTokenExtractors.add(new PrescriptionTokenExtractor());	
+		mTokenExtractors.add(new PrescriptionTokenExtractor(prescriptionItemToken));	
 	}
 
 	private String mFullPath;
