@@ -5,6 +5,9 @@ import java.util.*;
 import javafx.util.Pair;
 
 public class FormattedPrescriptionExtractor implements ITokenExtractor {
+	public FormattedPrescriptionExtractor(ITokenExtractor prescriptionItemExtractor){
+		mPrescriptionItemExtractor = prescriptionItemExtractor;
+	}
 	
 	@Override
 	public Pair<Boolean, String> extract(String text, List<Token> container) {
@@ -18,10 +21,12 @@ public class FormattedPrescriptionExtractor implements ITokenExtractor {
 			source = result.getValue();
 		}
 		container.add(new Token(TokenType.PrescriptionFormatted, source));
+		mPrescriptionItemExtractor.extract(source, container);
 		return new Pair<>(true, "");
 	}
 
 	// （丸方）
 	// [format]
 	private static final String tag= "[format]";
+	private ITokenExtractor mPrescriptionItemExtractor;
 }
