@@ -62,11 +62,11 @@ public class YiAnLexer {
 		comment.registerTag("徐评", true);
 		mTokenExtractors.add(comment);
 
-		TagTokenExtractor abbreviation = new TagTokenExtractor(TokenType.PrescriptionAbbreviation);
+		TagTokenExtractor abbreviation = new TagTokenExtractor(TokenType.RecipeAbbreviation);
 		abbreviation.registerTag("[abbr]");
 		mTokenExtractors.add(abbreviation);
 
-		TagTokenExtractor prescriptionHeader = new TagTokenExtractor(TokenType.PrescriptionHeader);
+		TagTokenExtractor prescriptionHeader = new TagTokenExtractor(TokenType.RecipeHeaderHeader);
 		prescriptionHeader.registerTag("[RH]");
 		mTokenExtractors.add(prescriptionHeader);
 

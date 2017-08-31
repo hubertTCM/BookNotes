@@ -26,7 +26,7 @@ public class NewYiAnTagExtractor implements ITokenExtractor {
 			container.add(new Token(TokenType.YiAnDescription, text));
 			return new Pair<>(true, text);
 		}
-		if (mParentTokenType == TokenType.PrescriptionFormatted){
+		if (mParentTokenType == TokenType.FormattedRecipeText){
 			container.add(new Token(TokenType.YiAnDescription, tag));
 			return new Pair<>(true, text.substring(tag.length()));
 		}

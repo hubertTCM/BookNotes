@@ -5,15 +5,17 @@ public enum TokenType {
 	SectionName,
 	YiAnDescription,
 	//NewYiAnDescription,
-	PrescriptionHeader, // RH
-	PrescriptionAbbreviation,
-	PrescriptionFormatted,
+	RecipeHeaderHeader, // RH
+	RecipeAbbreviation,
+	FormattedRecipeText,
+	RecipeComment,
+	YiAnComment,
 	Herb,
 	HerbQuantity,
 	Unit,
 	HerbComment,
-	PrescriptionComment,
-	YiAnComment,
 	SummaryComment,
 	BlankSpace,
+	Unknown,
+	End,
 }

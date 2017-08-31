@@ -1,4 +1,5 @@
-/*医案格式：
+// Start of Grammar  
+// Unknown(FormattedRecipeText): Unknown: Unknown TokenType To Scanner, FormattedRecipeText to parser. Split FormattedRecipeText to Recipe when parsing.
 YNDetail：= Description Unknown(FormattedRecipeText)
       Description Unknown(FormattedRecipeText) Unknown(RecipeComment)
       Description Abbreviation RecipeContent 
@@ -17,6 +18,8 @@ YN2 := SectionName YN
       
 RecipeContent := Herb
                  Herb RecipeContent
+                 
+// End of Grammar                 
 ***
 描述   阳挟内风上巅，目昏耳鸣不寐，肝经主病。
 处方	  熟地（炙） 炙龟甲 萸肉 五味 磁石 茯苓 旱莲草 女贞子

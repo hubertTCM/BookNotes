@@ -21,7 +21,7 @@ public class BlankLineTokenExtractor implements ITokenExtractor {
 
 		Token previousToken = container.get(container.size() - 1);
 		if (!PrescriptionTokenExtractor.isHerb(previousToken)
-				&& previousToken.getType() != TokenType.PrescriptionComment) {
+				&& previousToken.getType() != TokenType.RecipeComment) {
 
 			System.out.println(
 					" **** Warning format incorrect? no prescription found in previous Yi An. previous token type: "

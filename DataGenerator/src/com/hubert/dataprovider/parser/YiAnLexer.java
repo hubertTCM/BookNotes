@@ -61,12 +61,12 @@ public class YiAnLexer {
 			previousToken = tokens.get(tokens.size() - 1);
 
 			if (line.startsWith("[RH]")) {
-				tokens.add(new Token(TokenType.PrescriptionHeader, line));
+				tokens.add(new Token(TokenType.RecipeHeaderHeader, line));
 				continue;
 			}
 
 			if (line.startsWith("[abbr]")) {
-				tokens.add(new Token(TokenType.PrescriptionAbbreviation, line));
+				tokens.add(new Token(TokenType.RecipeAbbreviation, line));
 				continue;
 			}
 
@@ -75,13 +75,13 @@ public class YiAnLexer {
 				if (pair.getRight()) {
 					tokens.add(new Token(TokenType.YiAnDescription, ""));
 				}
-				tokens.add(new Token(TokenType.PrescriptionFormatted, pair.getLeft()));
+				tokens.add(new Token(TokenType.FormattedRecipeText, pair.getLeft()));
 				continue;
 			}
 			// （丸方） 人参（二两） 茯苓（三两，生） 盐水炒黄连（五钱） 半夏（醋炒，水洗净，一两半） ....
 			String tempTag = "（丸方）";
 			if (line.startsWith(tempTag)) {
-				tokens.add(new Token(TokenType.PrescriptionFormatted, line.substring(tempTag.length())));
+				tokens.add(new Token(TokenType.FormattedRecipeText, line.substring(tempTag.length())));
 				continue;
 			}
 
@@ -91,13 +91,13 @@ public class YiAnLexer {
 			}
 
 			if (previousToken.getType() == TokenType.YiAnDescription
-					|| previousToken.getType() == TokenType.PrescriptionHeader) {
-				tokens.add(new Token(TokenType.PrescriptionFormatted, line));
+					|| previousToken.getType() == TokenType.RecipeHeaderHeader) {
+				tokens.add(new Token(TokenType.FormattedRecipeText, line));
 				continue;
 			}
 
-			if (previousToken.getType() == TokenType.PrescriptionFormatted) {
-				tokens.add(new Token(TokenType.PrescriptionComment, line));
+			if (previousToken.getType() == TokenType.FormattedRecipeText) {
+				tokens.add(new Token(TokenType.RecipeComment, line));
 				continue;
 			}
 
