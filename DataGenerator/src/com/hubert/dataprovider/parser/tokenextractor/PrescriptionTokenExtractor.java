@@ -23,7 +23,7 @@ public class PrescriptionTokenExtractor implements ITokenExtractor {
 		String tag = "（丸方）";
 		if (text.startsWith(tag)) {
 			String source = text.substring(tag.length());
-			container.add(new Token(TokenType.PrescriptionFormatted, source));
+			container.add(new Token(TokenType.FormattedRecipeText, source));
 			mPrescriptionItemExtractor.extract(source, container);
 			return new Pair<>(true, "");
 		}
@@ -31,8 +31,8 @@ public class PrescriptionTokenExtractor implements ITokenExtractor {
 		// 人参 茯苓 白蒺藜 炒半夏 炒杞子 甘菊
 		if (previousToken.getType() == TokenType.YiAnDescription
 				// || previousToken.getType() == TokenType.NewYiAnDescription
-				|| previousToken.getType() == TokenType.PrescriptionHeader) {
-			container.add(new Token(TokenType.PrescriptionFormatted, text));
+				|| previousToken.getType() == TokenType.RecipeHeaderHeader) {
+			container.add(new Token(TokenType.FormattedRecipeText, text));
 			mPrescriptionItemExtractor.extract(text, container);
 			return new Pair<>(true, "");
 		}
@@ -40,7 +40,7 @@ public class PrescriptionTokenExtractor implements ITokenExtractor {
 		// 上午服。
 		// if (previousToken.getType() == TokenType.PrescriptionFormatted) {
 		if (isHerb(previousToken)) {
-			container.add(new Token(TokenType.PrescriptionComment, text));
+			container.add(new Token(TokenType.RecipeComment, text));
 			return new Pair<>(true, "");
 		}
 		return null;

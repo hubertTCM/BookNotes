@@ -15,12 +15,12 @@ public class FormattedPrescriptionExtractor implements ITokenExtractor {
 			return null;
 		}
 		String source = text.substring(tag.length());
-		NewYiAnTagExtractor extractor = new NewYiAnTagExtractor(TokenType.PrescriptionFormatted);
+		NewYiAnTagExtractor extractor = new NewYiAnTagExtractor(TokenType.FormattedRecipeText);
 		Pair<Boolean, String> result = extractor.extract(source, container);
 		if (result != null && result.getKey()) {
 			source = result.getValue();
 		}
-		container.add(new Token(TokenType.PrescriptionFormatted, source));
+		container.add(new Token(TokenType.FormattedRecipeText, source));
 		mPrescriptionItemExtractor.extract(source, container);
 		return new Pair<>(true, "");
 	}
