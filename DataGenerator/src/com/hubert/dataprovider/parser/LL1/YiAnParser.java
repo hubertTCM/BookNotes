@@ -149,6 +149,19 @@ public class YiAnParser {
 		return first;
 	}
 
+	private Set<String> getFollowSet(String symbol){
+		if (mFollow.containsKey(symbol)){
+			return mFollow.get(symbol);
+		}
+		return calculateFollowSet(symbol);
+	}
+	
+	private Set<String> calculateFollowSet(String symbol){
+		// TODO:
+		Set<String> follow = new HashSet<String>();
+		return follow;
+	}
+	
 	private void initActionTable() throws Exception {
 		// 对语法中的每条产生式： A -> u ：
 		// （1） 对 First(u) 中的所有终结符 a （不含 ε ），置 M[A, a] = “A -> u” ；
@@ -158,40 +171,28 @@ public class YiAnParser {
 		for (Map.Entry<String, List<List<String>>> kvp : mProduction.entrySet()) {
 			for (List<String> production : kvp.getValue()) {
 				String symbol = production.get(0);
-				if (mTerminalSymbols.contains(symbol)){
+				if (mTerminalSymbols.contains(symbol)) {
 					addAction(kvp.getKey(), symbol, production);
 					continue;
 				}
 				Set<String> first = getFirstSet(symbol);
 				for (String temp : first) {
-					if (temp == Constants.Empty){
-						throw new Exception("Empty should be not in First set. Check the grammar");
-					}
 					addAction(kvp.getKey(), temp, production);
 				}
 			}
 		}
 	}
-	
-	private String getActionKey(String symbol, String input){
-		return symbol + "####" + input;
-	}
 
 	private void addAction(String symbol, String input, List<String> production) throws Exception {
-		String key = getActionKey(symbol, input);
-		if (mMoveAction.containsKey(key)) {
-			throw new Exception(key + " Not LL(1) grammar");
+		mMoveAction.addAction(symbol, input, production);
+		// 若 First(u) 含 ε ，则对 Follow(A) 中的所有符号 a （可含 $ ），置 M[A, a] = “A->u”
+		if (input.equals(Constants.Empty)) {
+			Set<String> follow = getFollowSet(symbol);
+			for(String key : follow){
+				mMoveAction.addAction(symbol, key, production);
+			}
 		}
-		mMoveAction.put(key, production);
-		return ;
-	}
-	
-	private List<String> getAction(String symbol, String input){
-		String key = getActionKey(symbol, input);
-		if (mMoveAction.containsKey(key)){
-			return mMoveAction.get(key);
-		}
-		return null;
+
 	}
 
 	private Set<String> mTerminalSymbols = new HashSet<String>();
@@ -200,8 +201,7 @@ public class YiAnParser {
 	private Map<String, List<List<String>>> mProduction = new HashMap<String, List<List<String>>>();
 	private Map<String, Set<String>> mFirst = new HashMap<String, Set<String>>();
 	private Map<String, Set<String>> mFollow = new HashMap<String, Set<String>>();
-	//M[A, a] = “A->u”
-	private Map<String, List<String>> mMoveAction = new HashMap<String, List<String>>();
+	private ActionTable mMoveAction = new ActionTable();
 
 	private Stack<Token> mTokenStack = new Stack<Token>();
 	private Stack<ASTNode> mNodeStack = new Stack<ASTNode>();
