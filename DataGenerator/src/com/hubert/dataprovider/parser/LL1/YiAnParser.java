@@ -12,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.parser.tokenextractor.*;
 
+// reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
 public class YiAnParser {
 	public YiAnParser(String grammarFile) throws Exception {
 		mTerminalSymbols.add("Description");
@@ -149,19 +150,24 @@ public class YiAnParser {
 		return first;
 	}
 
-	private Set<String> getFollowSet(String symbol){
-		if (mFollow.containsKey(symbol)){
+	private Set<String> getFollowSet(String symbol) {
+		if (mFollow.containsKey(symbol)) {
 			return mFollow.get(symbol);
 		}
 		return calculateFollowSet(symbol);
 	}
-	
-	private Set<String> calculateFollowSet(String symbol){
+
+	// 一个语法中所有非终结符的 follow set 的计算步骤如下：
+	// （1） 将 $ 加入到 Follow(S) 中， S 为起始符号， $ 为结束符 EOF ；
+	// （2） 对每条形如 A -> u B v 的产生式，将 First(v) - ε 加入到 Follow(B) ；
+	// （3） 对每条形如 A -> u B 的产生式，或 A -> u B v 的产生式（其中 First(v) 含 ε ），将 Follow(A)
+	// 加入到 Follow(B) 。
+	private Set<String> calculateFollowSet(String symbol) {
 		// TODO:
 		Set<String> follow = new HashSet<String>();
 		return follow;
 	}
-	
+
 	private void initActionTable() throws Exception {
 		// 对语法中的每条产生式： A -> u ：
 		// （1） 对 First(u) 中的所有终结符 a （不含 ε ），置 M[A, a] = “A -> u” ；
@@ -188,7 +194,7 @@ public class YiAnParser {
 		// 若 First(u) 含 ε ，则对 Follow(A) 中的所有符号 a （可含 $ ），置 M[A, a] = “A->u”
 		if (input.equals(Constants.Empty)) {
 			Set<String> follow = getFollowSet(symbol);
-			for(String key : follow){
+			for (String key : follow) {
 				mMoveAction.addAction(symbol, key, production);
 			}
 		}
