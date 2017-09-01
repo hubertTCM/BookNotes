@@ -164,6 +164,9 @@ public class YiAnParser {
 				}
 				Set<String> first = getFirstSet(symbol);
 				for (String temp : first) {
+					if (temp == Constants.Empty){
+						throw new Exception("Empty should be not in First set. Check the grammar");
+					}
 					addAction(kvp.getKey(), temp, production);
 				}
 			}
