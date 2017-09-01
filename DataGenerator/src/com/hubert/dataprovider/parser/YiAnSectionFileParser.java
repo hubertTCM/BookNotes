@@ -14,19 +14,15 @@ import com.hubert.dataprovider.parser.tokenextractor.*;
 
 public class YiAnSectionFileParser {
 	public YiAnSectionFileParser(BookEntity book, String fileFullPath) {
-		mSectionFileFullPath = fileFullPath;
-		initSection(book.sections);
+		initSection(book.sections, fileFullPath);
 		mSection.book = book;
 	}
 
 	public YiAnSectionFileParser(SectionEntity parentSection, String fileFullPath) {
-		mSectionFileFullPath = fileFullPath;
-		initSection(parentSection.childSections);
+		initSection(parentSection.childSections, fileFullPath);
 		mSection.parent = parentSection;
 	}
 	
-	
-
 	public void parse(List<Token> tokens) throws IOException {
 		mYiAns = new ArrayList<YiAnEntity>();
 		if (tokens == null || tokens.isEmpty()){
@@ -98,14 +94,13 @@ public class YiAnSectionFileParser {
 		return mSection;
 	}
 
-	private void initSection(Collection<SectionEntity> container) {
-		String sectionName = Utils.getSectionName(mSectionFileFullPath);
+	private void initSection(Collection<SectionEntity> container, String sectionFileFullPath) {
+		String sectionName = Utils.getSectionName(sectionFileFullPath);
 		mSection = Utils.createSection(sectionName);
 		mSection.order = container.size() + 1;
 		container.add(mSection);
 	}
 
-	private String mSectionFileFullPath;
 	private SectionEntity mSection;
 	private ArrayList<YiAnEntity> mYiAns;
 }
