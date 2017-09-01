@@ -1,4 +1,3 @@
-// Start of Grammar  
 // Unknown(FormattedRecipeText): Unknown: Unknown TokenType To Scanner, FormattedRecipeText to parser. Split FormattedRecipeText to Recipe when parsing.
 YNDetail：= Description Unknown(FormattedRecipeText)
       Description Unknown(FormattedRecipeText) Unknown(RecipeComment)
@@ -18,6 +17,35 @@ YN2 := SectionName YN
       
 RecipeContent := Herb
                  Herb RecipeContent
+         
+        
+// Start of Grammar 
+YNDetail := Description A
+A := Unknown(FormattedRecipeText) B
+     Abbreviation RecipeContent 
+     RecipeHeader Unknown(FormattedRecipeText) C
+     RecipeContent
+     Empty [Warning]
+B := Empty
+     Unknown(RecipeComment)
+C := Empty
+     Unknown(RecipeComment)
+YNDetail2 := SectionName YNDetail
+
+YN := YNDetail D
+D := Empty
+     YNDetail
+YN2 := YNDetail2 E
+E := Empty
+     YNDetail E
+     
+S := YN2
+S := YN
+
+RecipeContent := Herb RecipeContentAlias
+RecipeContentAlias :=  Empty
+                       Herb 
+     
                  
 // End of Grammar                 
 ***
