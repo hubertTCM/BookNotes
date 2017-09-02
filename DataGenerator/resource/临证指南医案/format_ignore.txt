@@ -25,7 +25,7 @@ A := Unknown(FormattedRecipeText) B
      Abbreviation RecipeContent 
      RecipeHeader Unknown(FormattedRecipeText) C
      RecipeContent
-     Empty [Warning]
+     Empty
 B := Empty
      Unknown(RecipeComment)
 C := Empty
@@ -34,7 +34,7 @@ YNDetail2 := SectionName YNDetail
 
 YN := YNDetail D
 D := Empty
-     YNDetail
+     YNDetail D
 YN2 := YNDetail2 E
 E := Empty
      YNDetail E
