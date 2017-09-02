@@ -3,6 +3,7 @@ package com.hubert.dataprovider.parser.LL1;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ActionTable {
 
@@ -12,21 +13,33 @@ public class ActionTable {
 			throw new Exception(key + " Not LL(1) grammar");
 		}
 		mMoveAction.put(key, production);
-		return ;
+		return;
 	}
-	
-	public List<String> getAction(String symbol, String input){
+
+	public List<String> getAction(String symbol, String input) {
 		String key = getActionKey(symbol, input);
-		if (mMoveAction.containsKey(key)){
+		if (mMoveAction.containsKey(key)) {
 			return mMoveAction.get(key);
 		}
 		return null;
 	}
 
-	private String getActionKey(String symbol, String input){
-		return symbol + "####" + input;
+	public void dump() {
+
+		for (Map.Entry<String, List<String>> kvp : mMoveAction.entrySet()) {
+			System.out.print(kvp.getKey() + " => ");
+			for (String temp : kvp.getValue()) {
+				System.out.print(" " + temp);
+			}
+			System.out.print(" \n");
+		}
+
 	}
 
-	//M[A, a] = “A->u”
+	private String getActionKey(String symbol, String input) {
+		return "[" + symbol + "," + input + "]";
+	}
+
+	// M[A, a] = “A->u”
 	private Map<String, List<String>> mMoveAction = new HashMap<String, List<String>>();
 }
