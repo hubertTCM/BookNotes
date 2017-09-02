@@ -108,9 +108,12 @@ public class YiAnParser {
 		}
 	}
 
-	private void initFollowSet() {
+	private void initFollowSet() throws Exception {
 		for (Map.Entry<String, List<List<String>>> kvp : mProduction.entrySet()) {
 			calculateFollowSet(kvp.getKey());
+			if (!mCalculatingFollowSetSymbols.isEmpty()){
+				throw new Exception("Follow set calculation error");
+			}
 		}
 	}
 
@@ -171,7 +174,7 @@ public class YiAnParser {
 		if (mFollow.containsKey(symbol)) {
 			return mFollow.get(symbol);
 		}
-
+		mCalculatingFollowSetSymbols.add(symbol);
 		Set<String> follow = new HashSet<String>();
 		if (symbol.equals(Constants.Start)) {
 			follow.add(Constants.End);
@@ -198,13 +201,14 @@ public class YiAnParser {
 
 					// 对每条形如A->uB的产生式，或 A->uBv 的产生式（其中First(v)含ε），将
 					// Follow(A) 加入到 Follow(B)
-					if (isCase2 && !symbol.equals(kvp.getKey())) {
+					if (isCase2 && !mCalculatingFollowSetSymbols.contains(kvp.getKey())) {
 						follow.addAll(this.getFollowSet(kvp.getKey()));
 					}
 				}
 			}
 		}
 		mFollow.put(symbol, follow);
+		mCalculatingFollowSetSymbols.remove(symbol);
 		return follow;
 	}
 
@@ -244,8 +248,8 @@ public class YiAnParser {
 	private Map<String, List<List<String>>> mProduction = new HashMap<String, List<List<String>>>();
 	private Map<String, Set<String>> mFirst = new HashMap<String, Set<String>>();
 	private Map<String, Set<String>> mFollow = new HashMap<String, Set<String>>();
+	private List<String> mCalculatingFollowSetSymbols = new ArrayList<String>();
 	private ActionTable mMoveAction = new ActionTable();
-
 	private Stack<Token> mTokenStack = new Stack<Token>();
 	private Stack<ASTNode> mNodeStack = new Stack<ASTNode>();
 }
