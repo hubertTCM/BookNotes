@@ -109,7 +109,9 @@ public class YiAnParser {
 	}
 
 	private void initFollowSet() {
-		// TODO:
+		for (Map.Entry<String, List<List<String>>> kvp : mProduction.entrySet()) {
+			calculateFollowSet(kvp.getKey());
+		}
 	}
 
 	private Set<String> getFirstSet(String symbol) {
@@ -123,9 +125,14 @@ public class YiAnParser {
 		if (mFirst.containsKey(symbol)) {
 			return mFirst.get(symbol);
 		}
-		Set<String> first = new HashSet<String>();
-		List<List<String>> productions = mProduction.get(symbol);
 		System.out.println(symbol);
+		Set<String> first = new HashSet<String>();
+		mFirst.put(symbol, first);
+		if (mTerminalSymbols.contains(symbol)) {
+			first.add(symbol);
+			return first;
+		}
+		List<List<String>> productions = mProduction.get(symbol);
 		for (List<String> production : productions) {
 			int index = 0;
 			for (index = 0; index < production.size(); ++index) {
@@ -146,7 +153,6 @@ public class YiAnParser {
 			}
 		}
 
-		mFirst.put(symbol, first);
 		return first;
 	}
 
@@ -159,12 +165,47 @@ public class YiAnParser {
 
 	// 一个语法中所有非终结符的 follow set 的计算步骤如下：
 	// （1） 将 $ 加入到 Follow(S) 中， S 为起始符号， $ 为结束符 EOF ；
-	// （2） 对每条形如 A -> u B v 的产生式，将 First(v) - ε 加入到 Follow(B) ；
-	// （3） 对每条形如 A -> u B 的产生式，或 A -> u B v 的产生式（其中 First(v) 含 ε ），将 Follow(A)
+	// （2） 对每条形如 A -> uBv 的产生式，将 First(v) - ε 加入到 Follow(B) ；
+	// （3） 对每条形如 A -> uB 的产生式，或 A -> u B v 的产生式（其中 First(v) 含 ε ），将 Follow(A)
 	// 加入到 Follow(B) 。
 	private Set<String> calculateFollowSet(String symbol) {
-		// TODO:
+		if (mFollow.containsKey(symbol)) {
+			return mFollow.get(symbol);
+		}
+
 		Set<String> follow = new HashSet<String>();
+		if (symbol.equals(Constants.Start)) {
+			follow.add(Constants.End);
+		}
+
+		for (Map.Entry<String, List<List<String>>> kvp : mProduction.entrySet()) {
+			List<List<String>> productions = kvp.getValue();
+			for (List<String> production : productions) {
+				for (int i = 0; i < production.size(); ++i) {
+					if (!symbol.equals(production.get(i))) {
+						continue;
+					}
+					Set<String> temp = new HashSet<String>();
+					boolean isCase2 = (i == production.size() - 1);
+					if (i < production.size() - 1) {
+						temp.addAll(getFirstSet(production.get(i + 1)));
+						// 对每条形如 A->uBv 的产生式，将First(v)-ε 加入到Follow(B)；
+						if (temp.contains(Constants.Empty)) {
+							temp.remove(Constants.Empty);
+							isCase2 = true;
+						}
+						follow.addAll(temp);
+					}
+					
+					// 对每条形如A->uB的产生式，或 A->uBv 的产生式（其中First(v)含ε），将
+					// Follow(A) 加入到 Follow(B)
+					if (isCase2 && !symbol.equals(kvp.getKey())) {
+						follow.addAll(this.getFollowSet(kvp.getKey()));
+					}
+				}
+			}
+		}
+		mFollow.put(symbol, follow);
 		return follow;
 	}
 
@@ -177,10 +218,10 @@ public class YiAnParser {
 		for (Map.Entry<String, List<List<String>>> kvp : mProduction.entrySet()) {
 			for (List<String> production : kvp.getValue()) {
 				String symbol = production.get(0);
-				if (mTerminalSymbols.contains(symbol)) {
-					addAction(kvp.getKey(), symbol, production);
-					continue;
-				}
+				// if (mTerminalSymbols.contains(symbol)) {
+				// addAction(kvp.getKey(), symbol, production);
+				// continue;
+				// }
 				Set<String> first = getFirstSet(symbol);
 				for (String temp : first) {
 					addAction(kvp.getKey(), temp, production);
