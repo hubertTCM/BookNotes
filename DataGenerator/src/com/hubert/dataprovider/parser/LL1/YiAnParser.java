@@ -77,6 +77,8 @@ public class YiAnParser {
 		initFirstSet();
 		initFollowSet();
 		initActionTable();
+		
+		dump();
 	}
 
 	private void AddProductExpression(String symbol, String expression) {
@@ -202,7 +204,7 @@ public class YiAnParser {
 					// 对每条形如A->uB的产生式，或 A->uBv 的产生式（其中First(v)含ε），将
 					// Follow(A) 加入到 Follow(B)
 					if (isCase2 && !mCalculatingFollowSetSymbols.contains(kvp.getKey())) {
-						follow.addAll(this.getFollowSet(kvp.getKey()));
+						follow.addAll(getFollowSet(kvp.getKey()));
 					}
 				}
 			}
@@ -243,6 +245,27 @@ public class YiAnParser {
 		}
 	}
 
+	private void dump(){
+		System.out.println("First");
+		for(Map.Entry<String, Set<String>> kvp : mFirst.entrySet()){
+			System.out.print(kvp.getKey() + "= {");
+			for(String temp : kvp.getValue()){
+				System.out.print(" " + temp);
+			}
+			System.out.print(" }\n");
+		}
+		
+		System.out.println("Fllow");
+		for(Map.Entry<String, Set<String>> kvp : mFollow.entrySet()){
+			System.out.print(kvp.getKey() + "= {");
+			for(String temp : kvp.getValue()){
+				System.out.print(" " + temp);
+			}
+			System.out.print(" }\n");
+		}
+		mMoveAction.dump();
+	}
+	
 	private Set<String> mTerminalSymbols = new HashSet<String>();
 	// S := abc saved as: S => [a, b, c]
 	private Map<String, List<List<String>>> mProduction = new HashMap<String, List<List<String>>>();
