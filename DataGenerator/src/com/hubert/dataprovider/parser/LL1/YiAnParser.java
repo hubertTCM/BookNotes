@@ -164,10 +164,9 @@ public class YiAnParser {
 	}
 
 	// 一个语法中所有非终结符的 follow set 的计算步骤如下：
-	// （1） 将 $ 加入到 Follow(S) 中， S 为起始符号， $ 为结束符 EOF ；
-	// （2） 对每条形如 A -> uBv 的产生式，将 First(v) - ε 加入到 Follow(B) ；
-	// （3） 对每条形如 A -> uB 的产生式，或 A -> u B v 的产生式（其中 First(v) 含 ε ），将 Follow(A)
-	// 加入到 Follow(B) 。
+	// （1） 将$加入到Follow(S)中， S为起始符号， $为结束符EOF；
+	// （2） 对每条形如A->uBv的产生式，将First(v)-ε加入到 Follow(B)；
+	// （3） 对每条形如A->uB的产生式，或A->uBv的产生式（其中 First(v)含 ε ），将Follow(A)加入到 Follow(B)
 	private Set<String> calculateFollowSet(String symbol) {
 		if (mFollow.containsKey(symbol)) {
 			return mFollow.get(symbol);
@@ -196,7 +195,7 @@ public class YiAnParser {
 						}
 						follow.addAll(temp);
 					}
-					
+
 					// 对每条形如A->uB的产生式，或 A->uBv 的产生式（其中First(v)含ε），将
 					// Follow(A) 加入到 Follow(B)
 					if (isCase2 && !symbol.equals(kvp.getKey())) {
@@ -210,10 +209,9 @@ public class YiAnParser {
 	}
 
 	private void initActionTable() throws Exception {
-		// 对语法中的每条产生式： A -> u ：
-		// （1） 对 First(u) 中的所有终结符 a （不含 ε ），置 M[A, a] = “A -> u” ；
-		// （2） 若 First(u) 含 ε ，则对 Follow(A) 中的所有符号 a （可含 $ ），置 M[A, a] = “A->u”
-		// 。
+		// 对语法中的每条产生式： A->u ：
+		// （1）对First(u)中的所有终结符a（不含 ε ），置 M[A, a] = “A -> u” ；
+		// （2）若First(u)含ε，则对Follow(A)中的所有符号a（可含 $ ），置 M[A, a]=“A->u”。
 
 		for (Map.Entry<String, List<List<String>>> kvp : mProduction.entrySet()) {
 			for (List<String> production : kvp.getValue()) {
@@ -239,12 +237,10 @@ public class YiAnParser {
 				mMoveAction.addAction(symbol, key, production);
 			}
 		}
-
 	}
 
 	private Set<String> mTerminalSymbols = new HashSet<String>();
-	// S := abc saved as:
-	// S => [a, b, c]
+	// S := abc saved as: S => [a, b, c]
 	private Map<String, List<List<String>>> mProduction = new HashMap<String, List<List<String>>>();
 	private Map<String, Set<String>> mFirst = new HashMap<String, Set<String>>();
 	private Map<String, Set<String>> mFollow = new HashMap<String, Set<String>>();
