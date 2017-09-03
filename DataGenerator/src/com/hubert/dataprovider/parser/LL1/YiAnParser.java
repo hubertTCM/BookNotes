@@ -15,6 +15,23 @@ import com.hubert.dataprovider.parser.tokenextractor.*;
 // reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
 public class YiAnParser {
 	public YiAnParser(String grammarFile) throws Exception {
+		initTerminalSymbols();
+
+		initGrammar(grammarFile);
+	}
+
+	public YiAnParser(List<String> terminals, List<String> expressions) throws Exception {
+		initTerminalSymbols();
+		mTerminalSymbols.addAll(terminals);
+
+		ArrayList<String> temp = new ArrayList<String>();
+		temp.add("// Start of Grammar");
+		temp.addAll(expressions);
+		temp.add("// End of Grammar");
+		initExpressions(temp);
+	}
+
+	private void initTerminalSymbols() {
 		mTerminalSymbols.add("Description");
 		mTerminalSymbols.add("Abbreviation");
 		mTerminalSymbols.add("RecipeHeader");
@@ -25,8 +42,6 @@ public class YiAnParser {
 		mTerminalSymbols.add("Unknown(RecipeComment)");
 		mTerminalSymbols.add("SectionName");
 		mTerminalSymbols.add("Empty");
-
-		initGrammar(grammarFile);
 	}
 
 	public ASTNode parse(List<Token> tokens) throws IOException {
@@ -45,6 +60,10 @@ public class YiAnParser {
 		Charset utf8 = Charset.forName("UTF-8");
 		List<String> lines = Files.readAllLines(filePath, utf8);
 
+		initExpressions(lines);
+	}
+
+	private void initExpressions(List<String> lines) throws Exception {
 		boolean isGrammerSection = false;
 		String currentNonterminalSymbol = "";
 		for (String temp : lines) {
@@ -77,7 +96,7 @@ public class YiAnParser {
 		initFirstSet();
 		initFollowSet();
 		initActionTable();
-		
+
 		dump();
 	}
 
@@ -113,7 +132,7 @@ public class YiAnParser {
 	private void initFollowSet() throws Exception {
 		for (Map.Entry<String, List<List<String>>> kvp : mProduction.entrySet()) {
 			calculateFollowSet(kvp.getKey());
-			if (!mCalculatingFollowSetSymbols.isEmpty()){
+			if (!mCalculatingFollowSetSymbols.isEmpty()) {
 				throw new Exception("Follow set calculation error");
 			}
 		}
@@ -245,27 +264,27 @@ public class YiAnParser {
 		}
 	}
 
-	private void dump(){
+	private void dump() {
 		System.out.println("First");
-		for(Map.Entry<String, Set<String>> kvp : mFirst.entrySet()){
-			System.out.print(kvp.getKey() + "= {");
-			for(String temp : kvp.getValue()){
+		for (Map.Entry<String, Set<String>> kvp : mFirst.entrySet()) {
+			System.out.print("First(" + kvp.getKey() + ") = {");
+			for (String temp : kvp.getValue()) {
 				System.out.print(" " + temp);
 			}
 			System.out.print(" }\n");
 		}
-		
-		System.out.println("Fllow");
-		for(Map.Entry<String, Set<String>> kvp : mFollow.entrySet()){
-			System.out.print(kvp.getKey() + "= {");
-			for(String temp : kvp.getValue()){
+
+		System.out.println("Follow");
+		for (Map.Entry<String, Set<String>> kvp : mFollow.entrySet()) {
+			System.out.print("Follow(" + kvp.getKey() + ") = {");
+			for (String temp : kvp.getValue()) {
 				System.out.print(" " + temp);
 			}
 			System.out.print(" }\n");
 		}
 		mMoveAction.dump();
 	}
-	
+
 	private Set<String> mTerminalSymbols = new HashSet<String>();
 	// S := abc saved as: S => [a, b, c]
 	private Map<String, List<List<String>>> mProduction = new HashMap<String, List<List<String>>>();
