@@ -130,10 +130,25 @@ public class YiAnParser {
 	}
 
 	private void initFollowSet() throws Exception {
-		for (Map.Entry<String, List<List<String>>> kvp : mProduction.entrySet()) {
-			calculateFollowSet(kvp.getKey());
-			if (!mCalculatingFollowSetSymbols.isEmpty()) {
-				throw new Exception("Follow set calculation error");
+		boolean isChanged = true;
+		while (isChanged) {
+			isChanged = false;
+
+			for (Map.Entry<String, List<List<String>>> kvp : mProduction.entrySet()) {
+				Set<String> original = new HashSet<String>();
+				String symbol = kvp.getKey();
+				if (mFollow.containsKey(symbol)) {
+					original.addAll(mFollow.get(symbol));
+				}
+				calculateFollowSet(symbol);
+
+				if (!mCalculatingFollowSetSymbols.isEmpty()) {
+					throw new Exception("Follow set calculation error");
+				}
+				Set<String> current = mFollow.get(symbol);
+				if (original.size() != current.size() || !original.containsAll(current)) {
+					isChanged = true;
+				}
 			}
 		}
 	}
@@ -192,11 +207,15 @@ public class YiAnParser {
 	// （2） 对每条形如A->uBv的产生式，将First(v)-ε加入到 Follow(B)；
 	// （3） 对每条形如A->uB的产生式，或A->uBv的产生式（其中 First(v)含 ε ），将Follow(A)加入到 Follow(B)
 	private Set<String> calculateFollowSet(String symbol) {
-		if (mFollow.containsKey(symbol)) {
-			return mFollow.get(symbol);
-		}
 		mCalculatingFollowSetSymbols.add(symbol);
-		Set<String> follow = new HashSet<String>();
+		Set<String> follow = null;
+		if (mFollow.containsKey(symbol)) {
+			follow = mFollow.get(symbol);
+		} else {
+			follow = new HashSet<String>();
+
+		}
+
 		if (symbol.equals(Constants.Start)) {
 			follow.add(Constants.End);
 		}
