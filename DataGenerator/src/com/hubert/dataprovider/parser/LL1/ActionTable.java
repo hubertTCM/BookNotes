@@ -18,9 +18,8 @@ public class ActionTable {
 				return;
 			}
 
-			// throw new Exception("Not LL(1) grammar " + key + " => " +
-			// convert(existingValue) + " " + key + " => "
-			// + convert(production));
+//			throw new Exception("Not LL(1) grammar " + key + " => " + convert(existingValue) + " " + key + " => "
+//					+ convert(production));
 		}
 		mMoveAction.put(key, production);
 		return;
