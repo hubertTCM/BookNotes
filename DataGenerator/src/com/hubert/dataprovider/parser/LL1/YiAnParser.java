@@ -213,7 +213,6 @@ public class YiAnParser {
 			follow = mFollow.get(symbol);
 		} else {
 			follow = new HashSet<String>();
-
 		}
 
 		if (symbol.equals(Constants.Start)) {
@@ -228,7 +227,7 @@ public class YiAnParser {
 					continue;
 				}
 				followSymbolIndex += 1;
-				while (true) {
+				while (followSymbolIndex < production.size() + 1) {
 					if (followSymbolIndex == production.size()) {
 						if (!mCalculatingFollowSetSymbols.contains(kvp.getKey())) {
 							follow.addAll(getFollowSet(kvp.getKey()));
@@ -246,7 +245,7 @@ public class YiAnParser {
 					follow.addAll(temp);
 					followSymbolIndex += 1;
 				}
-				
+
 			}
 		}
 		mFollow.put(symbol, follow);
@@ -256,16 +255,11 @@ public class YiAnParser {
 
 	private void initActionTable() throws Exception {
 		// 对语法中的每条产生式： A->u ：
-		// （1）对First(u)中的所有终结符a（不含 ε ），置 M[A, a] = “A -> u” ；
+		// （1）对First(u)中的所有终结符a（不含 ε ），置 M[A, a] = “A->u” ；
 		// （2）若First(u)含ε，则对Follow(A)中的所有符号a（可含 $ ），置 M[A, a]=“A->u”。
-
 		for (Map.Entry<String, List<List<String>>> kvp : mProduction.entrySet()) {
 			for (List<String> production : kvp.getValue()) {
 				String symbol = production.get(0);
-				// if (mTerminalSymbols.contains(symbol)) {
-				// addAction(kvp.getKey(), symbol, production);
-				// continue;
-				// }
 				Set<String> first = getFirstSet(symbol);
 				for (String temp : first) {
 					addAction(kvp.getKey(), temp, production);
@@ -275,13 +269,14 @@ public class YiAnParser {
 	}
 
 	private void addAction(String symbol, String input, List<String> production) throws Exception {
-		mMoveAction.addAction(symbol, input, production);
 		// 若 First(u) 含 ε ，则对 Follow(A) 中的所有符号 a （可含 $ ），置 M[A, a] = “A->u”
 		if (input.equals(Constants.Empty)) {
 			Set<String> follow = getFollowSet(symbol);
 			for (String key : follow) {
 				mMoveAction.addAction(symbol, key, production);
 			}
+		} else {
+			mMoveAction.addAction(symbol, input, production);
 		}
 	}
 
