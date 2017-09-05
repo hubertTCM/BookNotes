@@ -173,25 +173,31 @@ public class YiAnParser {
 		}
 		List<List<String>> productions = mProduction.get(symbol);
 		for (List<String> production : productions) {
-			int index = 0;
-			for (index = 0; index < production.size(); ++index) {
-				String temp = production.get(index);
-				if (mTerminalSymbols.contains(temp)) {
-					first.add(temp);
-					break;
-				}
-				Set<String> tempFirst = calculateFirstSet(temp);
-				first.addAll(tempFirst);
-				if (!tempFirst.contains(Constants.Empty)) {
-					break;
-				}
-
-				if (index != production.size() - 1) {
-					first.remove(Constants.Empty);
-				}
-			}
+			first.addAll(calculateFirst(production));
 		}
 
+		return first;
+	}
+
+	private Set<String> calculateFirst(List<String> production) {
+		Set<String> first = new HashSet<String>();
+		int index = 0;
+		for (index = 0; index < production.size(); ++index) {
+			String temp = production.get(index);
+			if (mTerminalSymbols.contains(temp)) {
+				first.add(temp);
+				break;
+			}
+			Set<String> tempFirst = calculateFirstSet(temp);
+			first.addAll(tempFirst);
+			if (!tempFirst.contains(Constants.Empty)) {
+				break;
+			}
+
+			if (index != production.size() - 1) {
+				first.remove(Constants.Empty);
+			}
+		}
 		return first;
 	}
 
