@@ -13,14 +13,14 @@ import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.parser.tokenextractor.*;
 
 // reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
-public class YiAnParser {
-	public YiAnParser(String grammarFile) throws Exception {
+public class ActionTableBuilder {
+	public ActionTableBuilder(String grammarFile) throws Exception {
 		initTerminalSymbols();
 
 		initGrammar(grammarFile);
 	}
 
-	public YiAnParser(List<String> terminals, List<String> expressions) throws Exception {
+	public ActionTableBuilder(List<String> terminals, List<String> expressions) throws Exception {
 		initTerminalSymbols();
 		mTerminalSymbols.addAll(terminals);
 
@@ -29,6 +29,10 @@ public class YiAnParser {
 		temp.addAll(expressions);
 		temp.add("// End of Grammar");
 		initExpressions(temp);
+	}
+
+	public ActionTable getActionTable() {
+		return mActionTable;
 	}
 
 	private void initTerminalSymbols() {
@@ -42,17 +46,6 @@ public class YiAnParser {
 		mTerminalSymbols.add("Unknown(RecipeComment)");
 		mTerminalSymbols.add("SectionName");
 		mTerminalSymbols.add("Empty");
-	}
-
-	public ASTNode parse(List<Token> tokens) throws IOException {
-		reset();
-
-		return null;
-	}
-
-	private void reset() {
-		mTokenStack.clear();
-		mNodeStack.clear();
 	}
 
 	private void initGrammar(String grammaFile) throws Exception {
@@ -279,10 +272,10 @@ public class YiAnParser {
 		if (input.equals(Constants.Empty)) {
 			Set<String> follow = getFollowSet(symbol);
 			for (String key : follow) {
-				mMoveAction.addAction(symbol, key, production);
+				mActionTable.addAction(symbol, key, production);
 			}
 		} else {
-			mMoveAction.addAction(symbol, input, production);
+			mActionTable.addAction(symbol, input, production);
 		}
 	}
 
@@ -304,7 +297,7 @@ public class YiAnParser {
 			}
 			System.out.print(" }\n");
 		}
-		mMoveAction.dump();
+		mActionTable.dump();
 	}
 
 	private Set<String> mTerminalSymbols = new HashSet<String>();
@@ -313,7 +306,5 @@ public class YiAnParser {
 	private Map<String, Set<String>> mFirst = new HashMap<String, Set<String>>();
 	private Map<String, Set<String>> mFollow = new HashMap<String, Set<String>>();
 	private List<String> mCalculatingFollowSetSymbols = new ArrayList<String>();
-	private ActionTable mMoveAction = new ActionTable();
-	private Stack<Token> mTokenStack = new Stack<Token>();
-	private Stack<ASTNode> mNodeStack = new Stack<ASTNode>();
+	private ActionTable mActionTable = new ActionTable();
 }

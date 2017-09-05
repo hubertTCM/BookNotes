@@ -58,9 +58,8 @@ public class importor {
 		terminalSymbols.add("c");
 		terminalSymbols.add("b");
 
-		com.hubert.dataprovider.parser.LL1.YiAnParser parser2 = new com.hubert.dataprovider.parser.LL1.YiAnParser(
+		com.hubert.dataprovider.parser.LL1.ActionTableBuilder parser2 = new com.hubert.dataprovider.parser.LL1.ActionTableBuilder(
 				terminalSymbols, expressions);
-		parser2.parse(null);
 		// 计算结果如下：
 		//
 		// First(C) = {b, ε}
@@ -100,8 +99,7 @@ public class importor {
 		terminalSymbols.add("*");
 		terminalSymbols.add("Empty");
 
-		com.hubert.dataprovider.parser.LL1.YiAnParser parser2 = new com.hubert.dataprovider.parser.LL1.YiAnParser(
+		com.hubert.dataprovider.parser.LL1.ActionTableBuilder parser2 = new com.hubert.dataprovider.parser.LL1.ActionTableBuilder(
 				terminalSymbols, expressions);
-		parser2.parse(null);
 	}
 }
