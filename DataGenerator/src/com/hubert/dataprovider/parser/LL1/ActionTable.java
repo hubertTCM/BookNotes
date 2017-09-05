@@ -54,7 +54,7 @@ public class ActionTable {
 	}
 
 	private String getActionKey(String symbol, String input) {
-		return "[" + symbol + "," + input + "]";
+		return "M[" + symbol + "," + input + "]";
 	}
 
 	// M[A, a] = “A->u”
