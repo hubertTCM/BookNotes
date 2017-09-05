@@ -13,14 +13,14 @@ import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.parser.tokenextractor.*;
 
 // reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
-public class ActionTableBuilder {
-	public ActionTableBuilder(String grammarFile) throws Exception {
+public class Grammar {
+	public Grammar(String grammarFile) throws Exception {
 		initTerminalSymbols();
 
 		initGrammar(grammarFile);
 	}
 
-	public ActionTableBuilder(List<String> terminals, List<String> expressions) throws Exception {
+	public Grammar(List<String> terminals, List<String> expressions) throws Exception {
 		initTerminalSymbols();
 		mTerminalSymbols.addAll(terminals);
 
