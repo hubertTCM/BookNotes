@@ -2,6 +2,7 @@ package com.hubert.dataprovider.parser.tokenextractor;
 
 public enum TokenType {
 	None,
+	Start,
 	SectionName,
 	YiAnDescription,
 	//NewYiAnDescription,
