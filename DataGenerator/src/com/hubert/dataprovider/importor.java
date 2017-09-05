@@ -20,6 +20,10 @@ public class importor {
 			// com.hubert.dataprovider.parser.LL1.YiAnParser(
 			// "resource/临证指南医案/format_ignore.txt");
 
+			// HerbAliasManager aliasManager = new HerbAliasManager();
+			// aliasManager.load();
+			// HerbAliasManager.getInstance().trace();
+
 			testCase2();
 
 			System.out.println("done");
@@ -70,13 +74,6 @@ public class importor {
 		// Follow(B') = {$}
 		// Follow(C) = {a, $}
 		// Follow(A) = {c, b, a, $}
-
-		// BookGenerator generator = new BookGenerator("临证指南医案");
-		// generator.doImport();
-
-		// HerbAliasManager aliasManager = new HerbAliasManager();
-		// aliasManager.load();
-		// HerbAliasManager.getInstance().trace();
 	}
 
 	public static void testCase2() throws Exception {
@@ -106,6 +103,5 @@ public class importor {
 		com.hubert.dataprovider.parser.LL1.YiAnParser parser2 = new com.hubert.dataprovider.parser.LL1.YiAnParser(
 				terminalSymbols, expressions);
 		parser2.parse(null);
-
 	}
 }
