@@ -5,8 +5,7 @@ import java.util.*;
 import com.hubert.dataprovider.parser.tokenextractor.*;
 
 public class ASTNode {
-	public ASTNode(String tag, Token token){
-		mTag  = tag;
+	public ASTNode(Token token){
 		mToken = token;
 	}
 	
