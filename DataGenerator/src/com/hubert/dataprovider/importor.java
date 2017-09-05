@@ -58,7 +58,7 @@ public class importor {
 		terminalSymbols.add("c");
 		terminalSymbols.add("b");
 
-		com.hubert.dataprovider.parser.LL1.ActionTableBuilder parser2 = new com.hubert.dataprovider.parser.LL1.ActionTableBuilder(
+		com.hubert.dataprovider.parser.LL1.Grammar parser2 = new com.hubert.dataprovider.parser.LL1.Grammar(
 				terminalSymbols, expressions);
 		// 计算结果如下：
 		//
@@ -99,7 +99,7 @@ public class importor {
 		terminalSymbols.add("*");
 		terminalSymbols.add("Empty");
 
-		com.hubert.dataprovider.parser.LL1.ActionTableBuilder parser2 = new com.hubert.dataprovider.parser.LL1.ActionTableBuilder(
+		com.hubert.dataprovider.parser.LL1.Grammar parser2 = new com.hubert.dataprovider.parser.LL1.Grammar(
 				terminalSymbols, expressions);
 	}
 }
