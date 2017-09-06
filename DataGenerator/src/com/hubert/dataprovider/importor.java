@@ -16,9 +16,9 @@ public class importor {
 			// gu_jin_yi_an_an_importer importor = new
 			// gu_jin_yi_an_an_importer();
 			// importor.doImport();
-			// com.hubert.dataprovider.parser.LL1.YiAnParser parser = new
-			// com.hubert.dataprovider.parser.LL1.YiAnParser(
-			// "resource/临证指南医案/format_ignore.txt");
+			 com.hubert.dataprovider.parser.LL1.Grammar parser = new
+			 com.hubert.dataprovider.parser.LL1.Grammar(
+			 "resource/临证指南医案/format_ignore.txt");
 
 			// HerbAliasManager aliasManager = new HerbAliasManager();
 			// aliasManager.load();
