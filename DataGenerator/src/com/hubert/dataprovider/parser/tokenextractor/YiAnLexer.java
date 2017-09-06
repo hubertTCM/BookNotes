@@ -45,6 +45,7 @@ public class YiAnLexer {
 
 			if (!isValid) {
 				System.out.println(" **** Unknow Token: " + line);
+				mTokens.add(new Token(TokenType.LiteralText, line));
 				continue;
 			}
 		}
@@ -54,7 +55,7 @@ public class YiAnLexer {
 
 	private void initTokenExtractors() {
 		mTokenExtractors.add(new IgnoreTokenExtractor());
-		mTokenExtractors.add(new BlankLineTokenExtractor());
+		mTokenExtractors.add(new StartTokenExtractor());
 		mTokenExtractors.add(new YiAnDescriptionExtractor());
 		
 		TagTokenExtractor comment = new TagTokenExtractor(TokenType.SummaryComment);
