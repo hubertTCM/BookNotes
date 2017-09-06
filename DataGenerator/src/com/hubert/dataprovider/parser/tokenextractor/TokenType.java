@@ -16,7 +16,7 @@ public enum TokenType {
 	Unit,
 	HerbComment,
 	SummaryComment,
-	BlankSpace,
+	//BlankSpace,
 	LiteralText,
 	End,
 }

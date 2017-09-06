@@ -32,7 +32,7 @@ public class YiAnLexer {
 				continue;
 			}
 			if (line.isEmpty()) {
-				Token token = new Token(TokenType.BlankSpace, line);
+				Token token = new Token(TokenType.Start, line);
 				tokens.add(token);
 
 				previousToken = null;

@@ -16,15 +16,21 @@ public class importor {
 			// gu_jin_yi_an_an_importer importor = new
 			// gu_jin_yi_an_an_importer();
 			// importor.doImport();
-			 com.hubert.dataprovider.parser.LL1.Grammar parser = new
-			 com.hubert.dataprovider.parser.LL1.Grammar(
-			 "resource/临证指南医案/format_ignore.txt");
+			
+			
+			
+			BookGenerator generator = new BookGenerator("临证指南医案");
+			generator.doImport();
+			
+
+			com.hubert.dataprovider.parser.LL1.Grammar parser = new com.hubert.dataprovider.parser.LL1.Grammar(
+					"resource/临证指南医案/format_ignore.txt");
 
 			// HerbAliasManager aliasManager = new HerbAliasManager();
 			// aliasManager.load();
 			// HerbAliasManager.getInstance().trace();
 
-			testCase2();
+			//testCase2();
 
 			System.out.println("done");
 		} catch (IOException e) {
