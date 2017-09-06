@@ -1,50 +1,56 @@
-// Unknown(FormattedRecipeText): Unknown: Unknown TokenType To Scanner, FormattedRecipeText to parser. Split FormattedRecipeText to Recipe when parsing.
-YNDetail：= Description Unknown(FormattedRecipeText)
-      Description Unknown(FormattedRecipeText) Unknown(RecipeComment)
+// LiteralText(FormattedRecipeText Recipe): LiteralText: Unknown TokenType To Scanner, FormattedRecipeText to parser. Recipe Token parsed as Recipe
+//  Split FormattedRecipeText to Recipe when parsing.
+YNDetail：= Description LiteralText(FormattedRecipeText)
+      Description LiteralText(FormattedRecipeText) LiteralText(RecipeComment)
       Description Abbreviation RecipeContent 
-      Description RecipeHeader Unknown(FormattedRecipeText)   
-      Description RecipeHeader Unknown(FormattedRecipeText) Unknown(RecipeComment)
+      Description RecipeHeader LiteralText(FormattedRecipeText)   
+      Description RecipeHeader LiteralText(FormattedRecipeText) LiteralText(RecipeComment)
       Description RecipeContent
 YNDetail2 := SectionName YNDetail
       
-YN := Description Unknown(FormattedRecipeText) YN
-      Description Unknown(FormattedRecipeText) Unknown(RecipeComment) YN
+YN := Description LiteralText(FormattedRecipeText) YN
+      Description LiteralText(FormattedRecipeText) LiteralText(RecipeComment) YN
       Description Abbreviation RecipeContent YN
-      Description RecipeHeader Unknown(FormattedRecipeText) YN
-      Description RecipeHeader Unknown(FormattedRecipeText) Unknown(RecipeComment) YN
+      Description RecipeHeader LiteralText(FormattedRecipeText) YN
+      Description RecipeHeader LiteralText(FormattedRecipeText) LiteralText(RecipeComment) YN
       YNDetail
 YN2 := SectionName YN
       
 RecipeContent := Herb
                  Herb RecipeContent
          
+// Start of Symbol Map
+FormattedRecipeText := RecipeContent
+LiteralText(FormattedRecipeText) := RecipeContent
+LiteralText(RecipeComment) := RecipeComment
+// End of Symbol Map        
         
 // Start of Grammar 
-YNDetail := Description A
-A := Unknown(FormattedRecipeText) B
-     Abbreviation RecipeContent 
-     RecipeHeader Unknown(FormattedRecipeText) C
-     RecipeContent
-     Empty
-B := Empty
-     Unknown(RecipeComment)
-C := Empty
-     Unknown(RecipeComment)
+YNDetail := Description YNDetailAfterDescriptionCommon
+YNDetailAfterDescriptionCommon := LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterFormattedRecipeText
+                                  Abbreviation RecipeContent 
+                                  RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeHeaderCommon
+                                  RecipeContent
+                                  Empty
+YNDetailAfterDescriptionCommonAfterFormattedRecipeText := Empty
+                                                          LiteralText(RecipeComment)
+YNDetailAfterDescriptionCommonAfterRecipeHeaderCommon := Empty
+                                                         LiteralText(RecipeComment)
 YNDetail2 := SectionName YNDetail
 
-YN := YNDetail D
-D := Empty
-     YNDetail D
-YN2 := YNDetail2 E
-E := Empty
-     YNDetail E
+YN := YNDetail YNAfterYNDetailCommon
+YNAfterYNDetailCommon := Empty
+                         YNDetail YNAfterYNDetailCommon
+YN2 := YNDetail2 YN2AfterYNDetail2Common
+YN2AfterYNDetail2Common := Empty
+                           YNDetail YN2AfterYNDetail2Common
      
 S := YN2
 S := YN
 
-RecipeContent := Herb RecipeContentAlias
-RecipeContentAlias :=  Empty
-                       Herb 
+RecipeContent := Herb RecipeContentAfterHerbCommon
+RecipeContentAfterHerbCommon :=  Empty
+                                 Herb 
      
                  
 // End of Grammar                 

@@ -35,6 +35,14 @@ public class Grammar {
 		return mActionTable;
 	}
 
+	public String getStandardTokenType(String from) {
+		if (mSymbolMap.containsKey(from)) {
+			return mSymbolMap.get(from);
+		}
+		return from;
+	}
+
+	// TODO: Read terminal symbols from config file
 	private void initTerminalSymbols() {
 		mTerminalSymbols.add("Description");
 		mTerminalSymbols.add("Abbreviation");
@@ -44,6 +52,8 @@ public class Grammar {
 
 		mTerminalSymbols.add("Unknown(FormattedRecipeText)");
 		mTerminalSymbols.add("Unknown(RecipeComment)");
+		mTerminalSymbols.add("LiteralText(FormattedRecipeText)");
+		mTerminalSymbols.add("LiteralText(RecipeComment)");
 		mTerminalSymbols.add("SectionName");
 		mTerminalSymbols.add("Empty");
 	}
@@ -57,10 +67,32 @@ public class Grammar {
 	}
 
 	private void initExpressions(List<String> lines) throws Exception {
+		String splitter = ":=";
+
+		boolean isSymbolMapSection = false;
 		boolean isGrammerSection = false;
 		String currentNonterminalSymbol = "";
 		for (String temp : lines) {
 			String line = StringUtils.strip(temp);
+			if (line.isEmpty()) {
+				continue;
+			}
+
+			if (line.startsWith("// Start of Symbol Map")) {
+				isSymbolMapSection = true;
+				continue;
+			}
+
+			if (line.startsWith("// End of Symbol Map")) {
+				isSymbolMapSection = false;
+				continue;
+			}
+
+			if (isSymbolMapSection) {
+				String[] array = line.split(splitter);
+				mSymbolMap.put(array[0], array[1]);
+			}
+
 			if (line.startsWith("// End of Grammar")) {
 				break;
 			}
@@ -69,12 +101,11 @@ public class Grammar {
 				isGrammerSection = true;
 				continue;
 			}
-			if (!isGrammerSection || line.isEmpty()) {
+			if (!isGrammerSection) {
 				continue;
 			}
 			System.out.println(line);
-			String splitter = ":=";
-			int index = line.indexOf(":=");
+			int index = line.indexOf(splitter);
 			String productExpression = line;
 			if (index > 0) {
 				currentNonterminalSymbol = line.substring(0, index);
@@ -301,6 +332,7 @@ public class Grammar {
 	}
 
 	private Set<String> mTerminalSymbols = new HashSet<String>();
+	private Map<String, String> mSymbolMap = new HashMap<String, String>();
 	// S := abc saved as: S => [a, b, c]
 	private Map<String, List<List<String>>> mProduction = new HashMap<String, List<List<String>>>();
 	private Map<String, Set<String>> mFirst = new HashMap<String, Set<String>>();
