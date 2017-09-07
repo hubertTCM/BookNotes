@@ -2,9 +2,9 @@ package com.hubert.dataprovider.parser.tokenextractor;
 
 public enum TokenType {
 	None,
-	Start,
+	S,
 	SectionName,
-	YiAnDescription,
+	Description,
 	//NewYiAnDescription,
 	RecipeHeaderHeader, // RH
 	RecipeAbbreviation,

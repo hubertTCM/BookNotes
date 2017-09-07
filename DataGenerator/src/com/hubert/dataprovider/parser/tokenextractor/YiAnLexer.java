@@ -44,7 +44,7 @@ public class YiAnLexer {
 			}
 
 			if (!isValid) {
-				System.out.println(" **** Unknow Token: " + line);
+				//System.out.println(" **** Unknow Token: " + line);
 				mTokens.add(new Token(TokenType.LiteralText, line));
 				continue;
 			}

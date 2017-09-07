@@ -23,11 +23,11 @@ public class NewYiAnTagExtractor implements ITokenExtractor {
 		}
 		// TODO: add check here
 		if (mParentTokenType == TokenType.None){
-			container.add(new Token(TokenType.YiAnDescription, text));
+			container.add(new Token(TokenType.Description, text));
 			return new Pair<>(true, text);
 		}
 		if (mParentTokenType == TokenType.FormattedRecipeText){
-			container.add(new Token(TokenType.YiAnDescription, tag));
+			container.add(new Token(TokenType.Description, tag));
 			return new Pair<>(true, text.substring(tag.length()));
 		}
 		System.out.println("** invalid token:" + text);

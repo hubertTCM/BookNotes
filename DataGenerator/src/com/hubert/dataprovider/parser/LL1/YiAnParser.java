@@ -7,7 +7,7 @@ import com.hubert.dataprovider.parser.tokenextractor.*;
 //reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
 public class YiAnParser {
 	public YiAnParser(){
-		mTokenExtractor.put("FormattedRecipeText", new FormattedPrescriptionExtractor(new PrescriptionItemTokenExtractor()));
+		mTokenExtractor.put("FormattedRecipeText", new PrescriptionItemTokenExtractor());
 	}
 
 	// （1） 将结束符 $ 和起始符号 S 压入栈中；
@@ -23,7 +23,7 @@ public class YiAnParser {
 		mTokens.addAll(tokens);
 		mGrammar = grammar;
 		mNodeStack.push(new ASTNode(TokenType.End.name(), ""));
-		mRoot = new ASTNode(TokenType.Start.name(), "");
+		mRoot = new ASTNode(TokenType.S.name(), "");
 		mNodeStack.push(mRoot);
 
 		while (mCurrentTokenIndex < mTokens.size()) {
@@ -37,9 +37,33 @@ public class YiAnParser {
 					// TODO:
 					break;
 				}
-				// TODO:
 				match(node, token);
 				mCurrentTokenIndex += 1;
+				continue;
+			}
+
+			if (tokenType == TokenType.LiteralText) {
+				if (!tag.startsWith(tokenType.name())){
+					predict(node, token);
+					continue;
+				}
+				// LiteralText(FormattedRecipeText) => FormattedRecipeText
+				String standardSymbol = mGrammar.getStandardSymbol(tag);
+				mTokens.remove(mCurrentTokenIndex);
+				if (mTokenExtractor.containsKey(standardSymbol)) {
+					ArrayList<Token> temp = new ArrayList<Token>();
+					mTokenExtractor.get(standardSymbol).extract(token.getValue(), temp);
+					mTokens.addAll(mCurrentTokenIndex, temp);
+				}
+				else{
+					mTokens.add(mCurrentTokenIndex, new Token(TokenType.valueOf(standardSymbol), token.getValue()));
+				}
+				// FormattedRecipeText => RecipeContent
+				standardSymbol = mGrammar.getStandardSymbol(standardSymbol);
+				ASTNode tempNode = new ASTNode(standardSymbol);
+				ASTNode parent = node.getParent();
+				parent.replaceChild(node, tempNode);
+				mNodeStack.push(tempNode);
 				continue;
 			}
 
@@ -47,36 +71,29 @@ public class YiAnParser {
 				throw new Exception(
 						"Invalid tokenType:" + tokenType.name() + " expect:" + tag + " value:" + token.getValue());
 			}
-
-			if (tokenType == TokenType.LiteralText) {
-				// LiteralText(FormattedRecipeText) => FormattedRecipeText
-				String standardSymbol = mGrammar.getStandardSymbol(tag);
-				if (mTokenExtractor.containsKey(standardSymbol)) {
-					ArrayList<Token> temp = new ArrayList<Token>();
-					mTokenExtractor.get(standardSymbol).extract(token.getValue(), temp);
-					mTokens.addAll(mCurrentTokenIndex, temp);
-				}
-				// FormattedRecipeText => RecipeContent
-				standardSymbol = mGrammar.getStandardSymbol(standardSymbol);
-				ASTNode tempNode = new ASTNode(standardSymbol);
-				node.getParent().replaceChild(node, tempNode);
-				continue;
-			}
-
-			List<String> action = mGrammar.getAction(tag, tokenType.name());
-			if (action == null) {
-				throw new Exception(
-						"Invalid tokenType:" + tokenType.name() + " tag:" + tag + " value:" + token.getValue());
-			}
 			
-			for(int i = action.size() - 1; i >= 0; --i){
-				mNodeStack.push(new ASTNode(action.get(i)));	
-			}
+			predict(node, token);
 		}
 	}
 
 	private void match(ASTNode node, Token token) {
 		node.setValue(token.getValue());
+	}
+	
+	private void predict(ASTNode node, Token token) throws Exception{
+		TokenType tokenType = token.getType();
+		String tag = node.getTag();
+		List<String> action = mGrammar.getAction(tag, tokenType.name());
+		if (action == null) {
+			throw new Exception(
+					"Invalid tokenType:" + tokenType.name() + " tag:" + tag + " value:" + token.getValue());
+		}
+		
+		for(int i = action.size() - 1; i >= 0; --i){
+			ASTNode child = new ASTNode(action.get(i));
+			node.addChild(child);
+			mNodeStack.push(child);	
+		}
 	}
 
 	private int mCurrentTokenIndex = 0;

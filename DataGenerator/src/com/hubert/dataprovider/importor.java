@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.hubert.dal.DbBuilder;
+import com.hubert.dataprovider.parser.tokenextractor.*;
 
 public class importor {
 
@@ -23,14 +24,12 @@ public class importor {
 			generator.doImport();
 			
 
-			com.hubert.dataprovider.parser.LL1.Grammar parser = new com.hubert.dataprovider.parser.LL1.Grammar(
-					"resource/临证指南医案/format_ignore.txt");
-
+			testCase1ParseYiAn();
 			// HerbAliasManager aliasManager = new HerbAliasManager();
 			// aliasManager.load();
 			// HerbAliasManager.getInstance().trace();
 
-			//testCase2();
+			testCase2();
 
 			System.out.println("done");
 		} catch (IOException e) {
@@ -107,5 +106,21 @@ public class importor {
 
 		com.hubert.dataprovider.parser.LL1.Grammar parser2 = new com.hubert.dataprovider.parser.LL1.Grammar(
 				terminalSymbols, expressions);
+	}
+	
+	public static void testCase1ParseYiAn() throws Exception{
+		
+		// ***
+		// 描述 阳挟内风上巅，目昏耳鸣不寐，肝经主病。
+		// 处方 熟地（炙） 炙龟甲 萸肉 五味 磁石 茯苓 旱莲草 女贞子
+		ArrayList<Token> tokens = new ArrayList<Token>();
+		tokens.add(new Token(TokenType.Description, "阳挟内风上巅，目昏耳鸣不寐，肝经主病。"));
+		tokens.add(new Token(TokenType.LiteralText, "熟地（炙） 炙龟甲 萸肉 五味 磁石 茯苓 旱莲草 女贞子"));
+		tokens.add(new Token(TokenType.End));
+
+		com.hubert.dataprovider.parser.LL1.Grammar grammar = new com.hubert.dataprovider.parser.LL1.Grammar(
+				"resource/临证指南医案/format_ignore.txt");
+		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
+		parser.parse(grammar, tokens);
 	}
 }

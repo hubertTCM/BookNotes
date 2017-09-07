@@ -10,19 +10,11 @@ import org.apache.commons.lang3.*;
 public class ActionTable {
 
 	public void addAction(String symbol, String input, List<String> production) throws Exception {
-		String key = getActionKey(symbol, input);
-		if (mMoveAction.containsKey(key)) {
-			List<String> existingValue = mMoveAction.get(key);
-
-			if (existingValue.size() == production.size() && existingValue.containsAll(production)) {
-				return;
-			}
-
-			throw new Exception("Not LL(1) grammar " + key + " => " + convert(existingValue) + "; " + key + " => "
-					+ convert(production));
+		addActionInternal(symbol, input, production);
+		int index = input.indexOf("(");
+		if (index > 0){
+			addActionInternal(symbol, input.substring(0, index), production);
 		}
-		mMoveAction.put(key, production);
-		return;
 	}
 
 	public List<String> getAction(String symbol, String input) {
@@ -43,6 +35,22 @@ public class ActionTable {
 			System.out.print(" \n");
 		}
 
+	}
+
+	private void addActionInternal(String symbol, String input, List<String> production) throws Exception {
+		String key = getActionKey(symbol, input);
+		if (mMoveAction.containsKey(key)) {
+			List<String> existingValue = mMoveAction.get(key);
+
+			if (existingValue.size() == production.size() && existingValue.containsAll(production)) {
+				return;
+			}
+
+			throw new Exception("Not LL(1) grammar " + key + " => " + convert(existingValue) + "; " + key + " => "
+					+ convert(production));
+		}
+		mMoveAction.put(key, production);
+		return;
 	}
 
 	private String convert(List<String> source) {

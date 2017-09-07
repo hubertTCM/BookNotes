@@ -32,7 +32,7 @@ public class YiAnLexer {
 				continue;
 			}
 			if (line.isEmpty()) {
-				Token token = new Token(TokenType.Start, line);
+				Token token = new Token(TokenType.S, line);
 				tokens.add(token);
 
 				previousToken = null;
@@ -51,7 +51,7 @@ public class YiAnLexer {
 					tokens.add(new Token(TokenType.SectionName, sectionName));
 				}
 
-				Token token = new Token(TokenType.YiAnDescription, pair.getLeft());
+				Token token = new Token(TokenType.Description, pair.getLeft());
 				tokens.add(token);
 
 				previousToken = token;
@@ -73,7 +73,7 @@ public class YiAnLexer {
 			if (line.startsWith("[format]")) {
 				ImmutablePair<String, Boolean> pair = splitPrescriptionDescription(line);
 				if (pair.getRight()) {
-					tokens.add(new Token(TokenType.YiAnDescription, ""));
+					tokens.add(new Token(TokenType.Description, ""));
 				}
 				tokens.add(new Token(TokenType.FormattedRecipeText, pair.getLeft()));
 				continue;
@@ -86,11 +86,11 @@ public class YiAnLexer {
 			}
 
 			if (line.startsWith("又")) {
-				tokens.add(new Token(TokenType.YiAnDescription, line));
+				tokens.add(new Token(TokenType.Description, line));
 				continue;
 			}
 
-			if (previousToken.getType() == TokenType.YiAnDescription
+			if (previousToken.getType() == TokenType.Description
 					|| previousToken.getType() == TokenType.RecipeHeaderHeader) {
 				tokens.add(new Token(TokenType.FormattedRecipeText, line));
 				continue;
