@@ -94,7 +94,7 @@ public class Grammar {
 
 			if (isSymbolMapSection) {
 				String[] array = line.split(splitter);
-				mSymbolMap.put(array[0], array[1]);
+				mSymbolMap.put(StringUtils.strip(array[0]), StringUtils.strip(array[1]));
 			}
 
 			if (line.startsWith("// End of Grammar")) {

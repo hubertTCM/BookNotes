@@ -30,8 +30,9 @@ YNDetail := Description YNDetailAfterDescriptionCommon
 YNDetailAfterDescriptionCommon := LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterFormattedRecipeText
                                   Abbreviation RecipeContent 
                                   RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeHeaderCommon
-                                  RecipeContent
+                                  RecipeContent YNDetailAfterDescriptionCommonAfterFormattedRecipeText
                                   Empty
+         
 YNDetailAfterDescriptionCommonAfterFormattedRecipeText := Empty
                                                           LiteralText(RecipeComment)
 YNDetailAfterDescriptionCommonAfterRecipeHeaderCommon := Empty
@@ -50,7 +51,7 @@ S := YN
 
 RecipeContent := Herb RecipeContentAfterHerbCommon
 RecipeContentAfterHerbCommon :=  Empty
-                                 Herb 
+                                 Herb RecipeContentAfterHerbCommon
      
                  
 // End of Grammar                 

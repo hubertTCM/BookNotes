@@ -1,6 +1,10 @@
 package com.hubert.dataprovider.parser.tokenextractor;
 
 public class Token {
+	public Token(TokenType type) {
+		this(type, "");
+	}
+
 	public Token(TokenType type, String value) {
 		mType = type;
 		mValue = value;

@@ -21,7 +21,7 @@ public class StartTokenExtractor implements ITokenExtractor {
 
 
 
-		container.add(new Token(TokenType.Start, text));
+		container.add(new Token(TokenType.S, text));
 		return new Pair<>(true, text);
 	}
 
