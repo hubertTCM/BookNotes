@@ -29,13 +29,22 @@ public class ASTNode {
 	public ASTNode getParent(){
 		return mParent;
 	}
-
-	public void addChild(ASTNode child) {
-		mChildren.add(child);
+	
+	public int getChildCount(){
+		return mChildren.size();
+	}
+	
+	public void addChild(int index, ASTNode child){
+		mChildren.add(index, child);
 		if (child.mParent != null) {
 			// TODO:
 		}
 		child.mParent = this;
+	}
+
+	public void addChild(ASTNode child) {
+		int index  = mChildren.size();
+		addChild(index, child);
 	}
 
 	public boolean replaceChild(ASTNode oldNode, ASTNode newNode) {

@@ -22,18 +22,25 @@ public class YiAnParser {
 	public void parse(Grammar grammar, List<Token> tokens) throws Exception {
 		mTokens.addAll(tokens);
 		mGrammar = grammar;
-		mNodeStack.push(new ASTNode(TokenType.End.name(), ""));
-		mRoot = new ASTNode(TokenType.S.name(), "");
+		mNodeStack.push(new ASTNode(Constants.End));
+		mRoot = new ASTNode(TokenType.S.name());
 		mNodeStack.push(mRoot);
 
 		while (mCurrentTokenIndex < mTokens.size()) {
-			Token token = mTokens.get(mCurrentTokenIndex);
 			ASTNode node = mNodeStack.pop();
 			String tag = node.getTag();
-			TokenType tokenType = token.getType();
+			if(tag.equals(Constants.Empty)){
+				continue;
+			}
 
-			if (tag.equals(tokenType.name())) {
-				if (tokenType == TokenType.End) {
+			Token token = mTokens.get(mCurrentTokenIndex);
+			String tokenType = token.getType().name();
+			if (token.getType() == TokenType.End){
+				tokenType = Constants.End;
+			}
+
+			if (tag.equals(tokenType)) {
+				if (tokenType.equals(Constants.End)) {
 					// TODO:
 					break;
 				}
@@ -42,8 +49,8 @@ public class YiAnParser {
 				continue;
 			}
 
-			if (tokenType == TokenType.LiteralText) {
-				if (!tag.startsWith(tokenType.name())){
+			if (tokenType.equals(TokenType.LiteralText.name())) {
+				if (!tag.startsWith(tokenType)){
 					predict(node, token);
 					continue;
 				}
@@ -69,7 +76,7 @@ public class YiAnParser {
 
 			if (mGrammar.getIsTerminalSymbol(tag)) {
 				throw new Exception(
-						"Invalid tokenType:" + tokenType.name() + " expect:" + tag + " value:" + token.getValue());
+						"Invalid tokenType:" + tokenType + " expect:" + tag + " value:" + token.getValue());
 			}
 			
 			predict(node, token);
@@ -81,17 +88,21 @@ public class YiAnParser {
 	}
 	
 	private void predict(ASTNode node, Token token) throws Exception{
-		TokenType tokenType = token.getType();
+		String tokenType = token.getType().name();
+		if (token.getType() == TokenType.End){
+			tokenType = Constants.End;
+		}
 		String tag = node.getTag();
-		List<String> action = mGrammar.getAction(tag, tokenType.name());
+		List<String> action = mGrammar.getAction(tag, tokenType);
 		if (action == null) {
 			throw new Exception(
-					"Invalid tokenType:" + tokenType.name() + " tag:" + tag + " value:" + token.getValue());
+					"Invalid tokenType:" + tokenType + " tag:" + tag + " value:" + token.getValue());
 		}
-		
+
+		int index = node.getChildCount();
 		for(int i = action.size() - 1; i >= 0; --i){
 			ASTNode child = new ASTNode(action.get(i));
-			node.addChild(child);
+			node.addChild(index, child);
 			mNodeStack.push(child);	
 		}
 	}
