@@ -21,7 +21,7 @@ RecipeContent := Herb
          
 // Start of Symbol Map
 FormattedRecipeText := RecipeContent
-LiteralText(FormattedRecipeText) := RecipeContent
+LiteralText(FormattedRecipeText) := FormattedRecipeText
 LiteralText(RecipeComment) := RecipeComment
 // End of Symbol Map        
         

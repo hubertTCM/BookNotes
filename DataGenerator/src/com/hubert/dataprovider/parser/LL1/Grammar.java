@@ -31,15 +31,19 @@ public class Grammar {
 		initExpressions(temp);
 	}
 
-	public ActionTable getActionTable() {
-		return mActionTable;
+	public List<String> getAction(String symbol, String input) {
+		return mActionTable.getAction(symbol, input);
 	}
 
-	public String getStandardTokenType(String from) {
+	public String getStandardSymbol(String from) {
 		if (mSymbolMap.containsKey(from)) {
 			return mSymbolMap.get(from);
 		}
 		return from;
+	}
+	
+	public boolean getIsTerminalSymbol(String symbol){
+		return mTerminalSymbols.contains(symbol);
 	}
 
 	// TODO: Read terminal symbols from config file
