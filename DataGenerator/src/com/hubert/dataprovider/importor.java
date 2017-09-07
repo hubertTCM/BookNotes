@@ -122,5 +122,6 @@ public class importor {
 				"resource/临证指南医案/format_ignore.txt");
 		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
 		parser.parse(grammar, tokens);
+		System.out.println("TODO: write vistor to print the ASTNode");
 	}
 }
