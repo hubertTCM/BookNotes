@@ -41,6 +41,13 @@ public class ASTNode {
 		}
 		child.mParent = this;
 	}
+	
+	public void remove(){
+		if (mParent == null){
+			return;
+		}
+		mParent.mChildren.remove(this);
+	}
 
 	public void addChild(ASTNode child) {
 		int index  = mChildren.size();
