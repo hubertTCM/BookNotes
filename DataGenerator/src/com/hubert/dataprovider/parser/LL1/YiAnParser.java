@@ -30,6 +30,7 @@ public class YiAnParser {
 			ASTNode node = mNodeStack.pop();
 			String tag = node.getTag();
 			if(tag.equals(Constants.Empty)){
+				node.remove();
 				continue;
 			}
 
