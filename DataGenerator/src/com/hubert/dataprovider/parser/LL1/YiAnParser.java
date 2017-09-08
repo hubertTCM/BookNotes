@@ -2,6 +2,7 @@ package com.hubert.dataprovider.parser.LL1;
 
 import java.util.*;
 
+import com.hubert.dataprovider.parser.AST.ASTNode;
 import com.hubert.dataprovider.parser.tokenextractor.*;
 
 //reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
@@ -19,7 +20,7 @@ public class YiAnParser {
 	// 			情况 C1 ： M[X, a] = “X -> u”，执行 Predict 动作，将 X 出栈，压入 u ，转到（3）；
 	// 			情况 C2 ： M[X, a] 未定义，输入不合语法，终止解析；
 	// 		情况 D ： X != a 且 X 是终结符，输入不合语法，终止解析。
-	public void parse(Grammar grammar, List<Token> tokens) throws Exception {
+	public ASTNode parse(Grammar grammar, List<Token> tokens) throws Exception {
 		mTokens.addAll(tokens);
 		mGrammar = grammar;
 		mNodeStack.push(new ASTNode(Constants.End));
@@ -78,6 +79,7 @@ public class YiAnParser {
 			
 			predict(node, token);
 		}
+		return mRoot;
 	}
 
 	private void match(ASTNode node, Token token) {

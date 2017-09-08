@@ -1,4 +1,4 @@
-package com.hubert.dataprovider.parser.LL1;
+package com.hubert.dataprovider.parser.AST;
 
 import java.util.*;
 
@@ -34,6 +34,11 @@ public class ASTNode {
 		return mChildren.size();
 	}
 	
+	// better to 
+	public ASTNode getChild(int index){
+		return mChildren.get(index);
+	}
+	
 	public void addChild(int index, ASTNode child){
 		mChildren.add(index, child);
 		if (child.mParent != null) {
@@ -41,17 +46,17 @@ public class ASTNode {
 		}
 		child.mParent = this;
 	}
+
+	public void addChild(ASTNode child) {
+		int index  = mChildren.size();
+		addChild(index, child);
+	}
 	
 	public void remove(){
 		if (mParent == null){
 			return;
 		}
 		mParent.mChildren.remove(this);
-	}
-
-	public void addChild(ASTNode child) {
-		int index  = mChildren.size();
-		addChild(index, child);
 	}
 
 	public boolean replaceChild(ASTNode oldNode, ASTNode newNode) {
@@ -68,6 +73,10 @@ public class ASTNode {
 		newNode.mParent = this;
 		mChildren.add(index, newNode);
 		return true;
+	}
+	
+	public void accept(IVisitor visitor){
+		visitor.visit(this);
 	}
 
 	private String mTag;
