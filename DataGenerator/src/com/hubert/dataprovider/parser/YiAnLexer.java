@@ -61,7 +61,7 @@ public class YiAnLexer {
 			previousToken = tokens.get(tokens.size() - 1);
 
 			if (line.startsWith("[RH]")) {
-				tokens.add(new Token(TokenType.RecipeHeaderHeader, line));
+				tokens.add(new Token(TokenType.RecipeHeader, line));
 				continue;
 			}
 
@@ -91,7 +91,7 @@ public class YiAnLexer {
 			}
 
 			if (previousToken.getType() == TokenType.Description
-					|| previousToken.getType() == TokenType.RecipeHeaderHeader) {
+					|| previousToken.getType() == TokenType.RecipeHeader) {
 				tokens.add(new Token(TokenType.FormattedRecipeText, line));
 				continue;
 			}
