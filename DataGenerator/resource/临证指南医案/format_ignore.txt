@@ -18,6 +18,19 @@ YN2 := SectionName YN
       
 RecipeContent := Herb
                  Herb RecipeContent
+
+// Start of Terminal Symbol
+Description
+RecipeAbbreviation
+RecipeHeader
+RecipeComment
+Herb
+
+LiteralText(FormattedRecipeText)
+LiteralText(RecipeComment)
+SectionName
+Empty
+// End of Terminal Symbol
          
 // Start of Symbol Map
 FormattedRecipeText := RecipeContent
@@ -28,7 +41,7 @@ LiteralText(RecipeComment) := RecipeComment
 // Start of Grammar 
 YNDetail := Description YNDetailAfterDescriptionCommon
 YNDetailAfterDescriptionCommon := LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterFormattedRecipeText
-                                  Abbreviation RecipeContent 
+                                  RecipeAbbreviation RecipeContent 
                                   RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeHeaderCommon
                                   RecipeContent YNDetailAfterDescriptionCommonAfterFormattedRecipeText
                                   Empty
