@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.hubert.dal.DbBuilder;
+import com.hubert.dataprovider.parser.AST.*;
 import com.hubert.dataprovider.parser.tokenextractor.*;
 
 public class importor {
@@ -121,7 +122,9 @@ public class importor {
 		com.hubert.dataprovider.parser.LL1.Grammar grammar = new com.hubert.dataprovider.parser.LL1.Grammar(
 				"resource/临证指南医案/format_ignore.txt");
 		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
-		parser.parse(grammar, tokens);
+		ASTNode node = parser.parse(grammar, tokens);
+		LogVisitor visitor = new LogVisitor("resource/临证指南医案/ASTNode_ignore.text");
+		node.accept(visitor);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
 }
