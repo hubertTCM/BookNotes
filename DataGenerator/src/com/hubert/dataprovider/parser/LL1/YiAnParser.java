@@ -95,7 +95,7 @@ public class YiAnParser {
 					"Invalid tokenType:" + tokenType + " tag:" + tag + " value:" + token.getValue());
 		}
 
-		int index = node.getChildCount();
+		int index = node.childCount();
 		for(int i = action.size() - 1; i >= 0; --i){
 			ASTNode child = new ASTNode(action.get(i));
 			node.addChild(index, child);

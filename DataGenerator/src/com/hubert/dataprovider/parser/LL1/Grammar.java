@@ -119,6 +119,9 @@ public class Grammar {
 			if (!isGrammerSection) {
 				continue;
 			}
+			if (line.startsWith("//")){
+				continue;
+			}
 			System.out.println(line);
 			int index = line.indexOf(splitter);
 			String productExpression = line;

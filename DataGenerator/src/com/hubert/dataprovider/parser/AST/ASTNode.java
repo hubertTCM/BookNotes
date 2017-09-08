@@ -26,11 +26,15 @@ public class ASTNode {
 		mValue = value;
 	}
 	
+	public boolean isEmpty(){
+		return (mValue == null || mValue.equals("")) && mChildren.isEmpty();
+	}
+	
 	public ASTNode getParent(){
 		return mParent;
 	}
 	
-	public int getChildCount(){
+	public int childCount(){
 		return mChildren.size();
 	}
 	
@@ -57,6 +61,7 @@ public class ASTNode {
 			return;
 		}
 		mParent.mChildren.remove(this);
+		mParent = null;
 	}
 
 	public boolean replaceChild(ASTNode oldNode, ASTNode newNode) {
