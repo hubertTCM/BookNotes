@@ -5,8 +5,7 @@ public enum TokenType {
 	S,
 	SectionName,
 	Description,
-	//NewYiAnDescription,
-	RecipeHeaderHeader, // RH
+	RecipeHeader, 
 	RecipeAbbreviation,
 	FormattedRecipeText,
 	RecipeComment,

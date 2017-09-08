@@ -11,8 +11,6 @@ public class PrescriptionTokenExtractor implements ITokenExtractor {
 
 	@Override
 	public Pair<Boolean, String> extract(String text, List<Token> container) {
-		Token previousToken = null;
-
 		// （丸方） 人参（二两） 茯苓（三两，生） 盐水炒黄连（五钱） 半夏（醋炒，水洗净，一两半） ....
 		String tag = "（丸方）";
 		if (text.startsWith(tag)) {
@@ -21,22 +19,6 @@ public class PrescriptionTokenExtractor implements ITokenExtractor {
 			mPrescriptionItemExtractor.extract(source, container);
 			return new Pair<>(true, "");
 		}
-
-//		// 人参 茯苓 白蒺藜 炒半夏 炒杞子 甘菊
-//		if (previousToken.getType() == TokenType.YiAnDescription
-//				// || previousToken.getType() == TokenType.NewYiAnDescription
-//				|| previousToken.getType() == TokenType.RecipeHeaderHeader) {
-//			container.add(new Token(TokenType.FormattedRecipeText, text));
-//			mPrescriptionItemExtractor.extract(text, container);
-//			return new Pair<>(true, "");
-//		}
-
-//		// 上午服。
-//		// if (previousToken.getType() == TokenType.PrescriptionFormatted) {
-//		if (isHerb(previousToken)) {
-//			container.add(new Token(TokenType.RecipeComment, text));
-//			return new Pair<>(true, "");
-//		}
 		return null;
 	}
 

@@ -55,7 +55,6 @@ public class YiAnLexer {
 
 	private void initTokenExtractors() {
 		mTokenExtractors.add(new IgnoreTokenExtractor());
-		mTokenExtractors.add(new StartTokenExtractor());
 		mTokenExtractors.add(new YiAnDescriptionExtractor());
 		
 		TagTokenExtractor comment = new TagTokenExtractor(TokenType.SummaryComment);
@@ -67,7 +66,7 @@ public class YiAnLexer {
 		abbreviation.registerTag("[abbr]");
 		mTokenExtractors.add(abbreviation);
 
-		TagTokenExtractor prescriptionHeader = new TagTokenExtractor(TokenType.RecipeHeaderHeader);
+		TagTokenExtractor prescriptionHeader = new TagTokenExtractor(TokenType.RecipeHeader);
 		prescriptionHeader.registerTag("[RH]");
 		mTokenExtractors.add(prescriptionHeader);
 
