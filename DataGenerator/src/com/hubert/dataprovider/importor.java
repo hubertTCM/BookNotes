@@ -26,6 +26,7 @@ public class importor {
 			testCase2ParseYiAn();
 			testCase3ParseYiAn();
 			testCase4ParseYiAn();
+			testCase5ParseYiAn();
 			// HerbAliasManager aliasManager = new HerbAliasManager();
 			// aliasManager.load();
 			// HerbAliasManager.getInstance().trace();
@@ -227,4 +228,25 @@ public class importor {
 		node.accept(visitor);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
+
+	public static void testCase5ParseYiAn() throws Exception {
+		ArrayList<Token> tokens = new ArrayList<Token>();
+		tokens.add(new Token(TokenType.Description, "阳挟内风上巅，目昏耳鸣不寐，肝经主病。"));
+		tokens.add(new Token(TokenType.LiteralText, "熟地（炙）"));
+		tokens.add(new Token(TokenType.End));
+		tokens.add(new Token(TokenType.Description, "曾（五二）脉弦动，眩晕耳聋，行走气促无力，肛痔下垂。此未老欲衰，肾阴弱，收纳无权，肝阳炽，虚风蒙窍......."));
+		tokens.add(new Token(TokenType.Herb, "黄柏"));
+		tokens.add(new Token(TokenType.Herb, "龟板"));
+		tokens.add(new Token(TokenType.End));
+
+		com.hubert.dataprovider.parser.LL1.Grammar grammar = new com.hubert.dataprovider.parser.LL1.Grammar(
+				"resource/临证指南医案/format_ignore.txt");
+		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
+		ASTNode node = parser.parse(grammar, tokens);
+		LogVisitor visitor = new LogVisitor("resource/临证指南医案/ASTNode_case5_ignore.text");
+		node.accept(visitor);
+		System.out.println("TODO: write vistor to print the ASTNode");
+	}
+
+
 }
