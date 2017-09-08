@@ -15,7 +15,7 @@ import com.hubert.dataprovider.parser.tokenextractor.*;
 // reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
 public class Grammar {
 	public Grammar(String grammarFile) throws Exception {
-		initTerminalSymbols();
+		//initTerminalSymbols();
 
 		initGrammar(grammarFile);
 	}
@@ -54,8 +54,6 @@ public class Grammar {
 		mTerminalSymbols.add("RecipeComment");
 		mTerminalSymbols.add("Herb");
 
-		mTerminalSymbols.add("Unknown(FormattedRecipeText)");
-		mTerminalSymbols.add("Unknown(RecipeComment)");
 		mTerminalSymbols.add("LiteralText(FormattedRecipeText)");
 		mTerminalSymbols.add("LiteralText(RecipeComment)");
 		mTerminalSymbols.add("SectionName");
@@ -73,6 +71,7 @@ public class Grammar {
 	private void initExpressions(List<String> lines) throws Exception {
 		String splitter = ":=";
 
+		boolean isTerminalSymbolSection = false;
 		boolean isSymbolMapSection = false;
 		boolean isGrammerSection = false;
 		String currentNonterminalSymbol = "";
@@ -80,6 +79,18 @@ public class Grammar {
 			String line = StringUtils.strip(temp);
 			if (line.isEmpty()) {
 				continue;
+			}
+			
+			if (line.startsWith("// Start of Terminal Symbol")){
+				isTerminalSymbolSection = true;
+				continue;
+			}
+			if (line.startsWith("// End of Terminal Symbol")){
+				isTerminalSymbolSection = false;
+				continue;
+			}
+			if (isTerminalSymbolSection){
+				mTerminalSymbols.add(line);
 			}
 
 			if (line.startsWith("// Start of Symbol Map")) {
