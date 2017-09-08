@@ -29,13 +29,13 @@ public class LogVisitor implements IVisitor {
 		mFileWriter.write(prefix + "{tag:'" + node.getTag() + "',\n");
 		mFileWriter.write(prefix + " value:'" + node.getValue() + "',\n");
 
-		int childrenCount = node.getChildCount();
+		int childrenCount = node.childCount();
 		if (childrenCount == 0) {
 			mFileWriter.write(prefix + " children: []\n");
 		} else {
 			mFileWriter.write(prefix + " children: [\n");
 			mIndent += 1;
-			for (int i = 0; i < node.getChildCount(); ++i) {
+			for (int i = 0; i < node.childCount(); ++i) {
 				node.getChild(i).accept(this);
 			}
 			mFileWriter.write(prefix + "    ]\n");

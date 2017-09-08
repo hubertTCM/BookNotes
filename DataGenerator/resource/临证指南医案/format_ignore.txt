@@ -40,14 +40,22 @@ LiteralText(RecipeComment) := RecipeComment
         
 // Start of Grammar 
 YNDetail := Description YNDetailAfterDescriptionCommon
-YNDetailAfterDescriptionCommon := LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterFormattedRecipeText
-                                  RecipeAbbreviation RecipeContent 
-                                  RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeHeaderCommon
-                                  RecipeContent YNDetailAfterDescriptionCommonAfterFormattedRecipeText
+//YNDetailAfterDescriptionCommon := LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterFormattedRecipeText
+YNDetailAfterDescriptionCommon := LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
+                                  //RecipeAbbreviation RecipeContent
+                                  RecipeAbbreviation RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
+                                  //RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeHeaderCommon
+                                  RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
+                                  //RecipeContent YNDetailAfterDescriptionCommonAfterFormattedRecipeText
+                                  RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
                                   Empty
-         
-YNDetailAfterDescriptionCommonAfterFormattedRecipeText := Empty
-                                                          LiteralText(RecipeComment)
+YNDetailAfterDescriptionCommonAfterRecipeContentComon := Empty
+                                                         LiteralText(RecipeComment) AfterRecipeCommentCommon
+AfterRecipeCommentCommon := Empty
+							RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
+                                           
+//YNDetailAfterDescriptionCommonAfterFormattedRecipeText := Empty
+//                                                          LiteralText(RecipeComment)
 YNDetailAfterDescriptionCommonAfterRecipeHeaderCommon := Empty
                                                          LiteralText(RecipeComment)
 YNDetail2 := SectionName YNDetail
