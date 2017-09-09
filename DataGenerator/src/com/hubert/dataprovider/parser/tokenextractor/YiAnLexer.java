@@ -21,7 +21,7 @@ public class YiAnLexer {
 		initTokenExtractors();
 	}
 
-	public Collection<Token> parse() throws IOException {
+	public List<Token> parse() throws IOException {
 		mTokens = new ArrayList<Token>();
 
 		Path filePath = Paths.get(mFullPath);
@@ -30,6 +30,12 @@ public class YiAnLexer {
 
 		for (String temp : lines) {
 			String line = StringUtils.trim(temp);
+			if (line.isEmpty()){
+				if (!mTokens.isEmpty()){
+					mTokens.add(new Token(TokenType.End));
+				}
+				continue;
+			}
 
 			boolean isValid = false;
 			for (ITokenExtractor extractor : mTokenExtractors) {

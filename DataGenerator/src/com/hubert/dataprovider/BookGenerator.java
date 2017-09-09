@@ -1,6 +1,7 @@
 package com.hubert.dataprovider;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -13,17 +14,22 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.parser.*;
+import com.hubert.dataprovider.parser.AST.*;
+import com.hubert.dataprovider.parser.LL1.*;
+import com.hubert.dataprovider.parser.tokenextractor.*;
 
 public class BookGenerator {
 
-	public BookGenerator(String name) {
-		mBookDirectory = new File("resource/" + name);
+	public BookGenerator(String grammarFilePath, String bookName) throws Exception {
+		mBookDirectory = new File("resource/" + bookName);
 		mBook = new BookEntity();
-		mBook.name = name;
+		mBook.name = bookName;
 		mBook.sections = new ArrayList<SectionEntity>();
 
 		// TODO: requires better design here.
 		mYiAnParser = new YiAnParser();
+		
+		mGrammar = new Grammar(grammarFilePath);
 	}
 
 	public void doImport() {
@@ -37,10 +43,13 @@ public class BookGenerator {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
-	private void loadSections(SectionEntity parent, File directory) throws IOException {
+	private void loadSections(SectionEntity parent, File directory) throws Exception {
 
 		File[] files = directory.listFiles();
 		Arrays.sort(files);
@@ -68,10 +77,23 @@ public class BookGenerator {
 		}
 	}
 
-	private void loadBlocks(SectionEntity parent, File file) throws IOException {
+	private void loadBlocks(SectionEntity parent, File file) throws Exception {
+		String filePath = file.getAbsolutePath();
 		com.hubert.dataprovider.parser.tokenextractor.YiAnLexer lexer = 
-				new com.hubert.dataprovider.parser.tokenextractor.YiAnLexer(file.getAbsolutePath());
-		lexer.parse();
+				new com.hubert.dataprovider.parser.tokenextractor.YiAnLexer(filePath);
+		List<Token> tokens = lexer.parse();
+
+		String tokenFilePath = "resource/debug/" + file.getName() + "_token.text";
+		FileWriter writer = new FileWriter(tokenFilePath);
+		for(Token token : tokens){
+			writer.write(token.getType() + ":" + token.getValue() + "\n");
+		}
+		writer.close();
+		com.hubert.dataprovider.parser.LL1.YiAnParser parser = 
+				new com.hubert.dataprovider.parser.LL1.YiAnParser();
+		ASTNode node = parser.parse(mGrammar, tokens);
+		LogVisitor visitor  = new LogVisitor("resource/debug/" + file.getName()  + "_AST.json");
+		node.accept(visitor);
 		return;
 
 		// Path filePath = Paths.get(file.getAbsolutePath());
@@ -122,6 +144,7 @@ public class BookGenerator {
 	}
 
 	protected File mBookDirectory;
+	protected Grammar mGrammar;
 	protected BookEntity mBook;
 	protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
 

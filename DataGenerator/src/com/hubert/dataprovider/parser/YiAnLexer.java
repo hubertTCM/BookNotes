@@ -32,7 +32,7 @@ public class YiAnLexer {
 				continue;
 			}
 			if (line.isEmpty()) {
-				Token token = new Token(TokenType.S, line);
+				Token token = new Token(TokenType.End, line);
 				tokens.add(token);
 
 				previousToken = null;
@@ -90,16 +90,16 @@ public class YiAnLexer {
 				continue;
 			}
 
-			if (previousToken.getType() == TokenType.Description
-					|| previousToken.getType() == TokenType.RecipeHeader) {
-				tokens.add(new Token(TokenType.FormattedRecipeText, line));
-				continue;
-			}
-
-			if (previousToken.getType() == TokenType.FormattedRecipeText) {
-				tokens.add(new Token(TokenType.RecipeComment, line));
-				continue;
-			}
+//			if (previousToken.getType() == TokenType.Description
+//					|| previousToken.getType() == TokenType.RecipeHeader) {
+//				tokens.add(new Token(TokenType.FormattedRecipeText, line));
+//				continue;
+//			}
+//
+//			if (previousToken.getType() == TokenType.FormattedRecipeText) {
+//				tokens.add(new Token(TokenType.RecipeComment, line));
+//				continue;
+//			}
 
 			// #error:
 			System.out.println(" **** Unknow Token: " + line);
