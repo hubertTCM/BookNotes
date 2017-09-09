@@ -20,29 +20,38 @@ public class LogVisitor implements IVisitor {
 	private void visitCore(ASTNode node) throws IOException {
 		if (node.getParent() == null) {
 			open();
+			mIsLastChild = false;
 		}
 		String prefix = "";
 		for (int i = 0; i < mIndent; ++i) {
 			prefix += "    ";
 		}
 
-		mFileWriter.write(prefix + "{tag:'" + node.getTag() + "',\n");
-		mFileWriter.write(prefix + " value:'" + node.getValue() + "',\n");
+		boolean isLastChildOrignalValue = mIsLastChild;
+
+		mFileWriter.write(prefix + "{\"tag\":\"" + node.getTag() + "\",\n");
+		mFileWriter.write(prefix + " \"value\":\"" + node.getValue() + "\",\n");
 
 		int childrenCount = node.childCount();
 		if (childrenCount == 0) {
-			mFileWriter.write(prefix + " children: []\n");
+			mFileWriter.write(prefix + " \"children\": []\n");
 		} else {
-			mFileWriter.write(prefix + " children: [\n");
+			mFileWriter.write(prefix + " \"children\": [\n");
 			mIndent += 1;
 			for (int i = 0; i < node.childCount(); ++i) {
+				mIsLastChild = (i == node.childCount() - 1);
 				node.getChild(i).accept(this);
 			}
 			mFileWriter.write(prefix + "    ]\n");
 			mIndent -= 1;
 		}
 
-		mFileWriter.write(prefix + "}\n");
+		mIsLastChild = isLastChildOrignalValue;
+		if (mIsLastChild) {
+			mFileWriter.write(prefix + "}\n");
+		} else {
+			mFileWriter.write(prefix + "},\n");
+		}
 
 		if (node.getParent() == null) {
 			close();
@@ -60,4 +69,5 @@ public class LogVisitor implements IVisitor {
 	private FileWriter mFileWriter;
 	private String mLogFilePath;
 	private int mIndent = 0;
+	private boolean mIsLastChild = false;
 }
