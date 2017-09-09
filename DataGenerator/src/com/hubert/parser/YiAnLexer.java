@@ -1,4 +1,4 @@
-package com.hubert.dataprovider.parser;
+package com.hubert.parser;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -10,8 +10,8 @@ import java.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.*;
 
-import com.hubert.dataprovider.parser.tokenextractor.Token;
-import com.hubert.dataprovider.parser.tokenextractor.TokenType;
+import com.hubert.parser.tokenextractor.Token;
+import com.hubert.parser.tokenextractor.TokenType;
 
 public class YiAnLexer {
 	public YiAnLexer(String fileFullPath) {

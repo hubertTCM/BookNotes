@@ -1,4 +1,4 @@
-package com.hubert.dataprovider.parser.tokenextractor;
+package com.hubert.parser.tokenextractor;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

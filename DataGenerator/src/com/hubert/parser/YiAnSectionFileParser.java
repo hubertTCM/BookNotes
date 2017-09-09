@@ -1,4 +1,4 @@
-package com.hubert.dataprovider.parser;
+package com.hubert.parser;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.hubert.dal.entity.*;
-import com.hubert.dataprovider.parser.tokenextractor.*;
+import com.hubert.parser.tokenextractor.*;
 
 public class YiAnSectionFileParser {
 	public YiAnSectionFileParser(BookEntity book, String fileFullPath) {

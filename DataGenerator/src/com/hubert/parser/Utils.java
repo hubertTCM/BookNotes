@@ -1,4 +1,4 @@
-package com.hubert.dataprovider.parser;
+package com.hubert.parser;
 
 import java.util.ArrayList;
 

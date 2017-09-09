@@ -1,8 +1,8 @@
-package com.hubert.dataprovider.parser.AST;
+package com.hubert.parser.AST;
 
 import java.util.*;
 
-import com.hubert.dataprovider.parser.tokenextractor.*;
+import com.hubert.parser.tokenextractor.*;
 
 public class ASTNode {
 	public ASTNode(String tag) {
