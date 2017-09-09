@@ -11,13 +11,16 @@ public class YiAnDescriptionExtractor implements ITokenExtractor {
 
 	@Override
 	public Pair<Boolean, String> extract(String text, List<Token> container) {
-
+		if (text.isEmpty()){
+			return null;
+		}
+		
 		Token previousToken = null;
 		if (!container.isEmpty()) {
 			previousToken = container.get(container.size() - 1);
 		}
 
-		if (previousToken != null && previousToken.getType() != TokenType.S) {
+		if (previousToken != null && previousToken.getType() != TokenType.End) {
 			return null;
 		}
 

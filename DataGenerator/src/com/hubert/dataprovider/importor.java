@@ -19,19 +19,20 @@ public class importor {
 			// gu_jin_yi_an_an_importer();
 			// importor.doImport();
 
-			BookGenerator generator = new BookGenerator("临证指南医案");
-			generator.doImport();
-
 			testCase1ParseYiAn();
 			testCase2ParseYiAn();
 			testCase3ParseYiAn();
 			testCase4ParseYiAn();
 			testCase5ParseYiAn();
+			testCase6ParseYiAn();
 			// HerbAliasManager aliasManager = new HerbAliasManager();
 			// aliasManager.load();
 			// HerbAliasManager.getInstance().trace();
 
 			testCase2();
+
+			BookGenerator generator = new BookGenerator("resource/临证指南医案/format_ignore.txt", "临证指南医案");
+			generator.doImport();
 
 			System.out.println("done");
 		} catch (IOException e) {
@@ -123,7 +124,7 @@ public class importor {
 				"resource/临证指南医案/format_ignore.txt");
 		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(grammar, tokens);
-		LogVisitor visitor = new LogVisitor("resource/临证指南医案/ASTNode_case1_ignore.text");
+		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test1_ignore.json");
 		node.accept(visitor);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
@@ -146,7 +147,7 @@ public class importor {
 				"resource/临证指南医案/format_ignore.txt");
 		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(grammar, tokens);
-		LogVisitor visitor = new LogVisitor("resource/临证指南医案/ASTNode_case2_ignore.text");
+		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test2_ignore.json");
 		node.accept(visitor);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
@@ -187,7 +188,7 @@ public class importor {
 				"resource/临证指南医案/format_ignore.txt");
 		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(grammar, tokens);
-		LogVisitor visitor = new LogVisitor("resource/临证指南医案/ASTNode_case3_ignore.text");
+		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test3_ignore.json");
 		node.accept(visitor);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
@@ -224,7 +225,7 @@ public class importor {
 				"resource/临证指南医案/format_ignore.txt");
 		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(grammar, tokens);
-		LogVisitor visitor = new LogVisitor("resource/临证指南医案/ASTNode_case4_ignore.text");
+		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test4_ignore.json");
 		node.accept(visitor);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
@@ -243,10 +244,34 @@ public class importor {
 				"resource/临证指南医案/format_ignore.txt");
 		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(grammar, tokens);
-		LogVisitor visitor = new LogVisitor("resource/临证指南医案/ASTNode_case5_ignore.text");
+		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test5_ignore.json");
 		node.accept(visitor);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
 
+	public static void testCase6ParseYiAn() throws Exception {
+		// 又 今年天符岁会，上半年阳气大泄，.....
+		// 人参（一钱） 生牡蛎（五钱） 生白芍（二钱）
+		// 上午服。
+		// （丸方） 人参（二两） 茯苓（三两，生）
+		// 为末，竹沥法丸，早上服三钱，百滚汤下。
+
+		ArrayList<Token> tokens = new ArrayList<Token>();
+		tokens.add(new Token(TokenType.Description, "又 今年天符岁会，上半年阳气大泄，....."));
+		tokens.add(new Token(TokenType.LiteralText, "人参（一钱） 生牡蛎（五钱） 生白芍（二钱"));
+		tokens.add(new Token(TokenType.LiteralText, "上午服。"));
+		tokens.add(new Token(TokenType.Herb, "人参"));
+		tokens.add(new Token(TokenType.Herb, "茯苓"));
+		tokens.add(new Token(TokenType.LiteralText, "为末，竹沥法丸，早上服三钱，百滚汤下。"));
+		tokens.add(new Token(TokenType.End));
+
+		com.hubert.dataprovider.parser.LL1.Grammar grammar = new com.hubert.dataprovider.parser.LL1.Grammar(
+				"resource/临证指南医案/format_ignore.txt");
+		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
+		ASTNode node = parser.parse(grammar, tokens);
+		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test6_ignore.json");
+		node.accept(visitor);
+		System.out.println("TODO: write vistor to print the ASTNode");
+	}
 
 }

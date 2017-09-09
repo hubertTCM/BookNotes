@@ -20,7 +20,7 @@ public class LogVisitor implements IVisitor {
 	private void visitCore(ASTNode node) throws IOException {
 		if (node.getParent() == null) {
 			open();
-			mIsLastChild = false;
+			mIsLastChild = true;
 		}
 		String prefix = "";
 		for (int i = 0; i < mIndent; ++i) {

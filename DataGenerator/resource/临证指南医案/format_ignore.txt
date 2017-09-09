@@ -29,6 +29,7 @@ Herb
 LiteralText(FormattedRecipeText)
 LiteralText(RecipeComment)
 SectionName
+SummaryComment
 Empty
 // End of Terminal Symbol
          
@@ -52,6 +53,7 @@ YNDetailAfterDescriptionCommon := LiteralText(FormattedRecipeText) YNDetailAfter
 YNDetailAfterDescriptionCommonAfterRecipeContentComon := Empty
                                                          LiteralText(RecipeComment) AfterRecipeCommentCommon
 AfterRecipeCommentCommon := Empty
+                            RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
 							RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
                                            
 //YNDetailAfterDescriptionCommonAfterFormattedRecipeText := Empty
@@ -66,9 +68,11 @@ YNAfterYNDetailCommon := Empty
 YN2 := YNDetail2 YN2AfterYNDetail2Common
 YN2AfterYNDetail2Common := Empty
                            YNDetail YN2AfterYNDetail2Common
+SummaryCommentCommon := Empty
+						SummaryComment SummaryCommentCommon
      
-S := YN2
-S := YN
+S := YN2 SummaryCommentCommon
+S := YN SummaryCommentCommon
 
 RecipeContent := Herb RecipeContentAfterHerbCommon
 RecipeContentAfterHerbCommon :=  Empty

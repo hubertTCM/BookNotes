@@ -15,7 +15,7 @@ public class PrescriptionTokenExtractor implements ITokenExtractor {
 		String tag = "（丸方）";
 		if (text.startsWith(tag)) {
 			String source = text.substring(tag.length());
-			container.add(new Token(TokenType.FormattedRecipeText, source));
+			//container.add(new Token(TokenType.FormattedRecipeText, source));
 			mPrescriptionItemExtractor.extract(source, container);
 			return new Pair<>(true, "");
 		}
