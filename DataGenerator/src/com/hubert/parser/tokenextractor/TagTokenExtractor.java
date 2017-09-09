@@ -1,8 +1,9 @@
-package com.hubert.dataprovider.parser.tokenextractor;
+package com.hubert.parser.tokenextractor;
 
 import java.util.*;
 
-import com.hubert.dataprovider.parser.*;
+import com.hubert.parser.*;
+
 import javafx.util.Pair;
 
 public class TagTokenExtractor implements ITokenExtractor {

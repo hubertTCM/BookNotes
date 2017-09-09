@@ -1,4 +1,4 @@
-package com.hubert.dataprovider.parser.AST;
+package com.hubert.parser.AST;
 
 import java.io.IOException;
 

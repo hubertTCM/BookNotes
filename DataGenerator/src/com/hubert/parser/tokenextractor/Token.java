@@ -1,4 +1,4 @@
-package com.hubert.dataprovider.parser.tokenextractor;
+package com.hubert.parser.tokenextractor;
 
 public class Token {
 	public Token(TokenType type) {

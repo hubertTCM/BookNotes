@@ -1,9 +1,9 @@
-package com.hubert.dataprovider.parser.LL1;
+package com.hubert.parser.LL1;
 
 import java.util.*;
 
-import com.hubert.dataprovider.parser.AST.ASTNode;
-import com.hubert.dataprovider.parser.tokenextractor.*;
+import com.hubert.parser.AST.ASTNode;
+import com.hubert.parser.tokenextractor.*;
 
 //reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
 public class YiAnParser {

@@ -13,10 +13,10 @@ import java.util.*;
 import org.apache.commons.lang3.StringUtils;
 
 import com.hubert.dal.entity.*;
-import com.hubert.dataprovider.parser.*;
-import com.hubert.dataprovider.parser.AST.*;
-import com.hubert.dataprovider.parser.LL1.*;
-import com.hubert.dataprovider.parser.tokenextractor.*;
+import com.hubert.parser.*;
+import com.hubert.parser.AST.*;
+import com.hubert.parser.LL1.*;
+import com.hubert.parser.tokenextractor.*;
 
 public class BookGenerator {
 
@@ -79,8 +79,8 @@ public class BookGenerator {
 
 	private void loadBlocks(SectionEntity parent, File file) throws Exception {
 		String filePath = file.getAbsolutePath();
-		com.hubert.dataprovider.parser.tokenextractor.YiAnLexer lexer = 
-				new com.hubert.dataprovider.parser.tokenextractor.YiAnLexer(filePath);
+		com.hubert.parser.tokenextractor.YiAnLexer lexer = 
+				new com.hubert.parser.tokenextractor.YiAnLexer(filePath);
 		List<Token> tokens = lexer.parse();
 
 		String tokenFilePath = "resource/debug/" + file.getName() + "_token.text";
@@ -89,8 +89,8 @@ public class BookGenerator {
 			writer.write(token.getType() + ":" + token.getValue() + "\n");
 		}
 		writer.close();
-		com.hubert.dataprovider.parser.LL1.YiAnParser parser = 
-				new com.hubert.dataprovider.parser.LL1.YiAnParser();
+		com.hubert.parser.LL1.YiAnParser parser = 
+				new com.hubert.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(mGrammar, tokens);
 		LogVisitor visitor  = new LogVisitor("resource/debug/" + file.getName()  + "_AST.json");
 		node.accept(visitor);

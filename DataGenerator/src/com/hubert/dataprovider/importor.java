@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.hubert.dal.DbBuilder;
-import com.hubert.dataprovider.parser.AST.*;
-import com.hubert.dataprovider.parser.tokenextractor.*;
+import com.hubert.parser.AST.*;
+import com.hubert.parser.tokenextractor.*;
 
 public class importor {
 
@@ -66,7 +66,7 @@ public class importor {
 		terminalSymbols.add("c");
 		terminalSymbols.add("b");
 
-		com.hubert.dataprovider.parser.LL1.Grammar parser2 = new com.hubert.dataprovider.parser.LL1.Grammar(
+		com.hubert.parser.LL1.Grammar parser2 = new com.hubert.parser.LL1.Grammar(
 				terminalSymbols, expressions);
 		// 计算结果如下：
 		//
@@ -107,7 +107,7 @@ public class importor {
 		terminalSymbols.add("*");
 		terminalSymbols.add("Empty");
 
-		com.hubert.dataprovider.parser.LL1.Grammar parser2 = new com.hubert.dataprovider.parser.LL1.Grammar(
+		com.hubert.parser.LL1.Grammar parser2 = new com.hubert.parser.LL1.Grammar(
 				terminalSymbols, expressions);
 	}
 
@@ -120,9 +120,9 @@ public class importor {
 		tokens.add(new Token(TokenType.LiteralText, "熟地（炙） 炙龟甲 萸肉 五味 磁石 茯苓 旱莲草 女贞子"));
 		tokens.add(new Token(TokenType.End));
 
-		com.hubert.dataprovider.parser.LL1.Grammar grammar = new com.hubert.dataprovider.parser.LL1.Grammar(
+		com.hubert.parser.LL1.Grammar grammar = new com.hubert.parser.LL1.Grammar(
 				"resource/临证指南医案/format_ignore.txt");
-		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
+		com.hubert.parser.LL1.YiAnParser parser = new com.hubert.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(grammar, tokens);
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test1_ignore.json");
 		node.accept(visitor);
@@ -143,9 +143,9 @@ public class importor {
 		tokens.add(new Token(TokenType.Herb, "陈皮"));
 		tokens.add(new Token(TokenType.End));
 
-		com.hubert.dataprovider.parser.LL1.Grammar grammar = new com.hubert.dataprovider.parser.LL1.Grammar(
+		com.hubert.parser.LL1.Grammar grammar = new com.hubert.parser.LL1.Grammar(
 				"resource/临证指南医案/format_ignore.txt");
-		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
+		com.hubert.parser.LL1.YiAnParser parser = new com.hubert.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(grammar, tokens);
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test2_ignore.json");
 		node.accept(visitor);
@@ -184,9 +184,9 @@ public class importor {
 
 		tokens.add(new Token(TokenType.End));
 
-		com.hubert.dataprovider.parser.LL1.Grammar grammar = new com.hubert.dataprovider.parser.LL1.Grammar(
+		com.hubert.parser.LL1.Grammar grammar = new com.hubert.parser.LL1.Grammar(
 				"resource/临证指南医案/format_ignore.txt");
-		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
+		com.hubert.parser.LL1.YiAnParser parser = new com.hubert.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(grammar, tokens);
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test3_ignore.json");
 		node.accept(visitor);
@@ -221,9 +221,9 @@ public class importor {
 
 		tokens.add(new Token(TokenType.End));
 
-		com.hubert.dataprovider.parser.LL1.Grammar grammar = new com.hubert.dataprovider.parser.LL1.Grammar(
+		com.hubert.parser.LL1.Grammar grammar = new com.hubert.parser.LL1.Grammar(
 				"resource/临证指南医案/format_ignore.txt");
-		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
+		com.hubert.parser.LL1.YiAnParser parser = new com.hubert.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(grammar, tokens);
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test4_ignore.json");
 		node.accept(visitor);
@@ -240,9 +240,9 @@ public class importor {
 		tokens.add(new Token(TokenType.Herb, "龟板"));
 		tokens.add(new Token(TokenType.End));
 
-		com.hubert.dataprovider.parser.LL1.Grammar grammar = new com.hubert.dataprovider.parser.LL1.Grammar(
+		com.hubert.parser.LL1.Grammar grammar = new com.hubert.parser.LL1.Grammar(
 				"resource/临证指南医案/format_ignore.txt");
-		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
+		com.hubert.parser.LL1.YiAnParser parser = new com.hubert.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(grammar, tokens);
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test5_ignore.json");
 		node.accept(visitor);
@@ -265,9 +265,9 @@ public class importor {
 		tokens.add(new Token(TokenType.LiteralText, "为末，竹沥法丸，早上服三钱，百滚汤下。"));
 		tokens.add(new Token(TokenType.End));
 
-		com.hubert.dataprovider.parser.LL1.Grammar grammar = new com.hubert.dataprovider.parser.LL1.Grammar(
+		com.hubert.parser.LL1.Grammar grammar = new com.hubert.parser.LL1.Grammar(
 				"resource/临证指南医案/format_ignore.txt");
-		com.hubert.dataprovider.parser.LL1.YiAnParser parser = new com.hubert.dataprovider.parser.LL1.YiAnParser();
+		com.hubert.parser.LL1.YiAnParser parser = new com.hubert.parser.LL1.YiAnParser();
 		ASTNode node = parser.parse(grammar, tokens);
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test6_ignore.json");
 		node.accept(visitor);

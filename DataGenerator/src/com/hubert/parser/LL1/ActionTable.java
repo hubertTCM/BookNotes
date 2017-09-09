@@ -1,4 +1,4 @@
-package com.hubert.dataprovider.parser.LL1;
+package com.hubert.parser.LL1;
 
 import java.util.HashMap;
 import java.util.List;
