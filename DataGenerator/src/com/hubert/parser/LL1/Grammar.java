@@ -60,6 +60,7 @@ public class Grammar {
 		mTerminalSymbols.add("Empty");
 	}
 
+	// TODO: change the grammar file to xml
 	private void initGrammar(String grammaFile) throws Exception {
 		Path filePath = Paths.get(grammaFile);
 		Charset utf8 = Charset.forName("UTF-8");
