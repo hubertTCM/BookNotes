@@ -40,20 +40,38 @@ LiteralText(RecipeComment) := RecipeComment
 // End of Symbol Map        
         
 // Start of Grammar 
-YNDetail := Description YNDetailAfterDescriptionCommon
-YNDetailAfterDescriptionCommon := LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
-                                  RecipeAbbreviation RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
-                                  RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
-                                  RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
-                                  Empty
-YNDetailAfterDescriptionCommonAfterRecipeContentComon := Empty
-                                                         LiteralText(RecipeComment) AfterRecipeCommentCommon
-AfterRecipeCommentCommon := Empty
-                            RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
-							RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
+//YNDetail := Description YNDetailAfterDescriptionCommon
+//YNDetailAfterDescriptionCommon := LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
+//                                  RecipeAbbreviation RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
+//                                  RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
+//                                  RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
+//                                  Empty
 
-YNDetailAfterDescriptionCommonAfterRecipeHeaderCommon := Empty
-                                                         LiteralText(RecipeComment)
+
+YNDetail := Description RecipeDetail
+RecipeDetail := Empty
+                LiteralText(FormattedRecipeText) AfterRecipeContent
+                RecipeAbbreviation RecipeContent AfterRecipeContent
+                RecipeHeader LiteralText(FormattedRecipeText) AfterRecipeContent
+                RecipeContent AfterRecipeContent
+                
+RecipeContent := Herb RecipeCompositionHerbOnly
+RecipeCompositionHerbOnly :=  Empty
+                                 Herb RecipeCompositionHerbOnly
+
+AfterRecipeContent := Empty
+                      LiteralText(RecipeComment) RecipeDetail
+                      
+
+             
+//YNDetailAfterDescriptionCommonAfterRecipeContentComon := Empty
+//                                                         LiteralText(RecipeComment) AfterRecipeCommentCommon
+//AfterRecipeCommentCommon := Empty
+//                            RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
+//							  RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
+
+//YNDetailAfterDescriptionCommonAfterRecipeHeaderCommon := Empty
+//                                                         LiteralText(RecipeComment)
 YNDetail2 := SectionName YNDetail
 
 YN := YNDetail YNAfterYNDetailCommon
@@ -68,9 +86,9 @@ SummaryCommentCommon := Empty
 S := YN2 SummaryCommentCommon
 S := YN SummaryCommentCommon
 
-RecipeContent := Herb RecipeContentAfterHerbCommon
-RecipeContentAfterHerbCommon :=  Empty
-                                 Herb RecipeContentAfterHerbCommon
+//RecipeContent := Herb RecipeContentAfterHerbCommon
+//RecipeContentAfterHerbCommon :=  Empty
+//                                 Herb RecipeContentAfterHerbCommon
      
                  
 // End of Grammar                 
