@@ -14,7 +14,11 @@ public class YiAnDetailBuilder extends AbstractYiAnBuilder {
 		mYiAnDetail = new YiAnDetailEntity();
 		mYiAnDetail.order = mYiAn.details.size() + 1;
 		mYiAn.details.add(mYiAnDetail);
-		return false;
+		
+
+		RecipeDetailBuilder builder = new RecipeDetailBuilder(mVisitor, mYiAnDetail);
+		mVisitor.registerBuilder(builder.getNodeTag(), builder);
+		return true;
 	}
 	
 	private YiAnEntity mYiAn;

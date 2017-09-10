@@ -16,9 +16,9 @@ public class YiAnBuilderVisitor implements IVisitor {
 
 	@Override
 	public void visit(ASTNode node) {
-		String tag = node.getTag();
-		if (mBuilders.containsKey(tag)) {
-			mBuilders.get(tag).build(node);
+		IYiAnBuilder builder = getBuilder(node);
+		if (builder != null) {
+			builder.build(node);
 		}
 		int childCount = node.childCount();
 		for (int i = 0; i < childCount; ++i) {
@@ -28,6 +28,18 @@ public class YiAnBuilderVisitor implements IVisitor {
 
 	public void registerBuilder(String type, IYiAnBuilder builder) {
 		mBuilders.put(type, builder);
+	}
+
+	private IYiAnBuilder getBuilder(ASTNode node) {
+		String tag = node.getTag();
+		String key = tag;
+		if (YiAnNodeConstants.RecipeCompositionHerbOnly.equals(tag)) {
+			key = YiAnNodeConstants.RecipeComposition;
+		}
+		if (mBuilders.containsKey(key)) {
+			return mBuilders.get(key);
+		}
+		return null;
 	}
 
 	public void AddYiAn(YiAnEntity yiAn) {
