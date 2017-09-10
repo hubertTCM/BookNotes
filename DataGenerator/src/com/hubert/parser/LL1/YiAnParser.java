@@ -64,6 +64,9 @@ public class YiAnParser {
 					predict(node, token);
 					continue;
 				}
+				
+				//TODO: Change LiteralText(FormattedRecipeText) to LiteralText(RecipeContent)
+				//      in grammar, invoke getStandardSymbol twice is weird.
 				// LiteralText(FormattedRecipeText) => FormattedRecipeText
 				String standardSymbol = mGrammar.getStandardSymbol(tag);
 				mTokens.remove(mCurrentTokenIndex);
