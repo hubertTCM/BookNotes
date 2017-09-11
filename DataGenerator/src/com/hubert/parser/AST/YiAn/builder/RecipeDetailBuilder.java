@@ -19,9 +19,14 @@ public class RecipeDetailBuilder extends AbstractYiAnBuilder {
 		mPrescription.items = new ArrayList<YiAnPrescriptionItemEntity>();
 		mPrescription.order = mYiAnDetail.prescriptions.size();
 		mYiAnDetail.prescriptions.add(mPrescription);
-		
-		RecipeContentBuilder builder = new RecipeContentBuilder(mVisitor, mPrescription);
-		mVisitor.registerBuilder(builder.getNodeTag(), builder);
+
+		RecipeCompositionBuilder builder = new RecipeCompositionBuilder(mVisitor, mPrescription);
+		mVisitor.registerBuilder(YiAnNodeConstants.RecipeComposition, builder);
+		mVisitor.registerBuilder(YiAnNodeConstants.RecipeContent, builder);
+
+		RecipePropertyBuilder propertyBuilder = new RecipePropertyBuilder(YiAnNodeConstants.RecipeComment, mVisitor,
+				mPrescription);
+		mVisitor.registerBuilder(YiAnNodeConstants.RecipeComment, propertyBuilder);
 		return true;
 	}
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.hubert.dal.DbBuilder;
+import com.hubert.dal.entity.*;
 import com.hubert.parser.AST.*;
 import com.hubert.parser.AST.YiAn.*;
 import com.hubert.parser.tokenextractor.*;
@@ -127,8 +128,11 @@ public class importor {
 		ASTNode node = parser.parse(grammar, tokens);
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test1_ignore.json");
 		node.accept(visitor);
-		
-		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(null);
+		SectionEntity entity = new SectionEntity();
+		entity.book = new BookEntity();
+		entity.name = "testCase1ParseYiAn";
+		entity.book.name = "debug";
+		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, HerbAliasManager.getInstance());
 		node.accept(yiAnBuilder);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
@@ -153,8 +157,12 @@ public class importor {
 		ASTNode node = parser.parse(grammar, tokens);
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test2_ignore.json");
 		node.accept(visitor);
-		
-		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(null);
+
+		SectionEntity entity = new SectionEntity();
+		entity.book = new BookEntity();
+		entity.name = "testCase2ParseYiAn";
+		entity.book.name = "debug";
+		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, HerbAliasManager.getInstance());
 		node.accept(yiAnBuilder);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
@@ -198,7 +206,10 @@ public class importor {
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test3_ignore.json");
 		node.accept(visitor);
 
-		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(null);
+		SectionEntity entity = new SectionEntity();
+		entity.book = new BookEntity();
+		entity.book.name = "testCase3ParseYiAn";
+		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, HerbAliasManager.getInstance());
 		node.accept(yiAnBuilder);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
@@ -238,7 +249,11 @@ public class importor {
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test4_ignore.json");
 		node.accept(visitor);
 
-		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(null);
+		SectionEntity entity = new SectionEntity();
+		entity.book = new BookEntity();
+		entity.name = "testCase4ParseYiAn";
+		entity.book.name = "debug";
+		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, HerbAliasManager.getInstance());
 		node.accept(yiAnBuilder);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
@@ -260,7 +275,11 @@ public class importor {
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test5_ignore.json");
 		node.accept(visitor);
 
-		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(null);
+		SectionEntity entity = new SectionEntity();
+		entity.book = new BookEntity();
+		entity.name = "testCase5ParseYiAn";
+		entity.book.name = "debug";
+		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, HerbAliasManager.getInstance());
 		node.accept(yiAnBuilder);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}
@@ -288,7 +307,11 @@ public class importor {
 		LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test6_ignore.json");
 		node.accept(visitor);
 
-		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(null);
+		SectionEntity entity = new SectionEntity();
+		entity.name = "testCase6ParseYiAn";
+		entity.book = new BookEntity();
+		entity.book.name = "debug";
+		YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, HerbAliasManager.getInstance());
 		node.accept(yiAnBuilder);
 		System.out.println("TODO: write vistor to print the ASTNode");
 	}

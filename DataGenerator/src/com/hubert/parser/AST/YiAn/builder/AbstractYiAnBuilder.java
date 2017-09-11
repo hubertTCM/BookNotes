@@ -9,10 +9,9 @@ public abstract class AbstractYiAnBuilder implements IYiAnBuilder {
 		mVisitor = visitor;
 	}
 
-	@Override
+	//@Override
 	public String getNodeTag() {
-		// TODO Auto-generated method stub
-		return null;
+		return mTag;
 	}
 
 	@Override
