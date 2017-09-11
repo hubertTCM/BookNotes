@@ -72,6 +72,7 @@ public class YiAnBuilderVisitor implements IVisitor {
 				        return s1.compareToIgnoreCase(s2);
 				    }
 				});
+				prescription.summary = "";
 				for(String herb : herbs){
 					prescription.summary += " " + herb;
 				}
