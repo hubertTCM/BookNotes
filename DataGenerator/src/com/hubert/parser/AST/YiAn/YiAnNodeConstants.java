@@ -2,6 +2,7 @@ package com.hubert.parser.AST.YiAn;
 
 public class YiAnNodeConstants {
 	public static final String YN = "YN"; // 医案
+	public static final String YN2 = "YN2";
 	public static final String YiAnDetail = "YNDetail"; // 一诊 二诊 ...
 	public static final String YNDetail2 = "YNDetail2";
 	public static final String Description = "Description";

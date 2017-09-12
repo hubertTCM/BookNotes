@@ -20,8 +20,7 @@ public class RecipeCompositionBuilder extends AbstractYiAnBuilder {
 		mPrescriptionItemEntity = new YiAnPrescriptionItemEntity();
 		mPrescriptionEntity.items.add(mPrescriptionItemEntity);
 
-		RecipeCompositionChildBuilder builder = new RecipeCompositionChildBuilder(mVisitor, mPrescriptionItemEntity);
-		mVisitor.registerBuilder(YiAnNodeConstants.Herb, builder);
+		new RecipeCompositionChildBuilder(mVisitor, mPrescriptionItemEntity);
 
 		return true;
 	}
