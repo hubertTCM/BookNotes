@@ -10,7 +10,7 @@ import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 public class YiAnBuilder extends AbstractYiAnBuilder {
 
 	public YiAnBuilder(YiAnBuilderVisitor visitor) {
-		super(YiAnNodeConstants.YN, visitor);
+		super(Arrays.asList(YiAnNodeConstants.YN, YiAnNodeConstants.YN2), visitor);
 	}
 
 	@Override
