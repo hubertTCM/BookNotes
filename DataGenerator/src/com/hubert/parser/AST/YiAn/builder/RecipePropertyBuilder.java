@@ -7,8 +7,8 @@ import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 
 public class RecipePropertyBuilder extends AbstractYiAnBuilder {
 
-	public RecipePropertyBuilder(String tag, YiAnBuilderVisitor visitor, YiAnPrescriptionEntity prescriptionEntity) {
-		super(tag, visitor);
+	public RecipePropertyBuilder(YiAnBuilderVisitor visitor, YiAnPrescriptionEntity prescriptionEntity) {
+		super(YiAnNodeConstants.RecipeComment, visitor);
 		mYiAnPrescription = prescriptionEntity;
 	}
 

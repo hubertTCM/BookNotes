@@ -15,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.hubert.dal.entity.*;
 import com.hubert.parser.*;
 import com.hubert.parser.AST.*;
+import com.hubert.parser.AST.YiAn.*;
 import com.hubert.parser.LL1.*;
 import com.hubert.parser.tokenextractor.*;
 
@@ -28,7 +29,7 @@ public class BookGenerator {
 
 		// TODO: requires better design here.
 		mYiAnParser = new YiAnParser();
-		
+
 		mGrammar = new Grammar(grammarFilePath);
 	}
 
@@ -56,7 +57,9 @@ public class BookGenerator {
 
 		for (File file : files) {
 			String fileName = file.getName();
-			if (fileName.indexOf("summary") > 0 || fileName.indexOf("ignore") > 0) {
+			if (fileName.indexOf("summary") > 0 
+					|| fileName.indexOf("ignore") > 0
+					|| fileName.indexOf("debug") >= 0) {
 				System.out.println("ignore " + fileName);
 				continue;
 			}
@@ -79,44 +82,27 @@ public class BookGenerator {
 
 	private void loadBlocks(SectionEntity parent, File file) throws Exception {
 		String filePath = file.getAbsolutePath();
-		com.hubert.parser.tokenextractor.YiAnLexer lexer = 
-				new com.hubert.parser.tokenextractor.YiAnLexer(filePath);
+		YiAnLexer lexer = new YiAnLexer(filePath);
 		List<Token> tokens = lexer.parse();
 
 		String tokenFilePath = "resource/debug/" + file.getName() + "_token.text";
 		FileWriter writer = new FileWriter(tokenFilePath);
-		for(Token token : tokens){
+		for (Token token : tokens) {
 			writer.write(token.getType() + ":" + token.getValue() + "\n");
 		}
 		writer.close();
-		com.hubert.parser.LL1.YiAnParser parser = 
-				new com.hubert.parser.LL1.YiAnParser();
-		ASTNode node = parser.parse(mGrammar, tokens);
-		LogVisitor visitor  = new LogVisitor("resource/debug/" + file.getName()  + "_AST.json");
+		ASTNode node = mYiAnParser.parse(mGrammar, tokens);
+		LogVisitor visitor = new LogVisitor("resource/debug/" + file.getName() + "_AST.json");
 		node.accept(visitor);
+		
+		YiAnBuilderVisitor builder = new YiAnBuilderVisitor(file.getAbsolutePath() + "_debug.txt", HerbAliasManager.getInstance());
+		node.accept(builder);
 		return;
-
-		// Path filePath = Paths.get(file.getAbsolutePath());
-		// Charset utf8 = Charset.forName("UTF-8");
-		//
-		// // mBlockParser.SetSection(parent);
-		//
-		// List<String> lines = Files.readAllLines(filePath, utf8);
-		//
-		// // TODO: requires better design here.
-		// mYiAnParser.setParentSection(parent);
-		//
-		// AbstractSingleLineParser temp = mYiAnParser;
-		// for (String line : lines) {
-		// line = StringUtils.strip(line);
-		// // mBlockParser.parse(line);
-		// temp = temp.parse(line);
-		// }
 	}
 
 	private SectionEntity createSection(SectionEntity parent, String sectionName) {
 		SectionEntity section = new SectionEntity();
-		section.book = mBook;
+		//section.book = mBook;
 		section.name = sectionName;
 		section.blocks = new ArrayList<BlockEntity>();
 		section.childSections = new ArrayList<SectionEntity>();
@@ -126,6 +112,11 @@ public class BookGenerator {
 		if (parent != null) {
 			section.parent = parent;
 			parent.childSections.add(section);
+		}
+		else{
+			section.parent = null;
+			section.book = mBook;
+			mBook.sections.add(section);
 		}
 		return section;
 	}
@@ -148,5 +139,5 @@ public class BookGenerator {
 	protected BookEntity mBook;
 	protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
 
-	protected YiAnParser mYiAnParser = null;
+	protected YiAnParser mYiAnParser = new YiAnParser();
 }

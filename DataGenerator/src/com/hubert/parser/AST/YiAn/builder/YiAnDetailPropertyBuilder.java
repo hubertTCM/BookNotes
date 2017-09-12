@@ -7,8 +7,8 @@ import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 
 public class YiAnDetailPropertyBuilder extends AbstractYiAnBuilder {
 
-	public YiAnDetailPropertyBuilder(String tag, YiAnBuilderVisitor visitor, YiAnDetailEntity yiAnDetail) {
-		super(tag, visitor);
+	public YiAnDetailPropertyBuilder(YiAnBuilderVisitor visitor, YiAnDetailEntity yiAnDetail) {
+		super(YiAnNodeConstants.Description, visitor);
 		mYiAnDetail = yiAnDetail;
 	}
 

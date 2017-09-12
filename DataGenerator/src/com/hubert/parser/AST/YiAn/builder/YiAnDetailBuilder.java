@@ -8,7 +8,7 @@ import com.hubert.parser.AST.YiAn.*;
 
 public class YiAnDetailBuilder extends AbstractYiAnBuilder {
 	public YiAnDetailBuilder(YiAnBuilderVisitor visitor, YiAnEntity yiAn) {
-		super(YiAnNodeConstants.YiAnDetail, visitor);
+		super(Arrays.asList(YiAnNodeConstants.YiAnDetail, YiAnNodeConstants.YNDetail2), visitor);
 		mYiAn = yiAn;
 	}
 
@@ -18,17 +18,13 @@ public class YiAnDetailBuilder extends AbstractYiAnBuilder {
 		mYiAnDetail.prescriptions = new ArrayList<YiAnPrescriptionEntity>();
 		mYiAnDetail.order = mYiAn.details.size() + 1;
 		mYiAn.details.add(mYiAnDetail);
-		
 
-		RecipeDetailBuilder builder = new RecipeDetailBuilder(mVisitor, mYiAnDetail);
-		mVisitor.registerBuilder(builder.getNodeTag(), builder);
-		
-		YiAnDetailPropertyBuilder propertyBuilder = new YiAnDetailPropertyBuilder(YiAnNodeConstants.Description,
-				mVisitor, mYiAnDetail);
-		mVisitor.registerBuilder(YiAnNodeConstants.Description, propertyBuilder);
+		new RecipeDetailBuilder(mVisitor, mYiAnDetail);
+
+		new YiAnDetailPropertyBuilder(mVisitor, mYiAnDetail);
 		return true;
 	}
-	
+
 	private YiAnEntity mYiAn;
 	private YiAnDetailEntity mYiAnDetail;
 
