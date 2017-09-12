@@ -19,8 +19,7 @@ public class YiAnBuilder extends AbstractYiAnBuilder {
 		mYiAn.details = new ArrayList<YiAnDetailEntity>();
 		mVisitor.AddYiAn(mYiAn);
 
-		YiAnDetailBuilder builder = new YiAnDetailBuilder(mVisitor, mYiAn);
-		mVisitor.registerBuilder(builder.getNodeTag(), builder);
+		new YiAnDetailBuilder(mVisitor, mYiAn);
 		return true;
 	}
 

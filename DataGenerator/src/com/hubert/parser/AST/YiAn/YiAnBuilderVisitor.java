@@ -14,10 +14,25 @@ import com.hubert.parser.AST.YiAn.builder.*;
 
 public class YiAnBuilderVisitor implements IVisitor {
 	public YiAnBuilderVisitor(SectionEntity parentSection, HerbAliasManager herbAliasManager) {
+		this(herbAliasManager);
 		mParentSection = parentSection;
+
+		SectionEntity currentSection = parentSection;
+		while(mBook == null && currentSection != null){
+			mBook = currentSection.book;
+			currentSection = currentSection.parent;
+		}
+		mLogPath = "resource/" + mBook.name + "/debug_" + mParentSection.name + ".txt";
+	}
+	
+	public YiAnBuilderVisitor(String logFolder, HerbAliasManager herbAliasManager){
+		this(herbAliasManager);		
+		mLogPath = logFolder;
+	}
+	
+	private YiAnBuilderVisitor(HerbAliasManager herbAliasManager){
+		new YiAnBuilder(this);
 		mHerbAliasManager = herbAliasManager;
-		YiAnBuilder builder = new YiAnBuilder(this);
-		registerBuilder(builder.getNodeTag(), builder);
 	}
 
 	@Override
@@ -35,14 +50,9 @@ public class YiAnBuilderVisitor implements IVisitor {
 		}
 	}
 
-	public void registerBuilder(String type, IYiAnBuilder builder) {
-		mBuilders.put(type, builder);
-	}
-
 	private void adjustYiAnDetails() {
 		try {
-			mFileWriter = new FileWriter(
-					"resource/" + mParentSection.book.name + "/debug_" + mParentSection.name + ".txt");
+			mFileWriter = new FileWriter(mLogPath);
 
 			for (YiAnEntity item : mYiAns) {
 				adjustYiAn(item);
@@ -54,6 +64,10 @@ public class YiAnBuilderVisitor implements IVisitor {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void registerBuilder(String type, IYiAnBuilder builder) {
+		mBuilders.put(type, builder);
 	}
 
 	private void adjustYiAn(YiAnEntity yiAn) {
@@ -116,8 +130,10 @@ public class YiAnBuilderVisitor implements IVisitor {
 	private Map<String, IYiAnBuilder> mBuilders = new HashMap<String, IYiAnBuilder>();
 	private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
 	private SectionEntity mParentSection;
+	private BookEntity mBook;
 
 	private FileWriter mFileWriter;
+	private String mLogPath;
 	private HerbAliasManager mHerbAliasManager;
 
 }
