@@ -2,14 +2,14 @@ package com.hubert.training;
 
 import java.util.*;
 
-public class JaccardDistanceCalculator<T> implements IDistanceCalculator<Set<T>> {
+public class JaccardDistanceCalculator<T extends Set<U>, U> implements IDistanceCalculator<T> {
 
 	@Override
-	public double distance(Set<T> x, Set<T> y) {
+	public double distance(T x, T y) {
 		double intersectionCount = 0.0;
 		double unionCount = y.size();
 
-		for (T item : x) {
+		for (U item : x) {
 			if (y.contains(item)) {
 				intersectionCount += 1;
 			}
