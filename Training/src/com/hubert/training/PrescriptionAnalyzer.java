@@ -76,7 +76,7 @@ public class PrescriptionAnalyzer {
 
 	private HashSet<String> mBestOption = new HashSet<String>();
 	private PriorityQueue<String> mLeftHerbs = null;
-	private JaccardDistanceCalculator<String> mDistanceCalculator = new JaccardDistanceCalculator<String>();
+	private JaccardDistanceCalculator<Set<String>, String> mDistanceCalculator = new JaccardDistanceCalculator<Set<String>, String>();
 
 	private class HerbCountComparator implements Comparator<String> {
 		public HerbCountComparator(HashMap<String, Integer> herbCount) {
