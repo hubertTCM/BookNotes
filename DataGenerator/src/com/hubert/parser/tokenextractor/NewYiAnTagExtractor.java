@@ -2,8 +2,6 @@ package com.hubert.parser.tokenextractor;
 
 import java.util.*;
 
-import com.hubert.parser.*;
-
 import javafx.util.Pair;
 
 public class NewYiAnTagExtractor implements ITokenExtractor {
