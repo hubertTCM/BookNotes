@@ -3,6 +3,7 @@ package com.hubert.parser.LL1;
 import java.util.*;
 
 import com.hubert.parser.AST.ASTNode;
+import com.hubert.parser.AST.DeleteEmptyNodeVisitor;
 import com.hubert.parser.tokenextractor.*;
 
 //reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
@@ -25,6 +26,9 @@ public class YiAnParser {
 		mGrammar = grammar;
 		mRoot = new ASTNode("Root");
 		parseInternal();
+		
+		DeleteEmptyNodeVisitor visitor = new DeleteEmptyNodeVisitor();
+		mRoot.accept(visitor);
 		return mRoot;
 	}
 
@@ -38,11 +42,6 @@ public class YiAnParser {
 			ASTNode node = mNodeStack.pop();
 			String tag = node.getTag();
 			if (tag.equals(Constants.Empty)) {
-				ASTNode parent = node.getParent();
-				node.remove();
-				if (parent.isEmpty()){
-					parent.remove();
-				}
 				continue;
 			}
 
