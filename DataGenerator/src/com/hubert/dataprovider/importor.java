@@ -37,36 +37,44 @@ public class importor {
 
 			BookGenerator generator = new BookGenerator("resource/临证指南医案/format_ignore.txt", "临证指南医案");
 			List<YiAnEntity> yiAns = generator.doImport();
-			
+
 			List<YiAnPrescriptionEntity> prescriptions = new ArrayList<YiAnPrescriptionEntity>();
-			for(YiAnEntity yiAn : yiAns){
-				for(YiAnDetailEntity detail: yiAn.details){
+			for (YiAnEntity yiAn : yiAns) {
+				for (YiAnDetailEntity detail : yiAn.details) {
 					prescriptions.addAll(detail.prescriptions);
 				}
 			}
-			
-			DistanceCacheProxy<PrescriptionClusterLeafNode> leafDistance = 
-					new DistanceCacheProxy<PrescriptionClusterLeafNode>(new IDistanceCalculator<PrescriptionClusterLeafNode> (){
+
+			DistanceCacheProxy<PrescriptionClusterLeafNode> leafDistance = new DistanceCacheProxy<PrescriptionClusterLeafNode>(
+					new IDistanceCalculator<PrescriptionClusterLeafNode>() {
 
 						@Override
 						public double distance(PrescriptionClusterLeafNode x, PrescriptionClusterLeafNode y) {
-							JaccardDistanceCalculator<Set<String>, String> core = new JaccardDistanceCalculator<Set<String>, String> ();
+							JaccardDistanceCalculator<Set<String>, String> core = new JaccardDistanceCalculator<Set<String>, String>();
 							return core.distance(x.getHerbs(), y.getHerbs());
 
-						}}, 
-							new IStringConverter<PrescriptionClusterLeafNode>(){
+						}
+					}, new IStringConverter<PrescriptionClusterLeafNode>() {
 
-								@Override
-								public String convert(PrescriptionClusterLeafNode x) {
-									return x.getSummary();
-								}});
-					
+						@Override
+						public String convert(PrescriptionClusterLeafNode x) {
+							return x.getSummary();
+						}
+					});
+
 			PrescriptionAnalyzer analyzer = new PrescriptionAnalyzer(prescriptions);
 			SingleLinkageDistanceCalculator singleDistance = new SingleLinkageDistanceCalculator(leafDistance);
-			//PrescriptionClusterCompositeNode root = analyzer.analyze(singleDistance);
-			analyzer.analyze(singleDistance);
+			PrescriptionClusterCompositeNode root = analyzer.analyze(singleDistance);
+			ClusterSplitterVisitor visitor = new ClusterSplitterVisitor();
+			// visitor.split(root);
 
-			
+			AverageLinkageDistanceCalculator distance2 = new AverageLinkageDistanceCalculator(leafDistance);
+			root = analyzer.analyze(distance2);
+			root.getCenter();
+			root.getCompositeNodes().get(0).getCenter();
+			root.getCompositeNodes().get(1).getCenter();
+			//visitor.split(root);
+
 			System.out.println("done");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
