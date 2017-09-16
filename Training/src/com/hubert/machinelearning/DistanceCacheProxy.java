@@ -1,4 +1,4 @@
-package com.hubert.training;
+package com.hubert.machinelearning;
 
 import java.util.*;
 

@@ -1,9 +1,9 @@
-package com.hubert.YiAn;
+package com.hubert.machinelearning.YiAn;
 
 import java.util.*;
 
 import com.hubert.dal.entity.*;
-import com.hubert.training.*;
+import com.hubert.machinelearning.*;
 
 public class PrescriptionAnalyzer {
 	public PrescriptionAnalyzer(List<YiAnPrescriptionEntity> source) {
