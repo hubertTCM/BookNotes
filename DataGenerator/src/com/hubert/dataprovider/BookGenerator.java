@@ -27,13 +27,11 @@ public class BookGenerator {
 		mBook.name = bookName;
 		mBook.sections = new ArrayList<SectionEntity>();
 
-		// TODO: requires better design here.
 		mYiAnParser = new YiAnParser();
-
 		mGrammar = new Grammar(grammarFilePath);
 	}
 
-	public void doImport() {
+	public List<YiAnEntity> doImport() {
 		try {
 			loadSections(null, mBookDirectory);
 
@@ -48,6 +46,7 @@ public class BookGenerator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return mYiAns;
 	}
 
 	private void loadSections(SectionEntity parent, File directory) throws Exception {
@@ -97,6 +96,7 @@ public class BookGenerator {
 		
 		YiAnBuilderVisitor builder = new YiAnBuilderVisitor(file.getAbsolutePath() + "_debug.txt", HerbAliasManager.getInstance());
 		node.accept(builder);
+		mYiAns.addAll(builder.getYiAns());
 		return;
 	}
 
@@ -140,4 +140,6 @@ public class BookGenerator {
 	protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
 
 	protected YiAnParser mYiAnParser = new YiAnParser();
+	
+	protected List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
 }
