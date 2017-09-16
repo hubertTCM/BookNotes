@@ -3,9 +3,25 @@ package com.hubert.machinelearning.YiAn;
 import java.util.*;
 
 public class PrescriptionClusterCompositeNode {
+	public Set<String> getCenter() {
+		if (mCenter == null) {
+			initLeafNodes();
+			List<Set<String>> allHerbs = new ArrayList<Set<String>>();
+			for (PrescriptionClusterLeafNode leaf : mLeafNodes) {
+				allHerbs.add(leaf.getHerbs());
+			}
+			CenterCalculator c = new CenterCalculator(allHerbs);
+			mCenter = c.getCenter();
 
-	public int childCount() {
-		return mChildCompositeNodes.size();
+		}
+		
+		String s = "";
+		for(String item : mCenter){
+			s += " " + item;
+		}
+		System.out.println(s);
+
+		return mCenter;
 	}
 
 	public void add(PrescriptionClusterCompositeNode child) {
@@ -14,6 +30,10 @@ public class PrescriptionClusterCompositeNode {
 
 	public void add(PrescriptionClusterLeafNode node) {
 		mLeafNodes.add(node);
+	}
+
+	public List<PrescriptionClusterCompositeNode> getCompositeNodes() {
+		return mChildCompositeNodes;
 	}
 
 	public List<PrescriptionClusterLeafNode> getLeafNodes() {
@@ -35,4 +55,7 @@ public class PrescriptionClusterCompositeNode {
 	private List<PrescriptionClusterLeafNode> mLeafNodes = new ArrayList<PrescriptionClusterLeafNode>();
 
 	private List<PrescriptionClusterCompositeNode> mChildCompositeNodes = new ArrayList<PrescriptionClusterCompositeNode>();
+
+	private Set<String> mCenter;
+
 }
