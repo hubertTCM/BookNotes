@@ -47,7 +47,7 @@ public class YiAnParser {
 
 			Token token = mTokens.get(mCurrentTokenIndex);
 			String tokenType = token.getType().name();
-			System.out.println(token.getType() + ":" + token.getValue());
+			//System.out.println(token.getType() + ":" + token.getValue());
 			if (tag.equals(tokenType)) {
 				if (tokenType.equals(Constants.End)) {
 					mCurrentTokenIndex += 1;

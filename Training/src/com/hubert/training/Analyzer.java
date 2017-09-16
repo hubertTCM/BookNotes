@@ -4,8 +4,8 @@ import java.util.*;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class PrescriptionAnalyzer {
-	public PrescriptionAnalyzer(List<String> prescriptions) {
+public class Analyzer {
+	public Analyzer(List<String> prescriptions) {
 		HashMap<String, Integer> allHerbs = new HashMap<String, Integer>();
 		for (String item : prescriptions) {
 			String[] herbs = item.split("\\s+");

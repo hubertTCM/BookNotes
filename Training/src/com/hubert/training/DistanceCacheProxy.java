@@ -2,11 +2,21 @@ package com.hubert.training;
 
 import java.util.*;
 
-public class DistanceCache<T> implements IDistanceCalculator<T> {
+public class DistanceCacheProxy<T> implements IDistanceCalculator<T> {
 
-	public DistanceCache(IDistanceCalculator<T> calculator, IStringConverter<T> converter) {
+	public DistanceCacheProxy(IDistanceCalculator<T> calculator, IStringConverter<T> converter) {
 		mCalculator = calculator;
 		mStringConverter = converter;
+	}
+
+	public DistanceCacheProxy(IDistanceCalculator<T> calculator) {
+		this(calculator, new IStringConverter<T>() {
+
+			@Override
+			public String convert(T x) {
+				return String.valueOf(x.hashCode());
+			}
+		});
 	}
 
 	@Override
