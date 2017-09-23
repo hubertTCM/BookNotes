@@ -15,9 +15,10 @@ public class PrescriptionAnalyzer {
 
 	public PrescriptionClusterCompositeNode analyze(IDistanceCalculator<PrescriptionClusterCompositeNode> calculator) {
 
+		mCurrentClusterNodeId = 1;
 		List<PrescriptionClusterCompositeNode> compositeNodes = new ArrayList<PrescriptionClusterCompositeNode>();
 		for (PrescriptionClusterLeafNode leaf : mLeafNodes) {
-			PrescriptionClusterCompositeNode node = new PrescriptionClusterCompositeNode();
+			PrescriptionClusterCompositeNode node = new PrescriptionClusterCompositeNode(mCurrentClusterNodeId);
 			node.add(leaf);
 			compositeNodes.add(node);
 		}
@@ -62,12 +63,13 @@ public class PrescriptionAnalyzer {
 				}
 			}
 		}
-		
-		if (x == null || y == null){
+
+		if (x == null || y == null) {
 			System.out.println("Cirital error");
 		}
 
-		PrescriptionClusterCompositeNode parent = new PrescriptionClusterCompositeNode();
+		mCurrentClusterNodeId += 1;
+		PrescriptionClusterCompositeNode parent = new PrescriptionClusterCompositeNode(mCurrentClusterNodeId);
 		parent.add(x);
 		parent.add(y);
 		temp.addAll(nodes);
@@ -80,4 +82,5 @@ public class PrescriptionAnalyzer {
 
 	private List<PrescriptionClusterLeafNode> mLeafNodes = new ArrayList<PrescriptionClusterLeafNode>();
 	private PrescriptionClusterCompositeNode mRoot = null;
+	private int mCurrentClusterNodeId = 0;
 }

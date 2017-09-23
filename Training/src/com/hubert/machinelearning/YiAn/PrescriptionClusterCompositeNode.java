@@ -3,6 +3,10 @@ package com.hubert.machinelearning.YiAn;
 import java.util.*;
 
 public class PrescriptionClusterCompositeNode {
+	public PrescriptionClusterCompositeNode(int id){
+		mId = id;
+	}
+	
 	public Set<String> getCenter() {
 		if (mCenter == null) {
 			initLeafNodes();
@@ -24,6 +28,10 @@ public class PrescriptionClusterCompositeNode {
 		return mCenter;
 	}
 
+	public int getId(){
+		return mId;
+	}
+	
 	public void add(PrescriptionClusterCompositeNode child) {
 		mChildCompositeNodes.add(child);
 	}
@@ -58,4 +66,5 @@ public class PrescriptionClusterCompositeNode {
 
 	private Set<String> mCenter;
 
+	private int mId;
 }
