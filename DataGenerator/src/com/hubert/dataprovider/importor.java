@@ -65,15 +65,19 @@ public class importor {
 			PrescriptionAnalyzer analyzer = new PrescriptionAnalyzer(prescriptions);
 			SingleLinkageDistanceCalculator singleDistance = new SingleLinkageDistanceCalculator(leafDistance);
 			PrescriptionClusterCompositeNode root = analyzer.analyze(singleDistance);
-			ClusterSplitterVisitor visitor = new ClusterSplitterVisitor();
-			// visitor.split(root);
+			ClusterResultAnalayer visitor = new ClusterResultAnalayer();
+			//visitor.split(root);
+			for(PrescriptionClusterCompositeNode node : visitor.getNodes(root, 3)){
+				node.getCenter();
+			}
+			
+			System.out.println("*****");
 
 			AverageLinkageDistanceCalculator distance2 = new AverageLinkageDistanceCalculator(leafDistance);
 			root = analyzer.analyze(distance2);
-			root.getCenter();
-			root.getCompositeNodes().get(0).getCenter();
-			root.getCompositeNodes().get(1).getCenter();
-			//visitor.split(root);
+			for(PrescriptionClusterCompositeNode node : visitor.getNodes(root, 5)){
+				node.getCenter();
+			}
 
 			System.out.println("done");
 		} catch (IOException e) {
