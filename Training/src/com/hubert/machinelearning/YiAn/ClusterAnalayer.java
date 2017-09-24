@@ -2,7 +2,7 @@ package com.hubert.machinelearning.YiAn;
 
 import java.util.*;
 
-public class ClusterResultAnalayer {
+public class ClusterAnalayer {
 	public List<PrescriptionClusterCompositeNode> getNodes(PrescriptionClusterCompositeNode root, int count) {
 
 		PriorityQueue<PrescriptionClusterCompositeNode> priorityQueue = new PriorityQueue<PrescriptionClusterCompositeNode>(
