@@ -65,7 +65,7 @@ public class importor {
 			PrescriptionAnalyzer analyzer = new PrescriptionAnalyzer(prescriptions);
 			SingleLinkageDistanceCalculator singleDistance = new SingleLinkageDistanceCalculator(leafDistance);
 			PrescriptionClusterCompositeNode root = analyzer.analyze(singleDistance);
-			ClusterResultAnalayer visitor = new ClusterResultAnalayer();
+			ClusterAnalayer visitor = new ClusterAnalayer();
 			//visitor.split(root);
 			for(PrescriptionClusterCompositeNode node : visitor.getNodes(root, 3)){
 				node.getCenter();
