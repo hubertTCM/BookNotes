@@ -30,7 +30,14 @@ public class ClusterAnalayer {
 
 		List<PrescriptionClusterCompositeNode> nodes = new ArrayList<PrescriptionClusterCompositeNode>();
 		while (!priorityQueue.isEmpty()) {
-			nodes.add(priorityQueue.remove());
+			PrescriptionClusterCompositeNode tempNode = priorityQueue.remove();
+			nodes.add(tempNode);
+			
+			String s = Integer.toString(tempNode.getLeafNodes().size()) + ",";
+			for(String item : tempNode.getCenter()){
+				s += " " + item;
+			}
+			System.out.println(s);
 		}
 		return nodes;
 	}

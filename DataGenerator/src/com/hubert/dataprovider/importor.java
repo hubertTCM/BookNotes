@@ -75,9 +75,12 @@ public class importor {
 
 			AverageLinkageDistanceCalculator distance2 = new AverageLinkageDistanceCalculator(leafDistance);
 			root = analyzer.analyze(distance2);
-			for(PrescriptionClusterCompositeNode node : visitor.getNodes(root, 5)){
+			for(PrescriptionClusterCompositeNode node : visitor.getNodes(root, 4)){
 				node.getCenter();
 			}
+
+			ClusterRender render = new ClusterRender("resource/debug/Cluster.js");
+			render.rend(root);
 
 			System.out.println("done");
 		} catch (IOException e) {
