@@ -19,11 +19,7 @@ public class PrescriptionClusterCompositeNode {
 
 		}
 		
-		String s = "";
-		for(String item : mCenter){
-			s += " " + item;
-		}
-		System.out.println(s);
+
 
 		return mCenter;
 	}
