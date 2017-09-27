@@ -3,7 +3,7 @@ package com.hubert;
 import static org.junit.Assert.*;
 
 import java.util.*;
-import java.util.stream.*;
+//import java.util.stream.*; //it is too slow to use lambda...
 
 import org.apache.commons.collections4.*;
 import org.junit.*;
