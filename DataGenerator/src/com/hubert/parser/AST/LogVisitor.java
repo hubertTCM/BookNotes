@@ -1,6 +1,7 @@
 package com.hubert.parser.AST;
 
 import java.io.*;
+import java.nio.file.Paths;
 
 public class LogVisitor implements IVisitor {
     public LogVisitor(String fileName) {
@@ -59,6 +60,7 @@ public class LogVisitor implements IVisitor {
     }
 
     private void open() throws IOException {
+        Paths.get(mLogFilePath).getParent().toFile().mkdirs();
         mFileWriter = new FileWriter(mLogFilePath);
     }
 

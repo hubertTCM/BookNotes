@@ -1,0 +1,227 @@
+{"tag":"Root",
+ "value":"",
+ "children": [
+    {"tag":"S",
+     "value":"",
+     "children": [
+        {"tag":"YN",
+         "value":"",
+         "children": [
+            {"tag":"YNDetail",
+             "value":"",
+             "children": [
+                {"tag":"Description",
+                 "value":"某（妪）今年风木司天，春夏阳升之候，兼因平昔怒劳忧思.....",
+                 "children": []
+                },
+                {"tag":"RecipeDetail",
+                 "value":"",
+                 "children": [
+                    {"tag":"RecipeAbbreviation",
+                     "value":"虎潜去锁阳、知母，加大肉苁蓉，炼蜜丸。",
+                     "children": []
+                    },
+                    {"tag":"RecipeContent",
+                     "value":"",
+                     "children": [
+                        {"tag":"Herb",
+                         "value":"黄柏",
+                         "children": []
+                        },
+                        {"tag":"RecipeCompositionHerbOnly",
+                         "value":"",
+                         "children": [
+                            {"tag":"Herb",
+                             "value":"龟板",
+                             "children": []
+                            },
+                            {"tag":"RecipeCompositionHerbOnly",
+                             "value":"",
+                             "children": [
+                                {"tag":"Herb",
+                                 "value":"生地黄",
+                                 "children": []
+                                },
+                                {"tag":"RecipeCompositionHerbOnly",
+                                 "value":"",
+                                 "children": [
+                                    {"tag":"Herb",
+                                     "value":"陈皮",
+                                     "children": []
+                                    }
+                                    ]
+                                }
+                                ]
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    ]
+                }
+                ]
+            },
+            {"tag":"YNAfterYNDetailCommon",
+             "value":"",
+             "children": [
+                {"tag":"YNDetail",
+                 "value":"",
+                 "children": [
+                    {"tag":"Description",
+                     "value":"又 前议苦辛酸降一法，肝风胃阳已折其上引之威，.....",
+                     "children": []
+                    },
+                    {"tag":"RecipeDetail",
+                     "value":"",
+                     "children": [
+                        {"tag":"RecipeAbbreviation",
+                         "value":"九制熟地 肉苁蓉（用大而黑色者，去甲切片，盛竹篮内，放长流水中浸七日，晒干，以极淡为度，四两）.....",
+                         "children": []
+                        },
+                        {"tag":"RecipeContent",
+                         "value":"",
+                         "children": [
+                            {"tag":"Herb",
+                             "value":"黄柏",
+                             "children": []
+                            },
+                            {"tag":"RecipeCompositionHerbOnly",
+                             "value":"",
+                             "children": [
+                                {"tag":"Herb",
+                                 "value":"龟板",
+                                 "children": []
+                                },
+                                {"tag":"RecipeCompositionHerbOnly",
+                                 "value":"",
+                                 "children": [
+                                    {"tag":"Herb",
+                                     "value":"生地黄",
+                                     "children": []
+                                    },
+                                    {"tag":"RecipeCompositionHerbOnly",
+                                     "value":"",
+                                     "children": [
+                                        {"tag":"Herb",
+                                         "value":"陈皮",
+                                         "children": []
+                                        },
+                                        {"tag":"RecipeCompositionHerbOnly",
+                                         "value":"",
+                                         "children": [
+                                            {"tag":"Herb",
+                                             "value":"肉苁蓉",
+                                             "children": []
+                                            }
+                                            ]
+                                        }
+                                        ]
+                                    }
+                                    ]
+                                }
+                                ]
+                            }
+                            ]
+                        },
+                        {"tag":"AfterRecipeContent",
+                         "value":"",
+                         "children": [
+                            {"tag":"RecipeComment",
+                             "value":"上药照方制末，另用小黑稆豆皮八两煎浓汁，法丸，每早百滚水服三钱。",
+                             "children": []
+                            },
+                            {"tag":"RecipeDetail",
+                             "value":"",
+                             "children": [
+                                {"tag":"RecipeHeader",
+                                 "value":"议晚上用健中运痰，兼制亢阳。火动风生，从《外台》茯苓饮意。",
+                                 "children": []
+                                },
+                                {"tag":"RecipeContent",
+                                 "value":"",
+                                 "children": [
+                                    {"tag":"Herb",
+                                     "value":"人参",
+                                     "children": []
+                                    },
+                                    {"tag":"RecipeCompositionHerbOnly",
+                                     "value":"",
+                                     "children": [
+                                        {"tag":"Herb",
+                                         "value":"熟半夏",
+                                         "children": []
+                                        },
+                                        {"tag":"RecipeCompositionHerbOnly",
+                                         "value":"",
+                                         "children": [
+                                            {"tag":"Herb",
+                                             "value":"茯苓",
+                                             "children": []
+                                            },
+                                            {"tag":"RecipeCompositionHerbOnly",
+                                             "value":"",
+                                             "children": [
+                                                {"tag":"Herb",
+                                                 "value":"广皮肉",
+                                                 "children": []
+                                                },
+                                                {"tag":"RecipeCompositionHerbOnly",
+                                                 "value":"",
+                                                 "children": [
+                                                    {"tag":"Herb",
+                                                     "value":"川连",
+                                                     "children": []
+                                                    },
+                                                    {"tag":"RecipeCompositionHerbOnly",
+                                                     "value":"",
+                                                     "children": [
+                                                        {"tag":"Herb",
+                                                         "value":"枳实",
+                                                         "children": []
+                                                        },
+                                                        {"tag":"RecipeCompositionHerbOnly",
+                                                         "value":"",
+                                                         "children": [
+                                                            {"tag":"Herb",
+                                                             "value":"明天麻",
+                                                             "children": []
+                                                            }
+                                                            ]
+                                                        }
+                                                        ]
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            }
+                                            ]
+                                        }
+                                        ]
+                                    }
+                                    ]
+                                },
+                                {"tag":"AfterRecipeContent",
+                                 "value":"",
+                                 "children": [
+                                    {"tag":"RecipeComment",
+                                     "value":"上末，用竹沥一杯，姜汁十匙，法丸，食远开水服三钱。",
+                                     "children": []
+                                    }
+                                    ]
+                                }
+                                ]
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    ]
+                }
+                ]
+            }
+            ]
+        }
+        ]
+    }
+    ]
+}
