@@ -3,64 +3,62 @@ package com.hubert.machinelearning.YiAn;
 import java.util.*;
 
 public class PrescriptionClusterCompositeNode {
-	public PrescriptionClusterCompositeNode(int id){
-		mId = id;
-	}
-	
-	public Set<String> getCenter() {
-		if (mCenter == null) {
-			initLeafNodes();
-			List<Set<String>> allHerbs = new ArrayList<Set<String>>();
-			for (PrescriptionClusterLeafNode leaf : mLeafNodes) {
-				allHerbs.add(leaf.getHerbs());
-			}
-			CenterCalculator c = new CenterCalculator(allHerbs);
-			mCenter = c.getCenter();
+    public PrescriptionClusterCompositeNode(int id) {
+        mId = id;
+    }
 
-		}
-		
+    public Set<String> getCenter() {
+        if (mCenter == null) {
+            initLeafNodes();
+            List<Set<String>> allHerbs = new ArrayList<Set<String>>();
+            for (PrescriptionClusterLeafNode leaf : mLeafNodes) {
+                allHerbs.add(leaf.getHerbs());
+            }
+            CenterCalculator c = new CenterCalculator(allHerbs);
+            mCenter = c.getCenter();
 
+        }
 
-		return mCenter;
-	}
+        return mCenter;
+    }
 
-	public int getId(){
-		return mId;
-	}
-	
-	public void add(PrescriptionClusterCompositeNode child) {
-		mChildCompositeNodes.add(child);
-	}
+    public int getId() {
+        return mId;
+    }
 
-	public void add(PrescriptionClusterLeafNode node) {
-		mLeafNodes.add(node);
-	}
+    public void add(PrescriptionClusterCompositeNode child) {
+        mChildCompositeNodes.add(child);
+    }
 
-	public List<PrescriptionClusterCompositeNode> getCompositeNodes() {
-		return mChildCompositeNodes;
-	}
+    public void add(PrescriptionClusterLeafNode node) {
+        mLeafNodes.add(node);
+    }
 
-	public List<PrescriptionClusterLeafNode> getLeafNodes() {
-		initLeafNodes();
-		return mLeafNodes;
-	}
+    public List<PrescriptionClusterCompositeNode> getCompositeNodes() {
+        return mChildCompositeNodes;
+    }
 
-	private void initLeafNodes() {
-		if (!mLeafNodes.isEmpty()) {
-			return;
-		}
+    public List<PrescriptionClusterLeafNode> getLeafNodes() {
+        initLeafNodes();
+        return mLeafNodes;
+    }
 
-		for (PrescriptionClusterCompositeNode node : mChildCompositeNodes) {
-			mLeafNodes.addAll(node.getLeafNodes());
-		}
+    private void initLeafNodes() {
+        if (!mLeafNodes.isEmpty()) {
+            return;
+        }
 
-	}
+        for (PrescriptionClusterCompositeNode node : mChildCompositeNodes) {
+            mLeafNodes.addAll(node.getLeafNodes());
+        }
 
-	private List<PrescriptionClusterLeafNode> mLeafNodes = new ArrayList<PrescriptionClusterLeafNode>();
+    }
 
-	private List<PrescriptionClusterCompositeNode> mChildCompositeNodes = new ArrayList<PrescriptionClusterCompositeNode>();
+    private List<PrescriptionClusterLeafNode> mLeafNodes = new ArrayList<PrescriptionClusterLeafNode>();
 
-	private Set<String> mCenter;
+    private List<PrescriptionClusterCompositeNode> mChildCompositeNodes = new ArrayList<PrescriptionClusterCompositeNode>();
 
-	private int mId;
+    private Set<String> mCenter;
+
+    private int mId;
 }

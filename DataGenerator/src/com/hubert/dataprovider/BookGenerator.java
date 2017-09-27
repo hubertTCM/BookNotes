@@ -21,125 +21,124 @@ import com.hubert.parser.tokenextractor.*;
 
 public class BookGenerator {
 
-	public BookGenerator(String grammarFilePath, String bookName) throws Exception {
-		mBookDirectory = new File("resource/" + bookName);
-		mBook = new BookEntity();
-		mBook.name = bookName;
-		mBook.sections = new ArrayList<SectionEntity>();
+    public BookGenerator(String grammarFilePath, String bookName) throws Exception {
+        mBookDirectory = new File("resource/" + bookName);
+        mBook = new BookEntity();
+        mBook.name = bookName;
+        mBook.sections = new ArrayList<SectionEntity>();
 
-		mYiAnParser = new YiAnParser();
-		mGrammar = new Grammar(grammarFilePath);
-	}
+        mYiAnParser = new YiAnParser();
+        mGrammar = new Grammar(grammarFilePath);
+    }
 
-	public List<YiAnEntity> doImport() {
-		try {
-			loadSections(null, mBookDirectory);
+    public List<YiAnEntity> doImport() {
+        try {
+            loadSections(null, mBookDirectory);
 
-			// TODO: requires better design here.
-			// mYiAnParser.adjust();
-			// mYiAnParser.validate();
-			// mYiAnParser.save();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return mYiAns;
-	}
+            // TODO: requires better design here.
+            // mYiAnParser.adjust();
+            // mYiAnParser.validate();
+            // mYiAnParser.save();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return mYiAns;
+    }
 
-	private void loadSections(SectionEntity parent, File directory) throws Exception {
+    private void loadSections(SectionEntity parent, File directory) throws Exception {
 
-		File[] files = directory.listFiles();
-		Arrays.sort(files);
+        File[] files = directory.listFiles();
+        Arrays.sort(files);
 
-		for (File file : files) {
-			String fileName = file.getName();
-			if (fileName.indexOf("summary") > 0 
-					|| fileName.indexOf("ignore") > 0
-					|| fileName.indexOf("debug") >= 0) {
-				System.out.println("ignore " + fileName);
-				continue;
-			}
+        for (File file : files) {
+            String fileName = file.getName();
+            if (fileName.indexOf("summary") > 0 || fileName.indexOf("ignore") > 0 || fileName.indexOf("debug") >= 0) {
+                System.out.println("ignore " + fileName);
+                continue;
+            }
 
-			if (file.isDirectory()) {
-				String sectionName = getSectionName(fileName);
-				SectionEntity section = createSection(parent, sectionName);
-				loadSections(section, file);
-			}
+            if (file.isDirectory()) {
+                String sectionName = getSectionName(fileName);
+                SectionEntity section = createSection(parent, sectionName);
+                loadSections(section, file);
+            }
 
-			if (file.isFile()) {
-				if (!fileName.endsWith(".txt")) {
-					System.out.println("ignore " + fileName);
-					continue;
-				}
-				loadBlocks(parent, file);
-			}
-		}
-	}
+            if (file.isFile()) {
+                if (!fileName.endsWith(".txt")) {
+                    System.out.println("ignore " + fileName);
+                    continue;
+                }
+                loadBlocks(parent, file);
+                break;
+            }
+        }
+    }
 
-	private void loadBlocks(SectionEntity parent, File file) throws Exception {
-		String filePath = file.getAbsolutePath();
-		YiAnLexer lexer = new YiAnLexer(filePath);
-		List<Token> tokens = lexer.parse();
+    private void loadBlocks(SectionEntity parent, File file) throws Exception {
+        String filePath = file.getAbsolutePath();
+        YiAnLexer lexer = new YiAnLexer(filePath);
+        List<Token> tokens = lexer.parse();
 
-		String tokenFilePath = "resource/debug/" + file.getName() + "_token.text";
-		FileWriter writer = new FileWriter(tokenFilePath);
-		for (Token token : tokens) {
-			writer.write(token.getType() + ":" + token.getValue() + "\n");
-		}
-		writer.close();
-		ASTNode node = mYiAnParser.parse(mGrammar, tokens);
-		LogVisitor visitor = new LogVisitor("resource/debug/" + file.getName() + "_AST.json");
-		node.accept(visitor);
-		
-		YiAnBuilderVisitor builder = new YiAnBuilderVisitor(file.getAbsolutePath() + "_debug.txt", HerbAliasManager.getInstance());
-		node.accept(builder);
-		mYiAns.addAll(builder.getYiAns());
-		return;
-	}
+        String tokenFilePath = "resource/debug/" + file.getName() + "_token.text";
+        FileWriter writer = new FileWriter(tokenFilePath);
+        for (Token token : tokens) {
+            writer.write(token.getType() + ":" + token.getValue() + "\n");
+        }
+        writer.close();
+        ASTNode node = mYiAnParser.parse(mGrammar, tokens);
+        LogVisitor visitor = new LogVisitor("resource/debug/" + file.getName() + "_AST.json");
+        node.accept(visitor);
 
-	private SectionEntity createSection(SectionEntity parent, String sectionName) {
-		SectionEntity section = new SectionEntity();
-		//section.book = mBook;
-		section.name = sectionName;
-		section.blocks = new ArrayList<BlockEntity>();
-		section.childSections = new ArrayList<SectionEntity>();
+        YiAnBuilderVisitor builder = new YiAnBuilderVisitor(file.getAbsolutePath() + "_debug.txt",
+                HerbAliasManager.getInstance());
+        node.accept(builder);
+        mYiAns.addAll(builder.getYiAns());
+        return;
+    }
 
-		section.order = mSectionOrderGenerator.nextOrder();
+    private SectionEntity createSection(SectionEntity parent, String sectionName) {
+        SectionEntity section = new SectionEntity();
+        // section.book = mBook;
+        section.name = sectionName;
+        section.blocks = new ArrayList<BlockEntity>();
+        section.childSections = new ArrayList<SectionEntity>();
 
-		if (parent != null) {
-			section.parent = parent;
-			parent.childSections.add(section);
-		}
-		else{
-			section.parent = null;
-			section.book = mBook;
-			mBook.sections.add(section);
-		}
-		return section;
-	}
+        section.order = mSectionOrderGenerator.nextOrder();
 
-	// 1.中风
-	// 2.中风.txt
-	private String getSectionName(String fileName) {
-		int index = fileName.indexOf(".");
-		fileName = fileName.substring(index + 1).trim();
+        if (parent != null) {
+            section.parent = parent;
+            parent.childSections.add(section);
+        } else {
+            section.parent = null;
+            section.book = mBook;
+            mBook.sections.add(section);
+        }
+        return section;
+    }
 
-		index = fileName.indexOf(".");
-		if (index > 0) {
-			return fileName.substring(0, index);
-		}
-		return StringUtils.strip(fileName);
-	}
+    // 1.中风
+    // 2.中风.txt
+    private String getSectionName(String fileName) {
+        int index = fileName.indexOf(".");
+        fileName = fileName.substring(index + 1).trim();
 
-	protected File mBookDirectory;
-	protected Grammar mGrammar;
-	protected BookEntity mBook;
-	protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
+        index = fileName.indexOf(".");
+        if (index > 0) {
+            return fileName.substring(0, index);
+        }
+        return StringUtils.strip(fileName);
+    }
 
-	protected YiAnParser mYiAnParser = new YiAnParser();
-	
-	protected List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
+    protected File mBookDirectory;
+    protected Grammar mGrammar;
+    protected BookEntity mBook;
+    protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
+
+    protected YiAnParser mYiAnParser = new YiAnParser();
+
+    protected List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
 }

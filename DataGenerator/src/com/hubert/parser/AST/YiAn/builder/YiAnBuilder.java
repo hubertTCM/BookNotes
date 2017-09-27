@@ -9,18 +9,18 @@ import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 
 public class YiAnBuilder extends AbstractYiAnBuilder {
 
-	public YiAnBuilder(YiAnBuilderVisitor visitor) {
-		super(Arrays.asList(YiAnNodeConstants.YN, YiAnNodeConstants.YN2), visitor);
-	}
+    public YiAnBuilder(YiAnBuilderVisitor visitor) {
+        super(Arrays.asList(YiAnNodeConstants.YN, YiAnNodeConstants.YN2), visitor);
+    }
 
-	@Override
-	protected boolean buildInternal(ASTNode node) {
-		YiAnEntity mYiAn = new YiAnEntity();
-		mYiAn.details = new ArrayList<YiAnDetailEntity>();
-		mVisitor.AddYiAn(mYiAn);
+    @Override
+    protected boolean buildInternal(ASTNode node) {
+        YiAnEntity mYiAn = new YiAnEntity();
+        mYiAn.details = new ArrayList<YiAnDetailEntity>();
+        mVisitor.AddYiAn(mYiAn);
 
-		new YiAnDetailBuilder(mVisitor, mYiAn);
-		return true;
-	}
+        new YiAnDetailBuilder(mVisitor, mYiAn);
+        return true;
+    }
 
 }
