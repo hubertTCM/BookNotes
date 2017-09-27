@@ -1,0 +1,69 @@
+{"tag":"Root",
+ "value":"",
+ "children": [
+    {"tag":"S",
+     "value":"",
+     "children": [
+        {"tag":"YN",
+         "value":"",
+         "children": [
+            {"tag":"YNDetail",
+             "value":"",
+             "children": [
+                {"tag":"Description",
+                 "value":"曾（五二）脉弦动，眩晕耳聋，行走气促无力，肛痔下垂。此未老欲衰，肾阴弱，收纳无权，肝阳炽，虚风蒙窍.......",
+                 "children": []
+                },
+                {"tag":"RecipeDetail",
+                 "value":"",
+                 "children": [
+                    {"tag":"RecipeAbbreviation",
+                     "value":"虎潜去锁阳、知母，加大肉苁蓉，炼蜜丸。",
+                     "children": []
+                    },
+                    {"tag":"RecipeContent",
+                     "value":"",
+                     "children": [
+                        {"tag":"Herb",
+                         "value":"黄柏",
+                         "children": []
+                        },
+                        {"tag":"RecipeCompositionHerbOnly",
+                         "value":"",
+                         "children": [
+                            {"tag":"Herb",
+                             "value":"龟板",
+                             "children": []
+                            },
+                            {"tag":"RecipeCompositionHerbOnly",
+                             "value":"",
+                             "children": [
+                                {"tag":"Herb",
+                                 "value":"生地黄",
+                                 "children": []
+                                },
+                                {"tag":"RecipeCompositionHerbOnly",
+                                 "value":"",
+                                 "children": [
+                                    {"tag":"Herb",
+                                     "value":"陈皮",
+                                     "children": []
+                                    }
+                                    ]
+                                }
+                                ]
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    ]
+                }
+                ]
+            }
+            ]
+        }
+        ]
+    }
+    ]
+}

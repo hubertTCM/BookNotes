@@ -1,7 +1,7 @@
 package com.hubert.parser.AST.YiAn;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Paths;
 import java.util.*;
 
 import org.apache.commons.lang3.StringUtils;
@@ -52,6 +52,9 @@ public class YiAnBuilderVisitor implements IVisitor {
 
     private void adjustYiAnDetails() {
         try {
+            Paths.get(mLogPath).getParent().toFile().mkdirs();
+            //File file = new File(mLogPath);
+            //file.mkdirs();
             mFileWriter = new FileWriter(mLogPath);
 
             for (YiAnEntity item : mYiAns) {

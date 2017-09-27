@@ -1,0 +1,184 @@
+{"tag":"Root",
+ "value":"",
+ "children": [
+    {"tag":"S",
+     "value":"",
+     "children": [
+        {"tag":"YN",
+         "value":"",
+         "children": [
+            {"tag":"YNDetail",
+             "value":"",
+             "children": [
+                {"tag":"Description",
+                 "value":"叶 初春肝风内动，眩晕跌仆，左肢偏痿....",
+                 "children": []
+                },
+                {"tag":"RecipeDetail",
+                 "value":"",
+                 "children": [
+                    {"tag":"RecipeContent",
+                     "value":"",
+                     "children": [
+                        {"tag":"Herb",
+                         "value":"黄柏",
+                         "children": []
+                        },
+                        {"tag":"RecipeCompositionHerbOnly",
+                         "value":"",
+                         "children": [
+                            {"tag":"Herb",
+                             "value":"龟板",
+                             "children": []
+                            },
+                            {"tag":"RecipeCompositionHerbOnly",
+                             "value":"",
+                             "children": [
+                                {"tag":"Herb",
+                                 "value":"生地黄",
+                                 "children": []
+                                },
+                                {"tag":"RecipeCompositionHerbOnly",
+                                 "value":"",
+                                 "children": [
+                                    {"tag":"Herb",
+                                     "value":"陈皮",
+                                     "children": []
+                                    },
+                                    {"tag":"RecipeCompositionHerbOnly",
+                                     "value":"",
+                                     "children": [
+                                        {"tag":"Herb",
+                                         "value":"茯苓",
+                                         "children": []
+                                        }
+                                        ]
+                                    }
+                                    ]
+                                }
+                                ]
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    ]
+                }
+                ]
+            },
+            {"tag":"YNAfterYNDetailCommon",
+             "value":"",
+             "children": [
+                {"tag":"YNDetail",
+                 "value":"",
+                 "children": [
+                    {"tag":"Description",
+                     "value":"又 风热烁筋骨为痛，痰火气阻，呼吸不利，.....",
+                     "children": []
+                    },
+                    {"tag":"RecipeDetail",
+                     "value":"",
+                     "children": [
+                        {"tag":"RecipeContent",
+                         "value":"",
+                         "children": [
+                            {"tag":"Herb",
+                             "value":"人参",
+                             "children": []
+                            },
+                            {"tag":"RecipeCompositionHerbOnly",
+                             "value":"",
+                             "children": [
+                                {"tag":"Herb",
+                                 "value":"半夏",
+                                 "children": []
+                                },
+                                {"tag":"RecipeCompositionHerbOnly",
+                                 "value":"",
+                                 "children": [
+                                    {"tag":"Herb",
+                                     "value":"枳实",
+                                     "children": []
+                                    },
+                                    {"tag":"RecipeCompositionHerbOnly",
+                                     "value":"",
+                                     "children": [
+                                        {"tag":"Herb",
+                                         "value":"茯苓",
+                                         "children": []
+                                        }
+                                        ]
+                                    }
+                                    ]
+                                }
+                                ]
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    ]
+                },
+                {"tag":"YNAfterYNDetailCommon",
+                 "value":"",
+                 "children": [
+                    {"tag":"YNDetail",
+                     "value":"",
+                     "children": [
+                        {"tag":"Description",
+                         "value":"又",
+                         "children": []
+                        },
+                        {"tag":"RecipeDetail",
+                         "value":"",
+                         "children": [
+                            {"tag":"RecipeContent",
+                             "value":"",
+                             "children": [
+                                {"tag":"Herb",
+                                 "value":"黄柏",
+                                 "children": []
+                                },
+                                {"tag":"RecipeCompositionHerbOnly",
+                                 "value":"",
+                                 "children": [
+                                    {"tag":"Herb",
+                                     "value":"龟板",
+                                     "children": []
+                                    },
+                                    {"tag":"RecipeCompositionHerbOnly",
+                                     "value":"",
+                                     "children": [
+                                        {"tag":"Herb",
+                                         "value":"生地黄",
+                                         "children": []
+                                        },
+                                        {"tag":"RecipeCompositionHerbOnly",
+                                         "value":"",
+                                         "children": [
+                                            {"tag":"Herb",
+                                             "value":"陈皮",
+                                             "children": []
+                                            }
+                                            ]
+                                        }
+                                        ]
+                                    }
+                                    ]
+                                }
+                                ]
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    ]
+                }
+                ]
+            }
+            ]
+        }
+        ]
+    }
+    ]
+}

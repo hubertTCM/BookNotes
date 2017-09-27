@@ -1,0 +1,101 @@
+{"tag":"Root",
+ "value":"",
+ "children": [
+    {"tag":"S",
+     "value":"",
+     "children": [
+        {"tag":"YN",
+         "value":"",
+         "children": [
+            {"tag":"YNDetail",
+             "value":"",
+             "children": [
+                {"tag":"Description",
+                 "value":"阳挟内风上巅，目昏耳鸣不寐，肝经主病。",
+                 "children": []
+                },
+                {"tag":"RecipeDetail",
+                 "value":"",
+                 "children": [
+                    {"tag":"RecipeContent",
+                     "value":"",
+                     "children": [
+                        {"tag":"Herb",
+                         "value":"熟地",
+                         "children": []
+                        },
+                        {"tag":"RecipeCompositionHerbOnly",
+                         "value":"",
+                         "children": [
+                            {"tag":"Herb",
+                             "value":"炙龟甲",
+                             "children": []
+                            },
+                            {"tag":"RecipeCompositionHerbOnly",
+                             "value":"",
+                             "children": [
+                                {"tag":"Herb",
+                                 "value":"萸肉",
+                                 "children": []
+                                },
+                                {"tag":"RecipeCompositionHerbOnly",
+                                 "value":"",
+                                 "children": [
+                                    {"tag":"Herb",
+                                     "value":"五味",
+                                     "children": []
+                                    },
+                                    {"tag":"RecipeCompositionHerbOnly",
+                                     "value":"",
+                                     "children": [
+                                        {"tag":"Herb",
+                                         "value":"磁石",
+                                         "children": []
+                                        },
+                                        {"tag":"RecipeCompositionHerbOnly",
+                                         "value":"",
+                                         "children": [
+                                            {"tag":"Herb",
+                                             "value":"茯苓",
+                                             "children": []
+                                            },
+                                            {"tag":"RecipeCompositionHerbOnly",
+                                             "value":"",
+                                             "children": [
+                                                {"tag":"Herb",
+                                                 "value":"旱莲草",
+                                                 "children": []
+                                                },
+                                                {"tag":"RecipeCompositionHerbOnly",
+                                                 "value":"",
+                                                 "children": [
+                                                    {"tag":"Herb",
+                                                     "value":"女贞子",
+                                                     "children": []
+                                                    }
+                                                    ]
+                                                }
+                                                ]
+                                            }
+                                            ]
+                                        }
+                                        ]
+                                    }
+                                    ]
+                                }
+                                ]
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    ]
+                }
+                ]
+            }
+            ]
+        }
+        ]
+    }
+    ]
+}

@@ -20,6 +20,7 @@ public class YiAnParserTests {
     public static void init() {
         mGrammarFile = "../DataGenerator/resource/临证指南医案/format_ignore.txt";
         mHerbAliasManager = HerbAliasManager.getInstance("../DataGenerator/resource/常用中药处方别名.txt");
+        mUtils = new Utils();
     }
 
     @Test
@@ -37,8 +38,12 @@ public class YiAnParserTests {
         Grammar grammar = new Grammar(mGrammarFile);
         YiAnParser parser = new YiAnParser();
         ASTNode node = parser.parse(grammar, tokens);
-        LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test1.json");
+        
+        String fileName = "ASTNode_test1.json";
+        LogVisitor visitor = new LogVisitor(getActualFilePath(fileName));
         node.accept(visitor);
+        mUtils.checkFile(getExpectFilePath(fileName), getActualFilePath(fileName));
+
         SectionEntity entity = new SectionEntity();
         entity.book = new BookEntity();
         entity.name = "test1";
@@ -82,8 +87,12 @@ public class YiAnParserTests {
         Grammar grammar = new Grammar(mGrammarFile);
         YiAnParser parser = new YiAnParser();
         ASTNode node = parser.parse(grammar, tokens);
-        LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test2.json");
+
+
+        String fileName = "ASTNode_test2.json";
+        LogVisitor visitor = new LogVisitor(getActualFilePath(fileName));
         node.accept(visitor);
+        mUtils.checkFile(getExpectFilePath(fileName), getActualFilePath(fileName));
 
         SectionEntity entity = new SectionEntity();
         entity.book = new BookEntity();
@@ -153,9 +162,12 @@ public class YiAnParserTests {
         Grammar grammar = new Grammar(mGrammarFile);
         YiAnParser parser = new YiAnParser();
         ASTNode node = parser.parse(grammar, tokens);
-        LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test3.json");
-        node.accept(visitor);
 
+        String fileName = "ASTNode_test3.json";
+        LogVisitor visitor = new LogVisitor(getActualFilePath(fileName));
+        node.accept(visitor);
+        mUtils.checkFile(getExpectFilePath(fileName), getActualFilePath(fileName));
+        
         SectionEntity entity = new SectionEntity();
         entity.book = new BookEntity();
         entity.name = "test3";
@@ -222,8 +234,12 @@ public class YiAnParserTests {
         Grammar grammar = new Grammar(mGrammarFile);
         YiAnParser parser = new YiAnParser();
         ASTNode node = parser.parse(grammar, tokens);
-        LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test4.json");
+
+
+        String fileName = "ASTNode_test4.json";
+        LogVisitor visitor = new LogVisitor(getActualFilePath(fileName));
         node.accept(visitor);
+        mUtils.checkFile(getExpectFilePath(fileName), getActualFilePath(fileName));
 
         SectionEntity entity = new SectionEntity();
         entity.book = new BookEntity();
@@ -273,8 +289,12 @@ public class YiAnParserTests {
         Grammar grammar = new Grammar(mGrammarFile);
         YiAnParser parser = new YiAnParser();
         ASTNode node = parser.parse(grammar, tokens);
-        LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test5.json");
+
+
+        String fileName = "ASTNode_test5.json";
+        LogVisitor visitor = new LogVisitor(getActualFilePath(fileName));
         node.accept(visitor);
+        mUtils.checkFile(getExpectFilePath(fileName), getActualFilePath(fileName));
 
         SectionEntity entity = new SectionEntity();
         entity.book = new BookEntity();
@@ -324,8 +344,12 @@ public class YiAnParserTests {
         Grammar grammar = new Grammar(mGrammarFile);
         YiAnParser parser = new YiAnParser();
         ASTNode node = parser.parse(grammar, tokens);
-        LogVisitor visitor = new LogVisitor("resource/debug/ASTNode_test6.json");
+
+
+        String fileName = "ASTNode_test6.json";
+        LogVisitor visitor = new LogVisitor(getActualFilePath(fileName));
         node.accept(visitor);
+        mUtils.checkFile(getExpectFilePath(fileName), getActualFilePath(fileName));
 
         SectionEntity entity = new SectionEntity();
         entity.name = "test6";
@@ -386,6 +410,16 @@ public class YiAnParserTests {
         }
     }
 
+    private String getActualFilePath(String fileName) {
+        return "resource/YiAnParserTest/actual/" + fileName;
+    }
+
+    private String getExpectFilePath(String fileName) {
+        return "resource/YiAnParserTest/expect/" + fileName;
+    }
+
     private static String mGrammarFile;
     private static HerbAliasManager mHerbAliasManager;
+    private static Utils mUtils;
+    // private static String sTestResultFolder = "resource/YiAnParserTest/";
 }

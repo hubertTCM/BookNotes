@@ -1,0 +1,97 @@
+{"tag":"Root",
+ "value":"",
+ "children": [
+    {"tag":"S",
+     "value":"",
+     "children": [
+        {"tag":"YN",
+         "value":"",
+         "children": [
+            {"tag":"YNDetail",
+             "value":"",
+             "children": [
+                {"tag":"Description",
+                 "value":"又 今年天符岁会，上半年阳气大泄，.....",
+                 "children": []
+                },
+                {"tag":"RecipeDetail",
+                 "value":"",
+                 "children": [
+                    {"tag":"RecipeContent",
+                     "value":"",
+                     "children": [
+                        {"tag":"Herb",
+                         "value":"人参",
+                         "children": []
+                        },
+                        {"tag":"RecipeCompositionHerbOnly",
+                         "value":"",
+                         "children": [
+                            {"tag":"Herb",
+                             "value":"生牡蛎",
+                             "children": []
+                            },
+                            {"tag":"RecipeCompositionHerbOnly",
+                             "value":"",
+                             "children": [
+                                {"tag":"Herb",
+                                 "value":"生白芍",
+                                 "children": []
+                                }
+                                ]
+                            }
+                            ]
+                        }
+                        ]
+                    },
+                    {"tag":"AfterRecipeContent",
+                     "value":"",
+                     "children": [
+                        {"tag":"RecipeComment",
+                         "value":"上午服。",
+                         "children": []
+                        },
+                        {"tag":"RecipeDetail",
+                         "value":"",
+                         "children": [
+                            {"tag":"RecipeContent",
+                             "value":"",
+                             "children": [
+                                {"tag":"Herb",
+                                 "value":"人参",
+                                 "children": []
+                                },
+                                {"tag":"RecipeCompositionHerbOnly",
+                                 "value":"",
+                                 "children": [
+                                    {"tag":"Herb",
+                                     "value":"茯苓",
+                                     "children": []
+                                    }
+                                    ]
+                                }
+                                ]
+                            },
+                            {"tag":"AfterRecipeContent",
+                             "value":"",
+                             "children": [
+                                {"tag":"RecipeComment",
+                                 "value":"为末，竹沥法丸，早上服三钱，百滚汤下。",
+                                 "children": []
+                                }
+                                ]
+                            }
+                            ]
+                        }
+                        ]
+                    }
+                    ]
+                }
+                ]
+            }
+            ]
+        }
+        ]
+    }
+    ]
+}
