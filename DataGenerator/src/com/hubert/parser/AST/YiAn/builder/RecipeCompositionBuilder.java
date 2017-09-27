@@ -8,25 +8,25 @@ import com.hubert.parser.AST.YiAn.*;
 
 public class RecipeCompositionBuilder extends AbstractYiAnBuilder {
 
-	public RecipeCompositionBuilder(YiAnBuilderVisitor visitor, YiAnPrescriptionEntity prescriptionEntity) {
-		super(Arrays.asList(YiAnNodeConstants.RecipeComposition, YiAnNodeConstants.RecipeContent), visitor);
-		mPrescriptionEntity = prescriptionEntity;
-		mVisitor = visitor;
-	}
+    public RecipeCompositionBuilder(YiAnBuilderVisitor visitor, YiAnPrescriptionEntity prescriptionEntity) {
+        super(Arrays.asList(YiAnNodeConstants.RecipeComposition, YiAnNodeConstants.RecipeContent), visitor);
+        mPrescriptionEntity = prescriptionEntity;
+        mVisitor = visitor;
+    }
 
-	@Override
-	public boolean buildInternal(ASTNode node) {
-		// TODO Auto-generated method stub
-		mPrescriptionItemEntity = new YiAnPrescriptionItemEntity();
-		mPrescriptionEntity.items.add(mPrescriptionItemEntity);
+    @Override
+    public boolean buildInternal(ASTNode node) {
+        // TODO Auto-generated method stub
+        mPrescriptionItemEntity = new YiAnPrescriptionItemEntity();
+        mPrescriptionEntity.items.add(mPrescriptionItemEntity);
 
-		new RecipeCompositionChildBuilder(mVisitor, mPrescriptionItemEntity);
+        new RecipeCompositionChildBuilder(mVisitor, mPrescriptionItemEntity);
 
-		return true;
-	}
+        return true;
+    }
 
-	private YiAnBuilderVisitor mVisitor;
-	private YiAnPrescriptionEntity mPrescriptionEntity;
-	private YiAnPrescriptionItemEntity mPrescriptionItemEntity;
+    private YiAnBuilderVisitor mVisitor;
+    private YiAnPrescriptionEntity mPrescriptionEntity;
+    private YiAnPrescriptionItemEntity mPrescriptionItemEntity;
 
 }

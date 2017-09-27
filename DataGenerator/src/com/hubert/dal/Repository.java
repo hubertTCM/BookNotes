@@ -10,76 +10,76 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 public class Repository {
-	public void create(Collection<YiAnEntity> yiAns) {
-		try {
-			_connectionSource = new JdbcConnectionSource(Constant.DATABASE_URL);
+    public void create(Collection<YiAnEntity> yiAns) {
+        try {
+            _connectionSource = new JdbcConnectionSource(Constant.DATABASE_URL);
 
-			for (YiAnEntity yiAnEntity : yiAns) {
-				saveYiAn(yiAnEntity);
-			}
+            for (YiAnEntity yiAnEntity : yiAns) {
+                saveYiAn(yiAnEntity);
+            }
 
-			_connectionSource.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+            _connectionSource.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-	public void create(YiAnEntity yiAnEntity) {
+    public void create(YiAnEntity yiAnEntity) {
 
-		try {
-			_connectionSource = new JdbcConnectionSource(Constant.DATABASE_URL);
+        try {
+            _connectionSource = new JdbcConnectionSource(Constant.DATABASE_URL);
 
-			saveYiAn(yiAnEntity);
+            saveYiAn(yiAnEntity);
 
-			_connectionSource.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+            _connectionSource.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-	private void saveYiAn(YiAnEntity yianEntity) throws SQLException {
-		create(yianEntity, YiAnEntity.class);
+    private void saveYiAn(YiAnEntity yianEntity) throws SQLException {
+        create(yianEntity, YiAnEntity.class);
 
-		for (YiAnDetailEntity detailEntity : yianEntity.details) {
-			detailEntity.yian = yianEntity;
-			saveYiAnDetail(detailEntity);
-		}
-	}
+        for (YiAnDetailEntity detailEntity : yianEntity.details) {
+            detailEntity.yian = yianEntity;
+            saveYiAnDetail(detailEntity);
+        }
+    }
 
-	private void saveYiAnDetail(YiAnDetailEntity yiAnDetailEntity) throws SQLException {
-		create(yiAnDetailEntity, YiAnDetailEntity.class);
+    private void saveYiAnDetail(YiAnDetailEntity yiAnDetailEntity) throws SQLException {
+        create(yiAnDetailEntity, YiAnDetailEntity.class);
 
-		for (YiAnPrescriptionEntity item : yiAnDetailEntity.prescriptions) {
-			item.yian = yiAnDetailEntity;
-			if (item.items.isEmpty()){
-				System.out.println("ignore empty prescription");
-				continue;
-			}
-			saveYiAnPrescription(item);
-		}
-	}
+        for (YiAnPrescriptionEntity item : yiAnDetailEntity.prescriptions) {
+            item.yian = yiAnDetailEntity;
+            if (item.items.isEmpty()) {
+                System.out.println("ignore empty prescription");
+                continue;
+            }
+            saveYiAnPrescription(item);
+        }
+    }
 
-	private void saveYiAnPrescription(YiAnPrescriptionEntity entity) throws SQLException {
-		create(entity, YiAnPrescriptionEntity.class);
+    private void saveYiAnPrescription(YiAnPrescriptionEntity entity) throws SQLException {
+        create(entity, YiAnPrescriptionEntity.class);
 
-		for (YiAnPrescriptionItemEntity item : entity.items) {
-			item.yiAnPrescription = entity;
-			create(item, YiAnPrescriptionItemEntity.class);
-		}
-	}
+        for (YiAnPrescriptionItemEntity item : entity.items) {
+            item.yiAnPrescription = entity;
+            create(item, YiAnPrescriptionItemEntity.class);
+        }
+    }
 
-	private <T> void create(T entity, Class<T> type) throws SQLException {
-		Dao<T, Integer> dao = DaoManager.createDao(_connectionSource, type);
-		dao.create(entity);
-	}
+    private <T> void create(T entity, Class<T> type) throws SQLException {
+        Dao<T, Integer> dao = DaoManager.createDao(_connectionSource, type);
+        dao.create(entity);
+    }
 
-	private JdbcConnectionSource _connectionSource;
+    private JdbcConnectionSource _connectionSource;
 }

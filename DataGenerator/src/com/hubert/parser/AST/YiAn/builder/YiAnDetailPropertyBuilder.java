@@ -7,19 +7,19 @@ import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 
 public class YiAnDetailPropertyBuilder extends AbstractYiAnBuilder {
 
-	public YiAnDetailPropertyBuilder(YiAnBuilderVisitor visitor, YiAnDetailEntity yiAnDetail) {
-		super(YiAnNodeConstants.Description, visitor);
-		mYiAnDetail = yiAnDetail;
-	}
+    public YiAnDetailPropertyBuilder(YiAnBuilderVisitor visitor, YiAnDetailEntity yiAnDetail) {
+        super(YiAnNodeConstants.Description, visitor);
+        mYiAnDetail = yiAnDetail;
+    }
 
-	@Override
-	protected boolean buildInternal(ASTNode node) {
-		String tag = node.getTag();
-		if (YiAnNodeConstants.Description.equals(tag)) {
-			mYiAnDetail.content = node.getValue();
-		}
-		return true;
-	}
+    @Override
+    protected boolean buildInternal(ASTNode node) {
+        String tag = node.getTag();
+        if (YiAnNodeConstants.Description.equals(tag)) {
+            mYiAnDetail.content = node.getValue();
+        }
+        return true;
+    }
 
-	private YiAnDetailEntity mYiAnDetail;
+    private YiAnDetailEntity mYiAnDetail;
 }

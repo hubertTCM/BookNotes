@@ -13,127 +13,127 @@ import com.hubert.parser.AST.IVisitor;
 import com.hubert.parser.AST.YiAn.builder.*;
 
 public class YiAnBuilderVisitor implements IVisitor {
-	public YiAnBuilderVisitor(SectionEntity parentSection, HerbAliasManager herbAliasManager) {
-		this(herbAliasManager);
-		mParentSection = parentSection;
+    public YiAnBuilderVisitor(SectionEntity parentSection, HerbAliasManager herbAliasManager) {
+        this(herbAliasManager);
+        mParentSection = parentSection;
 
-		SectionEntity currentSection = parentSection;
-		while(mBook == null && currentSection != null){
-			mBook = currentSection.book;
-			currentSection = currentSection.parent;
-		}
-		mLogPath = "resource/" + mBook.name + "/debug_" + mParentSection.name + ".txt";
-	}
-	
-	public YiAnBuilderVisitor(String logFolder, HerbAliasManager herbAliasManager){
-		this(herbAliasManager);		
-		mLogPath = logFolder;
-	}
-	
-	private YiAnBuilderVisitor(HerbAliasManager herbAliasManager){
-		new YiAnBuilder(this);
-		mHerbAliasManager = herbAliasManager;
-	}
+        SectionEntity currentSection = parentSection;
+        while (mBook == null && currentSection != null) {
+            mBook = currentSection.book;
+            currentSection = currentSection.parent;
+        }
+        mLogPath = "resource/" + mBook.name + "/debug_" + mParentSection.name + ".txt";
+    }
 
-	@Override
-	public void visit(ASTNode node) {
-		IYiAnBuilder builder = getBuilder(node);
-		if (builder != null) {
-			builder.build(node);
-		}
-		int childCount = node.childCount();
-		for (int i = 0; i < childCount; ++i) {
-			node.getChild(i).accept(this);
-		}
-		if (node.getParent() == null) {
-			adjustYiAnDetails();
-		}
-	}
+    public YiAnBuilderVisitor(String logFolder, HerbAliasManager herbAliasManager) {
+        this(herbAliasManager);
+        mLogPath = logFolder;
+    }
 
-	private void adjustYiAnDetails() {
-		try {
-			mFileWriter = new FileWriter(mLogPath);
+    private YiAnBuilderVisitor(HerbAliasManager herbAliasManager) {
+        new YiAnBuilder(this);
+        mHerbAliasManager = herbAliasManager;
+    }
 
-			for (YiAnEntity item : mYiAns) {
-				adjustYiAn(item);
-				dump(item);
-			}
+    @Override
+    public void visit(ASTNode node) {
+        IYiAnBuilder builder = getBuilder(node);
+        if (builder != null) {
+            builder.build(node);
+        }
+        int childCount = node.childCount();
+        for (int i = 0; i < childCount; ++i) {
+            node.getChild(i).accept(this);
+        }
+        if (node.getParent() == null) {
+            adjustYiAnDetails();
+        }
+    }
 
-			mFileWriter.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void registerBuilder(String type, IYiAnBuilder builder) {
-		mBuilders.put(type, builder);
-	}
+    private void adjustYiAnDetails() {
+        try {
+            mFileWriter = new FileWriter(mLogPath);
 
-	private void adjustYiAn(YiAnEntity yiAn) {
-		for (YiAnDetailEntity detail : yiAn.details) {
-			for (YiAnPrescriptionEntity prescription : detail.prescriptions) {
-				ArrayList<String> herbs = new ArrayList<String>();
-				for (YiAnPrescriptionItemEntity item : prescription.items) {
-					String standardName = mHerbAliasManager.getStandardName(item.herb);
-					if (!herbs.contains(standardName)) {
-						herbs.add(standardName);
-					}
-				}
-				Collections.sort(herbs, new Comparator<String>() {
-				    @Override
-				    public int compare(String s1, String s2) {
-				        return s1.compareToIgnoreCase(s2);
-				    }
-				});
-				prescription.summary = "";
-				for(String herb : herbs){
-					prescription.summary += " " + herb;
-				}
-				prescription.summary = StringUtils.trim(prescription.summary);
-			}
-		}
-	}
+            for (YiAnEntity item : mYiAns) {
+                adjustYiAn(item);
+                dump(item);
+            }
 
-	private void dump(YiAnEntity yiAn) throws IOException {
-		mFileWriter.write("YiAn\n");
-		for (YiAnDetailEntity detail : yiAn.details) {
-			mFileWriter.write("Content:" + detail.content + "\n");
-			for (YiAnPrescriptionEntity prescription : detail.prescriptions) {
-				// mFileWriter.write("Head:" );
-				mFileWriter.write("summary:" + prescription.summary + "\n");
-				mFileWriter.write("comment:" + prescription.comment + "\n");
-			}
-		}
-	}
+            mFileWriter.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-	private IYiAnBuilder getBuilder(ASTNode node) {
-		String tag = node.getTag();
-		String key = tag;
-		if (YiAnNodeConstants.RecipeCompositionHerbOnly.equals(tag)) {
-			key = YiAnNodeConstants.RecipeComposition;
-		}
-		if (mBuilders.containsKey(key)) {
-			return mBuilders.get(key);
-		}
-		return null;
-	}
+    public void registerBuilder(String type, IYiAnBuilder builder) {
+        mBuilders.put(type, builder);
+    }
 
-	public void AddYiAn(YiAnEntity yiAn) {
-		mYiAns.add(yiAn);
-	}
+    private void adjustYiAn(YiAnEntity yiAn) {
+        for (YiAnDetailEntity detail : yiAn.details) {
+            for (YiAnPrescriptionEntity prescription : detail.prescriptions) {
+                ArrayList<String> herbs = new ArrayList<String>();
+                for (YiAnPrescriptionItemEntity item : prescription.items) {
+                    String standardName = mHerbAliasManager.getStandardName(item.herb);
+                    if (!herbs.contains(standardName)) {
+                        herbs.add(standardName);
+                    }
+                }
+                Collections.sort(herbs, new Comparator<String>() {
+                    @Override
+                    public int compare(String s1, String s2) {
+                        return s1.compareToIgnoreCase(s2);
+                    }
+                });
+                prescription.summary = "";
+                for (String herb : herbs) {
+                    prescription.summary += " " + herb;
+                }
+                prescription.summary = StringUtils.trim(prescription.summary);
+            }
+        }
+    }
 
-	public List<YiAnEntity> getYiAns() {
-		return mYiAns;
-	}
+    private void dump(YiAnEntity yiAn) throws IOException {
+        mFileWriter.write("YiAn\n");
+        for (YiAnDetailEntity detail : yiAn.details) {
+            mFileWriter.write("Content:" + detail.content + "\n");
+            for (YiAnPrescriptionEntity prescription : detail.prescriptions) {
+                // mFileWriter.write("Head:" );
+                mFileWriter.write("summary:" + prescription.summary + "\n");
+                mFileWriter.write("comment:" + prescription.comment + "\n");
+            }
+        }
+    }
 
-	private Map<String, IYiAnBuilder> mBuilders = new HashMap<String, IYiAnBuilder>();
-	private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
-	private SectionEntity mParentSection;
-	private BookEntity mBook;
+    private IYiAnBuilder getBuilder(ASTNode node) {
+        String tag = node.getTag();
+        String key = tag;
+        if (YiAnNodeConstants.RecipeCompositionHerbOnly.equals(tag)) {
+            key = YiAnNodeConstants.RecipeComposition;
+        }
+        if (mBuilders.containsKey(key)) {
+            return mBuilders.get(key);
+        }
+        return null;
+    }
 
-	private FileWriter mFileWriter;
-	private String mLogPath;
-	private HerbAliasManager mHerbAliasManager;
+    public void AddYiAn(YiAnEntity yiAn) {
+        mYiAns.add(yiAn);
+    }
+
+    public List<YiAnEntity> getYiAns() {
+        return mYiAns;
+    }
+
+    private Map<String, IYiAnBuilder> mBuilders = new HashMap<String, IYiAnBuilder>();
+    private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
+    private SectionEntity mParentSection;
+    private BookEntity mBook;
+
+    private FileWriter mFileWriter;
+    private String mLogPath;
+    private HerbAliasManager mHerbAliasManager;
 
 }

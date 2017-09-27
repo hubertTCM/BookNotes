@@ -9,24 +9,24 @@ import com.j256.ormlite.table.DatabaseTable;
 // 初诊 二诊 三诊
 @DatabaseTable(tableName = "yiandetail")
 public class YiAnDetailEntity {
-	@DatabaseField(generatedId = true)
-	public long id;
+    @DatabaseField(generatedId = true)
+    public long id;
 
-	@DatabaseField(width = 3000)
-	public String content;
-	
-	@DatabaseField(width = 3000)
-	public String comment;
+    @DatabaseField(width = 3000)
+    public String content;
 
-	@DatabaseField()
-	public long order;
-	
-	@DatabaseField(canBeNull = false, foreign = true)
-	public YiAnEntity yian;
-	
-	@ForeignCollectionField(eager = false)
-	public Collection<YiAnPrescriptionEntity> prescriptions;
+    @DatabaseField(width = 3000)
+    public String comment;
 
-	@ForeignCollectionField(eager = false)
-	public Collection<YiAnDetailBlockLinkEntity> blockLinks;
+    @DatabaseField()
+    public long order;
+
+    @DatabaseField(canBeNull = false, foreign = true)
+    public YiAnEntity yian;
+
+    @ForeignCollectionField(eager = false)
+    public Collection<YiAnPrescriptionEntity> prescriptions;
+
+    @ForeignCollectionField(eager = false)
+    public Collection<YiAnDetailBlockLinkEntity> blockLinks;
 }
