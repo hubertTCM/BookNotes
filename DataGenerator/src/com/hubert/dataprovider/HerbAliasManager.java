@@ -12,22 +12,35 @@ public class HerbAliasManager {
 	private static HerbAliasManager sInstance = new HerbAliasManager();
 
 	private HerbAliasManager() {
-		load();
+	}
+
+	public static HerbAliasManager getInstance(String fileName) {
+		HerbAliasManager instance = new HerbAliasManager();
+		instance.load(fileName);
+		return instance;
 	}
 
 	public static HerbAliasManager getInstance() {
+		// sInstance._fileName = "resource/常用中药处方别名.txt";
+		sInstance.load("resource/常用中药处方别名.txt");
 		return sInstance;
 	}
 
-	private void load() {
+	private void load(String fileName) {
+		if (mInitialized){
+			return;
+		}
+		
 		Charset utf8 = Charset.forName("UTF-8");
-		Path filePath = Paths.get("resource/" + _fileName);
+		Path filePath = Paths.get(fileName);
+		// Path filePath = Paths.get("resource/" + _fileName);
 		try {
 			List<String> lines = Files.readAllLines(filePath, utf8);
 			for (String line : lines) {
 				line = StringUtils.strip(line);
 				parse(line);
 			}
+			mInitialized = true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -172,7 +185,8 @@ public class HerbAliasManager {
 		return "";
 	}
 
-	private String _fileName = "常用中药处方别名.txt";
+	// private String _fileName = "常用中药处方别名.txt";
+	private boolean mInitialized = false;
 	private HashMap<String, List<String>> mAliasStorage = new HashMap<String, List<String>>();
 	private HashMap<String, List<String>> mHitCache = new HashMap<String, List<String>>();
 	private HashSet<String> mUnknownHerbs = new HashSet<String>();
