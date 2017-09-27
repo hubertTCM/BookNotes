@@ -1,8 +1,7 @@
 package com.hubert.dataprovider;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Paths;
 //import java.nio.charset.Charset;
 //import java.nio.file.Files;
 //import java.nio.file.Path;
@@ -84,6 +83,7 @@ public class BookGenerator {
         List<Token> tokens = lexer.parse();
 
         String tokenFilePath = "resource/debug/" + file.getName() + "_token.text";
+        Paths.get(tokenFilePath).getParent().toFile().mkdirs();
         FileWriter writer = new FileWriter(tokenFilePath);
         for (Token token : tokens) {
             writer.write(token.getType() + ":" + token.getValue() + "\n");

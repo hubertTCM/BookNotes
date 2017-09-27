@@ -71,7 +71,7 @@ public class importor {
                 node.getCenter();
             }
 
-            ClusterRender render = new ClusterRender("resource/debug/Cluster.js");
+            ClusterRender render = new ClusterRender("resource/debug/cluster.js");
             render.rend(root);
 
             System.out.println("done");
