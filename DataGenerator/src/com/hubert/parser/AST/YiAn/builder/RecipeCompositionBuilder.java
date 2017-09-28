@@ -9,7 +9,8 @@ import com.hubert.parser.AST.YiAn.*;
 public class RecipeCompositionBuilder extends AbstractYiAnBuilder {
 
     public RecipeCompositionBuilder(YiAnBuilderVisitor visitor, YiAnPrescriptionEntity prescriptionEntity) {
-        super(Arrays.asList(YiAnNodeConstants.RecipeComposition, YiAnNodeConstants.RecipeContent), visitor);
+        super(Arrays.asList(YiAnNodeConstants.RecipeComposition, YiAnNodeConstants.RecipeCompositionHerbOnly,
+                YiAnNodeConstants.RecipeContent), visitor);
         mPrescriptionEntity = prescriptionEntity;
         mVisitor = visitor;
     }

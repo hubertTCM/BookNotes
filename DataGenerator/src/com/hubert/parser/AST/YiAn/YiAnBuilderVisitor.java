@@ -113,9 +113,9 @@ public class YiAnBuilderVisitor implements IVisitor {
     private IYiAnBuilder getBuilder(ASTNode node) {
         String tag = node.getTag();
         String key = tag;
-        if (YiAnNodeConstants.RecipeCompositionHerbOnly.equals(tag)) {
-            key = YiAnNodeConstants.RecipeComposition;
-        }
+//        if (YiAnNodeConstants.RecipeCompositionHerbOnly.equals(tag)) {
+//            key = YiAnNodeConstants.RecipeComposition;
+//        }
         if (mBuilders.containsKey(key)) {
             return mBuilders.get(key);
         }
