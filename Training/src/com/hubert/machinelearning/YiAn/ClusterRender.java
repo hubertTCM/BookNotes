@@ -1,6 +1,7 @@
 package com.hubert.machinelearning.YiAn;
 
 import java.io.*;
+import java.nio.file.Paths;
 import java.util.*;
 
 // Similar with LogVisitor, merge later
@@ -62,6 +63,7 @@ public class ClusterRender {
     }
 
     private void open() throws IOException {
+        Paths.get(mLogFilePath).getParent().toFile().mkdirs();
         mFileWriter = new FileWriter(mLogFilePath);
     }
 
