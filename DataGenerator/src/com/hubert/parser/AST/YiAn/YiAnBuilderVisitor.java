@@ -103,7 +103,6 @@ public class YiAnBuilderVisitor implements IVisitor {
         for (YiAnDetailEntity detail : yiAn.details) {
             mFileWriter.write("Content:" + detail.content + "\n");
             for (YiAnPrescriptionEntity prescription : detail.prescriptions) {
-                // mFileWriter.write("Head:" );
                 mFileWriter.write("summary:" + prescription.summary + "\n");
                 mFileWriter.write("comment:" + prescription.comment + "\n");
             }
@@ -113,9 +112,6 @@ public class YiAnBuilderVisitor implements IVisitor {
     private IYiAnBuilder getBuilder(ASTNode node) {
         String tag = node.getTag();
         String key = tag;
-//        if (YiAnNodeConstants.RecipeCompositionHerbOnly.equals(tag)) {
-//            key = YiAnNodeConstants.RecipeComposition;
-//        }
         if (mBuilders.containsKey(key)) {
             return mBuilders.get(key);
         }
