@@ -18,11 +18,10 @@ public abstract class AbstractYiAnBuilder implements IYiAnBuilder {
 
     @Override
     public boolean build(ASTNode node) {
-        // TODO: check tag here.
-        // if (mTags.contains(node.getTag())) {
-        return buildInternal(node);
-        // }
-        // return false;
+        if (mTags.contains(node.getTag())) {
+            return buildInternal(node);
+        }
+        return false;
     }
 
     protected void register() {
