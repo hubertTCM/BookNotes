@@ -7,9 +7,9 @@ import java.util.*;
 import com.hubert.dal.entity.*;
 import com.hubert.machinelearning.*;
 import com.hubert.machinelearning.YiAn.*;
-import com.hubert.parser.AST.*;
-import com.hubert.parser.AST.YiAn.*;
-import com.hubert.parser.tokenextractor.*;
+//import com.hubert.parser.AST.*;
+//import com.hubert.parser.AST.YiAn.*;
+//import com.hubert.parser.tokenextractor.*;
 
 public class importor {
 
