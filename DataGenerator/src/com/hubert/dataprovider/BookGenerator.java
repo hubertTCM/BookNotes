@@ -20,14 +20,17 @@ import com.hubert.parser.tokenextractor.*;
 
 public class BookGenerator {
 
-    public BookGenerator(String grammarFilePath, String bookName) throws Exception {
-        mBookDirectory = new File("resource/" + bookName);
+    public BookGenerator(String grammarFilePath, String directory, HerbAliasManager herbAliasManager) throws Exception {
+        //mBookDirectory = new File("resource/" + bookName);
+        mBookDirectory = Paths.get(directory).toFile();
         mBook = new BookEntity();
-        mBook.name = bookName;
+        mBook.name = mBookDirectory.getName();//Paths.get(directory).getFileName();
         mBook.sections = new ArrayList<SectionEntity>();
 
         mYiAnParser = new YiAnParser();
         mGrammar = new Grammar(grammarFilePath);
+        
+        mHerbAliasManager = herbAliasManager;
     }
 
     public List<YiAnEntity> doImport() {
@@ -94,7 +97,7 @@ public class BookGenerator {
         node.accept(visitor);
 
         YiAnBuilderVisitor builder = new YiAnBuilderVisitor(file.getAbsolutePath() + "_debug.txt",
-                HerbAliasManager.getInstance());
+                mHerbAliasManager);
         node.accept(builder);
         mYiAns.addAll(builder.getYiAns());
         return;
@@ -139,6 +142,8 @@ public class BookGenerator {
     protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
 
     protected YiAnParser mYiAnParser = new YiAnParser();
+    
+    protected HerbAliasManager mHerbAliasManager;
 
     protected List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
 }

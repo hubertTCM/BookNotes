@@ -27,7 +27,8 @@ public class importor {
             // aliasManager.load();
             // HerbAliasManager.getInstance().trace();
 
-            BookGenerator generator = new BookGenerator("resource/临证指南医案/format_ignore.txt", "临证指南医案");
+            BookGenerator generator = new BookGenerator("resource/临证指南医案/format_ignore.txt", 
+                    "resource/临证指南医案", HerbAliasManager.getInstance());
             List<YiAnEntity> yiAns = generator.doImport();
 
             List<YiAnPrescriptionEntity> prescriptions = new ArrayList<YiAnPrescriptionEntity>();
