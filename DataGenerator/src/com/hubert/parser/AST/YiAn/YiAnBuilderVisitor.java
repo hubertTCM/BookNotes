@@ -53,8 +53,8 @@ public class YiAnBuilderVisitor implements IVisitor {
     private void adjustYiAnDetails() {
         try {
             Paths.get(mLogPath).getParent().toFile().mkdirs();
-            //File file = new File(mLogPath);
-            //file.mkdirs();
+            // File file = new File(mLogPath);
+            // file.mkdirs();
             mFileWriter = new FileWriter(mLogPath);
 
             for (YiAnEntity item : mYiAns) {

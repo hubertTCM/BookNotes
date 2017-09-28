@@ -21,15 +21,15 @@ import com.hubert.parser.tokenextractor.*;
 public class BookGenerator {
 
     public BookGenerator(String grammarFilePath, String directory, HerbAliasManager herbAliasManager) throws Exception {
-        //mBookDirectory = new File("resource/" + bookName);
+        // mBookDirectory = new File("resource/" + bookName);
         mBookDirectory = Paths.get(directory).toFile();
         mBook = new BookEntity();
-        mBook.name = mBookDirectory.getName();//Paths.get(directory).getFileName();
+        mBook.name = mBookDirectory.getName();// Paths.get(directory).getFileName();
         mBook.sections = new ArrayList<SectionEntity>();
 
         mYiAnParser = new YiAnParser();
         mGrammar = new Grammar(grammarFilePath);
-        
+
         mHerbAliasManager = herbAliasManager;
     }
 
@@ -96,8 +96,7 @@ public class BookGenerator {
         LogVisitor visitor = new LogVisitor("resource/debug/" + file.getName() + "_AST.json");
         node.accept(visitor);
 
-        YiAnBuilderVisitor builder = new YiAnBuilderVisitor(file.getAbsolutePath() + "_debug.txt",
-                mHerbAliasManager);
+        YiAnBuilderVisitor builder = new YiAnBuilderVisitor(file.getAbsolutePath() + "_debug.txt", mHerbAliasManager);
         node.accept(builder);
         mYiAns.addAll(builder.getYiAns());
         return;
@@ -142,7 +141,7 @@ public class BookGenerator {
     protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
 
     protected YiAnParser mYiAnParser = new YiAnParser();
-    
+
     protected HerbAliasManager mHerbAliasManager;
 
     protected List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
