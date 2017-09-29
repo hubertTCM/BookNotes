@@ -1,25 +1,23 @@
-package com.hubert.parser.AST.YiAn.builder;
+package com.hubert.parser.AST.YiAn.Evaluation;
 
 import com.hubert.dal.entity.YiAnDetailEntity;
 import com.hubert.parser.AST.ASTNode;
 import com.hubert.parser.AST.YiAn.YiAnBuilderVisitor;
 import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 
-public class YiAnDetailPropertyBuilder extends AbstractYiAnBuilder {
+public class YiAnDetailPropertyEvaluator extends AbstractEvaluator {
 
-    public YiAnDetailPropertyBuilder(YiAnBuilderVisitor visitor, YiAnDetailEntity yiAnDetail) {
-        super(YiAnNodeConstants.Description, visitor);
-        mYiAnDetail = yiAnDetail;
+    public YiAnDetailPropertyEvaluator(Context context) {
+        super(YiAnNodeConstants.Description, context);
     }
 
     @Override
-    protected boolean buildInternal(ASTNode node) {
+    protected boolean evaluateCore(ASTNode node) {
+        YiAnDetailEntity mYiAnDetail = mScope.getYiAnDetail();
         String tag = node.getTag();
         if (YiAnNodeConstants.Description.equals(tag)) {
             mYiAnDetail.content = node.getValue();
         }
         return true;
     }
-
-    private YiAnDetailEntity mYiAnDetail;
 }
