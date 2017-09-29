@@ -123,7 +123,7 @@ public class Grammar {
             if (line.startsWith("//")) {
                 continue;
             }
-            System.out.println(line);
+            // System.out.println(line);
             int index = line.indexOf(splitter);
             String productExpression = line;
             if (index > 0) {

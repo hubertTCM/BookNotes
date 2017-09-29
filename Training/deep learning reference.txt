@@ -1,0 +1,2 @@
+http://neuralnetworksanddeeplearning.com/index.html
+https://clyyuanzi.gitbooks.io/julymlnotes/content/dl_nn.html

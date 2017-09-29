@@ -10,7 +10,7 @@ import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.*;
 import com.hubert.parser.AST.ASTNode;
 import com.hubert.parser.AST.IVisitor;
-import com.hubert.parser.AST.YiAn.builder.*;
+import com.hubert.parser.AST.YiAn.Evaluation.*;
 
 public class YiAnBuilderVisitor implements IVisitor {
     public YiAnBuilderVisitor(SectionEntity parentSection, HerbAliasManager herbAliasManager) {
@@ -31,23 +31,41 @@ public class YiAnBuilderVisitor implements IVisitor {
     }
 
     private YiAnBuilderVisitor(HerbAliasManager herbAliasManager) {
-        new YiAnBuilder(this);
         mHerbAliasManager = herbAliasManager;
+        
+        Context mContext = new Context(mYiAns);
+
+        mEvaluators.add(new YiAnEvaluator(mContext));
+        mEvaluators.add(new YiAnDetailEvaluator(mContext));
+        mEvaluators.add(new YiAnDetailPropertyEvaluator(mContext));
+        mEvaluators.add(new RecipeCompositionEvaluator(mContext));
+        mEvaluators.add(new RecipeCompositionChildEvaluator(mContext));
+        mEvaluators.add(new RecipeDetailEvaluator(mContext));
+        mEvaluators.add(new RecipePropertyEvaluator(mContext));
     }
 
     @Override
     public void visit(ASTNode node) {
-        IYiAnBuilder builder = getBuilder(node);
-        if (builder != null) {
-            builder.build(node);
+        System.out.println(node.getTag());
+        IEvaluator evaluator = null;
+        for (IEvaluator temp : mEvaluators) {
+            if (temp.canEvaluate(node)) {
+                evaluator = temp;
+                evaluator.evaluate(node);
+                break;
+            }
         }
+
         int childCount = node.childCount();
         for (int i = 0; i < childCount; ++i) {
             node.getChild(i).accept(this);
         }
-        if (node.getParent() == null) {
-            adjustYiAnDetails();
+
+        System.out.println(node.getTag() + "*****");
+        if (evaluator != null) {
+            evaluator.postEvaluate(node);
         }
+
     }
 
     private void adjustYiAnDetails() {
@@ -67,10 +85,6 @@ public class YiAnBuilderVisitor implements IVisitor {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
-
-    public void registerBuilder(String type, IYiAnBuilder builder) {
-        mBuilders.put(type, builder);
     }
 
     private void adjustYiAn(YiAnEntity yiAn) {
@@ -109,14 +123,14 @@ public class YiAnBuilderVisitor implements IVisitor {
         }
     }
 
-    private IYiAnBuilder getBuilder(ASTNode node) {
-        String tag = node.getTag();
-        String key = tag;
-        if (mBuilders.containsKey(key)) {
-            return mBuilders.get(key);
-        }
-        return null;
-    }
+    // private IYiAnBuilder getBuilder(ASTNode node) {
+    // String tag = node.getTag();
+    // String key = tag;
+    // if (mBuilders.containsKey(key)) {
+    // return mBuilders.get(key);
+    // }
+    // return null;
+    // }
 
     public void AddYiAn(YiAnEntity yiAn) {
         mYiAns.add(yiAn);
@@ -126,7 +140,8 @@ public class YiAnBuilderVisitor implements IVisitor {
         return mYiAns;
     }
 
-    private Map<String, IYiAnBuilder> mBuilders = new HashMap<String, IYiAnBuilder>();
+    private List<IEvaluator> mEvaluators = new ArrayList<IEvaluator>();
+    private Context mContext;// = new Context(mYiAns);
     private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
     private SectionEntity mParentSection;
     private BookEntity mBook;
