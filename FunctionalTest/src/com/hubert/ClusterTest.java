@@ -2,9 +2,8 @@ package com.hubert;
 
 import static org.junit.Assert.fail;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 
 import org.junit.*;
 
@@ -70,6 +69,7 @@ public class ClusterTest {
             sUtils.checkFile(getExpectFilePath(fileName), getActualFilePath(fileName));
             
         } catch (Exception e) {
+            e.printStackTrace(new PrintStream(System.out));
             fail(e.toString());
         }
     }

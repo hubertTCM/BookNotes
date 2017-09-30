@@ -27,22 +27,19 @@ public abstract class AbstractEvaluator implements IEvaluator {
 
     @Override
     public boolean evaluate(ASTNode node) {
-        if (mShouldCreateScope) {
-            mScope = mContext.createScope();
-        } else {
-            mScope = mContext.getActiveScope();
-        }
-
+        mScope = mContext.createScope();
         return evaluateCore(node);
     }
 
     @Override
     public boolean postEvaluate(ASTNode node) {
+        mScope = mContext.getActiveScope();
         boolean success = postEvaluateCore(node);
-        // RecipeCompositionHerbOnly is parent of self, leads the scope is shared.
-        if (mShouldCreateScope) {
-            //mScope.destroy();
-        }
+        // RecipeCompositionHerbOnly is parent of self, leads the scope is
+        // shared.
+        // if (mShouldCreateScope) {
+        // //mScope.destroy();
+        // }
         mScope = null;
         mContext.remove();
         return success;
@@ -56,7 +53,6 @@ public abstract class AbstractEvaluator implements IEvaluator {
 
     protected Context mContext;
 
-    protected boolean mShouldCreateScope = true;
     protected Scope mScope;
 
     protected List<String> mAcceptableTags = new ArrayList<String>();

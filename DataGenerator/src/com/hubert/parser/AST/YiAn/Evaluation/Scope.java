@@ -15,8 +15,10 @@ public class Scope {
     }
 
     public void destroy() {
-        mContext.remove(this);
         mContext = null;
+        mParent = null;
+        mVariables.clear();
+        mVariables = null;
     }
 
     public YiAnEntity getYiAn() {
