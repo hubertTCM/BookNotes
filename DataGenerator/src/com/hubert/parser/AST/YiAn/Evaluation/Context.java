@@ -38,7 +38,8 @@ public class Context {
             System.out.println("error happens");
         }
 
-        mScopes.pop();
+        Scope scope = mScopes.pop();
+        scope.destroy();
     }
 
     public void addYiAn(YiAnEntity yiAn) {
