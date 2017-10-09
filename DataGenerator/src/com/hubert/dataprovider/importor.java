@@ -26,7 +26,7 @@ public class importor {
             // HerbAliasManager aliasManager = new HerbAliasManager();
             // aliasManager.load();
             // HerbAliasManager.getInstance().trace();
-            
+
             BookSpliter s = new BookSpliter("resource/临证指南医案/临证指南医案_summary.txt", "resource/临证指南医案/test");
             s.split();
 
