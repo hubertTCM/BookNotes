@@ -2,3 +2,21 @@ https://bl.ocks.org/mbostock/4339083
 http://www.d3noob.org/2014/01/tree-diagrams-in-d3js_11.html
 http://d3-wiki.readthedocs.io/zh_CN/master/Tree-Layout/
 https://bl.ocks.org/d3noob/b024fcce8b4b9264011a1c3e7c7d70dc
+http://blog.sina.com.cn/s/blog_71329a960102v1eo.html (神经网络简史)
+http://www.jianshu.com/p/1121509ac1dc
+SVD
+http://www.cnblogs.com/LeftNotEasy/archive/2011/01/08/lda-and-pca-machine-learning.html 
+http://www.ams.org/samplings/feature-column/fcarc-svd
+http://charleshm.github.io/2016/03/Singularly-Valuable-Decomposition/
+http://blog.csdn.net/zhongkejingwang/article/details/43053513
+
+
+tensor flow:
+https://www.tensorflow.org/get_started/
+
+
+Open source
+http://www.jianshu.com/p/99f10e626ea5
+常用数据源及机器学习资源
+http://blog.leanote.com/post/charley/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E6%BA%90%E5%8F%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90
+https://www.zhihu.com/question/19969760
