@@ -23,3 +23,5 @@ hs_err_pid*
 UI/*.docx
 UI/index_cluster.html
 UI/*Copy.html
+Learn_Tensorflow/Python2.7/*/*
+Learn_Tensorflow/Python2.7/*/*.pyc
