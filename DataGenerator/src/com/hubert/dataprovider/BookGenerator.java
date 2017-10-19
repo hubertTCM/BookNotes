@@ -58,7 +58,8 @@ public class BookGenerator {
 
         for (File file : files) {
             String fileName = file.getName();
-            if (fileName.indexOf("summary") > 0 || fileName.indexOf("ignore") > 0 || fileName.indexOf("debug") >= 0) {
+            if (fileName.indexOf("summary") > 0 || fileName.indexOf("ignore") > 0 || fileName.indexOf("debug") >= 0
+                    || fileName.indexOf("test") >= 0) {
                 System.out.println("ignore " + fileName);
                 continue;
             }

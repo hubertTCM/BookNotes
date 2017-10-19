@@ -66,3 +66,15 @@ https://book.douban.com/review/8857048/
 
 Other:
 https://www.douban.com/note/640521187/
+
+https://www.tensorflow.org/tutorials/image_recognition
+
+https://www.zhihu.com/question/27790364
+
+https://zhuanlan.zhihu.com/p/24339995
+
+
+CNN
+http://www.msra.cn/zh-cn/news/features/ruihua-song-20161226
+https://segmentfault.com/a/1190000011543771
+https://segmentfault.com/a/1190000011095437
