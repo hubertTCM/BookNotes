@@ -31,7 +31,7 @@ public class BookSpliter {
         List<String> lines = Files.readAllLines(filePath, utf8);
 
         for (String temp : lines) {
-            System.out.println(temp);
+            //System.out.println(temp);
             String line = StringUtils.strip(temp);
             int keywordIndex = mKeywords.indexOf(line);
             if (keywordIndex >= 0) {
