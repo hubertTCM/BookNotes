@@ -1,9 +1,8 @@
 package com.hubert.parser.AST.YiAn.Evaluation;
 
-import com.hubert.dal.entity.YiAnDetailEntity;
+import com.hubert.dal.entity.*;
 import com.hubert.parser.AST.ASTNode;
-import com.hubert.parser.AST.YiAn.YiAnBuilderVisitor;
-import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
+import com.hubert.parser.AST.YiAn.*;
 
 public class YiAnDetailPropertyEvaluator extends AbstractEvaluator {
 

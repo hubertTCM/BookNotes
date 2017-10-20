@@ -86,13 +86,13 @@ public class BookGenerator {
         YiAnLexer lexer = new YiAnLexer(filePath);
         List<Token> tokens = lexer.parse();
 
-        String tokenFilePath = "resource/debug/" + file.getName() + "_token.text";
-        Paths.get(tokenFilePath).getParent().toFile().mkdirs();
-        FileWriter writer = new FileWriter(tokenFilePath);
-        for (Token token : tokens) {
-            writer.write(token.getType() + ":" + token.getValue() + "\n");
-        }
-        writer.close();
+//        String tokenFilePath = "resource/debug/" + file.getName() + "_token.text";
+//        Paths.get(tokenFilePath).getParent().toFile().mkdirs();
+//        FileWriter writer = new FileWriter(tokenFilePath);
+//        for (Token token : tokens) {
+//            writer.write(token.getType() + ":" + token.getValue() + "\n");
+//        }
+//        writer.close();
         ASTNode node = mYiAnParser.parse(mGrammar, tokens);
         LogVisitor visitor = new LogVisitor("resource/debug/" + file.getName() + "_AST.json");
         node.accept(visitor);
