@@ -58,9 +58,7 @@ public class BookGenerator {
 
         for (File file : files) {
             String fileName = file.getName();
-            if (fileName.indexOf("summary") > 0 || fileName.indexOf("ignore") > 0 || fileName.indexOf("debug") >= 0
-                    || fileName.indexOf("test") >= 0) {
-                System.out.println("ignore " + fileName);
+            if (shouldIgnore(fileName)){
                 continue;
             }
 
@@ -71,14 +69,22 @@ public class BookGenerator {
             }
 
             if (file.isFile()) {
-                if (!fileName.endsWith(".txt")) {
-                    System.out.println("ignore " + fileName);
-                    continue;
-                }
                 loadBlocks(parent, file);
                 break;
             }
         }
+    }
+    
+    private boolean shouldIgnore(String fileName){
+        if(fileName.endsWith(".pdf") || fileName.endsWith(".xml")){
+            return true;
+        }
+
+        if (fileName.indexOf("summary") > 0 || fileName.indexOf("ignore") > 0 || fileName.indexOf("debug") >= 0
+                || fileName.indexOf("test") >= 0) {
+            return true;
+        }
+        return false;
     }
 
     private void loadBlocks(SectionEntity parent, File file) throws Exception {
