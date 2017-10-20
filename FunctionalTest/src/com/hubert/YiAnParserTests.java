@@ -18,7 +18,7 @@ import com.hubert.parser.tokenextractor.*;
 public class YiAnParserTests {
     @BeforeClass
     public static void init() {
-        mGrammarFile = "../DataGenerator/resource/临证指南医案/format_ignore.txt";
+        mGrammarFile = "../DataGenerator/resource/临证指南医案/grammar.xml";
         mHerbAliasManager = HerbAliasManager.getInstance("../DataGenerator/resource/常用中药处方别名.txt");
         mUtils = new Utils();
     }

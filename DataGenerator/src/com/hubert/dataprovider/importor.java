@@ -30,7 +30,7 @@ public class importor {
             BookSpliter s = new BookSpliter("resource/临证指南医案/临证指南医案_summary.txt", "resource/临证指南医案/test");
             s.split();
 
-            BookGenerator generator = new BookGenerator("resource/临证指南医案/format_ignore.txt", "resource/临证指南医案",
+            BookGenerator generator = new BookGenerator("resource/临证指南医案/grammar.xml", "resource/临证指南医案",
                     HerbAliasManager.getInstance());
             List<YiAnEntity> yiAns = generator.doImport();
 

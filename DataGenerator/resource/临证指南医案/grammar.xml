@@ -1,5 +1,5 @@
 <Grammar>
-	<Rules>
+	<Expressions>
 
 // Start of Grammar 
 //YNDetail := Description YNDetailAfterDescriptionCommon
@@ -55,10 +55,9 @@ S := YN SummaryCommentCommon
 
 // End of Grammar                 
 
-	</Rules>
+	</Expressions>
 
 	<TerminalSymbols>
-        // Start of Terminal Symbol
         Description
         RecipeAbbreviation
         RecipeHeader
@@ -70,16 +69,11 @@ S := YN SummaryCommentCommon
         SectionName
         SummaryComment
         Empty
-        // End of Terminal Symbol
 	</TerminalSymbols>
 	<SymbolMap>
-        // Start of Symbol Map
-        FormattedRecipeText :=
-        RecipeContent
-        LiteralText(FormattedRecipeText) :=
-        FormattedRecipeText
+        FormattedRecipeText := RecipeContent
+        LiteralText(FormattedRecipeText) := FormattedRecipeText
         LiteralText(RecipeComment) := RecipeComment
-        // End of Symbol Map
 	</SymbolMap>
 
 
