@@ -82,7 +82,7 @@ public class ClusterTest {
         return "resource/ClusterTest/expect/" + fileName;
     }
 
-    private static String sGrammarFile = "../DataGenerator/resource/临证指南医案/format_ignore.txt";
+    private static String sGrammarFile = "../DataGenerator/resource/临证指南医案/grammar.xml";
     private static HerbAliasManager sHerbAliasManager = HerbAliasManager
             .getInstance("../DataGenerator/resource/常用中药处方别名.txt");
     

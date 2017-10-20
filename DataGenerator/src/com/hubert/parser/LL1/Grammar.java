@@ -1,18 +1,20 @@
 package com.hubert.parser.LL1;
 
-
+import java.io.*;
 import java.nio.charset.*;
 import java.nio.file.*;
 import java.util.*;
 
+import javax.xml.parsers.*;
+
 import org.apache.commons.lang3.StringUtils;
+import org.w3c.dom.*;
+import org.xml.sax.SAXException;
 
 // reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
 public class Grammar {
     public Grammar(String grammarFile) throws Exception {
-        // initTerminalSymbols();
-
-        initGrammar(grammarFile);
+        parseXml(grammarFile);
     }
 
     public Grammar(List<String> terminals, List<String> expressions) throws Exception {
@@ -64,12 +66,62 @@ public class Grammar {
         initExpressions(lines);
     }
 
-    private void initExpressions(List<String> lines) throws Exception {
-        String splitter = ":=";
+    private void parseXml(String filePath) throws Exception {
 
-        boolean isTerminalSymbolSection = false;
-        boolean isSymbolMapSection = false;
-        boolean isGrammerSection = false;
+        File xmlFile = new File(filePath);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(xmlFile);
+        Node root = doc.getFirstChild();
+        NodeList nodes = root.getChildNodes();
+        for (int i = 0; i < nodes.getLength(); i++) {
+            Node node = nodes.item(i);
+            if (node.getNodeType() != Node.ELEMENT_NODE) {
+                continue;
+            }
+            Element element = (Element) node;
+            String[] lines = element.getTextContent().split("\n");
+            String nodeName = node.getNodeName();
+            if (nodeName.equals("Expressions")) {
+                initExpressions(Arrays.asList(lines));
+                continue;
+            }
+            if (nodeName.equals("SymbolMap")) {
+                initSymbolMap(Arrays.asList(lines));
+            }
+            if (nodeName.equals("TerminalSymbols")) {
+                for (String item : lines) {
+                    item = StringUtils.strip(item);
+                    if (item.isEmpty()) {
+                        continue;
+                    }
+                    mTerminalSymbols.add(item);
+                }
+                continue;
+            }
+        }
+        
+
+
+        initFirstSet();
+        initFollowSet();
+        initActionTable();
+
+        dump();
+    }
+
+    private void initSymbolMap(List<String> lines) {
+        for (String line : lines) {
+            line = StringUtils.strip(line);
+            if (line.isEmpty()) {
+                continue;
+            }
+            String[] array = line.split(mSplitter);
+            mSymbolMap.put(StringUtils.strip(array[0]), StringUtils.strip(array[1]));
+        }
+    }
+
+    private void initExpressions(List<String> lines) throws Exception {
         String currentNonterminalSymbol = "";
         for (String temp : lines) {
             String line = StringUtils.strip(temp);
@@ -77,65 +129,21 @@ public class Grammar {
                 continue;
             }
 
-            if (line.startsWith("// Start of Terminal Symbol")) {
-                isTerminalSymbolSection = true;
-                continue;
-            }
-            if (line.startsWith("// End of Terminal Symbol")) {
-                isTerminalSymbolSection = false;
-                continue;
-            }
-            if (isTerminalSymbolSection) {
-                mTerminalSymbols.add(line);
-            }
-
-            if (line.startsWith("// Start of Symbol Map")) {
-                isSymbolMapSection = true;
-                continue;
-            }
-
-            if (line.startsWith("// End of Symbol Map")) {
-                isSymbolMapSection = false;
-                continue;
-            }
-
-            if (isSymbolMapSection) {
-                String[] array = line.split(splitter);
-                mSymbolMap.put(StringUtils.strip(array[0]), StringUtils.strip(array[1]));
-            }
-
-            if (line.startsWith("// End of Grammar")) {
-                break;
-            }
-
-            if (line.startsWith("// Start of Grammar")) {
-                isGrammerSection = true;
-                continue;
-            }
-            if (!isGrammerSection) {
-                continue;
-            }
             if (line.startsWith("//")) {
                 continue;
             }
             // System.out.println(line);
-            int index = line.indexOf(splitter);
+            int index = line.indexOf(mSplitter);
             String productExpression = line;
             if (index > 0) {
                 currentNonterminalSymbol = line.substring(0, index);
                 currentNonterminalSymbol = StringUtils.strip(currentNonterminalSymbol);
 
-                productExpression = line.substring(index + splitter.length());
+                productExpression = line.substring(index + mSplitter.length());
                 productExpression = StringUtils.strip(productExpression);
             }
             AddProductExpression(currentNonterminalSymbol, productExpression);
         }
-
-        initFirstSet();
-        initFollowSet();
-        initActionTable();
-
-        dump();
     }
 
     private void AddProductExpression(String symbol, String expression) {
@@ -202,7 +210,7 @@ public class Grammar {
         if (mFirst.containsKey(symbol)) {
             return mFirst.get(symbol);
         }
-        System.out.println(symbol);
+        //System.out.println(symbol);
         Set<String> first = new HashSet<String>();
         mFirst.put(symbol, first);
         if (mTerminalSymbols.contains(symbol)) {
@@ -347,6 +355,7 @@ public class Grammar {
 
     private Set<String> mTerminalSymbols = new HashSet<String>();
     private Map<String, String> mSymbolMap = new HashMap<String, String>();
+    private String mSplitter = ":=";
     // S := abc saved as: S => [a, b, c]
     private Map<String, List<List<String>>> mProduction = new HashMap<String, List<List<String>>>();
     private Map<String, Set<String>> mFirst = new HashMap<String, Set<String>>();
