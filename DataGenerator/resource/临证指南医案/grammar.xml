@@ -1,0 +1,194 @@
+<Grammar>
+	<Rules>
+
+// Start of Grammar 
+//YNDetail := Description YNDetailAfterDescriptionCommon
+//YNDetailAfterDescriptionCommon := LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
+//                                  RecipeAbbreviation RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
+//                                  RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
+//                                  RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
+//                                  Empty
+
+
+YNDetail := Description RecipeDetail
+RecipeDetail := Empty
+                LiteralText(FormattedRecipeText) AfterRecipeContent
+                RecipeAbbreviation RecipeContent AfterRecipeContent
+                RecipeHeader LiteralText(FormattedRecipeText) AfterRecipeContent
+                RecipeContent AfterRecipeContent
+
+RecipeContent := Herb RecipeCompositionHerbOnly
+RecipeCompositionHerbOnly :=  Empty
+                                 Herb RecipeCompositionHerbOnly
+
+AfterRecipeContent := Empty
+                      LiteralText(RecipeComment) RecipeDetail
+
+
+
+//YNDetailAfterDescriptionCommonAfterRecipeContentComon := Empty
+//                                                         LiteralText(RecipeComment) AfterRecipeCommentCommon
+//AfterRecipeCommentCommon := Empty
+//                            RecipeContent YNDetailAfterDescriptionCommonAfterRecipeContentComon
+//                            RecipeHeader LiteralText(FormattedRecipeText) YNDetailAfterDescriptionCommonAfterRecipeContentComon
+
+//YNDetailAfterDescriptionCommonAfterRecipeHeaderCommon := Empty
+//                                                         LiteralText(RecipeComment)
+YNDetail2 := SectionName YNDetail
+
+YN := YNDetail YNAfterYNDetailCommon
+YNAfterYNDetailCommon := Empty
+                         YNDetail YNAfterYNDetailCommon
+YN2 := YNDetail2 YN2AfterYNDetail2Common
+YN2AfterYNDetail2Common := Empty
+                           YNDetail YN2AfterYNDetail2Common
+SummaryCommentCommon := Empty
+                        SummaryComment SummaryCommentCommon
+
+S := YN2 SummaryCommentCommon
+S := YN SummaryCommentCommon
+
+//RecipeContent := Herb RecipeContentAfterHerbCommon
+//RecipeContentAfterHerbCommon :=  Empty
+//                                 Herb RecipeContentAfterHerbCommon
+
+
+// End of Grammar                 
+
+	</Rules>
+
+	<TerminalSymbols>
+        // Start of Terminal Symbol
+        Description
+        RecipeAbbreviation
+        RecipeHeader
+        RecipeComment
+        Herb
+
+        LiteralText(FormattedRecipeText)
+        LiteralText(RecipeComment)
+        SectionName
+        SummaryComment
+        Empty
+        // End of Terminal Symbol
+	</TerminalSymbols>
+	<SymbolMap>
+        // Start of Symbol Map
+        FormattedRecipeText :=
+        RecipeContent
+        LiteralText(FormattedRecipeText) :=
+        FormattedRecipeText
+        LiteralText(RecipeComment) := RecipeComment
+        // End of Symbol Map
+	</SymbolMap>
+
+
+	<Example>
+***
+描述   阳挟内风上巅，目昏耳鸣不寐，肝经主病。
+处方    熟地（炙） 炙龟甲 萸肉 五味 磁石 茯苓 旱莲草 女贞子
+
+***
+描述    凌 交节病变，总是虚症，目泛舌强，脊背不舒，溲淋便涩，皆肾液不营，肝风乃张，当宗河间浊药轻服，名曰饮子。
+处方    熟地（五钱） 咸苁蓉（八钱） 炒杞子（三钱） 麦冬（二钱） 云苓（一钱半） 川石斛（三钱） 生沙苑（一钱） 石菖蒲（一钱） 远志肉（四分）
+处方说明      饮子煎法。
+
+***
+描述（分类）    钱 偏枯在左，血虚不萦筋骨，内风袭络，脉左缓大。（肝肾虚内风动。）
+处方    制首乌（四两，烘） 枸杞子（去蒂，二两） 归身（二两，用独枝者，去梢） 怀牛膝（二两，蒸） 明天麻（二两，面煨） 三角胡麻（二两，打碎，水洗十次，烘） 黄甘菊（三两，水煎汁） 川石斛（四两，水煎汁） 小黑豆皮（四两，煎汁）
+处方说明      用三汁膏加蜜，丸极细，早服四钱，滚水送。
+
+***
+描述  曾（五二） 脉弦动，眩晕耳聋，行走气促无力，肛痔下垂。此未老欲衰，肾阴弱，收纳无权，肝阳炽，虚风蒙窍，乃上实下虚之象。质厚填阴，甘味熄风，节劳戒饮，可免仆中。
+处方  [abbr]虎潜去锁阳、知母，加大肉苁蓉，炼蜜丸。
+处方  [format]黄柏 龟板 生地黄 陈皮 白芍 虎骨 干姜 肉苁蓉
+
+***
+描述      某（妪） 今年风木司天，春夏阳升之候，兼因平昔怒劳忧思，以致五志气火交并于上，肝胆内风鼓动盘旋，上盛则下虚，故足膝无力。肝木内风壮火，乘袭胃土，.....
+处方    金石斛（三钱） 化橘红（五分） 白蒺藜（二钱） 真北秦皮（一钱） 草决明（二钱） 冬桑叶（一钱） 嫩钩藤（一钱） 生白芍（一钱）
+次诊    又 前议苦辛酸降一法，肝风胃阳已折其上引之威，是诸症亦觉小愈，虽曰治标，正合岁气节候而设。思夏至一阴来复，高年本病，预宜持护，.....
+处方     [abbr]九制熟地（先用水煮半日，徐加醇酒、砂仁，再煮一日，晒干再蒸，如法九次，干者炒存性，八两） 肉苁蓉（用大而黑色者，去甲切片，盛竹篮内，放长流水中浸七日，晒干，以极淡为度，四两） 生虎膝骨（另捣碎，研，二两） 怀牛膝（盐水蒸，三两） 制首乌（四两，烘） 川萆薢（盐水炒，二两） 川石斛（八两，熬膏） 赤白茯苓（四两） 柏子霜（二两）
+处方    [format]熟地 砂仁 肉苁蓉 虎骨 怀牛膝 制首乌 川萆薢 川石斛 赤茯苓 白茯苓 柏子霜
+处方说明      上药照方制末，另用小黑稆豆皮八两煎浓汁，法丸，每早百滚水服三钱。
+处方开头  [RH]议晚上用健中运痰，兼制亢阳。火动风生，从《外台》茯苓饮意。
+处方    人参（二两） 熟半夏（二两） 茯苓（四两，生） 广皮肉（二两） 川连（姜汁炒，一两） 枳实（麸炒，二两） 明天麻（二两，煨） 钩藤（三两） 白蒺藜（鸡子黄拌煮，洗净炒，去刺，三两）  地栗粉（二两）
+处方说明      上末，用竹沥一杯，姜汁十匙，法丸，食远开水服三钱。
+
+***
+描述    叶 初春肝风内动，眩晕跌仆，左肢偏痿，舌络不和，呼吸不爽，痰火上蒙，根本下衰。先宜清上痰火。
+处方    羚羊角 茯苓 橘红 桂枝 半夏 郁金 竹沥 姜汁
+次诊    又 风热烁筋骨为痛，痰火气阻，呼吸不利。照前方去郁金、竹沥、姜汁，加白蒺藜，钩藤。
+处方    [format]羚羊角 茯苓 橘红 桂枝 半夏 白蒺藜 钩藤
+处方    [format]又 炒半夏 茯苓 钩藤 橘红 金石斛 石菖蒲 竹沥 姜汁
+处方    [format]又 人参 半夏 枳实 茯苓 橘红 蒺藜 竹沥 姜汁
+
+
+***
+[comment]风为百病之长，故医书咸以中风列于首门。其论症，则有真中、类中，中经络、血脉、脏腑、之分。.....
+徐评:  凡风淫所胜之病，自内经以及唐宋名家，皆以辛凉甘寒为本，而佐以驱风益血之药。至河间有地黄饮子之法，...
+
+*/
+
+//又 暂服煎方：
+//又 晚服丸方：
+//（丸方） 
+
+
+
+某（妪） 今年风木司天，春夏阳升之候，兼因平昔怒劳忧思，以致五志气火交并于上，肝胆内风鼓动盘旋，上盛则下虚，故足膝无力。肝木内风壮火，乘袭胃土，胃主肌肉，脉络应肢，绕出环口，故唇舌麻木，肢节如痿，固为中厥之萌。观河间内火召风之论，都以苦降辛泄，少佐微酸，最合经旨。折其上腾之威，使清空诸窍毋使浊痰壮火蒙蔽，乃暂药权衡也。至于颐养工夫，寒暄保摄，尤当加意于药饵之先。上午服：
+    金石斛（三钱） 化橘红（五分） 白蒺藜（二钱） 真北秦皮（一钱） 草决明（二钱） 冬桑叶（一钱） 嫩钩藤（一钱） 生白芍（一钱）
+    又 前议苦辛酸降一法，肝风胃阳已折其上引之威，是诸症亦觉小愈，虽曰治标，正合岁气节候而设。思夏至一阴来复，高年本病，预宜持护，自来中厥，最防于暴寒骤加，致身中阴阳两不接续耳。议得摄纳肝肾真气，补益下虚本病。
+    [abbr]九制熟地（先用水煮半日，徐加醇酒、砂仁，再煮一日，晒干再蒸，如法九次，干者炒存性，八两） 肉苁蓉（用大而黑色者，去甲切片，盛竹篮内，放长流水中浸七日，晒干，以极淡为度，四两） 生虎膝骨（另捣碎，研，二两） 怀牛膝（盐水蒸，三两） 制首乌（四两，烘） 川萆薢（盐水炒，二两） 川石斛（八两，熬膏） 赤白茯苓（四两） 柏子霜（二两）
+    [format]熟地 砂仁 肉苁蓉 虎骨 怀牛膝 制首乌 川萆薢 川石斛 赤茯苓 白茯苓 柏子霜
+    上药照方制末，另用小黑稆豆皮八两煎浓汁，法丸，每早百滚水服三钱。
+    [RH]议晚上用健中运痰，兼制亢阳。火动风生，从《外台》茯苓饮意。
+    人参（二两） 熟半夏（二两） 茯苓（四两，生） 广皮肉（二两） 川连（姜汁炒，一两） 枳实（麸炒，二两） 明天麻（二两，煨） 钩藤（三两） 白蒺藜（鸡子黄拌煮，洗净炒，去刺，三两）  地栗粉（二两）
+    上末，用竹沥一杯，姜汁十匙，法丸，食远开水服三钱。
+    又 近交秋令，燥气加临，先伤于上，是为肺燥之咳。然下焦久虚，厥阴绕咽，少阴循喉，往常口燥舌糜，是下虚阴火泛越。先治时病燥气化火，暂以清润上焦，其本病再议。
+    白扁豆（勿研，三钱） 玉竹（三钱） 白沙参（二钱） 麦冬（去心，三钱） 甜杏仁（去皮尖，勿研，二钱） 象贝母（去心，勿研，二钱） 冬桑叶（一钱） 卷心竹叶（一钱）
+    洗白糯米七合，清汤煎。
+    又 暂服煎方：
+    北沙参（三钱） 生白扁豆（二钱） 麦冬（三钱） 干百合（一钱半） 白茯神（一钱半） 甜杏仁（去皮尖，一钱半）
+    又 痰火上实，清窍为蒙。于暮夜兼进清上方法。
+    麦冬（八两） 天冬（四两） 苡米（八两） 柿霜（四两） 长条白沙参（八两） 生白扁豆皮（八两） 甜梨汁（二斤） 甘蔗浆（二斤）
+    水熬膏，真柿霜收，每服五钱，开水送下。
+    又 夏热秋燥，阳津阴液更伤，口齿咽喉受病，都属阴火上乘，气热失降使然。进手太阴清燥甘凉方法甚安。其深秋初冬调理大旨，以清上实下，则风熄液润，不致中厥。至冬至一阳初复再议。
+    燕窝菜（洗净，另熬膏，一斤） 甜梨（去皮核，绢袋绞汁，熬膏，二十个） 人参（另熬收，三两） 九制熟地（水煮，四两） 天冬（去心，蒸，二两） 麦冬（去心，四两） 黄芪皮（生用，四两） 炙黑甘草（二两） 五味（二两，蒸） 云茯神（三两，蒸）
+    又 左关尺脉，独得动数，多语则舌音不清，麻木偏着右肢，心中热炽，难以明状。此阳明脉中空乏，而厥阴之阳挟内风以纠扰，真气不主藏聚，则下无力以行动，虚假之热上泛，为喉燥多咳，即下虚者上必实意。冬至后早服方，从丹溪虎潜法。
+    九制熟地（照前法制，八两） 肉苁蓉（照前制，四两） 天冬（去心，蒸，烘，四两） 当归（炒焦，二两） 生白芍（三两） 川斛（熬膏，八两） 黄柏（盐水炒，二两） 怀牛膝（盐水蒸，三两）
+    上为末，另用虎骨胶三两溶入，蜜捣丸，服五钱，滚水送。
+    又 太太诸恙向安，今春三月，阳气正升，肝木主乎气候，肝为风脏，风亦属阳，卦变为巽，两阳相合，其势方张，内风挟阳动旋，脂液暗耗而麻痹不已。独甚于四肢者，风淫末疾之谓也。经云：风淫于内，治以甘寒。夫痰壅无形之火，火灼有形之痰，甘寒生津，痰火风兼治矣。
+    天冬（四两） 麦冬（八两） 长白沙参（八两） 明天麻（四两，煨） 白蒺藜（照前制，四两） 甜梨汁（一斤） 芦根汁（流水者可用，八两） 青蔗浆（一斤） 鲜竹沥（八两） 柿霜（四两）
+    先将二冬、沙参、天麻、白蒺藜加泉水煎汁滤过，配入四汁同熬成膏，后加柿霜收，每日下午食远服五钱，百滚水调服。
+    又 下虚上实，君相火亢，水涸液亏，多有暴怒跌仆之虞。此方滋液救焚，使补力直行下焦，不助上热。议铁瓮申先生琼玉膏方。
+    鲜生地(水洗净，捣自然汁二斤，绵纸滤清，随和入生白沙蜜一斤，另置一铅罐或圆铅球，盛前药封坚固，用铁锅满盛清水，中做井字木架，放罐在上，桑柴火煮三昼夜，频添水，不可住火，至三日后，连器浸冷水中，一日顷取出，入后项药。) 人参（蒸，烘，研细末，六两） 白茯苓（蒸，研粉，十六两） 真秋石（银罐内煅，候冷研，一两）
+    三味拌入前膏，如干豆沙样，收贮小口瓷瓶内，扎好，勿令泄气，每早百滚水调服五六钱。
+    又 立冬后三日，诊得左脉小弦动数，右手和平略虚。问得春夏平安，交秋后有头晕，左目流泪，足痿无力，不能行走，舌生红刺，微咳有痰。此皆今年天气大热已久，热则真气泄越，虚则内风再旋。经言痿生大热，热耗津液，而舌刺、咳嗽、流泪者，风阳升于上也，上则下焦无气矣。故补肝肾以摄纳肾气为要，而清上安下，其在甘凉不伤脾胃者宜之。
+    制首乌（四两） 杞子（炒，一两半） 天冬（去心，二两） 茺蔚子（蒸，二两） 黄甘菊（一两半） 黑稆豆皮（二两） 茯苓（蒸，二两） 川石斛（熬膏，八两） 虎骨胶（二两，水溶）
+    上末，以川斛膏同溶化，虎骨胶捣丸，早上滚水服三四钱。
+    又 久热风动，津液日损，舌刺咳嗽。议以甘药养其胃阴，老年纳谷为宝。
+    生扁豆（四两） 麦冬（四两） 北沙参（三两） 天花粉（二两） 甘蔗浆（十二两） 柿霜（二两） 白花百合（四两）
+    熬膏，加饴糖两许，每服时滚水调服三四钱，晚上服。
+    又 液燥下亏，阳挟内风上引，阴不上承，舌络强则言謇，气不注脉则肢痿乏力步趋。凡此皆肝肾脏阴本虚。镇补之中，微逗通阳为法，以脏液虚，不受纯温药耳。
+    九制熟地（四两） 阿胶（二两） 女贞实（二两） 稆豆皮（二两） 淡肉苁蓉（一两） 茯神（二两） 旱莲草（二两） 川石斛（三两）
+    用精羯羊肉胶为丸，早上滚水服四五钱。
+    又 暂服煎方：
+    生地 沙参 茺蔚子 黑稆豆皮 川斛 牛膝
+    又 晚服丸方：
+    九蒸桑叶（八两） 三角胡麻（四两） 九制首乌（三两） 白茯神（三两） 人参（二两） 炙甘草（一两） 酸枣仁（二两，炒） 苡仁（二两）
+    上为末，桂圆肉三两煎汤，法丸，每服三钱，百滚水下。
+    又 今年天符岁会，上半年阳气大泄，见病都属肝胃，以厥阴为风脏，而阳明为盛阳耳。阴阳不肯相依，势必暴来厥中。过大暑可免，以暑湿大热，更多开泄，致元气不为相接耳。然此本虚标实，气火升腾所致，经旨以苦寒咸润酸泄，少佐微辛为治，议进补阳明泄厥阴法。
+    人参（一钱） 生牡蛎（五钱） 生白芍（二钱） 乌梅肉（四分） 川黄连（盐水炒，六分） 熟半夏（醋炒，清水漂洗，一钱）
+    上午服。
+    （丸方） 人参（二两） 茯苓（三两，生） 盐水炒黄连（五钱） 半夏（醋炒，水洗净，一两半） 盐水炒广皮（二两） 枳实（麸炒，一两半） 白蒺藜（鸡子黄制，一两半） 生白芍（一两半） 乌梅肉（蒸，一两）
+    为末，竹沥法丸，早上服三钱，百滚汤下。
+    又 夏月进酸苦泄热，和胃通隧，为阳明厥阴治甚安。入秋凉爽，天人渐有收肃下降之理。缘有年下亏，木少水涵，相火内风旋转，熏灼胃脘，逆冲为呕。舌络被熏，则绛赤如火。消渴便阻，犹剩事耳。凡此仍属中厥根萌，当加慎静养为宜。
+    生鸡子黄（一枚） 阿胶（一钱半） 生白芍（三钱） 生地（三钱） 天冬（去心，一钱） 川连（一分，生）
+    上午服。
+    又 心火亢上，皆为营液内耗，先以补心汤，理心之用。
+    人参（同煎，一钱） 川连（水炒，六分） 犀角（二钱，镑） 玄参（二钱） 鲜生地（五钱） 丹参（一钱） 卷心竹叶（二钱）
+    又 苦味和阳，脉左颇和，但心悸少寐，已见营气衰微。仿《金匮》酸枣仁汤方，仍兼和阳，益心气以通肝络。
+    酸枣仁（炒黑，勿研，五钱） 茯神（三钱） 知母（一钱） 川芎（一分） 人参（六分，同煎） 天冬（去心，一钱）
+
+	</Example>
+</Grammar>
