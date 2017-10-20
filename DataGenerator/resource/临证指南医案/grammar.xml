@@ -71,8 +71,9 @@ S := YN SummaryCommentCommon
         Empty
 	</TerminalSymbols>
 	<SymbolMap>
-        FormattedRecipeText := RecipeContent
-        LiteralText(FormattedRecipeText) := FormattedRecipeText
+        //FormattedRecipeText := RecipeContent
+        //LiteralText(FormattedRecipeText) := FormattedRecipeText
+        LiteralText(FormattedRecipeText) := RecipeContent
         LiteralText(RecipeComment) := RecipeComment
 	</SymbolMap>
 

@@ -9,7 +9,8 @@ import com.hubert.parser.tokenextractor.*;
 //reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
 public class YiAnParser {
     public YiAnParser() {
-        mTokenExtractor.put("FormattedRecipeText", new PrescriptionItemTokenExtractor());
+        //mTokenExtractor.put("FormattedRecipeText", new PrescriptionItemTokenExtractor());
+        mTokenExtractor.put("RecipeContent", new PrescriptionItemTokenExtractor());
     }
 
     // （1） 将结束符 $ 和起始符号 S 压入栈中；
