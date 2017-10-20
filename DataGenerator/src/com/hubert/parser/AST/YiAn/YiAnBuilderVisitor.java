@@ -62,15 +62,6 @@ public class YiAnBuilderVisitor implements IVisitor {
 
     }
 
-    // private IYiAnBuilder getBuilder(ASTNode node) {
-    // String tag = node.getTag();
-    // String key = tag;
-    // if (mBuilders.containsKey(key)) {
-    // return mBuilders.get(key);
-    // }
-    // return null;
-    // }
-
     public void AddYiAn(YiAnEntity yiAn) {
         mYiAns.add(yiAn);
     }
