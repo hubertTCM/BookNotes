@@ -1,15 +1,12 @@
 package com.hubert.parser.LL1;
 
 import java.io.*;
-import java.nio.charset.*;
-import java.nio.file.*;
 import java.util.*;
 
 import javax.xml.parsers.*;
 
 import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.*;
-import org.xml.sax.SAXException;
 
 // reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
 public class Grammar {
@@ -57,15 +54,6 @@ public class Grammar {
         mTerminalSymbols.add("Empty");
     }
 
-    // TODO: change the grammar file to xml
-    private void initGrammar(String grammaFile) throws Exception {
-        Path filePath = Paths.get(grammaFile);
-        Charset utf8 = Charset.forName("UTF-8");
-        List<String> lines = Files.readAllLines(filePath, utf8);
-
-        initExpressions(lines);
-    }
-
     private void parseXml(String filePath) throws Exception {
 
         File xmlFile = new File(filePath);
@@ -100,8 +88,6 @@ public class Grammar {
                 continue;
             }
         }
-        
-
 
         initFirstSet();
         initFollowSet();
@@ -210,7 +196,7 @@ public class Grammar {
         if (mFirst.containsKey(symbol)) {
             return mFirst.get(symbol);
         }
-        //System.out.println(symbol);
+        // System.out.println(symbol);
         Set<String> first = new HashSet<String>();
         mFirst.put(symbol, first);
         if (mTerminalSymbols.contains(symbol)) {
