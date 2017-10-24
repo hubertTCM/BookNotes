@@ -1,25 +1,11 @@
 package com.hubert.parser.AST.YiAn.Evaluation;
 
-import java.util.*;
-
 import com.hubert.dal.entity.*;
-import com.hubert.parser.AST.Evaluation.Common.Context;
+import com.hubert.parser.AST.Evaluation.Common.*;
 
 public class Scope {
-    public Scope(Context context, Scope parent) {
-        mParent = parent;
-        mContext = context;
-    }
-
-    public Scope(Context context) {
-        this(context, null);
-    }
-
-    public void destroy() {
-        mContext = null;
-        mParent = null;
-        mVariables.clear();
-        mVariables = null;
+    public Scope(Storage storage) {
+        mStorage = storage;
     }
 
     public YiAnEntity getYiAn() {
@@ -56,30 +42,15 @@ public class Scope {
         return setVariable(YiAnPrescriptionItem, value);
     }
 
-    @SuppressWarnings("unchecked")
     protected <T> T getVariable(String key) {
-        if (mVariables.containsKey(key)) {
-            return (T)mVariables.get(key);
-        }
-
-        if (mParent != null) {
-            return mParent.getVariable(key);
-        }
-        System.out.println("*** failed to find " + key);
-        return null;
+        return mStorage.getVariable(key);
     }
 
     protected <T> T setVariable(String key, T value) {
-        if (mVariables.containsKey(key)) {
-            // TODO:
-        }
-        mVariables.put(key, value);
-        return value;
+        return mStorage.setVariable(key, value);
     }
 
-    private Map<String, Object> mVariables = new HashMap<String, Object>();
-    private Scope mParent;
-    private Context mContext;
+    private Storage mStorage;
 
     private final static String YiAnKey = "YiAn";
     private final static String YiAnDetailKey = "YiAnDetail";

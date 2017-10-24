@@ -28,19 +28,14 @@ public abstract class AbstractEvaluator implements IEvaluator {
 
     @Override
     public boolean evaluate(ASTNode node) {
-        mScope = mContext.createScope();
+        mScope = new Scope(mContext.createStorage());
         return evaluateCore(node);
     }
 
     @Override
     public boolean postEvaluate(ASTNode node) {
-        mScope = mContext.getActiveScope();
+        mScope = new Scope(mContext.getActiveStorage());
         boolean success = postEvaluateCore(node);
-        // RecipeCompositionHerbOnly is parent of self, leads the scope is
-        // shared.
-        // if (mShouldCreateScope) {
-        // //mScope.destroy();
-        // }
         mScope = null;
         mContext.remove();
         return success;

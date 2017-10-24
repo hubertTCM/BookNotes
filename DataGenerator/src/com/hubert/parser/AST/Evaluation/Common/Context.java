@@ -2,38 +2,35 @@ package com.hubert.parser.AST.Evaluation.Common;
 
 import java.util.*;
 
-import com.hubert.dal.entity.YiAnEntity;
-import com.hubert.parser.AST.YiAn.Evaluation.Scope;
-
 public class Context {
 
     public Context() {
     }
 
-    public Scope createScope() {
-        Scope scope = null;
-        if (!mScopes.isEmpty()) {
-            Scope parent = mScopes.peek();
-            scope = new Scope(this, parent);
+    public Storage createStorage() {
+        Storage storage = null;
+        if (!mStorages.isEmpty()) {
+            Storage parent = mStorages.peek();
+            storage = new Storage(parent);
         } else {
-            scope = new Scope(this);
+            storage = new Storage();
         }
 
-        return mScopes.push(scope);
+        return mStorages.push(storage);
     }
 
-    public Scope getActiveScope() {
-        return mScopes.peek();
+    public Storage getActiveStorage() {
+        return mStorages.peek();
     }
 
     public void remove() {
-        if (mScopes.isEmpty()) {
+        if (mStorages.isEmpty()) {
             System.out.println("error happens");
         }
 
-        Scope scope = mScopes.pop();
+        Storage scope = mStorages.pop();
         scope.destroy();
     }
 
-    private Stack<Scope> mScopes = new Stack<Scope>();
+    private Stack<Storage> mStorages = new Stack<Storage>();
 }
