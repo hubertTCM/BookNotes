@@ -14,7 +14,6 @@ public class Scope {
 
     public void setYiAn(YiAnEntity yiAn) {
         setVariable(YiAnKey, yiAn);
-        //mContext.addYiAn(yiAn);
     }
     
     public YiAnDetailEntity getYiAnDetail(){
