@@ -28,9 +28,9 @@ public class YiAnBuilderVisitor implements IVisitor {
     public YiAnBuilderVisitor(HerbAliasManager herbAliasManager) {
         mHerbAliasManager = herbAliasManager;
         
-        Context context = new Context(mYiAns);
+        Context context = new Context();
 
-        mEvaluators.add(new YiAnEvaluator(context));
+        mEvaluators.add(new YiAnEvaluator(context, mYiAns));
         mEvaluators.add(new YiAnDetailEvaluator(context));
         mEvaluators.add(new YiAnDetailPropertyEvaluator(context));
         mEvaluators.add(new RecipeCompositionEvaluator(context));

@@ -2,6 +2,7 @@ package com.hubert.parser.AST.YiAn.Evaluation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.hubert.dal.entity.YiAnDetailEntity;
 import com.hubert.dal.entity.YiAnEntity;
@@ -11,8 +12,9 @@ import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 
 public class YiAnEvaluator extends AbstractEvaluator {
 
-    public YiAnEvaluator(Context context) {
+    public YiAnEvaluator(Context context, List<YiAnEntity> yiAns) {
         super(Arrays.asList(YiAnNodeConstants.YN, YiAnNodeConstants.YN2), context);
+        mYiAns = yiAns;
     }
 
     @Override
@@ -21,7 +23,9 @@ public class YiAnEvaluator extends AbstractEvaluator {
         yiAn.details = new ArrayList<YiAnDetailEntity>();
 
         mScope.setYiAn(yiAn);
+        mYiAns.add(yiAn);
         return true;
     }
 
+    private List<YiAnEntity> mYiAns = null;//new ArrayList<YiAnEntity>();
 }
