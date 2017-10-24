@@ -27,13 +27,6 @@ public class Context {
         return mScopes.peek();
     }
 
-    public void remove(Scope scope) {
-        if (mScopes.peek() != scope) {
-            // TODO:
-        }
-        mScopes.pop();
-    }
-
     public void remove() {
         if (mScopes.isEmpty()) {
             System.out.println("error happens");
