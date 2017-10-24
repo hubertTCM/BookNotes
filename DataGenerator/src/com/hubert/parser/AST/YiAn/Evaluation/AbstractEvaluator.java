@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.hubert.parser.AST.ASTNode;
+import com.hubert.parser.AST.Evaluation.Common.Context;
 
 public abstract class AbstractEvaluator implements IEvaluator {
 

@@ -3,6 +3,7 @@ package com.hubert.parser.AST.YiAn.Evaluation;
 import java.util.*;
 
 import com.hubert.dal.entity.*;
+import com.hubert.parser.AST.Evaluation.Common.Context;
 
 public class Scope {
     public Scope(Context context, Scope parent) {
