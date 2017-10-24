@@ -7,8 +7,7 @@ import com.hubert.parser.AST.YiAn.Evaluation.Scope;
 
 public class Context {
 
-    public Context(List<YiAnEntity> yiAn) {
-        mYiAns = yiAn;
+    public Context() {
     }
 
     public Scope createScope() {
@@ -36,10 +35,5 @@ public class Context {
         scope.destroy();
     }
 
-    public void addYiAn(YiAnEntity yiAn) {
-        mYiAns.add(yiAn);
-    }
-
     private Stack<Scope> mScopes = new Stack<Scope>();
-    private List<YiAnEntity> mYiAns; // = new ArrayList<YiAnEntity>();
 }
