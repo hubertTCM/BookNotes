@@ -1,11 +1,9 @@
 package com.hubert.parser.tokenextractor.YiAn;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
+import com.hubert.parser.tokenextractor.*;
+import java.nio.charset.*;
+import java.nio.file.*;
 import java.util.*;
 
 import org.apache.commons.lang3.StringUtils;
@@ -31,7 +29,7 @@ public class YiAnLexer {
             String line = StringUtils.trim(temp);
             if (line.isEmpty()) {
                 if (!mTokens.isEmpty()) {
-                    mTokens.add(new Token(TokenType.End));
+                    mTokens.add(new YiAnToken(TokenType.End));
                 }
                 continue;
             }
@@ -50,7 +48,7 @@ public class YiAnLexer {
 
             if (!isValid) {
                 // System.out.println(" **** Unknow Token: " + line);
-                mTokens.add(new Token(TokenType.LiteralText, line));
+                mTokens.add(new YiAnToken(TokenType.LiteralText, line));
                 continue;
             }
         }

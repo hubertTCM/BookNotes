@@ -1,6 +1,7 @@
 package com.hubert.parser.tokenextractor.YiAn;
 
-import java.util.List;
+import java.util.*;
+import com.hubert.parser.tokenextractor.*;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -39,7 +40,7 @@ public class PrescriptionItemTokenExtractor implements ITokenExtractor {
         if (herb.isEmpty()) {
             return;
         }
-        container.add(new Token(TokenType.Herb, herb));
+        container.add(new YiAnToken(TokenType.Herb, herb));
     }
 
 }

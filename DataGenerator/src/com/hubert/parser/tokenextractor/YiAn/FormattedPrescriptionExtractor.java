@@ -2,6 +2,8 @@ package com.hubert.parser.tokenextractor.YiAn;
 
 import java.util.*;
 
+import com.hubert.parser.tokenextractor.*;
+
 import javafx.util.Pair;
 
 public class FormattedPrescriptionExtractor implements ITokenExtractor {

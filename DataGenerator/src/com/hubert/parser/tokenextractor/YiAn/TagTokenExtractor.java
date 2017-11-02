@@ -1,6 +1,7 @@
 package com.hubert.parser.tokenextractor.YiAn;
 
 import java.util.*;
+import com.hubert.parser.tokenextractor.*;
 
 import javafx.util.Pair;
 
@@ -32,12 +33,12 @@ public class TagTokenExtractor implements ITokenExtractor {
             }
 
             if (temp.getValue()) {
-                container.add(new Token(mTokenType, text));
+                container.add(new YiAnToken(mTokenType, text));
                 return new Pair<>(true, text);
             }
 
             String formattedText = text.substring(temp.getKey().length());
-            container.add(new Token(mTokenType, formattedText));
+            container.add(new YiAnToken(mTokenType, formattedText));
             return new Pair<>(true, formattedText);
         }
         return new Pair<>(false, "");
