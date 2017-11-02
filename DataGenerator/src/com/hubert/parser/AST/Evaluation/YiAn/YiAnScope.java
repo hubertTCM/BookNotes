@@ -3,8 +3,8 @@ package com.hubert.parser.AST.Evaluation.YiAn;
 import com.hubert.dal.entity.*;
 import com.hubert.parser.AST.Evaluation.Common.*;
 
-public class Scope {
-    public Scope(Storage storage) {
+public class YiAnScope {
+    public YiAnScope(Storage storage) {
         mStorage = storage;
     }
 

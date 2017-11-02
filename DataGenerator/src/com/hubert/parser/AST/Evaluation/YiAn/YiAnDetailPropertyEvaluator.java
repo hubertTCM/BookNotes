@@ -13,7 +13,7 @@ public class YiAnDetailPropertyEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        YiAnDetailEntity mYiAnDetail = mScope.getYiAnDetail();
+        YiAnDetailEntity mYiAnDetail = mYiAnScope.getYiAnDetail();
         String tag = node.getTag();
         if (YiAnNodeConstants.Description.equals(tag)) {
             mYiAnDetail.content = node.getValue();

@@ -11,5 +11,5 @@ public abstract class Token {
 
     public abstract String getType();
 
-    private String mValue;
+    protected String mValue;
 }
