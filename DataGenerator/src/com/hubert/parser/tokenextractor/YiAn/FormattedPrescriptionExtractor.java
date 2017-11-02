@@ -22,7 +22,6 @@ public class FormattedPrescriptionExtractor implements ITokenExtractor {
         if (result != null && result.getKey()) {
             source = result.getValue();
         }
-        // container.add(new Token(TokenType.FormattedRecipeText, source));
         mPrescriptionItemExtractor.extract(source, container);
         return new Pair<>(true, "");
     }
