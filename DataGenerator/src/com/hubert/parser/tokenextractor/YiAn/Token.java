@@ -1,4 +1,4 @@
-package com.hubert.parser.tokenextractor;
+package com.hubert.parser.tokenextractor.YiAn;
 
 public class Token {
     public Token(TokenType type) {
