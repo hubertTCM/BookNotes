@@ -7,8 +7,8 @@ import com.hubert.parser.tokenextractor.*;
 import com.hubert.parser.tokenextractor.YiAn.*;
 
 //reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
-public class YiAnParser {
-    public YiAnParser() {
+public class Parser {
+    public Parser() {
         //mTokenExtractor.put("FormattedRecipeText", new PrescriptionItemTokenExtractor());
         mTokenExtractor.put("RecipeContent", new PrescriptionItemTokenExtractor());
     }

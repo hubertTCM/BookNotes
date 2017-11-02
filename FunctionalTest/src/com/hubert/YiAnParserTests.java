@@ -38,7 +38,7 @@ public class YiAnParserTests {
             tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
-            YiAnParser parser = new YiAnParser();
+            Parser parser = new Parser();
             ASTNode node = parser.parse(grammar, tokens);
 
             String fileName = "ASTNode_test1.json";
@@ -92,7 +92,7 @@ public class YiAnParserTests {
             tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
-            YiAnParser parser = new YiAnParser();
+            Parser parser = new Parser();
             ASTNode node = parser.parse(grammar, tokens);
 
             String fileName = "ASTNode_test2.json";
@@ -172,7 +172,7 @@ public class YiAnParserTests {
             tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
-            YiAnParser parser = new YiAnParser();
+            Parser parser = new Parser();
             ASTNode node = parser.parse(grammar, tokens);
 
             String fileName = "ASTNode_test3.json";
@@ -248,7 +248,7 @@ public class YiAnParserTests {
             tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
-            YiAnParser parser = new YiAnParser();
+            Parser parser = new Parser();
             ASTNode node = parser.parse(grammar, tokens);
 
             String fileName = "ASTNode_test4.json";
@@ -308,7 +308,7 @@ public class YiAnParserTests {
             tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
-            YiAnParser parser = new YiAnParser();
+            Parser parser = new Parser();
             ASTNode node = parser.parse(grammar, tokens);
 
             String fileName = "ASTNode_test5.json";
@@ -369,7 +369,7 @@ public class YiAnParserTests {
             tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
-            YiAnParser parser = new YiAnParser();
+            Parser parser = new Parser();
             ASTNode node = parser.parse(grammar, tokens);
 
             String fileName = "ASTNode_test6.json";
