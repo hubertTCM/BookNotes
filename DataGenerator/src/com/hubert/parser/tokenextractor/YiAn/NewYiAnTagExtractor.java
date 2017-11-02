@@ -1,6 +1,7 @@
 package com.hubert.parser.tokenextractor.YiAn;
 
 import java.util.*;
+import com.hubert.parser.tokenextractor.*;
 
 import javafx.util.Pair;
 
@@ -21,11 +22,11 @@ public class NewYiAnTagExtractor implements ITokenExtractor {
         }
         // TODO: add check here
         if (mParentTokenType == TokenType.None) {
-            container.add(new Token(TokenType.Description, text));
+            container.add(new YiAnToken(TokenType.Description, text));
             return new Pair<>(true, text);
         }
         if (mParentTokenType == TokenType.FormattedRecipeText) {
-            container.add(new Token(TokenType.Description, tag));
+            container.add(new YiAnToken(TokenType.Description, tag));
             return new Pair<>(true, text.substring(tag.length()));
         }
         System.out.println("** invalid token:" + text);

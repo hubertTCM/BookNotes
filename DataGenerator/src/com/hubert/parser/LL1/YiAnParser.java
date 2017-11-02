@@ -2,8 +2,8 @@ package com.hubert.parser.LL1;
 
 import java.util.*;
 
-import com.hubert.parser.AST.ASTNode;
-import com.hubert.parser.AST.DeleteEmptyNodeVisitor;
+import com.hubert.parser.AST.*;
+import com.hubert.parser.tokenextractor.*;
 import com.hubert.parser.tokenextractor.YiAn.*;
 
 //reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
@@ -80,7 +80,7 @@ public class YiAnParser {
                     mTokenExtractor.get(standardSymbol).extract(token.getValue(), temp);
                     mTokens.addAll(mCurrentTokenIndex, temp);
                 } else {
-                    mTokens.add(mCurrentTokenIndex, new Token(TokenType.valueOf(standardSymbol), token.getValue()));
+                    mTokens.add(mCurrentTokenIndex, new YiAnToken(TokenType.valueOf(standardSymbol), token.getValue()));
                 }
                 // FormattedRecipeText => RecipeContent
                 standardSymbol = mGrammar.getStandardSymbol(standardSymbol);

@@ -1,4 +1,4 @@
-package com.hubert.parser.tokenextractor.YiAn;
+package com.hubert.parser.tokenextractor;
 
 import java.util.*;
 

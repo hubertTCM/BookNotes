@@ -13,6 +13,7 @@ import com.hubert.dataprovider.*;
 import com.hubert.parser.AST.*;
 import com.hubert.parser.AST.YiAn.*;
 import com.hubert.parser.LL1.*;
+import com.hubert.parser.tokenextractor.*;
 import com.hubert.parser.tokenextractor.YiAn.*;
 
 public class YiAnParserTests {
@@ -31,10 +32,10 @@ public class YiAnParserTests {
             // 处方 熟地（炙） 炙龟甲 萸肉 五味 磁石 茯苓 旱莲草 女贞子
             ArrayList<Token> tokens = new ArrayList<Token>();
             String description = "阳挟内风上巅，目昏耳鸣不寐，肝经主病。";
-            tokens.add(new Token(TokenType.Description, "阳挟内风上巅，目昏耳鸣不寐，肝经主病。"));
+            tokens.add(new YiAnToken(TokenType.Description, "阳挟内风上巅，目昏耳鸣不寐，肝经主病。"));
             String recipe = "熟地（炙） 炙龟甲 萸肉 五味 磁石 茯苓 旱莲草 女贞子";
-            tokens.add(new Token(TokenType.LiteralText, recipe));
-            tokens.add(new Token(TokenType.End));
+            tokens.add(new YiAnToken(TokenType.LiteralText, recipe));
+            tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
             YiAnParser parser = new YiAnParser();
@@ -80,15 +81,15 @@ public class YiAnParserTests {
             // 处方 [format]黄柏 龟板 生地黄 陈皮 白芍 虎骨 干姜 肉苁蓉
             ArrayList<Token> tokens = new ArrayList<Token>();
             String description = "曾（五二）脉弦动，眩晕耳聋，行走气促无力，肛痔下垂。此未老欲衰，肾阴弱，收纳无权，肝阳炽，虚风蒙窍.......";
-            tokens.add(new Token(TokenType.Description, description));
-            tokens.add(new Token(TokenType.RecipeAbbreviation, "虎潜去锁阳、知母，加大肉苁蓉，炼蜜丸。"));
+            tokens.add(new YiAnToken(TokenType.Description, description));
+            tokens.add(new YiAnToken(TokenType.RecipeAbbreviation, "虎潜去锁阳、知母，加大肉苁蓉，炼蜜丸。"));
             ArrayList<Token> herbs = new ArrayList<Token>();
-            herbs.add(new Token(TokenType.Herb, "黄柏"));
-            herbs.add(new Token(TokenType.Herb, "龟板"));
-            herbs.add(new Token(TokenType.Herb, "生地黄"));
-            herbs.add(new Token(TokenType.Herb, "陈皮"));
+            herbs.add(new YiAnToken(TokenType.Herb, "黄柏"));
+            herbs.add(new YiAnToken(TokenType.Herb, "龟板"));
+            herbs.add(new YiAnToken(TokenType.Herb, "生地黄"));
+            herbs.add(new YiAnToken(TokenType.Herb, "陈皮"));
             tokens.addAll(herbs);
-            tokens.add(new Token(TokenType.End));
+            tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
             YiAnParser parser = new YiAnParser();
@@ -141,34 +142,34 @@ public class YiAnParserTests {
             // 处方说明 上末，用竹沥一杯，姜汁十匙，法丸，食远开水服三钱。
             ArrayList<Token> tokens = new ArrayList<Token>();
             String description1 = "某（妪）今年风木司天，春夏阳升之候，兼因平昔怒劳忧思.....";
-            tokens.add(new Token(TokenType.Description, description1));
-            tokens.add(new Token(TokenType.RecipeAbbreviation, "虎潜去锁阳、知母，加大肉苁蓉，炼蜜丸。"));
+            tokens.add(new YiAnToken(TokenType.Description, description1));
+            tokens.add(new YiAnToken(TokenType.RecipeAbbreviation, "虎潜去锁阳、知母，加大肉苁蓉，炼蜜丸。"));
 
             ArrayList<Token> herbs1 = new ArrayList<Token>();
-            herbs1.add(new Token(TokenType.Herb, "黄柏"));
-            herbs1.add(new Token(TokenType.Herb, "龟板"));
-            herbs1.add(new Token(TokenType.Herb, "生地黄"));
-            herbs1.add(new Token(TokenType.Herb, "陈皮"));
+            herbs1.add(new YiAnToken(TokenType.Herb, "黄柏"));
+            herbs1.add(new YiAnToken(TokenType.Herb, "龟板"));
+            herbs1.add(new YiAnToken(TokenType.Herb, "生地黄"));
+            herbs1.add(new YiAnToken(TokenType.Herb, "陈皮"));
             tokens.addAll(herbs1);
 
-            tokens.add(new Token(TokenType.Description, "又 前议苦辛酸降一法，肝风胃阳已折其上引之威，....."));
-            tokens.add(new Token(TokenType.RecipeAbbreviation, "九制熟地 肉苁蓉（用大而黑色者，去甲切片，盛竹篮内，放长流水中浸七日，晒干，以极淡为度，四两）....."));
+            tokens.add(new YiAnToken(TokenType.Description, "又 前议苦辛酸降一法，肝风胃阳已折其上引之威，....."));
+            tokens.add(new YiAnToken(TokenType.RecipeAbbreviation, "九制熟地 肉苁蓉（用大而黑色者，去甲切片，盛竹篮内，放长流水中浸七日，晒干，以极淡为度，四两）....."));
 
             ArrayList<Token> herbs2 = new ArrayList<Token>();
-            herbs2.add(new Token(TokenType.Herb, "黄柏"));
-            herbs2.add(new Token(TokenType.Herb, "龟板"));
-            herbs2.add(new Token(TokenType.Herb, "生地黄"));
-            herbs2.add(new Token(TokenType.Herb, "陈皮"));
-            herbs2.add(new Token(TokenType.Herb, "肉苁蓉"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "黄柏"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "龟板"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "生地黄"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "陈皮"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "肉苁蓉"));
             tokens.addAll(herbs2);
 
-            tokens.add(new Token(TokenType.LiteralText, "上药照方制末，另用小黑稆豆皮八两煎浓汁，法丸，每早百滚水服三钱。"));
-            tokens.add(new Token(TokenType.RecipeHeader, "议晚上用健中运痰，兼制亢阳。火动风生，从《外台》茯苓饮意。"));
+            tokens.add(new YiAnToken(TokenType.LiteralText, "上药照方制末，另用小黑稆豆皮八两煎浓汁，法丸，每早百滚水服三钱。"));
+            tokens.add(new YiAnToken(TokenType.RecipeHeader, "议晚上用健中运痰，兼制亢阳。火动风生，从《外台》茯苓饮意。"));
             String recipe2 = "人参（二两） 熟半夏（二两） 茯苓（四两，生） 广皮肉（二两） 川连（姜汁炒，一两） 枳实（麸炒，二两） 明天麻（二两，煨）";
-            tokens.add(new Token(TokenType.LiteralText, recipe2));
-            tokens.add(new Token(TokenType.LiteralText, "上末，用竹沥一杯，姜汁十匙，法丸，食远开水服三钱。"));
+            tokens.add(new YiAnToken(TokenType.LiteralText, recipe2));
+            tokens.add(new YiAnToken(TokenType.LiteralText, "上末，用竹沥一杯，姜汁十匙，法丸，食远开水服三钱。"));
 
-            tokens.add(new Token(TokenType.End));
+            tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
             YiAnParser parser = new YiAnParser();
@@ -218,33 +219,33 @@ public class YiAnParserTests {
             // 处方 [format]又 人参 半夏 枳实 茯苓 橘红 蒺藜 竹沥 姜汁
             ArrayList<Token> tokens = new ArrayList<Token>();
             String description1 = "叶 初春肝风内动，眩晕跌仆，左肢偏痿....";
-            tokens.add(new Token(TokenType.Description, description1));
+            tokens.add(new YiAnToken(TokenType.Description, description1));
             ArrayList<Token> herbs1 = new ArrayList<Token>();
-            herbs1.add(new Token(TokenType.Herb, "黄柏"));
-            herbs1.add(new Token(TokenType.Herb, "龟板"));
-            herbs1.add(new Token(TokenType.Herb, "生地黄"));
-            herbs1.add(new Token(TokenType.Herb, "陈皮"));
-            herbs1.add(new Token(TokenType.Herb, "茯苓"));
+            herbs1.add(new YiAnToken(TokenType.Herb, "黄柏"));
+            herbs1.add(new YiAnToken(TokenType.Herb, "龟板"));
+            herbs1.add(new YiAnToken(TokenType.Herb, "生地黄"));
+            herbs1.add(new YiAnToken(TokenType.Herb, "陈皮"));
+            herbs1.add(new YiAnToken(TokenType.Herb, "茯苓"));
             tokens.addAll(herbs1);
 
             String description2 = "又 风热烁筋骨为痛，痰火气阻，呼吸不利，.....";
-            tokens.add(new Token(TokenType.Description, description2));
+            tokens.add(new YiAnToken(TokenType.Description, description2));
             ArrayList<Token> herbs2 = new ArrayList<Token>();
-            herbs2.add(new Token(TokenType.Herb, "人参"));
-            herbs2.add(new Token(TokenType.Herb, "半夏"));
-            herbs2.add(new Token(TokenType.Herb, "枳实"));
-            herbs2.add(new Token(TokenType.Herb, "茯苓"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "人参"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "半夏"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "枳实"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "茯苓"));
             tokens.addAll(herbs2);
 
-            tokens.add(new Token(TokenType.Description, "又"));
+            tokens.add(new YiAnToken(TokenType.Description, "又"));
             ArrayList<Token> herbs3 = new ArrayList<Token>();
-            herbs3.add(new Token(TokenType.Herb, "黄柏"));
-            herbs3.add(new Token(TokenType.Herb, "龟板"));
-            herbs3.add(new Token(TokenType.Herb, "生地黄"));
-            herbs3.add(new Token(TokenType.Herb, "陈皮"));
+            herbs3.add(new YiAnToken(TokenType.Herb, "黄柏"));
+            herbs3.add(new YiAnToken(TokenType.Herb, "龟板"));
+            herbs3.add(new YiAnToken(TokenType.Herb, "生地黄"));
+            herbs3.add(new YiAnToken(TokenType.Herb, "陈皮"));
             tokens.addAll(herbs3);
 
-            tokens.add(new Token(TokenType.End));
+            tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
             YiAnParser parser = new YiAnParser();
@@ -292,19 +293,19 @@ public class YiAnParserTests {
 
             ArrayList<Token> tokens = new ArrayList<Token>();
             String description1 = "阳挟内风上巅，目昏耳鸣不寐，肝经主病。";
-            tokens.add(new Token(TokenType.Description, description1));
+            tokens.add(new YiAnToken(TokenType.Description, description1));
             ArrayList<Token> herbs1 = new ArrayList<Token>();
-            herbs1.add(new Token(TokenType.LiteralText, "熟地（炙）"));
+            herbs1.add(new YiAnToken(TokenType.LiteralText, "熟地（炙）"));
             tokens.addAll(herbs1);
-            tokens.add(new Token(TokenType.End));
+            tokens.add(new YiAnToken(TokenType.End));
 
             String description2 = "曾（五二）脉弦动，眩晕耳聋，行走气促无力，肛痔下垂。此未老欲衰，肾阴弱，收纳无权，肝阳炽，虚风蒙窍.......";
-            tokens.add(new Token(TokenType.Description, description2));
+            tokens.add(new YiAnToken(TokenType.Description, description2));
             ArrayList<Token> herbs2 = new ArrayList<Token>();
-            herbs2.add(new Token(TokenType.Herb, "黄柏"));
-            herbs2.add(new Token(TokenType.Herb, "龟板"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "黄柏"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "龟板"));
             tokens.addAll(herbs2);
-            tokens.add(new Token(TokenType.End));
+            tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
             YiAnParser parser = new YiAnParser();
@@ -356,16 +357,16 @@ public class YiAnParserTests {
 
             ArrayList<Token> tokens = new ArrayList<Token>();
             String description = "又 今年天符岁会，上半年阳气大泄，.....";
-            tokens.add(new Token(TokenType.Description, description));
+            tokens.add(new YiAnToken(TokenType.Description, description));
             String recipe1 = "人参（一钱） 生牡蛎（五钱） 生白芍（二钱）";
-            tokens.add(new Token(TokenType.LiteralText, recipe1));
-            tokens.add(new Token(TokenType.LiteralText, "上午服。"));
+            tokens.add(new YiAnToken(TokenType.LiteralText, recipe1));
+            tokens.add(new YiAnToken(TokenType.LiteralText, "上午服。"));
             ArrayList<Token> herbs2 = new ArrayList<Token>();
-            herbs2.add(new Token(TokenType.Herb, "人参"));
-            herbs2.add(new Token(TokenType.Herb, "茯苓"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "人参"));
+            herbs2.add(new YiAnToken(TokenType.Herb, "茯苓"));
             tokens.addAll(herbs2);
-            tokens.add(new Token(TokenType.LiteralText, "为末，竹沥法丸，早上服三钱，百滚汤下。"));
-            tokens.add(new Token(TokenType.End));
+            tokens.add(new YiAnToken(TokenType.LiteralText, "为末，竹沥法丸，早上服三钱，百滚汤下。"));
+            tokens.add(new YiAnToken(TokenType.End));
 
             Grammar grammar = new Grammar(mGrammarFile);
             YiAnParser parser = new YiAnParser();
