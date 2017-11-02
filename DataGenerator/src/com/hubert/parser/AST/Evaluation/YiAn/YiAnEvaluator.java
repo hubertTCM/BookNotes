@@ -22,7 +22,7 @@ public class YiAnEvaluator extends AbstractEvaluator {
         YiAnEntity yiAn = new YiAnEntity();
         yiAn.details = new ArrayList<YiAnDetailEntity>();
 
-        mScope.setYiAn(yiAn);
+        mYiAnScope.setYiAn(yiAn);
         mYiAns.add(yiAn);
         return true;
     }

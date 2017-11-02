@@ -28,15 +28,15 @@ public abstract class AbstractEvaluator implements IEvaluator {
 
     @Override
     public boolean evaluate(ASTNode node) {
-        mScope = new Scope(mContext.createStorage());
+        mYiAnScope = new YiAnScope(mContext.createStorage());
         return evaluateCore(node);
     }
 
     @Override
     public boolean postEvaluate(ASTNode node) {
-        mScope = new Scope(mContext.getActiveStorage());
+        mYiAnScope = new YiAnScope(mContext.getActiveStorage());
         boolean success = postEvaluateCore(node);
-        mScope = null;
+        mYiAnScope = null;
         mContext.remove();
         return success;
     }
@@ -49,7 +49,7 @@ public abstract class AbstractEvaluator implements IEvaluator {
 
     protected Context mContext;
 
-    protected Scope mScope;
+    protected YiAnScope mYiAnScope;
 
     protected List<String> mAcceptableTags = new ArrayList<String>();
 }
