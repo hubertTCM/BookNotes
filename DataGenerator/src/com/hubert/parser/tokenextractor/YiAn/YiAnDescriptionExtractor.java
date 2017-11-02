@@ -19,7 +19,7 @@ public class YiAnDescriptionExtractor implements ITokenExtractor {
             previousToken = container.get(container.size() - 1);
         }
 
-        if (previousToken != null && previousToken.getType() != TokenType.End) {
+        if (previousToken != null && !TokenType.End.name().equals(previousToken.getType())) {
             return null;
         }
 

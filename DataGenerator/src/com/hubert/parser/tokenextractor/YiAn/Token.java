@@ -14,8 +14,8 @@ public class Token {
         return mValue;
     }
 
-    public TokenType getType() {
-        return mType;
+    public String getType() {
+        return mType.name();
     }
 
     private TokenType mType;
