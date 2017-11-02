@@ -28,7 +28,7 @@ public class BookGenerator {
         mBook.name = mBookDirectory.getName();// Paths.get(directory).getFileName();
         mBook.sections = new ArrayList<SectionEntity>();
 
-        mYiAnParser = new YiAnParser();
+        mYiAnParser = new Parser();
         mGrammar = new Grammar(grammarFilePath);
 
         mHerbAliasManager = herbAliasManager;
@@ -148,7 +148,7 @@ public class BookGenerator {
     protected BookEntity mBook;
     protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
 
-    protected YiAnParser mYiAnParser = new YiAnParser();
+    protected Parser mYiAnParser = new Parser();
 
     protected HerbAliasManager mHerbAliasManager;
 
