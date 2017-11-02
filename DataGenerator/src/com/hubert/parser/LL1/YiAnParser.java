@@ -47,7 +47,7 @@ public class YiAnParser {
             }
 
             Token token = mTokens.get(mCurrentTokenIndex);
-            String tokenType = token.getType().name();
+            String tokenType = token.getType();
             // System.out.println(token.getType() + ":" + token.getValue());
             if (tag.equals(tokenType)) {
                 if (tokenType.equals(Constants.End)) {
@@ -104,7 +104,7 @@ public class YiAnParser {
     }
 
     private void predict(ASTNode node, Token token) throws Exception {
-        String tokenType = token.getType().name();
+        String tokenType = token.getType();
         String tag = node.getTag();
         List<String> action = mGrammar.getAction(tag, tokenType);
         if (action == null) {

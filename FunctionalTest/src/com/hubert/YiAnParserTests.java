@@ -410,7 +410,7 @@ public class YiAnParserTests {
 
         List<Token> herbs = new ArrayList<Token>();// tokens.stream().filter(x->TokenType.Herb.equals(x.getType())).collect(Collectors.toList());
         for (Token token : tokens) {
-            if (TokenType.Herb.equals(token.getType())) {
+            if (TokenType.Herb.name().equals(token.getType())) {
                 herbs.add(token);
             }
         }
@@ -424,7 +424,7 @@ public class YiAnParserTests {
         String errorMessage = "";
 
         for (Token token : expectHerbs) {
-            if (token.getType() != TokenType.Herb) {
+            if (!TokenType.Herb.name().equals(token.getType())) {
                 continue;
             }
             String herb = token.getValue();
