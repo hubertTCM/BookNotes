@@ -57,7 +57,6 @@ public class YiAnBuilderVisitor implements IVisitor {
             node.getChild(i).accept(this);
         }
 
-        //System.out.println(node.getTag() + "*****");
         if (evaluator != null) {
             evaluator.postEvaluate(node);
         }
