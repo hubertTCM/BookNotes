@@ -104,7 +104,7 @@ public class BookGenerator {
         LogVisitor visitor = new LogVisitor("resource/debug/" + file.getName() + "_AST.json");
         node.accept(visitor);
 
-        YiAnBuilderVisitor builder = new YiAnBuilderVisitor(mHerbAliasManager);
+        YiAnBuilderVisitor builder = new YiAnBuilderVisitor(mHerbAliasManager, lexer.getDataProvider());
         node.accept(builder);
         mYiAns.addAll(builder.getYiAns());
         return;

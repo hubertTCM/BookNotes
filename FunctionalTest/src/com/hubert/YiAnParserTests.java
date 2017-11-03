@@ -50,7 +50,7 @@ public class YiAnParserTests {
             entity.book = new BookEntity();
             entity.name = "test1";
             entity.book.name = "debug";
-            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager);
+            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
             List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();
@@ -104,7 +104,7 @@ public class YiAnParserTests {
             entity.book = new BookEntity();
             entity.name = "test2";
             entity.book.name = "debug";
-            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager);
+            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
             List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();
@@ -184,7 +184,7 @@ public class YiAnParserTests {
             entity.book = new BookEntity();
             entity.name = "test3";
             entity.book.name = "debug";
-            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager);
+            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
             List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();
@@ -260,7 +260,7 @@ public class YiAnParserTests {
             entity.book = new BookEntity();
             entity.name = "test4";
             entity.book.name = "debug";
-            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager);
+            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
             List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();
@@ -320,7 +320,7 @@ public class YiAnParserTests {
             entity.book = new BookEntity();
             entity.name = "test5";
             entity.book.name = "debug";
-            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager);
+            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
             List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();
@@ -381,7 +381,7 @@ public class YiAnParserTests {
             entity.name = "test6";
             entity.book = new BookEntity();
             entity.book.name = "debug";
-            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager);
+            YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
             List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();

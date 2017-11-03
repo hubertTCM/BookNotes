@@ -12,10 +12,11 @@ import com.hubert.parser.AST.ASTNode;
 import com.hubert.parser.AST.IVisitor;
 import com.hubert.parser.AST.Evaluation.Common.Context;
 import com.hubert.parser.AST.Evaluation.YiAn.*;
+import com.hubert.parser.tokenextractor.*;
 
 public class YiAnBuilderVisitor implements IVisitor {
-    public YiAnBuilderVisitor(SectionEntity parentSection, HerbAliasManager herbAliasManager) {
-        this(herbAliasManager);
+    public YiAnBuilderVisitor(SectionEntity parentSection, HerbAliasManager herbAliasManager, DataProvider dataProvider) {
+        this(herbAliasManager, dataProvider);
         mParentSection = parentSection;
 
         SectionEntity currentSection = parentSection;
@@ -25,10 +26,12 @@ public class YiAnBuilderVisitor implements IVisitor {
         }
     }
 
-    public YiAnBuilderVisitor(HerbAliasManager herbAliasManager) {
+    public YiAnBuilderVisitor(HerbAliasManager herbAliasManager, DataProvider dataProvider) {
         mHerbAliasManager = herbAliasManager;
         
         Context context = new Context();
+        context.setGlobalData(YiAnScope.YiAnDataProviderKey, dataProvider);
+        context.setGlobalData(YiAnScope.HerbAliasManagerKey, herbAliasManager);
 
         mEvaluators.add(new YiAnEvaluator(context, mYiAns));
         mEvaluators.add(new YiAnDetailEvaluator(context));
@@ -77,5 +80,4 @@ public class YiAnBuilderVisitor implements IVisitor {
     private BookEntity mBook;
 
     private HerbAliasManager mHerbAliasManager;
-
 }

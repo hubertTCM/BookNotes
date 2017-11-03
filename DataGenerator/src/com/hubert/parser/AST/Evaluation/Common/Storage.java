@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Storage {
-
     public Storage(Storage parent) {
         mParent = parent;
+        mGlobalKey = parent.mGlobalKey;
     }
 
-    public Storage() {
-        this(null);
+    public Storage(String globalKey) {
+        mGlobalKey = globalKey;
     }
 
     public void destroy() {
@@ -24,6 +24,12 @@ public class Storage {
         if (mVariables.containsKey(key)) {
             return (T) mVariables.get(key);
         }
+        
+        String globalKey = convertToGlobalKey(key);
+        if (mVariables.containsKey(globalKey)) {
+            return (T) mVariables.get(globalKey);
+        }
+        
 
         if (mParent != null) {
             return mParent.getVariable(key);
@@ -39,7 +45,12 @@ public class Storage {
         mVariables.put(key, value);
         return value;
     }
+    
+    public String convertToGlobalKey(String key){
+        return mGlobalKey + "-" + key;
+    }
 
     private Map<String, Object> mVariables = new HashMap<String, Object>();
     private Storage mParent;
+    private String mGlobalKey;
 }
