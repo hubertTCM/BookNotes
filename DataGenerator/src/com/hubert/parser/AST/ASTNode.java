@@ -1,6 +1,7 @@
 package com.hubert.parser.AST;
 
 import java.util.*;
+import com.hubert.parser.tokenextractor.*;
 
 public class ASTNode {
     public ASTNode(String tag) {
@@ -22,6 +23,10 @@ public class ASTNode {
 
     public void setValue(String value) {
         mValue = value;
+    }
+    
+    public void setSourcePosition(Position sourcePosition){
+        mSourcePosition = sourcePosition;
     }
 
     public boolean isEmpty() {
@@ -84,6 +89,7 @@ public class ASTNode {
 
     private String mTag;
     private String mValue;
+    private Position mSourcePosition;
     private List<ASTNode> mChildren = new ArrayList<ASTNode>();
     private ASTNode mParent;
 }
