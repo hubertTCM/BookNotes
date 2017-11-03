@@ -12,9 +12,8 @@ import com.hubert.parser.AST.YiAn.*;
 
 public class RecipeDetailEvaluator extends AbstractEvaluator {
 
-    public RecipeDetailEvaluator(Context context, HerbAliasManager herbAliasManager) {
+    public RecipeDetailEvaluator(Context context) {
         super(YiAnNodeConstants.RecipeDetail, context);
-        mHerbAliasManager = herbAliasManager;
     }
 
     @Override
@@ -35,7 +34,8 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
 
         ArrayList<String> herbs = new ArrayList<String>();
         for (YiAnPrescriptionItemEntity item : prescription.items) {
-            String standardName = mHerbAliasManager.getStandardName(item.herb);
+            HerbAliasManager herbAliasManager = mYiAnScope.getHerbAliasManager();
+            String standardName = herbAliasManager.getStandardName(item.herb);
             if (!herbs.contains(standardName)) {
                 herbs.add(standardName);
             }
@@ -54,7 +54,5 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
 
         return true;
     }
-
-    protected HerbAliasManager mHerbAliasManager;
 
 }
