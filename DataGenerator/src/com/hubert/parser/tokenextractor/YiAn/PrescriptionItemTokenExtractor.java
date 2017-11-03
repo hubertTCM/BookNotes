@@ -13,13 +13,13 @@ public class PrescriptionItemTokenExtractor implements ITokenExtractor {
         // 熟地（五钱） 咸苁蓉（八钱） 炒杞子（三钱） 麦冬（二钱） 云苓（一钱半）
         String[] compositions = text.split("\\s+");
         for (String part : compositions) {
-            extractSinglePrescriptionItem(part, container);
+            extractSinglePrescriptionItem(part, sourcePosition, container);
         }
         return null;
     }
 
     // 熟地（五钱）
-    private void extractSinglePrescriptionItem(String text, List<Token> container) {
+    private void extractSinglePrescriptionItem(String text, Position sourcePosition, List<Token> container) {
         text = StringUtils.strip(text);
         if (text.isEmpty()) {
             return;
@@ -40,7 +40,7 @@ public class PrescriptionItemTokenExtractor implements ITokenExtractor {
         if (herb.isEmpty()) {
             return;
         }
-        container.add(new YiAnToken(YiAnTokenType.Herb, herb));
+        container.add(new YiAnToken(YiAnTokenType.Herb, herb, sourcePosition));
     }
 
 }

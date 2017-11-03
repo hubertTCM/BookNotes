@@ -23,22 +23,22 @@ public class TagTokenExtractor implements ITokenExtractor {
     @Override
     public Pair<Boolean, String> extract(String text, Position sourcePosition, List<Token> container) {
         // TODO Auto-generated method stub
-        return extractCore(text, container);
+        return extractCore(text, sourcePosition, container);
     }
 
-    protected Pair<Boolean, String> extractCore(String text, Collection<Token> container) {
+    protected Pair<Boolean, String> extractCore(String text, Position sourcePosition, Collection<Token> container) {
         for (Pair<String, Boolean> temp : mTags) {
             if (!text.startsWith(temp.getKey())) {
                 continue;
             }
 
             if (temp.getValue()) {
-                container.add(new YiAnToken(mTokenType, text));
+                container.add(new YiAnToken(mTokenType, text, sourcePosition));
                 return new Pair<>(true, text);
             }
 
             String formattedText = text.substring(temp.getKey().length());
-            container.add(new YiAnToken(mTokenType, formattedText));
+            container.add(new YiAnToken(mTokenType, formattedText, sourcePosition));
             return new Pair<>(true, formattedText);
         }
         return new Pair<>(false, "");

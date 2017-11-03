@@ -32,7 +32,7 @@ public class YiAnLexer {
             String line = StringUtils.trim(temp);
             if (line.isEmpty()) {
                 if (!mTokens.isEmpty()) {
-                    mTokens.add(new YiAnToken(YiAnTokenType.End));
+                    mTokens.add(new YiAnToken(YiAnTokenType.End, position));
                 }
                 continue;
             }
@@ -51,7 +51,7 @@ public class YiAnLexer {
 
             if (!isValid) {
                 // System.out.println(" **** Unknow Token: " + line);
-                mTokens.add(new YiAnToken(YiAnTokenType.LiteralText, line));
+                mTokens.add(new YiAnToken(YiAnTokenType.LiteralText, line, position));
                 continue;
             }
         }

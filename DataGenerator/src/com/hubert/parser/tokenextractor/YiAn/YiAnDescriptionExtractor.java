@@ -26,7 +26,7 @@ public class YiAnDescriptionExtractor implements ITokenExtractor {
 
         // 沈（四九） 脉细而数，细为脏阴之亏，数为营液之耗。上年夏秋病伤，更因冬暖失藏....
         if (!text.endsWith("）")) {
-            container.add(new YiAnToken(YiAnTokenType.Description, text));
+            container.add(new YiAnToken(YiAnTokenType.Description, text, sourcePosition));
             return new Pair<>(true, "");
         }
         // 阳挟内风上巅，目昏耳鸣不寐，肝经主病。
@@ -55,8 +55,8 @@ public class YiAnDescriptionExtractor implements ITokenExtractor {
             sectionName = sectionName.substring(0, sectionName.length() - 1);
         }
 
-        container.add(new YiAnToken(YiAnTokenType.SectionName, sectionName));
-        container.add(new YiAnToken(YiAnTokenType.Description, descripton));
+        container.add(new YiAnToken(YiAnTokenType.SectionName, sectionName, sourcePosition));
+        container.add(new YiAnToken(YiAnTokenType.Description, descripton, sourcePosition));
 
         return new Pair<>(true, text);
     }

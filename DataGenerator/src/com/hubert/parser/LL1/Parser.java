@@ -80,7 +80,7 @@ public class Parser {
                     mTokenExtractor.get(standardSymbol).extract(token.getValue(), token.getSourcePosition(), temp);
                     mTokens.addAll(mCurrentTokenIndex, temp);
                 } else {
-                    mTokens.add(mCurrentTokenIndex, new YiAnToken(YiAnTokenType.valueOf(standardSymbol), token.getValue()));
+                    mTokens.add(mCurrentTokenIndex, new YiAnToken(YiAnTokenType.valueOf(standardSymbol), token.getValue(), token.getSourcePosition()));
                 }
                 // FormattedRecipeText => RecipeContent
                 standardSymbol = mGrammar.getStandardSymbol(standardSymbol);
