@@ -21,7 +21,7 @@ public class TagTokenExtractor implements ITokenExtractor {
     }
 
     @Override
-    public Pair<Boolean, String> extract(String text, List<Token> container) {
+    public Pair<Boolean, String> extract(String text, Position sourcePosition, List<Token> container) {
         // TODO Auto-generated method stub
         return extractCore(text, container);
     }

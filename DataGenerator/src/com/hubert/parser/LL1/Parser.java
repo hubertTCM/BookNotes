@@ -77,7 +77,7 @@ public class Parser {
                 mTokens.remove(mCurrentTokenIndex);
                 if (mTokenExtractor.containsKey(standardSymbol)) {
                     ArrayList<Token> temp = new ArrayList<Token>();
-                    mTokenExtractor.get(standardSymbol).extract(token.getValue(), temp);
+                    mTokenExtractor.get(standardSymbol).extract(token.getValue(), token.getSourcePosition(), temp);
                     mTokens.addAll(mCurrentTokenIndex, temp);
                 } else {
                     mTokens.add(mCurrentTokenIndex, new YiAnToken(YiAnTokenType.valueOf(standardSymbol), token.getValue()));

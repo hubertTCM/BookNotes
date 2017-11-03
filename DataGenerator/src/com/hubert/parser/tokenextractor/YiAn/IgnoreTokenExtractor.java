@@ -13,7 +13,7 @@ public class IgnoreTokenExtractor implements ITokenExtractor {
     }
 
     @Override
-    public Pair<Boolean, String> extract(String text, List<Token> container) {
+    public Pair<Boolean, String> extract(String text, Position sourcePosition, List<Token> container) {
         for (String temp : mTags) {
             if (text.startsWith(temp)) {
                 return new Pair<>(true, "");

@@ -10,7 +10,7 @@ import javafx.util.Pair;
 public class YiAnDescriptionExtractor implements ITokenExtractor {
 
     @Override
-    public Pair<Boolean, String> extract(String text, List<Token> container) {
+    public Pair<Boolean, String> extract(String text, Position sourcePosition, List<Token> container) {
         if (text.isEmpty()) {
             return null;
         }
