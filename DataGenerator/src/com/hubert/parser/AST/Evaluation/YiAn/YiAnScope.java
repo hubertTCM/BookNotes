@@ -1,11 +1,21 @@
 package com.hubert.parser.AST.Evaluation.YiAn;
 
 import com.hubert.dal.entity.*;
+import com.hubert.dataprovider.*;
 import com.hubert.parser.AST.Evaluation.Common.*;
+import com.hubert.parser.tokenextractor.*;
 
 public class YiAnScope {
     public YiAnScope(Storage storage) {
         mStorage = storage;
+    }
+    
+    public DataProvider getDataProvider(){
+        return getVariable(YiAnScope.YiAnDataProviderKey);
+    }
+    
+    public HerbAliasManager getHerbAliasManager(){
+        return getVariable(YiAnScope.HerbAliasManagerKey);
     }
 
     public YiAnEntity getYiAn() {
@@ -49,10 +59,15 @@ public class YiAnScope {
         return mStorage.setVariable(key, value);
     }
 
+    
+    public final static String YiAnDataProviderKey = "DataProvider";
+    public final static String HerbAliasManagerKey = "HerbAliasManager";
+    
     private Storage mStorage;
 
     private final static String YiAnKey = "YiAn";
     private final static String YiAnDetailKey = "YiAnDetail";
     private final static String YiAnPresciption = "YiAnPrescription";
     private final static String YiAnPrescriptionItem = "YiAnPrescriptionItem";
+    
 }

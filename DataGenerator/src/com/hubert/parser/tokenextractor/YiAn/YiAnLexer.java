@@ -20,16 +20,19 @@ public class YiAnLexer {
 
     public List<Token> parse() throws IOException {
         mTokens = new ArrayList<Token>();
+        mDataProvider.clear();
 
         Path filePath = Paths.get(mFullPath);
         Charset utf8 = Charset.forName("UTF-8");
         List<String> lines = Files.readAllLines(filePath, utf8);
 
-        //for (String temp : lines) {
         for(int i = 0; i < lines.size(); ++i){
             String temp = lines.get(i);
             Position position = new Position(i);
             String line = StringUtils.trim(temp);
+            
+            mDataProvider.setContent(i, line);
+            
             if (line.isEmpty()) {
                 if (!mTokens.isEmpty()) {
                     mTokens.add(new YiAnToken(YiAnTokenType.End, position));
@@ -59,6 +62,10 @@ public class YiAnLexer {
         return mTokens;
     }
 
+    public DataProvider getDataProvider(){
+        return mDataProvider;
+    }
+    
     private void initTokenExtractors() {
         mTokenExtractors.add(new IgnoreTokenExtractor());
         mTokenExtractors.add(new YiAnDescriptionExtractor());
@@ -87,6 +94,7 @@ public class YiAnLexer {
         mTokenExtractors.add(new PrescriptionTokenExtractor(prescriptionItemToken));
     }
 
+    private DataProvider mDataProvider = new DataProvider();
     private String mFullPath;
     private ArrayList<Token> mTokens;
     private ArrayList<ITokenExtractor> mTokenExtractors;
