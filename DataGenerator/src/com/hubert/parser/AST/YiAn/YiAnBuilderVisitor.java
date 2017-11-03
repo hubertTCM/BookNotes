@@ -27,8 +27,6 @@ public class YiAnBuilderVisitor implements IVisitor {
     }
 
     public YiAnBuilderVisitor(HerbAliasManager herbAliasManager, DataProvider dataProvider) {
-        mHerbAliasManager = herbAliasManager;
-        
         Context context = new Context();
         context.setGlobalData(YiAnScope.YiAnDataProviderKey, dataProvider);
         context.setGlobalData(YiAnScope.HerbAliasManagerKey, herbAliasManager);
@@ -38,7 +36,7 @@ public class YiAnBuilderVisitor implements IVisitor {
         mEvaluators.add(new YiAnDetailPropertyEvaluator(context));
         mEvaluators.add(new RecipeCompositionEvaluator(context));
         mEvaluators.add(new RecipeCompositionChildEvaluator(context));
-        mEvaluators.add(new RecipeDetailEvaluator(context, mHerbAliasManager));
+        mEvaluators.add(new RecipeDetailEvaluator(context));
         mEvaluators.add(new RecipePropertyEvaluator(context));
     }
 
@@ -78,6 +76,4 @@ public class YiAnBuilderVisitor implements IVisitor {
     private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
     private SectionEntity mParentSection;
     private BookEntity mBook;
-
-    private HerbAliasManager mHerbAliasManager;
 }
