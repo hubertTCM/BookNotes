@@ -1,9 +1,9 @@
 package com.hubert.parser.tokenextractor;
 
 public abstract class Token {
-    protected Token(String value) {
-        this(value, null);
-    }
+//    protected Token(String value) {
+//        this(value, null);
+//    }
     
     protected Token(String value, Position sourcePosition){
         mValue = value;
