@@ -12,17 +12,17 @@ public class FormattedPrescriptionExtractor implements ITokenExtractor {
     }
 
     @Override
-    public Pair<Boolean, String> extract(String text, List<Token> container) {
+    public Pair<Boolean, String> extract(String text, Position sourcePosition, List<Token> container) {
         if (!text.startsWith(tag)) {
             return null;
         }
         String source = text.substring(tag.length());
         NewYiAnTagExtractor extractor = new NewYiAnTagExtractor(YiAnTokenType.FormattedRecipeText);
-        Pair<Boolean, String> result = extractor.extract(source, container);
+        Pair<Boolean, String> result = extractor.extract(source, sourcePosition, container);
         if (result != null && result.getKey()) {
             source = result.getValue();
         }
-        mPrescriptionItemExtractor.extract(source, container);
+        mPrescriptionItemExtractor.extract(source, sourcePosition, container);
         return new Pair<>(true, "");
     }
 

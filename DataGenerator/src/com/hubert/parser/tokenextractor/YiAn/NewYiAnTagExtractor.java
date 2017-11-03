@@ -15,7 +15,7 @@ public class NewYiAnTagExtractor implements ITokenExtractor {
     }
 
     @Override
-    public Pair<Boolean, String> extract(String text, List<Token> container) {
+    public Pair<Boolean, String> extract(String text, Position sourcePosition, List<Token> container) {
         String tag = "又";
         if (!text.startsWith(tag)) {
             return new Pair<>(false, "");

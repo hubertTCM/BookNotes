@@ -407,7 +407,7 @@ public class YiAnParserTests {
 
         PrescriptionItemTokenExtractor tokenExtractor = new PrescriptionItemTokenExtractor();
         List<Token> tokens = new ArrayList<Token>();
-        tokenExtractor.extract(expect, tokens);
+        tokenExtractor.extract(expect, new Position(-1), tokens);
 
         List<Token> herbs = new ArrayList<Token>();// tokens.stream().filter(x->TokenType.Herb.equals(x.getType())).collect(Collectors.toList());
         for (Token token : tokens) {

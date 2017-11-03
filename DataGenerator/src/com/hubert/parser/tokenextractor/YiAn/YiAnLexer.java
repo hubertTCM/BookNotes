@@ -25,7 +25,10 @@ public class YiAnLexer {
         Charset utf8 = Charset.forName("UTF-8");
         List<String> lines = Files.readAllLines(filePath, utf8);
 
-        for (String temp : lines) {
+        //for (String temp : lines) {
+        for(int i = 0; i < lines.size(); ++i){
+            String temp = lines.get(i);
+            Position position = new Position(i);
             String line = StringUtils.trim(temp);
             if (line.isEmpty()) {
                 if (!mTokens.isEmpty()) {
@@ -36,7 +39,7 @@ public class YiAnLexer {
 
             boolean isValid = false;
             for (ITokenExtractor extractor : mTokenExtractors) {
-                Pair<Boolean, String> extractResult = extractor.extract(line, mTokens);
+                Pair<Boolean, String> extractResult = extractor.extract(line, position, mTokens);
                 if (extractResult == null) {
                     continue;
                 }
