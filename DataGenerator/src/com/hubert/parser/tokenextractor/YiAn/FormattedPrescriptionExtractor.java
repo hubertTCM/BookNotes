@@ -17,7 +17,7 @@ public class FormattedPrescriptionExtractor implements ITokenExtractor {
             return null;
         }
         String source = text.substring(tag.length());
-        NewYiAnTagExtractor extractor = new NewYiAnTagExtractor(TokenType.FormattedRecipeText);
+        NewYiAnTagExtractor extractor = new NewYiAnTagExtractor(YiAnTokenType.FormattedRecipeText);
         Pair<Boolean, String> result = extractor.extract(source, container);
         if (result != null && result.getKey()) {
             source = result.getValue();

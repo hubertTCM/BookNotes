@@ -3,11 +3,11 @@ package com.hubert.parser.tokenextractor.YiAn;
 import com.hubert.parser.tokenextractor.Token;
 
 public class YiAnToken extends Token{
-    public YiAnToken(TokenType type) {
+    public YiAnToken(YiAnTokenType type) {
         this(type, "");
     }
 
-    public YiAnToken(TokenType type, String value) {
+    public YiAnToken(YiAnTokenType type, String value) {
         super(value);
         mType = type;
     }
@@ -16,5 +16,5 @@ public class YiAnToken extends Token{
         return mType.name();
     }
 
-    private TokenType mType;
+    private YiAnTokenType mType;
 }

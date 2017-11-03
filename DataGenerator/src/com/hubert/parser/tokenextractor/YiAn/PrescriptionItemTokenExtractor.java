@@ -40,7 +40,7 @@ public class PrescriptionItemTokenExtractor implements ITokenExtractor {
         if (herb.isEmpty()) {
             return;
         }
-        container.add(new YiAnToken(TokenType.Herb, herb));
+        container.add(new YiAnToken(YiAnTokenType.Herb, herb));
     }
 
 }
