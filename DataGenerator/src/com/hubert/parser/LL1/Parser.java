@@ -35,7 +35,7 @@ public class Parser {
 
     private void parseInternal() throws Exception {
         mNodeStack.push(new ASTNode(Constants.End));
-        ASTNode start = new ASTNode(TokenType.S.name());
+        ASTNode start = new ASTNode(YiAnTokenType.S.name());
         mRoot.addChild(start);
         mNodeStack.push(start);
 
@@ -63,7 +63,7 @@ public class Parser {
                 continue;
             }
 
-            if (tokenType.equals(TokenType.LiteralText.name())) {
+            if (tokenType.equals(YiAnTokenType.LiteralText.name())) {
                 if (!tag.startsWith(tokenType)) {
                     predict(node, token);
                     continue;
@@ -80,7 +80,7 @@ public class Parser {
                     mTokenExtractor.get(standardSymbol).extract(token.getValue(), temp);
                     mTokens.addAll(mCurrentTokenIndex, temp);
                 } else {
-                    mTokens.add(mCurrentTokenIndex, new YiAnToken(TokenType.valueOf(standardSymbol), token.getValue()));
+                    mTokens.add(mCurrentTokenIndex, new YiAnToken(YiAnTokenType.valueOf(standardSymbol), token.getValue()));
                 }
                 // FormattedRecipeText => RecipeContent
                 standardSymbol = mGrammar.getStandardSymbol(standardSymbol);

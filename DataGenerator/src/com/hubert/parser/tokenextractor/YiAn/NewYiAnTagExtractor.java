@@ -7,10 +7,10 @@ import javafx.util.Pair;
 
 public class NewYiAnTagExtractor implements ITokenExtractor {
     public NewYiAnTagExtractor() {
-        mParentTokenType = TokenType.None;
+        mParentTokenType = YiAnTokenType.None;
     }
 
-    public NewYiAnTagExtractor(TokenType parentTokenType) {
+    public NewYiAnTagExtractor(YiAnTokenType parentTokenType) {
         mParentTokenType = parentTokenType;
     }
 
@@ -21,18 +21,18 @@ public class NewYiAnTagExtractor implements ITokenExtractor {
             return new Pair<>(false, "");
         }
         // TODO: add check here
-        if (mParentTokenType == TokenType.None) {
-            container.add(new YiAnToken(TokenType.Description, text));
+        if (mParentTokenType == YiAnTokenType.None) {
+            container.add(new YiAnToken(YiAnTokenType.Description, text));
             return new Pair<>(true, text);
         }
-        if (mParentTokenType == TokenType.FormattedRecipeText) {
-            container.add(new YiAnToken(TokenType.Description, tag));
+        if (mParentTokenType == YiAnTokenType.FormattedRecipeText) {
+            container.add(new YiAnToken(YiAnTokenType.Description, tag));
             return new Pair<>(true, text.substring(tag.length()));
         }
         System.out.println("** invalid token:" + text);
         return new Pair<>(false, "");
     }
 
-    private TokenType mParentTokenType;
+    private YiAnTokenType mParentTokenType;
 
 }

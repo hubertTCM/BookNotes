@@ -29,7 +29,7 @@ public class YiAnLexer {
             String line = StringUtils.trim(temp);
             if (line.isEmpty()) {
                 if (!mTokens.isEmpty()) {
-                    mTokens.add(new YiAnToken(TokenType.End));
+                    mTokens.add(new YiAnToken(YiAnTokenType.End));
                 }
                 continue;
             }
@@ -48,7 +48,7 @@ public class YiAnLexer {
 
             if (!isValid) {
                 // System.out.println(" **** Unknow Token: " + line);
-                mTokens.add(new YiAnToken(TokenType.LiteralText, line));
+                mTokens.add(new YiAnToken(YiAnTokenType.LiteralText, line));
                 continue;
             }
         }
@@ -60,16 +60,16 @@ public class YiAnLexer {
         mTokenExtractors.add(new IgnoreTokenExtractor());
         mTokenExtractors.add(new YiAnDescriptionExtractor());
 
-        TagTokenExtractor comment = new TagTokenExtractor(TokenType.SummaryComment);
+        TagTokenExtractor comment = new TagTokenExtractor(YiAnTokenType.SummaryComment);
         comment.registerTag("[comment]", false);
         comment.registerTag("徐评", true);
         mTokenExtractors.add(comment);
 
-        TagTokenExtractor abbreviation = new TagTokenExtractor(TokenType.RecipeAbbreviation);
+        TagTokenExtractor abbreviation = new TagTokenExtractor(YiAnTokenType.RecipeAbbreviation);
         abbreviation.registerTag("[abbr]");
         mTokenExtractors.add(abbreviation);
 
-        TagTokenExtractor prescriptionHeader = new TagTokenExtractor(TokenType.RecipeHeader);
+        TagTokenExtractor prescriptionHeader = new TagTokenExtractor(YiAnTokenType.RecipeHeader);
         prescriptionHeader.registerTag("[RH]");
         mTokenExtractors.add(prescriptionHeader);
 

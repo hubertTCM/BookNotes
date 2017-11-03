@@ -6,7 +6,7 @@ import com.hubert.parser.tokenextractor.*;
 import javafx.util.Pair;
 
 public class TagTokenExtractor implements ITokenExtractor {
-    public TagTokenExtractor(TokenType tokenType) {
+    public TagTokenExtractor(YiAnTokenType tokenType) {
         mTokenType = tokenType;
         mTags = new ArrayList<Pair<String, Boolean>>();
     }
@@ -46,6 +46,6 @@ public class TagTokenExtractor implements ITokenExtractor {
 
     // isRawTag
     protected ArrayList<Pair<String, Boolean>> mTags;
-    protected TokenType mTokenType;
+    protected YiAnTokenType mTokenType;
 
 }
