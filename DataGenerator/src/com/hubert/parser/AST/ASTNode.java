@@ -20,12 +20,13 @@ public class ASTNode {
     public String getValue() {
         return mValue;
     }
-
-    public void setValue(String value) {
-        mValue = value;
-    }
     
-    public void setSourcePosition(Position sourcePosition){
+    public Position getSourcePosition(){
+        return mSourcePosition;
+    }
+
+    public void setValue(String value, Position sourcePosition) {
+        mValue = value;
         mSourcePosition = sourcePosition;
     }
 

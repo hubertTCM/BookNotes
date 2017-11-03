@@ -100,8 +100,7 @@ public class Parser {
     }
 
     private void match(ASTNode node, Token token) {
-        node.setValue(token.getValue());
-        node.setSourcePosition(token.getSourcePosition());
+        node.setValue(token.getValue(), token.getSourcePosition());
     }
 
     private void predict(ASTNode node, Token token) throws Exception {
