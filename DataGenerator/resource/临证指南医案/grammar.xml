@@ -19,7 +19,7 @@ RecipeDetail := Empty
 
 RecipeContent := Herb RecipeCompositionHerbOnly
 RecipeCompositionHerbOnly :=  Empty
-                                 Herb RecipeCompositionHerbOnly
+                              Herb RecipeCompositionHerbOnly
 
 AfterRecipeContent := Empty
                       LiteralText(RecipeComment) RecipeDetail
