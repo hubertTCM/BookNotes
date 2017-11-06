@@ -11,16 +11,16 @@ public class EntityProvider<T> {
         return mData;
     }
 
-    public boolean addOriginalSource(int lineNumber, String source) {
-        if (!mOriginalSource.containsKey(lineNumber)) {
-            mOriginalSource.put(lineNumber, source);
+    public boolean addLine(int lineNumber, String source) {
+        if (!mLines.containsKey(lineNumber)) {
+            mLines.put(lineNumber, source);
             return true;
         }
 
-        String existingContent = mOriginalSource.get(lineNumber);
+        String existingContent = mLines.get(lineNumber);
         return existingContent.equals(source);
     }
 
     private T mData;
-    private Map<Integer, String> mOriginalSource = new HashMap<Integer, String>();
+    private Map<Integer, String> mLines = new TreeMap<Integer, String>();
 }
