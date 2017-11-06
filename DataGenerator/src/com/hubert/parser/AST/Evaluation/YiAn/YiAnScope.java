@@ -19,14 +19,15 @@ public class YiAnScope {
     }
 
     public SectionEntity getSection(){
-        return getVariable(SectionEntityKey);
+        EntityProvider<SectionEntity> temp = getVariable(SectionEntityKey);
+        return temp.get();
     }
     
     public void setSection(SectionEntity section){
-        setVariable(SectionEntityKey, section);
+        setRawVariable(SectionEntityKey, section);
     }
 
-    public YiAnEntity getYiAn() {
+    public EntityProvider<YiAnEntity> getYiAn() {
         return getVariable(YiAnKey);
     }
 
@@ -34,37 +35,41 @@ public class YiAnScope {
         setVariable(YiAnKey, yiAn);
     }
     
-    public YiAnDetailEntity getYiAnDetail(){
+    public EntityProvider<YiAnDetailEntity> getYiAnDetail(){
         return getVariable(YiAnDetailKey);
     }
     
-    public YiAnDetailEntity setYiAnDetail(YiAnDetailEntity value){
-        return setVariable(YiAnDetailKey, value);
+    public void setYiAnDetail(YiAnDetailEntity value){
+        setVariable(YiAnDetailKey, value);
     }
 
-    public YiAnPrescriptionEntity getYiAnPrescription() {
+    public EntityProvider<YiAnPrescriptionEntity> getYiAnPrescription() {
         return getVariable(YiAnPresciption);
     }
 
-    public YiAnPrescriptionEntity setYiAnPrescription(YiAnPrescriptionEntity value) {
+    public void setYiAnPrescription(YiAnPrescriptionEntity value) {
         setVariable(YiAnPresciption, value);
-        return value;
     }
     
-    public YiAnPrescriptionItemEntity getYiAnPrescriptionItem(){
+    public EntityProvider<YiAnPrescriptionItemEntity> getYiAnPrescriptionItem(){
         return getVariable(YiAnPrescriptionItem);
     }
     
-    public YiAnPrescriptionItemEntity setYiAnPrescriptionItem(YiAnPrescriptionItemEntity value){
-        return setVariable(YiAnPrescriptionItem, value);
+    public void setYiAnPrescriptionItem(YiAnPrescriptionItemEntity value){
+        setVariable(YiAnPrescriptionItem, value);
     }
 
     protected <T> T getVariable(String key) {
         return mStorage.getVariable(key);
     }
 
-    protected <T> T setVariable(String key, T value) {
+    protected <T> T setRawVariable(String key, T value) {
         return mStorage.setVariable(key, value);
+    }
+    
+    protected <T> void setVariable(String key, T value) {
+        EntityProvider<T> provider = new EntityProvider<>(value);
+        mStorage.setVariable(key, provider).get();
     }
 
     
