@@ -2,8 +2,8 @@ package com.hubert.parser.AST.Evaluation.YiAn;
 
 import java.util.*;
 
-public class EntityWithOriginalSource<T> {
-    public EntityWithOriginalSource(T data) {
+public class EntityProvider<T> {
+    public EntityProvider(T data) {
         mData = data;
     }
 

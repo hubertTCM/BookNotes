@@ -13,7 +13,8 @@ public class RecipePropertyEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        YiAnPrescriptionEntity yiAnPrescription = mYiAnScope.getYiAnPrescription();
+        EntityProvider<YiAnPrescriptionEntity> temp = mYiAnScope.getYiAnPrescription();
+        YiAnPrescriptionEntity yiAnPrescription = temp.get();
         String tag = node.getTag();
         if (YiAnNodeConstants.RecipeComment.equals(tag)) {
             yiAnPrescription.comment = node.getValue();
