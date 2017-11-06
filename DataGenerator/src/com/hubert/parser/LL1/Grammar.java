@@ -11,10 +11,19 @@ import org.w3c.dom.*;
 // reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
 public class Grammar {
     public Grammar(String grammarFile) throws Exception {
+        this(grammarFile, false);
+    }
+
+    public Grammar(String grammarFile, boolean enableTrace) throws Exception {
+        mEnableTrace = enableTrace;
         parseXml(grammarFile);
     }
 
     public Grammar(List<String> terminals, List<String> expressions) throws Exception {
+        this(terminals, expressions, false);
+    }
+
+    public Grammar(List<String> terminals, List<String> expressions, boolean enableTrace) throws Exception {
         initTerminalSymbols();
         mTerminalSymbols.addAll(terminals);
 
@@ -134,7 +143,7 @@ public class Grammar {
 
     private void AddProductExpression(String symbol, String expression) {
         if (symbol.isEmpty() || expression.isEmpty()) {
-            System.out.println("### Grammar error");
+            // System.out.println("### Grammar error");
             return;
         }
 
@@ -319,6 +328,9 @@ public class Grammar {
     }
 
     private void dump() {
+        if (!mEnableTrace) {
+            return;
+        }
         System.out.println("First");
         for (Map.Entry<String, Set<String>> kvp : mFirst.entrySet()) {
             System.out.print("First(" + kvp.getKey() + ") = {");
@@ -342,6 +354,8 @@ public class Grammar {
     private Set<String> mTerminalSymbols = new HashSet<String>();
     private Map<String, String> mSymbolMap = new HashMap<String, String>();
     private String mSplitter = ":=";
+
+    private boolean mEnableTrace = false;
     // S := abc saved as: S => [a, b, c]
     private Map<String, List<List<String>>> mProduction = new HashMap<String, List<List<String>>>();
     private Map<String, Set<String>> mFirst = new HashMap<String, Set<String>>();
