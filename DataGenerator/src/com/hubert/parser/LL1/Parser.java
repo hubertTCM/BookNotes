@@ -8,6 +8,7 @@ import com.hubert.parser.tokenextractor.YiAn.*;
 
 //reference: http://pandolia.net/tinyc/ch10_top_down_parse.html
 public class Parser {
+    // TODO: remove the dependency of com.hubert.parser.tokenextractor.YiAn.*
     public Parser() {
         //mTokenExtractor.put("FormattedRecipeText", new PrescriptionItemTokenExtractor());
         mTokenExtractor.put("RecipeContent", new PrescriptionItemTokenExtractor());
@@ -35,7 +36,7 @@ public class Parser {
 
     private void parseInternal() throws Exception {
         mNodeStack.push(new ASTNode(Constants.End));
-        ASTNode start = new ASTNode(YiAnTokenType.S.name());
+        ASTNode start = new ASTNode(Constants.Start);
         mRoot.addChild(start);
         mNodeStack.push(start);
 
