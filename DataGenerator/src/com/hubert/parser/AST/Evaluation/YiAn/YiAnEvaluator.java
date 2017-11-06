@@ -1,11 +1,8 @@
 package com.hubert.parser.AST.Evaluation.YiAn;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-import com.hubert.dal.entity.YiAnDetailEntity;
-import com.hubert.dal.entity.YiAnEntity;
+import com.hubert.dal.entity.*;
 import com.hubert.parser.AST.ASTNode;
 import com.hubert.parser.AST.Evaluation.Common.Context;
 import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
@@ -21,9 +18,21 @@ public class YiAnEvaluator extends AbstractEvaluator {
     protected boolean evaluateCore(ASTNode node) {
         YiAnEntity yiAn = new YiAnEntity();
         yiAn.details = new ArrayList<YiAnDetailEntity>();
-
         mYiAnScope.setYiAn(yiAn);
         mYiAns.add(yiAn);
+        
+
+        int childCount = node.childCount();
+        for (int i = 0; i < childCount; ++i) {
+            ASTNode child = node.getChild(i);
+            if (YiAnNodeConstants.SectionName.equals(child.getTag())){
+                SectionEntity section = new SectionEntity();
+                section.blocks = new ArrayList<BlockEntity>();
+                
+                mYiAnScope.setSection(section);
+                break;
+            }
+        }
         return true;
     }
 
