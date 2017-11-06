@@ -18,6 +18,14 @@ public class YiAnScope {
         return getVariable(YiAnScope.HerbAliasManagerKey);
     }
 
+    public SectionEntity getSection(){
+        return getVariable(SectionEntityKey);
+    }
+    
+    public void setSection(SectionEntity section){
+        setVariable(SectionEntityKey, section);
+    }
+
     public YiAnEntity getYiAn() {
         return getVariable(YiAnKey);
     }
@@ -65,6 +73,7 @@ public class YiAnScope {
     
     private Storage mStorage;
 
+    private final static String SectionEntityKey = "SectionEntity";
     private final static String YiAnKey = "YiAn";
     private final static String YiAnDetailKey = "YiAnDetail";
     private final static String YiAnPresciption = "YiAnPrescription";
