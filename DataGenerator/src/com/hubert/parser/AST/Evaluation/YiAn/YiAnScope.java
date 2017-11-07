@@ -1,5 +1,7 @@
 package com.hubert.parser.AST.Evaluation.YiAn;
 
+import java.util.*;
+
 import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.*;
 import com.hubert.parser.AST.Evaluation.Common.*;
@@ -66,6 +68,10 @@ public class YiAnScope {
     public void setTokenType(String value){
         setRawVariable(NodeType, value);
     }
+    
+    public SortedMap<Position, String> getOriginalTokens(){
+        return getVariable(YiAnScope.OriginalTokenKey);
+    }
 
     protected <T> T getVariable(String key) {
         return mStorage.getVariable(key);
@@ -81,8 +87,9 @@ public class YiAnScope {
     }
 
     
-    public final static String YiAnDataProviderKey = "DataProvider";
-    public final static String HerbAliasManagerKey = "HerbAliasManager";
+    public final static String YiAnDataProviderKey = "Global.DataProvider";
+    public final static String HerbAliasManagerKey = "Global.HerbAliasManager";
+    public final static String OriginalTokenKey = "Global.OriginalToken";
     
     private Storage mStorage;
 

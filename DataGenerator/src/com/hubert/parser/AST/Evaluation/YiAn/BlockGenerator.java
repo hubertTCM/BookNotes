@@ -42,6 +42,10 @@ public class BlockGenerator<T> {
     public boolean addToken(Position position, String tokenType) {
         if (!mTokenTypes.containsKey(position)) {
             mTokenTypes.put(position, tokenType);
+            
+            SortedMap<Position, String> temp = mYiAnScope.getOriginalTokens();
+            temp.put(position, tokenType);
+            
             return true;
         }
 

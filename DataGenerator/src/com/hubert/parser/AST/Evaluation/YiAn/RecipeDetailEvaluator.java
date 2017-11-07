@@ -26,6 +26,22 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
         yiAnDetail.prescriptions.add(prescription);
 
         mYiAnScope.setYiAnPrescription(prescription);
+        
+        
+        ASTNode sibling = null;
+        ASTNode parent  = node.getParent();
+        for(int i = 0; i < parent.childCount(); ++i){
+            ASTNode tempNode = parent.getChild(i);
+            if (tempNode == node){
+                break;
+            }
+            sibling = tempNode;
+        }
+        
+        if (sibling != null && YiAnNodeConstants.RecipeAbbreviation.equals(sibling.getTag())){
+            temp.addToken(sibling.getSourcePosition(), sibling.getTag());
+        }
+        
 
         BlockEntity block = temp.createBlock();
         if (block != null) {
