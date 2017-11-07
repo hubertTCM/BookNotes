@@ -26,12 +26,14 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
         yiAnDetail.prescriptions.add(prescription);
 
         mYiAnScope.setYiAnPrescription(prescription);
-        
+
         BlockEntity block = temp.createBlock();
-        YiAnDetailBlockLinkEntity link = new YiAnDetailBlockLinkEntity();
-        link.block = block;
-        link.yian = yiAnDetail;
-        yiAnDetail.blockLinks.add(link);
+        if (block != null) {
+            YiAnDetailBlockLinkEntity link = new YiAnDetailBlockLinkEntity();
+            link.block = block;
+            link.yian = yiAnDetail;
+            yiAnDetail.blockLinks.add(link);
+        }
         return true;
     }
 
