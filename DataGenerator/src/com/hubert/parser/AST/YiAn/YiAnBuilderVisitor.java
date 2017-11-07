@@ -30,6 +30,7 @@ public class YiAnBuilderVisitor implements IVisitor {
         Context context = new Context();
         context.setGlobalData(YiAnScope.YiAnDataProviderKey, dataProvider);
         context.setGlobalData(YiAnScope.HerbAliasManagerKey, herbAliasManager);
+        context.setGlobalData(YiAnScope.OriginalTokenKey, new TreeMap<Position, String>());
 
         mEvaluators.add(new YiAnEvaluator(context, mYiAns));
         mEvaluators.add(new YiAnDetailEvaluator(context));
