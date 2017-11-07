@@ -19,7 +19,7 @@ public class YiAnScope {
     }
 
     public SectionEntity getSection(){
-        EntityProvider<SectionEntity> temp = getVariable(SectionEntityKey);
+        BlockGenerator<SectionEntity> temp = getVariable(SectionEntityKey);
         return temp.get();
     }
     
@@ -27,7 +27,7 @@ public class YiAnScope {
         setRawVariable(SectionEntityKey, section);
     }
 
-    public EntityProvider<YiAnEntity> getYiAn() {
+    public BlockGenerator<YiAnEntity> getYiAn() {
         return getVariable(YiAnKey);
     }
 
@@ -35,7 +35,7 @@ public class YiAnScope {
         setVariable(YiAnKey, yiAn);
     }
     
-    public EntityProvider<YiAnDetailEntity> getYiAnDetail(){
+    public BlockGenerator<YiAnDetailEntity> getYiAnDetail(){
         return getVariable(YiAnDetailKey);
     }
     
@@ -43,7 +43,7 @@ public class YiAnScope {
         setVariable(YiAnDetailKey, value);
     }
 
-    public EntityProvider<YiAnPrescriptionEntity> getYiAnPrescription() {
+    public BlockGenerator<YiAnPrescriptionEntity> getYiAnPrescription() {
         return getVariable(YiAnPresciption);
     }
 
@@ -51,12 +51,20 @@ public class YiAnScope {
         setVariable(YiAnPresciption, value);
     }
     
-    public EntityProvider<YiAnPrescriptionItemEntity> getYiAnPrescriptionItem(){
+    public BlockGenerator<YiAnPrescriptionItemEntity> getYiAnPrescriptionItem(){
         return getVariable(YiAnPrescriptionItem);
     }
     
     public void setYiAnPrescriptionItem(YiAnPrescriptionItemEntity value){
         setVariable(YiAnPrescriptionItem, value);
+    }
+    
+    public String getNodeType(){
+        return getVariable(NodeType);
+    }
+    
+    public void setTokenType(String value){
+        setRawVariable(NodeType, value);
     }
 
     protected <T> T getVariable(String key) {
@@ -68,7 +76,7 @@ public class YiAnScope {
     }
     
     protected <T> void setVariable(String key, T value) {
-        EntityProvider<T> provider = new EntityProvider<>(value);
+        BlockGenerator<T> provider = new BlockGenerator<>(value, this);
         mStorage.setVariable(key, provider).get();
     }
 
@@ -83,5 +91,7 @@ public class YiAnScope {
     private final static String YiAnDetailKey = "YiAnDetail";
     private final static String YiAnPresciption = "YiAnPrescription";
     private final static String YiAnPrescriptionItem = "YiAnPrescriptionItem";
+    
+    private final static String NodeType = "NodeType";
     
 }

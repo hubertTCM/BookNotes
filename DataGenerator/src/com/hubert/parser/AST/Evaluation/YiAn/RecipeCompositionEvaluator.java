@@ -10,18 +10,19 @@ import com.hubert.parser.AST.YiAn.*;
 public class RecipeCompositionEvaluator extends AbstractEvaluator {
 
     public RecipeCompositionEvaluator(Context context) {
-        super(Arrays.asList(YiAnNodeConstants.RecipeComposition, YiAnNodeConstants.RecipeCompositionHerbOnly,
+        super(Arrays.asList(/*YiAnNodeConstants.RecipeComposition, */YiAnNodeConstants.RecipeCompositionHerbOnly,
                 YiAnNodeConstants.RecipeContent), context);
     }
     
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        EntityProvider<YiAnPrescriptionEntity> temp = mYiAnScope.getYiAnPrescription();
+        BlockGenerator<YiAnPrescriptionEntity> temp = mYiAnScope.getYiAnPrescription();
         YiAnPrescriptionEntity prescription = temp.get();
         YiAnPrescriptionItemEntity item = new YiAnPrescriptionItemEntity();
         prescription.items.add(item);
-        
         mYiAnScope.setYiAnPrescriptionItem(item);
+        
+        mYiAnScope.setTokenType(YiAnNodeConstants.RecipeContent);
         return true;
     }
 
