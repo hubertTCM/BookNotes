@@ -2,6 +2,7 @@ package com.hubert;
 
 import static org.junit.Assert.*;
 
+import java.io.PrintStream;
 import java.util.*;
 //import java.util.stream.*; //it is too slow to use lambda...
 
@@ -68,6 +69,7 @@ public class YiAnParserTests {
             checkHerbs(recipe, detail.prescriptions.iterator().next().items);
 
         } catch (Exception e) {
+            e.printStackTrace(new PrintStream(System.out));
             fail(e.toString());
         }
     }
@@ -121,6 +123,7 @@ public class YiAnParserTests {
             checkHerbs(herbs, detail.prescriptions.iterator().next().items);
 
         } catch (Exception e) {
+            e.printStackTrace(new PrintStream(System.out));
             fail(e.toString());
         }
     }
@@ -203,6 +206,7 @@ public class YiAnParserTests {
             checkHerbs(recipe2, IterableUtils.get(detail2.prescriptions, 1).items);
 
         } catch (Exception e) {
+            e.printStackTrace(new PrintStream(System.out));
             fail(e.toString());
         }
     }
@@ -283,6 +287,7 @@ public class YiAnParserTests {
             checkHerbs(herbs3, IterableUtils.get(detail3.prescriptions, 0).items);
 
         } catch (Exception e) {
+            e.printStackTrace(new PrintStream(System.out));
             fail(e.toString());
         }
     }
@@ -340,6 +345,7 @@ public class YiAnParserTests {
             checkHerbs(herbs2, IterableUtils.get(detail2.prescriptions, 0).items);
 
         } catch (Exception e) {
+            e.printStackTrace(new PrintStream(System.out));
             fail(e.toString());
         }
     }
@@ -395,6 +401,7 @@ public class YiAnParserTests {
             checkHerbs(herbs2, IterableUtils.get(detail1.prescriptions, 1).items);
 
         } catch (Exception e) {
+            e.printStackTrace(new PrintStream(System.out));
             fail(e.toString());
         }
     }

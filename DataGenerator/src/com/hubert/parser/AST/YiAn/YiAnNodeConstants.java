@@ -10,7 +10,7 @@ public class YiAnNodeConstants {
     public static final String Description = YiAnTokenType.Description.name();
     public static final String RecipeDetail = "RecipeDetail";
     public static final String RecipeContent = YiAnTokenType.RecipeContent.name();
-    public static final String RecipeComposition = "RecipeComposition";
+    //public static final String RecipeComposition = "RecipeComposition";
     public static final String RecipeCompositionHerbOnly = "RecipeCompositionHerbOnly";
     public static final String RecipeAbbreviation = YiAnTokenType.RecipeAbbreviation.name();
     public static final String RecipeHeader = YiAnTokenType.RecipeHeader.name();
