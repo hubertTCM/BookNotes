@@ -9,11 +9,14 @@ public class DataProvider {
     }
 
     public String getContent(Position position) {
+        String content = null;
         int lineNumber = position.getLineNumber();
         if (mData.containsKey(lineNumber)) {
-            return mData.get(lineNumber);
+            content = mData.get(lineNumber);
+            int index = content.indexOf(']');
+            content = content.substring(index + 1);
         }
-        return null;
+        return content;
     }
 
     public void clear() {
