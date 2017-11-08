@@ -25,12 +25,12 @@ public class BlockGenerator<T> {
         entity.content = "";
 
         DataProvider provider = mYiAnScope.getDataProvider();
-        if (provider == null){
+        if (provider == null) {
             return null;
         }
         String previousToken = null;
         for (Entry<Position, String> entry : mTokenTypes.entrySet()) {
-            if (YiAnNodeConstants.RecipeAbbreviation.equals(previousToken)){
+            if (YiAnNodeConstants.RecipeAbbreviation.equals(previousToken)) {
                 previousToken = entry.getValue();
                 continue;
             }
@@ -50,10 +50,15 @@ public class BlockGenerator<T> {
     public boolean addToken(Position position, String tokenType) {
         if (!mTokenTypes.containsKey(position)) {
             mTokenTypes.put(position, tokenType);
-            
+
             SortedMap<Position, String> temp = mYiAnScope.getOriginalTokens();
-            temp.put(position, tokenType);
-            
+            String content = "[" + tokenType + "]";
+            DataProvider provider = mYiAnScope.getDataProvider();
+            if (provider != null) {
+                content += provider.getContent(position);
+            }
+            temp.put(position, content);
+
             return true;
         }
 
