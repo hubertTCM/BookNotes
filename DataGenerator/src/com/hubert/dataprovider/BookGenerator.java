@@ -112,7 +112,8 @@ public class BookGenerator {
         mTokens.putAll(builder.getTokens());
         
         Pair<String, String> debugPathInfo = extractDebugDirectory(file);
-        LogVisitor visitor = new LogVisitor(Paths.get(debugPathInfo.getKey(), debugPathInfo.getValue() + "_AST.json").toString());
+        String astFilePath = Paths.get(debugPathInfo.getKey(), debugPathInfo.getValue() + "_AST.json").toString();
+        LogVisitor visitor = new LogVisitor(astFilePath);
         node.accept(visitor);
         
         return;
