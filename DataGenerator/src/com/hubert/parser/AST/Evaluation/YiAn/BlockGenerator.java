@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.Map.Entry;
 
 import com.hubert.dal.entity.*;
+import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 import com.hubert.parser.tokenextractor.*;
 
 public class BlockGenerator<T> {
@@ -27,8 +28,15 @@ public class BlockGenerator<T> {
         if (provider == null){
             return null;
         }
+        String previousToken = null;
         for (Entry<Position, String> entry : mTokenTypes.entrySet()) {
-            entity.content += provider.getContent(entry.getKey()) + "\n";
+            if (YiAnNodeConstants.RecipeAbbreviation.equals(previousToken)){
+                previousToken = entry.getValue();
+                continue;
+            }
+            previousToken = entry.getValue();
+            String content = provider.getContent(entry.getKey());
+            entity.content += content + "\n";
         }
 
         return entity;

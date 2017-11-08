@@ -20,6 +20,10 @@ public class YiAnScope {
         return getVariable(YiAnScope.HerbAliasManagerKey);
     }
 
+    public SectionEntity getRootSection(){
+        return getVariable(YiAnScope.RootSectionKey);
+    }
+
     public SectionEntity getSection(){
         BlockGenerator<SectionEntity> temp = getVariable(SectionEntityKey);
         return temp.get();
@@ -90,6 +94,8 @@ public class YiAnScope {
     public final static String YiAnDataProviderKey = "Global.DataProvider";
     public final static String HerbAliasManagerKey = "Global.HerbAliasManager";
     public final static String OriginalTokenKey = "Global.OriginalToken";
+    public final static String RootSectionKey = "Global.RootSection";
+    public final static String BookKey = "Global.Book";
     
     private Storage mStorage;
 

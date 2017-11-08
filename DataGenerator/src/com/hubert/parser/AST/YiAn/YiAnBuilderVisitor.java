@@ -15,8 +15,9 @@ import com.hubert.parser.AST.Evaluation.YiAn.*;
 import com.hubert.parser.tokenextractor.*;
 
 public class YiAnBuilderVisitor implements IVisitor {
-    public YiAnBuilderVisitor(SectionEntity parentSection, HerbAliasManager herbAliasManager, DataProvider dataProvider) {
-        this(herbAliasManager, dataProvider);
+    public YiAnBuilderVisitor(SectionEntity parentSection, HerbAliasManager herbAliasManager,
+            DataProvider dataProvider) {
+
         mParentSection = parentSection;
 
         SectionEntity currentSection = parentSection;
@@ -24,13 +25,12 @@ public class YiAnBuilderVisitor implements IVisitor {
             mBook = currentSection.book;
             currentSection = currentSection.parent;
         }
-    }
 
-    public YiAnBuilderVisitor(HerbAliasManager herbAliasManager, DataProvider dataProvider) {
         Context context = new Context();
         context.setGlobalData(YiAnScope.YiAnDataProviderKey, dataProvider);
         context.setGlobalData(YiAnScope.HerbAliasManagerKey, herbAliasManager);
-        context.setGlobalData(YiAnScope.OriginalTokenKey, new TreeMap<Position, String>());
+        context.setGlobalData(YiAnScope.OriginalTokenKey, mTokens);
+        context.setGlobalData(YiAnScope.RootSectionKey, mParentSection);
 
         mEvaluators.add(new YiAnEvaluator(context, mYiAns));
         mEvaluators.add(new YiAnDetailEvaluator(context));
@@ -41,9 +41,13 @@ public class YiAnBuilderVisitor implements IVisitor {
         mEvaluators.add(new RecipePropertyEvaluator(context));
     }
 
+    public YiAnBuilderVisitor(HerbAliasManager herbAliasManager, DataProvider dataProvider) {
+        this(null, herbAliasManager, dataProvider);
+    }
+
     @Override
     public void visit(ASTNode node) {
-        //System.out.println(node.getTag());
+        // System.out.println(node.getTag());
         IEvaluator evaluator = null;
         for (IEvaluator temp : mEvaluators) {
             if (temp.canEvaluate(node)) {
@@ -71,9 +75,14 @@ public class YiAnBuilderVisitor implements IVisitor {
     public List<YiAnEntity> getYiAns() {
         return mYiAns;
     }
+    
+    public SortedMap<Position, String> getTokens(){
+        return mTokens;
+    }
 
     private List<IEvaluator> mEvaluators = new ArrayList<IEvaluator>();
     private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
+    private SortedMap<Position, String> mTokens = new TreeMap<Position, String>();
     private SectionEntity mParentSection;
     private BookEntity mBook;
 }

@@ -1,7 +1,7 @@
 package com.hubert.dataprovider;
 
 import java.io.*;
-import java.nio.file.Paths;
+import java.nio.file.*;
 //import java.nio.charset.Charset;
 //import java.nio.file.Files;
 //import java.nio.file.Path;
@@ -19,6 +19,8 @@ import com.hubert.parser.LL1.*;
 import com.hubert.parser.tokenextractor.*;
 import com.hubert.parser.tokenextractor.YiAn.*;
 
+import javafx.util.Pair;
+
 public class BookGenerator {
 
     public BookGenerator(String grammarFilePath, String directory, HerbAliasManager herbAliasManager) throws Exception {
@@ -32,6 +34,11 @@ public class BookGenerator {
         mGrammar = new Grammar(grammarFilePath);
 
         mHerbAliasManager = herbAliasManager;
+        
+
+        mDebugOutputDirectory = "resource/debug/" + mBook.name + "/";
+        File debugDirectory = new File(mDebugOutputDirectory);
+        debugDirectory.mkdirs();
     }
 
     public List<YiAnEntity> doImport() {
@@ -50,6 +57,10 @@ public class BookGenerator {
             e.printStackTrace();
         }
         return mYiAns;
+    }
+    
+    public SortedMap<Position, String> getTokens(){
+        return mTokens;
     }
 
     private void loadSections(SectionEntity parent, File directory) throws Exception {
@@ -93,22 +104,35 @@ public class BookGenerator {
         YiAnLexer lexer = new YiAnLexer(filePath);
         List<Token> tokens = lexer.parse();
 
-//        String tokenFilePath = "resource/debug/" + file.getName() + "_token.text";
-//        Paths.get(tokenFilePath).getParent().toFile().mkdirs();
-//        FileWriter writer = new FileWriter(tokenFilePath);
-//        for (Token token : tokens) {
-//            writer.write(token.getType() + ":" + token.getValue() + "\n");
-//        }
-//        writer.close();
         ASTNode node = mYiAnParser.parse(mGrammar, tokens);
-        LogVisitor visitor = new LogVisitor("resource/debug/" + file.getName() + "_AST.json");
-        node.accept(visitor);
 
-        YiAnBuilderVisitor builder = new YiAnBuilderVisitor(mHerbAliasManager, lexer.getDataProvider());
+        YiAnBuilderVisitor builder = new YiAnBuilderVisitor(parent, mHerbAliasManager, lexer.getDataProvider());
         node.accept(builder);
         mYiAns.addAll(builder.getYiAns());
+        mTokens.putAll(builder.getTokens());
+        
+        Pair<String, String> debugPathInfo = extractDebugDirectory(file);
+        LogVisitor visitor = new LogVisitor(Paths.get(debugPathInfo.getKey(), debugPathInfo.getValue() + "_AST.json").toString());
+        node.accept(visitor);
+        
         return;
     }
+    
+    protected Pair<String, String> extractDebugDirectory(File file) {
+        // https://stackoverflow.com/questions/204784/how-to-construct-a-relative-path-in-java-from-two-absolute-paths-or-urls
+        Path pathBase = Paths.get(mBookDirectory.getAbsolutePath());
+        Path pathAbsolute = Paths.get(file.getParent()).toAbsolutePath();
+        Path pathRelative = pathBase.relativize(pathAbsolute);
+        String outputDirectory = Paths.get(mDebugOutputDirectory, pathRelative.toString()).toString();
+        String fileNameWithoutExtension = file.getName();
+        int pos = fileNameWithoutExtension.lastIndexOf(".");
+        if (pos > 0) {
+            fileNameWithoutExtension = fileNameWithoutExtension.substring(0, pos);
+        }
+        
+        return new Pair<>(outputDirectory, fileNameWithoutExtension);
+    }
+
 
     private SectionEntity createSection(SectionEntity parent, String sectionName) {
         SectionEntity section = new SectionEntity();
@@ -144,6 +168,7 @@ public class BookGenerator {
     }
 
     protected File mBookDirectory;
+    protected String mDebugOutputDirectory;
     protected Grammar mGrammar;
     protected BookEntity mBook;
     protected OrderGenerator mSectionOrderGenerator = new OrderGenerator();
@@ -153,4 +178,5 @@ public class BookGenerator {
     protected HerbAliasManager mHerbAliasManager;
 
     protected List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
+    private SortedMap<Position, String> mTokens = new TreeMap<Position, String>();
 }
