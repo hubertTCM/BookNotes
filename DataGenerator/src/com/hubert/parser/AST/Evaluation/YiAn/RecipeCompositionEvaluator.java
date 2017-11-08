@@ -23,6 +23,23 @@ public class RecipeCompositionEvaluator extends AbstractEvaluator {
         mYiAnScope.setYiAnPrescriptionItem(item);
         
         mYiAnScope.setTokenType(YiAnNodeConstants.RecipeContent);
+        
+        
+
+        ASTNode sibling = null;
+        ASTNode parent  = node.getParent();
+        for(int i = 0; i < parent.childCount(); ++i){
+            ASTNode tempNode = parent.getChild(i);
+            if (tempNode == node){
+                break;
+            }
+            sibling = tempNode;
+        }
+        
+        if (sibling != null && YiAnNodeConstants.RecipeAbbreviation.equals(sibling.getTag())){
+            temp.addToken(sibling.getSourcePosition(), sibling.getTag());
+        }
+        
         return true;
     }
 

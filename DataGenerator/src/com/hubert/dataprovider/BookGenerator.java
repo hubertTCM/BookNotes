@@ -116,7 +116,23 @@ public class BookGenerator {
         LogVisitor visitor = new LogVisitor(astFilePath);
         node.accept(visitor);
         
+        String tokenFilePath = Paths.get(debugPathInfo.getKey(), debugPathInfo.getValue() + "_token.txt").toString();
+        logTokens(tokenFilePath, builder.getTokens());
+        
         return;
+    }
+    
+    protected void logTokens(String filePath, SortedMap<Position, String> tokens){
+        try {
+            FileWriter writer =  new FileWriter(filePath);
+            for(Map.Entry<Position, String> entry : tokens.entrySet()){
+                writer.write(entry.getValue() + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     
     protected Pair<String, String> extractDebugDirectory(File file) {
