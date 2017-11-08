@@ -10,10 +10,10 @@ import com.hubert.parser.AST.YiAn.*;
 public class RecipeCompositionEvaluator extends AbstractEvaluator {
 
     public RecipeCompositionEvaluator(Context context) {
-        super(Arrays.asList(/*YiAnNodeConstants.RecipeComposition, */YiAnNodeConstants.RecipeCompositionHerbOnly,
+        super(Arrays.asList(/* YiAnNodeConstants.RecipeComposition, */YiAnNodeConstants.RecipeCompositionHerbOnly,
                 YiAnNodeConstants.RecipeContent), context);
     }
-    
+
     @Override
     protected boolean evaluateCore(ASTNode node) {
         BlockGenerator<YiAnPrescriptionEntity> temp = mYiAnScope.getYiAnPrescription();
@@ -21,28 +21,24 @@ public class RecipeCompositionEvaluator extends AbstractEvaluator {
         YiAnPrescriptionItemEntity item = new YiAnPrescriptionItemEntity();
         prescription.items.add(item);
         mYiAnScope.setYiAnPrescriptionItem(item);
-        
+
         mYiAnScope.setTokenType(YiAnNodeConstants.RecipeContent);
-        
-        
 
         ASTNode sibling = null;
-        ASTNode parent  = node.getParent();
-        for(int i = 0; i < parent.childCount(); ++i){
+        ASTNode parent = node.getParent();
+        for (int i = 0; i < parent.childCount(); ++i) {
             ASTNode tempNode = parent.getChild(i);
-            if (tempNode == node){
+            if (tempNode == node) {
                 break;
             }
             sibling = tempNode;
         }
-        
-        if (sibling != null && YiAnNodeConstants.RecipeAbbreviation.equals(sibling.getTag())){
+
+        if (sibling != null && YiAnNodeConstants.RecipeAbbreviation.equals(sibling.getTag())) {
             temp.addToken(sibling.getSourcePosition(), sibling.getTag());
         }
-        
+
         return true;
     }
-
-   
 
 }
