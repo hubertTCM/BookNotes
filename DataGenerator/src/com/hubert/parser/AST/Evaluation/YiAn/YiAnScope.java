@@ -73,8 +73,20 @@ public class YiAnScope {
         setRawVariable(NodeType, value);
     }
     
-    public SortedMap<Position, String> getOriginalTokens(){
+    public List<SortedMap<Position, String>> getOriginalTokens(){
         return getVariable(YiAnScope.OriginalTokenKey);
+    }
+    
+    public void initCurrentTokens(){
+        SortedMap<Position, String> tokens = new TreeMap<Position, String>();
+        setRawVariable(YiAnScope.YiAnTokens, tokens);
+        
+        List<SortedMap<Position, String>> all = getOriginalTokens();
+        all.add(tokens);
+    }
+    
+    public SortedMap<Position, String> getCurrentTokens(){
+        return getVariable(YiAnScope.YiAnTokens);
     }
 
     protected <T> T getVariable(String key) {
@@ -104,6 +116,7 @@ public class YiAnScope {
     private final static String YiAnDetailKey = "YiAnDetail";
     private final static String YiAnPresciption = "YiAnPrescription";
     private final static String YiAnPrescriptionItem = "YiAnPrescriptionItem";
+    private final static String YiAnTokens = "YiAnTokens";
     
     private final static String NodeType = "NodeType";
     

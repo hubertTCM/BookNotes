@@ -21,6 +21,8 @@ public class YiAnEvaluator extends AbstractEvaluator {
         mYiAnScope.setYiAn(yiAn);
         mYiAns.add(yiAn);
         
+        mYiAnScope.initCurrentTokens();
+        
 
         int childCount = node.childCount();
         for (int i = 0; i < childCount; ++i) {

@@ -76,13 +76,13 @@ public class YiAnBuilderVisitor implements IVisitor {
         return mYiAns;
     }
     
-    public SortedMap<Position, String> getTokens(){
+    public List<SortedMap<Position, String>> getTokens(){
         return mTokens;
     }
 
     private List<IEvaluator> mEvaluators = new ArrayList<IEvaluator>();
     private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
-    private SortedMap<Position, String> mTokens = new TreeMap<Position, String>();
+    private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
     private SectionEntity mParentSection;
     private BookEntity mBook;
 }

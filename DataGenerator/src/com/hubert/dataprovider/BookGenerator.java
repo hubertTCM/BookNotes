@@ -34,7 +34,6 @@ public class BookGenerator {
         mGrammar = new Grammar(grammarFilePath);
 
         mHerbAliasManager = herbAliasManager;
-        
 
         mDebugOutputDirectory = "resource/debug/" + mBook.name + "/";
         File debugDirectory = new File(mDebugOutputDirectory);
@@ -58,8 +57,8 @@ public class BookGenerator {
         }
         return mYiAns;
     }
-    
-    public SortedMap<Position, String> getTokens(){
+
+    public List<SortedMap<Position, String>> getTokens() {
         return mTokens;
     }
 
@@ -70,7 +69,7 @@ public class BookGenerator {
 
         for (File file : files) {
             String fileName = file.getName();
-            if (shouldIgnore(fileName)){
+            if (shouldIgnore(fileName)) {
                 continue;
             }
 
@@ -86,9 +85,9 @@ public class BookGenerator {
             }
         }
     }
-    
-    private boolean shouldIgnore(String fileName){
-        if(fileName.endsWith(".pdf") || fileName.endsWith(".xml")){
+
+    private boolean shouldIgnore(String fileName) {
+        if (fileName.endsWith(".pdf") || fileName.endsWith(".xml")) {
             return true;
         }
 
@@ -109,24 +108,26 @@ public class BookGenerator {
         YiAnBuilderVisitor builder = new YiAnBuilderVisitor(parent, mHerbAliasManager, lexer.getDataProvider());
         node.accept(builder);
         mYiAns.addAll(builder.getYiAns());
-        mTokens.putAll(builder.getTokens());
-        
+        mTokens.addAll(builder.getTokens());
+
         Pair<String, String> debugPathInfo = extractDebugDirectory(file);
         String astFilePath = Paths.get(debugPathInfo.getKey(), debugPathInfo.getValue() + "_AST.json").toString();
         LogVisitor visitor = new LogVisitor(astFilePath);
         node.accept(visitor);
-        
+
         String tokenFilePath = Paths.get(debugPathInfo.getKey(), debugPathInfo.getValue() + "_token.txt").toString();
         logTokens(tokenFilePath, builder.getTokens());
-        
+
         return;
     }
-    
-    protected void logTokens(String filePath, SortedMap<Position, String> tokens){
+
+    protected void logTokens(String filePath, List<SortedMap<Position, String>> tokens) {
         try {
-            FileWriter writer =  new FileWriter(filePath);
-            for(Map.Entry<Position, String> entry : tokens.entrySet()){
-                writer.write(entry.getValue() + "\n");
+            FileWriter writer = new FileWriter(filePath);
+            for (SortedMap<Position, String> temp : tokens) {
+                for (Map.Entry<Position, String> entry : temp.entrySet()) {
+                    writer.write(entry.getValue() + "\n");
+                }
             }
             writer.close();
         } catch (IOException e) {
@@ -134,7 +135,7 @@ public class BookGenerator {
             e.printStackTrace();
         }
     }
-    
+
     protected Pair<String, String> extractDebugDirectory(File file) {
         // https://stackoverflow.com/questions/204784/how-to-construct-a-relative-path-in-java-from-two-absolute-paths-or-urls
         Path pathBase = Paths.get(mBookDirectory.getAbsolutePath());
@@ -146,10 +147,9 @@ public class BookGenerator {
         if (pos > 0) {
             fileNameWithoutExtension = fileNameWithoutExtension.substring(0, pos);
         }
-        
+
         return new Pair<>(outputDirectory, fileNameWithoutExtension);
     }
-
 
     private SectionEntity createSection(SectionEntity parent, String sectionName) {
         SectionEntity section = new SectionEntity();
@@ -195,5 +195,5 @@ public class BookGenerator {
     protected HerbAliasManager mHerbAliasManager;
 
     protected List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
-    private SortedMap<Position, String> mTokens = new TreeMap<Position, String>();
+    private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
 }
