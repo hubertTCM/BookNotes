@@ -22,19 +22,6 @@ public class YiAnEvaluator extends AbstractEvaluator {
         mYiAns.add(yiAn);
         
         mYiAnScope.initCurrentTokens();
-        
-
-        int childCount = node.childCount();
-        for (int i = 0; i < childCount; ++i) {
-            ASTNode child = node.getChild(i);
-            if (YiAnNodeConstants.SectionName.equals(child.getTag())){
-                SectionEntity section = new SectionEntity();
-                section.blocks = new ArrayList<BlockEntity>();
-                
-                mYiAnScope.setSection(section);
-                break;
-            }
-        }
         return true;
     }
 
