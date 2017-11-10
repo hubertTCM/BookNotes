@@ -52,11 +52,6 @@ public class BlockGenerator<T> {
             mTokenTypes.put(position, tokenType);
 
             SortedMap<Position, String> temp = mYiAnScope.getCurrentTokens();
-//            String content = "";
-//            DataProvider provider = mYiAnScope.getDataProvider();
-//            if (provider != null) {
-//                content += provider.getContent(tokenType, position);
-//            }
             temp.put(position, tokenType);
 
             return true;
