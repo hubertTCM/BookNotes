@@ -25,8 +25,7 @@ public class YiAnScope {
     }
 
     public SectionEntity getActiveSection(){
-        BlockGenerator<SectionEntity> temp = getVariable(YiAnScope.ActiveSectionEntityKey);
-        return temp.get();
+        return getVariable(YiAnScope.ActiveSectionEntityKey);
     }
     
     public BookEntity getBook(){
