@@ -38,6 +38,10 @@ public class BlockGenerator<T> {
             String content = provider.getContent(entry.getKey());
             entity.content += content + "\n";
         }
+        
+        SectionEntity section = mYiAnScope.getActiveSection();
+        entity.section = section;
+        entity.order = section.blocks.size();
 
         return entity;
     }
