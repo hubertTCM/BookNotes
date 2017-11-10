@@ -116,18 +116,21 @@ public class BookGenerator {
         node.accept(visitor);
 
         String tokenFilePath = Paths.get(debugPathInfo.getKey(), debugPathInfo.getValue() + "_token.txt").toString();
-        logTokens(tokenFilePath, builder.getTokens());
+        logTokens(tokenFilePath, builder.getTokens(), lexer.getDataProvider());
 
         return;
     }
 
-    protected void logTokens(String filePath, List<SortedMap<Position, String>> tokens) {
+    protected void logTokens(String filePath, List<SortedMap<Position, String>> tokens, DataProvider provider) {
         try {
             FileWriter writer = new FileWriter(filePath);
             for (SortedMap<Position, String> temp : tokens) {
                 for (Map.Entry<Position, String> entry : temp.entrySet()) {
-                    writer.write(entry.getValue() + "\n");
+                    String content = provider.getContent(entry.getKey());
+                    content = Constants.TokenStartTag + entry.getValue() + Constants.TokenEndTag + content;
+                    writer.write(content + "\n");
                 }
+                writer.write(Constants.TokenStartTag + Constants.End + Constants.TokenEndTag + "\n");
             }
             writer.close();
         } catch (IOException e) {

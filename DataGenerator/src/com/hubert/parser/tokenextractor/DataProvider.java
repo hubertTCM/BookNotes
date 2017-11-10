@@ -9,7 +9,7 @@ public class DataProvider {
     }
 
     public String getContent(Position position) {
-        String content = null;
+        String content = "";
         int lineNumber = position.getLineNumber();
         if (mData.containsKey(lineNumber)) {
             content = mData.get(lineNumber);
@@ -19,8 +19,16 @@ public class DataProvider {
         return content;
     }
 
+    public String getEndContent() {
+        return createTokenTag(Constants.End);
+    }
+
     public void clear() {
         mData.clear();
+    }
+
+    private String createTokenTag(String tokenType) {
+        return "[" + tokenType + "] ";
     }
 
     private Map<Integer, String> mData = new HashMap<Integer, String>();
