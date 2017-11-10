@@ -24,14 +24,18 @@ public class YiAnScope {
         return getVariable(YiAnScope.RootSectionKey);
     }
 
-    public SectionEntity getSection(){
-        BlockGenerator<SectionEntity> temp = getVariable(SectionEntityKey);
+    public SectionEntity getActiveSection(){
+        BlockGenerator<SectionEntity> temp = getVariable(YiAnScope.ActiveSectionEntityKey);
         return temp.get();
     }
     
-    public void setSection(SectionEntity section){
-        setRawVariable(SectionEntityKey, section);
+    public BookEntity getBook(){
+        return getVariable(YiAnScope.BookKey);
     }
+//    
+//    public void setSection(SectionEntity section){
+//        setRawVariable(SectionEntityKey, section);
+//    }
 
     public BlockGenerator<YiAnEntity> getYiAn() {
         return getVariable(YiAnKey);
@@ -108,10 +112,10 @@ public class YiAnScope {
     public final static String OriginalTokenKey = "Global.OriginalToken";
     public final static String RootSectionKey = "Global.RootSection";
     public final static String BookKey = "Global.Book";
+    public final static String ActiveSectionEntityKey = "Global.SectionEntity";
     
     private Storage mStorage;
 
-    private final static String SectionEntityKey = "SectionEntity";
     private final static String YiAnKey = "YiAn";
     private final static String YiAnDetailKey = "YiAnDetail";
     private final static String YiAnPresciption = "YiAnPrescription";
