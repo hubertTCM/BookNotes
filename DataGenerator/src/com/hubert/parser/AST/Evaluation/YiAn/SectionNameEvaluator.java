@@ -19,12 +19,17 @@ public class SectionNameEvaluator extends AbstractEvaluator{
         SectionEntity entity = new SectionEntity();
         entity.blocks = new ArrayList<BlockEntity>();
         entity.childSections = new ArrayList<SectionEntity>();
-        entity.parent = mYiAnScope.getRootSection();
+        
+        SectionEntity parent = mYiAnScope.getRootSection();
+        entity.parent = parent;
         if (entity.parent == null){
-            entity.book = mYiAnScope.getBook();
+            BookEntity book = mYiAnScope.getBook();
+            entity.book = book;
+            book.sections.add(entity);
             entity.order = entity.book.sections.size();
         }
         else{
+            parent.childSections.add(entity);
             entity.order = entity.parent.childSections.size();
         }
         mContext.setGlobalData(YiAnScope.ActiveSectionEntityKey, entity);
