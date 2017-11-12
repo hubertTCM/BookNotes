@@ -25,5 +25,19 @@ public class YiAnDetailEvaluator extends AbstractEvaluator {
         mYiAnScope.setYiAnDetail(yiAnDetail);
         return true;
     }
+    
+    @Override
+    public boolean postEvaluate(ASTNode node) {
+        BlockGenerator<YiAnDetailEntity> temp = mYiAnScope.getYiAnDetail();
+        BlockEntity block = temp.createBlock();
+        if (block != null) {
+            YiAnDetailEntity yiAnDetail = temp.get();
+            YiAnDetailBlockLinkEntity link = new YiAnDetailBlockLinkEntity();
+            link.block = block;
+            link.yian = yiAnDetail;
+            yiAnDetail.blockLinks.add(link);
+        }
+        return true;
+    }
 
 }
