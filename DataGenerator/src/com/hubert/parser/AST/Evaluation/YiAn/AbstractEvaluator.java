@@ -35,10 +35,14 @@ public abstract class AbstractEvaluator implements IEvaluator {
     @Override
     public boolean postEvaluate(ASTNode node) {
         mYiAnScope = new YiAnScope(mContext.getActiveStorage());
-        boolean success = postEvaluateCore(node);
+        return postEvaluateCore(node);
+    }
+
+    @Override
+    public boolean destory(ASTNode node) {
         mYiAnScope = null;
         mContext.remove();
-        return success;
+        return true;
     }
 
     protected boolean postEvaluateCore(ASTNode node) {
