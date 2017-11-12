@@ -17,6 +17,7 @@ public class SectionNameEvaluator extends AbstractEvaluator{
     @Override
     protected boolean evaluateCore(ASTNode node) {
         SectionEntity entity = new SectionEntity();
+        entity.name = node.getValue();
         entity.blocks = new ArrayList<BlockEntity>();
         entity.childSections = new ArrayList<SectionEntity>();
         BookEntity book = mYiAnScope.getBook();
