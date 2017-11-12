@@ -31,6 +31,7 @@ public class YiAnBuilderVisitor implements IVisitor {
         context.setGlobalData(YiAnScope.HerbAliasManagerKey, herbAliasManager);
         context.setGlobalData(YiAnScope.OriginalTokenKey, mTokens);
         context.setGlobalData(YiAnScope.RootSectionKey, mParentSection);
+        context.setGlobalData(YiAnScope.BookKey, mBook);
 
         mEvaluators.add(new SectionNameEvaluator(context));
         mEvaluators.add(new YiAnEvaluator(context, mYiAns));
