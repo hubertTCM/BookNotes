@@ -4,7 +4,7 @@ import java.util.*;
 
 import com.hubert.dal.entity.*;
 import com.hubert.parser.AST.*;
-import com.hubert.parser.AST.Evaluation.Common.Context;
+import com.hubert.parser.AST.Evaluation.Common.*;
 import com.hubert.parser.AST.YiAn.*;
 
 public class YiAnDetailEvaluator extends AbstractEvaluator {
@@ -29,8 +29,8 @@ public class YiAnDetailEvaluator extends AbstractEvaluator {
     @Override
     public boolean postEvaluate(ASTNode node) {
         BlockCreator<YiAnDetailEntity> temp = mYiAnScope.getYiAnDetail();
-        BlockEntity block = temp.create();
-        if (block != null) {
+        List<BlockEntity> blocks = temp.create();
+        for(BlockEntity block : blocks){
             YiAnDetailEntity yiAnDetail = temp.get();
             YiAnDetailBlockLinkEntity link = new YiAnDetailBlockLinkEntity();
             link.block = block;
