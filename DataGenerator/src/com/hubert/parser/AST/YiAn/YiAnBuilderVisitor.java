@@ -66,7 +66,7 @@ public class YiAnBuilderVisitor implements IVisitor {
 
         if (evaluator != null) {
             evaluator.postEvaluate(node);
-            evaluator.destory(node);
+            evaluator.clear();
         }
 
     }

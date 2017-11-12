@@ -39,7 +39,7 @@ public abstract class AbstractEvaluator implements IEvaluator {
     }
 
     @Override
-    public boolean destory(ASTNode node) {
+    public boolean clear() {
         mYiAnScope = null;
         mContext.remove();
         return true;
