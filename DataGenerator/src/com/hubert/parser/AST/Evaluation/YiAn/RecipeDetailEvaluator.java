@@ -27,9 +27,6 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
 
         mYiAnScope.setYiAnPrescription(prescription);
         
-        
-        
-
         BlockEntity block = temp.createBlock();
         if (block != null) {
             YiAnDetailBlockLinkEntity link = new YiAnDetailBlockLinkEntity();

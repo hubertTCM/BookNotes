@@ -41,6 +41,7 @@ public class BlockGenerator<T> {
         
         SectionEntity section = mYiAnScope.getActiveSection();
         entity.section = section;
+        section.blocks.add(entity);
         entity.order = section.blocks.size();
 
         return entity;
