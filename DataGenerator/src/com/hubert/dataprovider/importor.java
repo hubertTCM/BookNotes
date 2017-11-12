@@ -3,6 +3,7 @@ package com.hubert.dataprovider;
 import java.io.IOException;
 import java.util.*;
 
+import com.hubert.dal.*;
 //import com.hubert.dal.DbBuilder;
 import com.hubert.dal.entity.*;
 import com.hubert.machinelearning.*;
@@ -33,6 +34,12 @@ public class importor {
             BookGenerator generator = new BookGenerator("resource/临证指南医案/grammar.xml", "resource/临证指南医案",
                     HerbAliasManager.getInstance());
             List<YiAnEntity> yiAns = generator.doImport();
+            BookEntity book = generator.getBook();
+            
+            DbBuilder builder = new DbBuilder();
+            builder.build();
+            YiAnImporter yiAnImporter = new YiAnImporter();
+            yiAnImporter.save(book, yiAns);
 
             List<YiAnPrescriptionEntity> prescriptions = new ArrayList<YiAnPrescriptionEntity>();
             for (YiAnEntity yiAn : yiAns) {

@@ -61,6 +61,10 @@ public class BookGenerator {
     public List<SortedMap<Position, String>> getTokens() {
         return mTokens;
     }
+    
+    public BookEntity getBook(){
+        return mBook;
+    }
 
     private void loadSections(SectionEntity parent, File directory) throws Exception {
 
@@ -156,8 +160,8 @@ public class BookGenerator {
 
     private SectionEntity createSection(SectionEntity parent, String sectionName) {
         SectionEntity section = new SectionEntity();
-        // section.book = mBook;
         section.name = sectionName;
+        section.book = mBook;
         section.blocks = new ArrayList<BlockEntity>();
         section.childSections = new ArrayList<SectionEntity>();
 
@@ -168,7 +172,6 @@ public class BookGenerator {
             parent.childSections.add(section);
         } else {
             section.parent = null;
-            section.book = mBook;
             mBook.sections.add(section);
         }
         return section;
