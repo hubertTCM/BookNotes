@@ -18,16 +18,24 @@ public class BlockCreator<T> implements IBlockCreator{
         return mData;
     }
 
-    public BlockEntity create() {
+    public List<BlockEntity> create() {
+        List<BlockEntity> blocks = new ArrayList<BlockEntity>();
+
+//        for(IBlockCreator propertyBlockCreator : mPropertyBlockCreators){
+//            blocks.addAll(propertyBlockCreator.create());
+//        }
+        
         if (mTokenTypes.isEmpty()) {
-            return null;
+            return blocks;
         }
         BlockEntity entity = new BlockEntity();
         entity.content = "";
+        
+        blocks.add(0, entity);
 
         DataProvider provider = mYiAnScope.getDataProvider();
         if (provider == null) {
-            return null;
+            return blocks;
         }
         String previousToken = null;
         for (Entry<Position, String> entry : mTokenTypes.entrySet()) {
@@ -45,9 +53,13 @@ public class BlockCreator<T> implements IBlockCreator{
         section.blocks.add(entity);
         entity.order = section.blocks.size();
 
-        return entity;
+        return blocks;
     }
 
+    public void addPropertyBlockCreator(IBlockCreator creator){
+        mPropertyBlockCreators.add(creator);
+    }
+    
     public boolean addToken(Position position) {
         String tokenType = mYiAnScope.getNodeType();
         return addToken(position, tokenType);
@@ -70,4 +82,5 @@ public class BlockCreator<T> implements IBlockCreator{
     private T mData;
     private YiAnScope mYiAnScope;
     private SortedMap<Position, String> mTokenTypes = new TreeMap<Position, String>();
+    private List<IBlockCreator> mPropertyBlockCreators = new ArrayList<IBlockCreator>();
 }

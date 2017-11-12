@@ -5,9 +5,9 @@ import java.util.*;
 import org.apache.commons.lang3.StringUtils;
 
 import com.hubert.dal.entity.*;
-import com.hubert.dataprovider.HerbAliasManager;
+import com.hubert.dataprovider.*;
 import com.hubert.parser.AST.ASTNode;
-import com.hubert.parser.AST.Evaluation.Common.Context;
+import com.hubert.parser.AST.Evaluation.Common.*;
 import com.hubert.parser.AST.YiAn.*;
 
 public class RecipeDetailEvaluator extends AbstractEvaluator {
@@ -26,6 +26,9 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
         yiAnDetail.prescriptions.add(prescription);
 
         mYiAnScope.setYiAnPrescription(prescription);
+        
+        temp.addPropertyBlockCreator(mYiAnScope.getYiAnPrescription());
+        
         return true;
     }
 
