@@ -6,5 +6,5 @@ public interface IEvaluator {
     public boolean canEvaluate(ASTNode node);
     public boolean evaluate(ASTNode node);
     public boolean postEvaluate(ASTNode node);
-    public boolean destory(ASTNode node);
+    public boolean clear();
 }
