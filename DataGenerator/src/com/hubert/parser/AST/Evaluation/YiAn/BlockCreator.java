@@ -4,11 +4,12 @@ import java.util.*;
 import java.util.Map.Entry;
 
 import com.hubert.dal.entity.*;
-import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
+import com.hubert.parser.AST.Evaluation.Common.*;
+import com.hubert.parser.AST.YiAn.*;
 import com.hubert.parser.tokenextractor.*;
 
-public class BlockGenerator<T> {
-    public BlockGenerator(T data, YiAnScope yiAnScope) {
+public class BlockCreator<T> implements IBlockCreator{
+    public BlockCreator(T data, YiAnScope yiAnScope) {
         mData = data;
         mYiAnScope = yiAnScope;
     }
@@ -17,7 +18,7 @@ public class BlockGenerator<T> {
         return mData;
     }
 
-    public BlockEntity createBlock() {
+    public BlockEntity create() {
         if (mTokenTypes.isEmpty()) {
             return null;
         }
