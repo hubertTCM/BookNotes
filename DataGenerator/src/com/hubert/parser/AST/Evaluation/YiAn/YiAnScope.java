@@ -56,8 +56,8 @@ public class YiAnScope {
         return getVariable(YiAnPresciption);
     }
 
-    public void setYiAnPrescription(YiAnPrescriptionEntity value) {
-        setVariable(YiAnPresciption, value);
+    public BlockCreator<YiAnPrescriptionEntity> setYiAnPrescription(YiAnPrescriptionEntity value) {
+        return setVariable(YiAnPresciption, value);
     }
     
     public BlockCreator<YiAnPrescriptionItemEntity> getYiAnPrescriptionItem(){
@@ -100,9 +100,10 @@ public class YiAnScope {
         return mStorage.setVariable(key, value);
     }
     
-    protected <T> void setVariable(String key, T value) {
+    protected <T> BlockCreator<T> setVariable(String key, T value) {
         BlockCreator<T> provider = new BlockCreator<>(value, this);
         mStorage.setVariable(key, provider).get();
+        return provider;
     }
 
     
