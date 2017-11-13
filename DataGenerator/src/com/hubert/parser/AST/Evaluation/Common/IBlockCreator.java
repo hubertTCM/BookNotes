@@ -6,5 +6,6 @@ import com.hubert.dal.entity.*;
 
 public interface IBlockCreator {
     public List<BlockEntity> create();
-    public void addPropertyBlockCreator(IBlockCreator creator);
+    //public void addPropertyBlockCreator(IBlockCreator creator);
+    public void setParent(IBlockCreator parent);
 }
