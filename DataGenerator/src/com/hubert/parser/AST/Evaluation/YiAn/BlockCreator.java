@@ -56,8 +56,8 @@ public class BlockCreator<T> implements IBlockCreator{
         return blocks;
     }
 
-    public void addPropertyBlockCreator(IBlockCreator creator){
-        mPropertyBlockCreators.add(creator);
+    public void setParent(IBlockCreator parent){
+        
     }
     
     public boolean addToken(Position position) {
@@ -82,5 +82,4 @@ public class BlockCreator<T> implements IBlockCreator{
     private T mData;
     private YiAnScope mYiAnScope;
     private SortedMap<Position, String> mTokenTypes = new TreeMap<Position, String>();
-    private List<IBlockCreator> mPropertyBlockCreators = new ArrayList<IBlockCreator>();
 }
