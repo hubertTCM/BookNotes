@@ -12,8 +12,8 @@ public class Context {
 
     public Storage createStorage() {
         Storage storage = null;
-            Storage parent = mStorages.peek();
-            storage = new Storage(parent);
+        Storage parent = mStorages.peek();
+        storage = new Storage(parent);
 
         return mStorages.push(storage);
     }
@@ -37,12 +37,12 @@ public class Context {
         root.setVariable(globalKey, data);
         return data;
     }
-    
-    private String getGlobalPrefix(){
+
+    private String getGlobalPrefix() {
         return Integer.toString(sGlobalIndex);
     }
 
     private Stack<Storage> mStorages = new Stack<Storage>();
-    
+
     private static int sGlobalIndex = 0;
 }
