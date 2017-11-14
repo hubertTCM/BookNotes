@@ -8,7 +8,7 @@ import com.hubert.parser.AST.Evaluation.Common.*;
 import com.hubert.parser.AST.YiAn.*;
 import com.hubert.parser.tokenextractor.*;
 
-public class BlockCreator<T> implements IBlockCreator{
+public class BlockCreator<T> implements IBlockCreator {
     public BlockCreator(T data, YiAnScope yiAnScope) {
         mData = data;
         mYiAnScope = yiAnScope;
@@ -19,24 +19,16 @@ public class BlockCreator<T> implements IBlockCreator{
     }
 
     public List<BlockEntity> create() {
-        List<BlockEntity> blocks = new ArrayList<BlockEntity>();
+        // for(IBlockCreator propertyBlockCreator : mPropertyBlockCreators){
+        // blocks.addAll(propertyBlockCreator.create());
+        // }
 
-//        for(IBlockCreator propertyBlockCreator : mPropertyBlockCreators){
-//            blocks.addAll(propertyBlockCreator.create());
-//        }
-        
-        if (mTokenTypes.isEmpty()) {
-            return blocks;
+        DataProvider provider = mYiAnScope.getDataProvider();
+        if (mTokenTypes.isEmpty() || provider == null) {
+            return new ArrayList<BlockEntity>();
         }
         BlockEntity entity = new BlockEntity();
         entity.content = "";
-        
-        blocks.add(0, entity);
-
-        DataProvider provider = mYiAnScope.getDataProvider();
-        if (provider == null) {
-            return blocks;
-        }
         String previousToken = null;
         for (Entry<Position, String> entry : mTokenTypes.entrySet()) {
             if (YiAnNodeConstants.RecipeAbbreviation.equals(previousToken)) {
@@ -47,22 +39,21 @@ public class BlockCreator<T> implements IBlockCreator{
             String content = provider.getContent(entry.getKey());
             entity.content += content + "\n";
         }
-        
-        SectionEntity section = mYiAnScope.getActiveSection();
-        entity.section = section;
-        section.blocks.add(entity);
-        entity.order = section.blocks.size();
+
+        List<BlockEntity> blocks = getAllBlocks(entity);
+        if (mParent != null) {
+            mParent.addPropertyBlock(blocks);
+        }
 
         return blocks;
     }
 
-    public void setParent(IBlockCreator parent){
-        
+    public void setParent(IBlockCreator parent) {
+        mParent = parent;
     }
-    
-    public boolean addToken(Position position) {
-        String tokenType = mYiAnScope.getNodeType();
-        return addToken(position, tokenType);
+
+    public void addPropertyBlock(List<BlockEntity> blocks) {
+        mPropertyBlocks.add(blocks);
     }
 
     public boolean addToken(Position position, String tokenType) {
@@ -79,7 +70,36 @@ public class BlockCreator<T> implements IBlockCreator{
         return existingContent.equals(tokenType);
     }
 
+    private List<BlockEntity> getAllBlocks(BlockEntity block) {
+        SectionEntity section = mYiAnScope.getActiveSection();
+        block.section = section;
+        section.blocks.add(block);
+
+        List<BlockEntity> blocks = new ArrayList<BlockEntity>();
+        int order = 1;
+        block.order = order;
+        blocks.add(block);
+        for (int i = mPropertyBlocks.size() - 1; i >= 0; --i) {
+            for (BlockEntity temp : mPropertyBlocks.get(i)) {
+                order += 1;
+                temp.order = order;
+                blocks.add(temp);
+            }
+        }
+
+//        blocks.sort(new Comparator<BlockEntity>() {
+//            @Override
+//            public int compare(BlockEntity x, BlockEntity y) {
+//                return (int)(x.order - y.order);
+//            }
+//        });
+
+        return blocks;
+    }
+
     private T mData;
     private YiAnScope mYiAnScope;
+    private IBlockCreator mParent;
+    private List<List<BlockEntity>> mPropertyBlocks = new ArrayList<List<BlockEntity>>();
     private SortedMap<Position, String> mTokenTypes = new TreeMap<Position, String>();
 }

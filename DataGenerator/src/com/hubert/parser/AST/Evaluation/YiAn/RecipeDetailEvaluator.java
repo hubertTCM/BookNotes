@@ -55,6 +55,7 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
         }
         prescription.summary = StringUtils.trim(prescription.summary);
 
+        temp.create();
         return true;
     }
 

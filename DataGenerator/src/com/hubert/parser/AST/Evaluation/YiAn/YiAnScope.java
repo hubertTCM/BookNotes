@@ -31,10 +31,6 @@ public class YiAnScope {
     public BookEntity getBook(){
         return getVariable(YiAnScope.BookKey);
     }
-//    
-//    public void setSection(SectionEntity section){
-//        setRawVariable(SectionEntityKey, section);
-//    }
 
     public BlockCreator<YiAnEntity> getYiAn() {
         return getVariable(YiAnKey);
@@ -66,14 +62,6 @@ public class YiAnScope {
     
     public void setYiAnPrescriptionItem(YiAnPrescriptionItemEntity value){
         setVariable(YiAnPrescriptionItem, value);
-    }
-    
-    public String getNodeType(){
-        return getVariable(NodeType);
-    }
-    
-    public void setTokenType(String value){
-        setRawVariable(NodeType, value);
     }
     
     public List<SortedMap<Position, String>> getOriginalTokens(){
