@@ -156,7 +156,8 @@ public class YiAnParserTests {
             tokens.addAll(herbs1);
 
             tokens.add(new YiAnToken(YiAnTokenType.Description, "又 前议苦辛酸降一法，肝风胃阳已折其上引之威，.....", new Position(-1)));
-            tokens.add(new YiAnToken(YiAnTokenType.RecipeAbbreviation, "九制熟地 肉苁蓉（用大而黑色者，去甲切片，盛竹篮内，放长流水中浸七日，晒干，以极淡为度，四两）.....", new Position(-1)));
+            tokens.add(new YiAnToken(YiAnTokenType.RecipeAbbreviation,
+                    "九制熟地 肉苁蓉（用大而黑色者，去甲切片，盛竹篮内，放长流水中浸七日，晒干，以极淡为度，四两）.....", new Position(-1)));
 
             ArrayList<Token> herbs2 = new ArrayList<Token>();
             herbs2.add(new YiAnToken(YiAnTokenType.Herb, "黄柏", new Position(-1)));

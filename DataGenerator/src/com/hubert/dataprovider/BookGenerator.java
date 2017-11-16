@@ -43,11 +43,6 @@ public class BookGenerator {
     public List<YiAnEntity> doImport() {
         try {
             loadSections(null, mBookDirectory);
-
-            // TODO: requires better design here.
-            // mYiAnParser.adjust();
-            // mYiAnParser.validate();
-            // mYiAnParser.save();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
