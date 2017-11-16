@@ -19,10 +19,6 @@ public class BlockCreator<T> implements IBlockCreator {
     }
 
     public List<BlockEntity> create() {
-        // for(IBlockCreator propertyBlockCreator : mPropertyBlockCreators){
-        // blocks.addAll(propertyBlockCreator.create());
-        // }
-
         DataProvider provider = mYiAnScope.getDataProvider();
         if (mTokenTypes.isEmpty() || provider == null) {
             return new ArrayList<BlockEntity>();
@@ -71,21 +67,16 @@ public class BlockCreator<T> implements IBlockCreator {
     }
 
     private List<BlockEntity> getAllBlocks(BlockEntity block) {
-        SectionEntity section = mYiAnScope.getActiveSection();
-        block.section = section;
-        section.blocks.add(block);
+        //SectionEntity section = mYiAnScope.getActiveSection();
+        //block.section = section;
+        //section.blocks.add(block);
 
         List<BlockEntity> blocks = new ArrayList<BlockEntity>();
-        int order = 1;
-        block.order = order;
-        blocks.add(block);
-        for (int i = mPropertyBlocks.size() - 1; i >= 0; --i) {
-            for (BlockEntity temp : mPropertyBlocks.get(i)) {
-                order += 1;
-                temp.order = order;
-                blocks.add(temp);
-            }
+        for (int i = 0; i < mPropertyBlocks.size(); i++) {
+            blocks.addAll(mPropertyBlocks.get(i));
         }
+        blocks.add(block);
+        block.order = blocks.size();
 
 //        blocks.sort(new Comparator<BlockEntity>() {
 //            @Override
