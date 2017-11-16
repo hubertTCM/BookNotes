@@ -20,10 +20,49 @@ public class YiAnEvaluator extends AbstractEvaluator {
         yiAn.details = new ArrayList<YiAnDetailEntity>();
         mYiAnScope.setYiAn(yiAn);
         mYiAns.add(yiAn);
-        
+
         mYiAnScope.initCurrentTokens();
         return true;
     }
 
-    private List<YiAnEntity> mYiAns = null;//new ArrayList<YiAnEntity>();
+    @Override
+    public boolean postEvaluate(ASTNode node) {
+        SectionEntity section = mYiAnScope.getActiveSection();
+        // block.section = section;
+        // section.blocks.add(block);
+        YiAnEntity yiAn = mYiAnScope.getYiAn().get();
+        List<YiAnDetailBlockLinkEntity> tempLinks = new ArrayList<YiAnDetailBlockLinkEntity>();
+        for (YiAnDetailEntity detail : yiAn.details) {
+            tempLinks.clear();
+
+            tempLinks.addAll(detail.blockLinks);
+            tempLinks.sort(new Comparator<YiAnDetailBlockLinkEntity>() {
+                @Override
+                public int compare(YiAnDetailBlockLinkEntity o1, YiAnDetailBlockLinkEntity o2) {
+                    return -1 * (int) (o1.block.order - o2.block.order);
+                }
+            });
+
+            for (int j = tempLinks.size() - 1; j > 0; j--) {
+                YiAnDetailBlockLinkEntity linkJ = tempLinks.get(j);
+                for (int i = 0; i < j; i++) {
+                    YiAnDetailBlockLinkEntity linkI = tempLinks.get(i);
+                    if (linkJ.block.content.equals(linkI.block.content)) {
+                        tempLinks.remove(j);
+                        detail.blockLinks.remove(linkJ);
+                    }
+                }
+            }
+
+            for (YiAnDetailBlockLinkEntity link : tempLinks) {
+                BlockEntity temp = link.block;
+                temp.section = section;
+                section.blocks.add(temp);
+                temp.order = section.blocks.size();
+            }
+        }
+        return true;
+    }
+
+    private List<YiAnEntity> mYiAns = null;// new ArrayList<YiAnEntity>();
 }
