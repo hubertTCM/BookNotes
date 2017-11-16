@@ -67,24 +67,12 @@ public class BlockCreator<T> implements IBlockCreator {
     }
 
     private List<BlockEntity> getAllBlocks(BlockEntity block) {
-        //SectionEntity section = mYiAnScope.getActiveSection();
-        //block.section = section;
-        //section.blocks.add(block);
-
         List<BlockEntity> blocks = new ArrayList<BlockEntity>();
         for (int i = 0; i < mPropertyBlocks.size(); i++) {
             blocks.addAll(mPropertyBlocks.get(i));
         }
         blocks.add(block);
         block.order = blocks.size();
-
-//        blocks.sort(new Comparator<BlockEntity>() {
-//            @Override
-//            public int compare(BlockEntity x, BlockEntity y) {
-//                return (int)(x.order - y.order);
-//            }
-//        });
-
         return blocks;
     }
 
