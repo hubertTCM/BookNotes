@@ -16,18 +16,10 @@ public class importor {
 
     public static void main(String[] args) {
         try {
-            // TODO Auto-generated method stub
-            // DbBuilder builder = new DbBuilder();
-            // builder.build();
-
-            // gu_jin_yi_an_an_importer importor = new
-            // gu_jin_yi_an_an_importer();
-            // importor.doImport();
-
-            // HerbAliasManager aliasManager = new HerbAliasManager();
-            // aliasManager.load();
-            // HerbAliasManager.getInstance().trace();
-
+            //https://stackoverflow.com/questions/40740819/cannot-disable-ormlites-logging
+            System.setProperty("com.j256.ormlite.logger.type", "LOCAL");
+            System.setProperty("com.j256.ormlite.logger.level", "ERROR");
+            
             BookSpliter s = new BookSpliter("resource/临证指南医案/临证指南医案_summary.txt", "resource/临证指南医案/test");
             s.split();
 

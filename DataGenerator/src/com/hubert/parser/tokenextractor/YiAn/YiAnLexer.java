@@ -53,7 +53,7 @@ public class YiAnLexer {
             }
 
             if (!isValid) {
-                // System.out.println(" **** Unknow Token: " + line);
+                System.out.println(" **** Unknow Token: " + line);
                 mTokens.add(new YiAnToken(YiAnTokenType.LiteralText, line, position));
                 continue;
             }
@@ -68,7 +68,6 @@ public class YiAnLexer {
     
     private void initTokenExtractors() {
         mTokenExtractors.add(new IgnoreTokenExtractor());
-        mTokenExtractors.add(new YiAnDescriptionExtractor());
 
         TagTokenExtractor comment = new TagTokenExtractor(YiAnTokenType.SummaryComment);
         comment.registerTag("[comment]", false);
@@ -92,6 +91,8 @@ public class YiAnLexer {
         mTokenExtractors.add(formattedPrescriptionExtractor);
 
         mTokenExtractors.add(new PrescriptionTokenExtractor(prescriptionItemToken));
+        
+        mTokenExtractors.add(new YiAnDescriptionExtractor());
     }
 
     private DataProvider mDataProvider = new DataProvider();
