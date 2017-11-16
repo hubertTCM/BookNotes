@@ -80,7 +80,6 @@ public class BookGenerator {
 
             if (file.isFile()) {
                 loadBlocks(parent, file);
-                break;
             }
         }
     }
