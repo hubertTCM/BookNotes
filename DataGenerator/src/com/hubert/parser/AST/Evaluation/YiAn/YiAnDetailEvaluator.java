@@ -14,8 +14,7 @@ public class YiAnDetailEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        BlockCreator<YiAnEntity> temp = mYiAnScope.getYiAn();
-        YiAnEntity yiAn = temp.get();
+        YiAnEntity yiAn = mYiAnScope.getYiAn();
         YiAnDetailEntity yiAnDetail = new YiAnDetailEntity();
         yiAnDetail.prescriptions = new ArrayList<YiAnPrescriptionEntity>();
         yiAnDetail.blockLinks = new ArrayList<>();

@@ -32,12 +32,12 @@ public class YiAnScope {
         return getVariable(YiAnScope.BookKey);
     }
 
-    public BlockCreator<YiAnEntity> getYiAn() {
+    public YiAnEntity getYiAn() {
         return getVariable(YiAnKey);
     }
 
     public void setYiAn(YiAnEntity yiAn) {
-        setVariable(YiAnKey, yiAn);
+        setRawVariable(YiAnKey, yiAn);
     }
     
     public BlockCreator<YiAnDetailEntity> getYiAnDetail(){
@@ -56,12 +56,12 @@ public class YiAnScope {
         return setVariable(YiAnPresciption, value);
     }
     
-    public BlockCreator<YiAnPrescriptionItemEntity> getYiAnPrescriptionItem(){
+    public YiAnPrescriptionItemEntity getYiAnPrescriptionItem(){
         return getVariable(YiAnPrescriptionItem);
     }
     
     public void setYiAnPrescriptionItem(YiAnPrescriptionItemEntity value){
-        setVariable(YiAnPrescriptionItem, value);
+        setRawVariable(YiAnPrescriptionItem, value);
     }
     
     public List<SortedMap<Position, String>> getOriginalTokens(){
@@ -109,7 +109,4 @@ public class YiAnScope {
     private final static String YiAnPresciption = "YiAnPrescription";
     private final static String YiAnPrescriptionItem = "YiAnPrescriptionItem";
     private final static String YiAnTokens = "YiAnTokens";
-    
-    private final static String NodeType = "NodeType";
-    
 }

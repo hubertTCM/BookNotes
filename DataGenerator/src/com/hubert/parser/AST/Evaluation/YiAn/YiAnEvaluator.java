@@ -25,10 +25,12 @@ public class YiAnEvaluator extends AbstractEvaluator {
         return true;
     }
 
+    // TODO: it is tricky here. can be implemented better.
     @Override
     public boolean postEvaluate(ASTNode node) {
         SectionEntity section = mYiAnScope.getActiveSection();
-        YiAnEntity yiAn = mYiAnScope.getYiAn().get();
+        //YiAnEntity yiAn = mYiAnScope.getYiAn().get();
+        YiAnEntity yiAn = mYiAnScope.getYiAn();
         List<YiAnDetailBlockLinkEntity> tempLinks = new ArrayList<YiAnDetailBlockLinkEntity>();
         for (YiAnDetailEntity detail : yiAn.details) {
             tempLinks.clear();

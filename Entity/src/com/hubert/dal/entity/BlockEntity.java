@@ -18,6 +18,9 @@ public class BlockEntity {
     @DatabaseField(width = 3000)
     public String content;
 
+    @DatabaseField(width = 256)
+    public String blockType;
+
     @DatabaseField()
     public long order;
 
