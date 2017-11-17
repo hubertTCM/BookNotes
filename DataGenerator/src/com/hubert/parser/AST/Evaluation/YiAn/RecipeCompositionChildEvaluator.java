@@ -13,8 +13,7 @@ public class RecipeCompositionChildEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        BlockCreator<YiAnPrescriptionItemEntity> temp = mYiAnScope.getYiAnPrescriptionItem();
-        YiAnPrescriptionItemEntity entity = temp.get();
+        YiAnPrescriptionItemEntity entity = mYiAnScope.getYiAnPrescriptionItem();
         entity.herb = node.getValue();
         
         BlockCreator<YiAnPrescriptionEntity> prescriptionBlockCreator = mYiAnScope.getYiAnPrescription();
