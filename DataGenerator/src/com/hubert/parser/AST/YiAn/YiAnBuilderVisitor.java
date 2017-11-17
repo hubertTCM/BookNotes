@@ -43,9 +43,6 @@ public class YiAnBuilderVisitor implements IVisitor {
         mEvaluators.add(new RecipePropertyEvaluator(context));
     }
 
-    public YiAnBuilderVisitor(HerbAliasManager herbAliasManager, DataProvider dataProvider) {
-        this(null, herbAliasManager, dataProvider);
-    }
 
     @Override
     public void visit(ASTNode node) {

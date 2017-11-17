@@ -103,7 +103,9 @@ public class BookGenerator {
 
         ASTNode node = mYiAnParser.parse(mGrammar, tokens);
 
-        YiAnBuilderVisitor builder = new YiAnBuilderVisitor(parent, mHerbAliasManager, lexer.getDataProvider());
+        String sectionName = getSectionName(file.getName());
+        SectionEntity current  = createSection(parent, sectionName);
+        YiAnBuilderVisitor builder = new YiAnBuilderVisitor(current, mHerbAliasManager, lexer.getDataProvider());
         node.accept(builder);
         mYiAns.addAll(builder.getYiAns());
         mTokens.addAll(builder.getTokens());
