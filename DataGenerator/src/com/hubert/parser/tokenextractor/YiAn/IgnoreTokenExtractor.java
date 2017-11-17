@@ -10,6 +10,7 @@ public class IgnoreTokenExtractor implements ITokenExtractor {
     public IgnoreTokenExtractor() {
         mTags = new ArrayList<String>();
         mTags.add("// comment");
+        mTags.add("//");
     }
 
     @Override
