@@ -9,8 +9,9 @@ import com.hubert.parser.AST.YiAn.*;
 import com.hubert.parser.tokenextractor.*;
 
 public class BlockCreator<T> implements IBlockCreator {
-    public BlockCreator(T data, YiAnScope yiAnScope) {
+    public BlockCreator(T data, String blockType, YiAnScope yiAnScope) {
         mData = data;
+        mBlockType = blockType;
         mYiAnScope = yiAnScope;
     }
 
@@ -24,6 +25,7 @@ public class BlockCreator<T> implements IBlockCreator {
             return new ArrayList<BlockEntity>();
         }
         BlockEntity entity = new BlockEntity();
+        entity.blockType = mBlockType;
         entity.content = "";
         String previousToken = null;
         for (Entry<Position, String> entry : mTokenTypes.entrySet()) {
@@ -77,6 +79,7 @@ public class BlockCreator<T> implements IBlockCreator {
     }
 
     private T mData;
+    private String mBlockType;
     private YiAnScope mYiAnScope;
     private IBlockCreator mParent;
     private List<List<BlockEntity>> mPropertyBlocks = new ArrayList<List<BlockEntity>>();

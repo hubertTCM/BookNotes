@@ -5,6 +5,7 @@ import java.util.*;
 import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.*;
 import com.hubert.parser.AST.Evaluation.Common.*;
+import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 import com.hubert.parser.tokenextractor.*;
 
 public class YiAnScope {
@@ -45,7 +46,7 @@ public class YiAnScope {
     }
     
     public void setYiAnDetail(YiAnDetailEntity value){
-        setVariable(YiAnDetailKey, value);
+        setVariable(YiAnDetailKey, value, YiAnNodeConstants.Description);
     }
 
     public BlockCreator<YiAnPrescriptionEntity> getYiAnPrescription() {
@@ -53,7 +54,7 @@ public class YiAnScope {
     }
 
     public BlockCreator<YiAnPrescriptionEntity> setYiAnPrescription(YiAnPrescriptionEntity value) {
-        return setVariable(YiAnPresciption, value);
+        return setVariable(YiAnPresciption, value, YiAnNodeConstants.RecipeDetail);
     }
     
     public YiAnPrescriptionItemEntity getYiAnPrescriptionItem(){
@@ -88,8 +89,8 @@ public class YiAnScope {
         return mStorage.setVariable(key, value);
     }
     
-    protected <T> BlockCreator<T> setVariable(String key, T value) {
-        BlockCreator<T> provider = new BlockCreator<>(value, this);
+    protected <T> BlockCreator<T> setVariable(String key, T value, String blockType) {
+        BlockCreator<T> provider = new BlockCreator<>(value, blockType, this);
         mStorage.setVariable(key, provider).get();
         return provider;
     }
