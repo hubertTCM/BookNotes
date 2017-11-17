@@ -3,6 +3,7 @@ package com.hubert;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.*;
 
 public class Utils {
@@ -14,6 +15,7 @@ public class Utils {
             String message = String.format("compare '%s' and '%s'", expectFile, actualFile);
             assertEquals(message, expectContent, actualContent);
         } catch (IOException e) {
+            e.printStackTrace(new PrintStream(System.out));
             fail(e.toString());
         }
     }
