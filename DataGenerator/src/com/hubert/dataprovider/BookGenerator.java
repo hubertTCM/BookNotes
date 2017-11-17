@@ -108,7 +108,7 @@ public class BookGenerator {
         YiAnBuilderVisitor builder = new YiAnBuilderVisitor(current, mHerbAliasManager, lexer.getDataProvider());
         node.accept(builder);
         
-        String key = getRelativePath(file).toString();
+        String key = Paths.get(getRelativePath(file).toString(),  sectionName).toString();
         mYiAns.put(key, builder.getYiAns());
         mTokens.addAll(builder.getTokens());
 
