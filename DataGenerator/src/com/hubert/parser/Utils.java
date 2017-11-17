@@ -1,6 +1,6 @@
 package com.hubert.parser;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -26,5 +26,13 @@ public final class Utils {
         entity.childSections = new ArrayList<SectionEntity>();
         entity.blocks = new ArrayList<BlockEntity>();
         return entity;
+    }
+
+    public static <K, V> List<V> merge(Map<K, List<V>> source) {
+        List<V> result = new ArrayList<V>();
+        for(Map.Entry<K, List<V>> entry : source.entrySet()){
+            result.addAll(entry.getValue());
+        }
+        return result;
     }
 }

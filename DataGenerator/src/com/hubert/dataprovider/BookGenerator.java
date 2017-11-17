@@ -40,7 +40,7 @@ public class BookGenerator {
         debugDirectory.mkdirs();
     }
 
-    public List<YiAnEntity> doImport() {
+    public Map<String, List<YiAnEntity>> doImport() {
         try {
             loadSections(null, mBookDirectory);
         } catch (IOException e) {
@@ -107,7 +107,9 @@ public class BookGenerator {
         SectionEntity current  = createSection(parent, sectionName);
         YiAnBuilderVisitor builder = new YiAnBuilderVisitor(current, mHerbAliasManager, lexer.getDataProvider());
         node.accept(builder);
-        mYiAns.addAll(builder.getYiAns());
+        
+        String key = getRelativePath(file).toString();
+        mYiAns.put(key, builder.getYiAns());
         mTokens.addAll(builder.getTokens());
 
         Pair<String, String> debugPathInfo = extractDebugDirectory(file);
@@ -140,10 +142,7 @@ public class BookGenerator {
     }
 
     protected Pair<String, String> extractDebugDirectory(File file) {
-        // https://stackoverflow.com/questions/204784/how-to-construct-a-relative-path-in-java-from-two-absolute-paths-or-urls
-        Path pathBase = Paths.get(mBookDirectory.getAbsolutePath());
-        Path pathAbsolute = Paths.get(file.getParent()).toAbsolutePath();
-        Path pathRelative = pathBase.relativize(pathAbsolute);
+        Path pathRelative = getRelativePath(file);
         String outputDirectory = Paths.get(mDebugOutputDirectory, pathRelative.toString()).toString();
         String fileNameWithoutExtension = file.getName();
         int pos = fileNameWithoutExtension.lastIndexOf(".");
@@ -152,6 +151,14 @@ public class BookGenerator {
         }
 
         return new Pair<>(outputDirectory, fileNameWithoutExtension);
+    }
+
+    protected Path getRelativePath(File file) {
+        // https://stackoverflow.com/questions/204784/how-to-construct-a-relative-path-in-java-from-two-absolute-paths-or-urls
+        Path pathBase = Paths.get(mBookDirectory.getAbsolutePath());
+        Path pathAbsolute = Paths.get(file.getParent()).toAbsolutePath();
+        Path pathRelative = pathBase.relativize(pathAbsolute);
+        return pathRelative;
     }
 
     private SectionEntity createSection(SectionEntity parent, String sectionName) {
@@ -196,6 +203,6 @@ public class BookGenerator {
 
     protected HerbAliasManager mHerbAliasManager;
 
-    protected List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
+    protected Map<String, List<YiAnEntity>> mYiAns = new HashMap<String, List<YiAnEntity>>();//new ArrayList<YiAnEntity>();
     private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
 }
