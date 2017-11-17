@@ -11,6 +11,7 @@ import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.*;
 import com.hubert.machinelearning.*;
 import com.hubert.machinelearning.YiAn.*;
+import com.hubert.parser.Utils;
 
 public class ClusterTest {
 
@@ -19,7 +20,8 @@ public class ClusterTest {
         try {
             BookGenerator generator = new BookGenerator(sGrammarFile, "../DataGenerator/resource/临证指南医案",
                     sHerbAliasManager);
-            List<YiAnEntity> yiAns = generator.doImport();
+            Map<String,List<YiAnEntity>> temp = generator.doImport();
+            List<YiAnEntity> yiAns = Utils.merge(temp);
 
             List<YiAnPrescriptionEntity> prescriptions = new ArrayList<YiAnPrescriptionEntity>();
             for (YiAnEntity yiAn : yiAns) {

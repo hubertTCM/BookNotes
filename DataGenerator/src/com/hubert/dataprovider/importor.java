@@ -11,6 +11,7 @@ import com.hubert.machinelearning.YiAn.*;
 //import com.hubert.parser.AST.*;
 //import com.hubert.parser.AST.YiAn.*;
 //import com.hubert.parser.tokenextractor.*;
+import com.hubert.parser.*;
 
 public class importor {
 
@@ -25,7 +26,8 @@ public class importor {
 
             BookGenerator generator = new BookGenerator("resource/临证指南医案/grammar.xml", "resource/临证指南医案",
                     HerbAliasManager.getInstance());
-            List<YiAnEntity> yiAns = generator.doImport();
+            Map<String, List<YiAnEntity>> temp = generator.doImport();
+            List<YiAnEntity> yiAns = Utils.merge(temp);
             BookEntity book = generator.getBook();
             
             DbBuilder builder = new DbBuilder();
