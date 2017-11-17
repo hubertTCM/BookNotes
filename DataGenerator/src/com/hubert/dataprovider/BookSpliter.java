@@ -50,6 +50,7 @@ public class BookSpliter {
                 String fileName = String.valueOf(currentFileIndex) + "." + line + ".txt";
                 currentWriter = new FileWriter(
                         Paths.get(directory.getAbsolutePath(), fileName).toFile().getAbsolutePath());
+                currentFileIndex += 1;
                 continue;
             }
 
