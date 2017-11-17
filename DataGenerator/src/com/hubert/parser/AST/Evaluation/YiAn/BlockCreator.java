@@ -9,14 +9,14 @@ import com.hubert.parser.AST.YiAn.*;
 import com.hubert.parser.tokenextractor.*;
 
 public class BlockCreator<T> implements IBlockCreator {
-    public BlockCreator(T data, String blockType, YiAnScope yiAnScope) {
-        mData = data;
+    public BlockCreator(T entity, String blockType, YiAnScope yiAnScope) {
+        mEntity = entity;
         mBlockType = blockType;
         mYiAnScope = yiAnScope;
     }
 
-    public T get() {
-        return mData;
+    public T getEntity() {
+        return mEntity;
     }
 
     public List<BlockEntity> create() {
@@ -78,7 +78,7 @@ public class BlockCreator<T> implements IBlockCreator {
         return blocks;
     }
 
-    private T mData;
+    private T mEntity;
     private String mBlockType;
     private YiAnScope mYiAnScope;
     private IBlockCreator mParent;

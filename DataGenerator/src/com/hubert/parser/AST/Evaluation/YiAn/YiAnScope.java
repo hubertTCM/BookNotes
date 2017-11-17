@@ -91,7 +91,7 @@ public class YiAnScope {
     
     protected <T> BlockCreator<T> setVariable(String key, T value, String blockType) {
         BlockCreator<T> provider = new BlockCreator<>(value, blockType, this);
-        mStorage.setVariable(key, provider).get();
+        mStorage.setVariable(key, provider).getEntity();
         return provider;
     }
 

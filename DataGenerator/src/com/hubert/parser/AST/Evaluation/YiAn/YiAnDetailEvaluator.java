@@ -30,7 +30,7 @@ public class YiAnDetailEvaluator extends AbstractEvaluator {
         BlockCreator<YiAnDetailEntity> temp = mYiAnScope.getYiAnDetail();
         List<BlockEntity> blocks = temp.create();
         for(BlockEntity block : blocks){
-            YiAnDetailEntity yiAnDetail = temp.get();
+            YiAnDetailEntity yiAnDetail = temp.getEntity();
             YiAnDetailBlockLinkEntity link = new YiAnDetailBlockLinkEntity();
             link.block = block;
             link.yian = yiAnDetail;
