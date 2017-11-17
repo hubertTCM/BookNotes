@@ -47,6 +47,7 @@ SummaryCommentCommon := Empty
 
 S := YN2 SummaryCommentCommon
 S := YN SummaryCommentCommon
+S := SummaryCommentCommon
 
 //RecipeContent := Herb RecipeContentAfterHerbCommon
 //RecipeContentAfterHerbCommon :=  Empty
