@@ -6,18 +6,18 @@ import com.hubert.parser.tokenextractor.*;
 import javafx.util.Pair;
 
 public class TagTokenExtractor implements ITokenExtractor {
-    public TagTokenExtractor(YiAnTokenType tokenType) {
+    public TagTokenExtractor(YiAnTokenType tokenType, DataProvider provider) {
         mTokenType = tokenType;
-        mTags = new ArrayList<Pair<String, Boolean>>();
-    }
-
-    public void registerTag(String tag, boolean isRawTag) {
-        mTags.add(new Pair<String, Boolean>(tag, isRawTag));
+        mDataProvider = provider;
+        registerTag(tokenType.name());
     }
 
     public void registerTag(String tag) {
-        boolean isRawTag = !tag.startsWith("[");
-        registerTag(tag, isRawTag);
+        for (ContentType contentType : ContentType.values()) {
+            Pair<String, String> temp = mDataProvider.getContentTypeTag(contentType);
+            String fullTagText = temp.getKey() + tag + temp.getValue();
+            mTags.add(new Pair<>(fullTagText, contentType));
+        }
     }
 
     @Override
@@ -27,25 +27,22 @@ public class TagTokenExtractor implements ITokenExtractor {
     }
 
     protected Pair<Boolean, String> extractCore(String text, Position sourcePosition, Collection<Token> container) {
-        for (Pair<String, Boolean> temp : mTags) {
+        for (Pair<String, ContentType> temp : mTags) {
             if (!text.startsWith(temp.getKey())) {
                 continue;
             }
 
-            if (temp.getValue()) {
-                container.add(new YiAnToken(mTokenType, text, sourcePosition));
-                return new Pair<>(true, text);
-            }
-
             String formattedText = text.substring(temp.getKey().length());
             container.add(new YiAnToken(mTokenType, formattedText, sourcePosition));
+            mDataProvider.setContentType(sourcePosition, temp.getValue());
             return new Pair<>(true, formattedText);
         }
         return new Pair<>(false, "");
     }
 
     // isRawTag
-    protected ArrayList<Pair<String, Boolean>> mTags;
+    protected ArrayList<Pair<String, ContentType>> mTags = new ArrayList<Pair<String, ContentType>>();
     protected YiAnTokenType mTokenType;
+    protected DataProvider mDataProvider;
 
 }
