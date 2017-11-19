@@ -27,13 +27,11 @@ public class BlockCreator<T> implements IBlockCreator {
         BlockEntity entity = new BlockEntity();
         entity.blockType = mBlockType;
         entity.content = "";
-        String previousToken = null;
         for (Entry<Position, String> entry : mTokenTypes.entrySet()) {
-            if (YiAnNodeConstants.RecipeAbbreviation.equals(previousToken)) {
-                previousToken = entry.getValue();
+            ContentType contentType = provider.getContentType(entry.getKey());
+            if (contentType.equals(ContentType.AdditionalText)){
                 continue;
             }
-            previousToken = entry.getValue();
             String content = provider.getContent(entry.getKey());
             entity.content += content + "\n";
         }

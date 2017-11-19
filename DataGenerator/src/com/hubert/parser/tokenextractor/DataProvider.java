@@ -55,15 +55,15 @@ public class DataProvider {
         return content;
     }
 
-    public String getFullContent(Position position) {
+    public String getFullContent(Position position, String tokenType) {
         String content = "";
         int lineNumber = position.getLineNumber();
         if (mData.containsKey(lineNumber)) {
             InternalData data = mData.get(lineNumber);
-            content = data.content;
+            content = getContent(position);
             String startTag = getContentTypeStartTag(data.contentType);
             String endTag = getContentTypeEndTag(data.contentType);
-            content = startTag + content + endTag;
+            content = startTag + tokenType + endTag + content;
         }
         return content;
 
