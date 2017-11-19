@@ -128,7 +128,7 @@ public class BookGenerator {
             FileWriter writer = new FileWriter(filePath);
             for (SortedMap<Position, String> temp : tokens) {
                 for (Map.Entry<Position, String> entry : temp.entrySet()) {
-                    String content = provider.getFullContent(entry.getKey());
+                    String content = provider.getFullContent(entry.getKey(), entry.getValue());
                     writer.write(content + "\n");
                 }
                 writer.write(provider.getEndLine() + "\n");
