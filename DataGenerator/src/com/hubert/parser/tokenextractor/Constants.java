@@ -5,7 +5,7 @@ public class Constants {
     public static final String Empty = "Empty";
     public static final String End = "End";
     public static final String Start = "S";
-    
-    public static final String TokenStartTag = "[";
-    public static final String TokenEndTag = "]";
+//    
+//    public static final String TokenStartTag = "[";
+//    public static final String TokenEndTag = "]";
 }

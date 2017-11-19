@@ -26,13 +26,13 @@ public class YiAnLexer {
         Charset utf8 = Charset.forName("UTF-8");
         List<String> lines = Files.readAllLines(filePath, utf8);
 
-        for(int i = 0; i < lines.size(); ++i){
+        for (int i = 0; i < lines.size(); ++i) {
             String temp = lines.get(i);
             Position position = new Position(i);
             String line = StringUtils.trim(temp);
-            
+
             mDataProvider.setContent(i, line);
-            
+
             if (line.isEmpty()) {
                 if (!mTokens.isEmpty()) {
                     mTokens.add(new YiAnToken(YiAnTokenType.End, position));
@@ -53,7 +53,7 @@ public class YiAnLexer {
             }
 
             if (!isValid) {
-                //System.out.println(" **** Unknow Token: " + line);
+                // System.out.println(" **** Unknow Token: " + line);
                 mTokens.add(new YiAnToken(YiAnTokenType.LiteralText, line, position));
                 continue;
             }
@@ -62,10 +62,10 @@ public class YiAnLexer {
         return mTokens;
     }
 
-    public DataProvider getDataProvider(){
+    public DataProvider getDataProvider() {
         return mDataProvider;
     }
-    
+
     private void initTokenExtractors() {
         mTokenExtractors.add(new IgnoreTokenExtractor());
 
@@ -85,12 +85,12 @@ public class YiAnLexer {
         mTokenExtractors.add(yiAnTagExtractor);
 
         PrescriptionItemTokenExtractor prescriptionItemToken = new PrescriptionItemTokenExtractor();
-        FormattedPrescriptionExtractor formattedPrescriptionExtractor = new FormattedPrescriptionExtractor(
-                prescriptionItemToken);
+        RecipeContentExtractor formattedPrescriptionExtractor = new RecipeContentExtractor(prescriptionItemToken,
+                mDataProvider);
         mTokenExtractors.add(formattedPrescriptionExtractor);
 
         mTokenExtractors.add(new PrescriptionTokenExtractor(prescriptionItemToken));
-        
+
         mTokenExtractors.add(new YiAnDescriptionExtractor());
     }
 

@@ -56,8 +56,8 @@ public class BookGenerator {
     public List<SortedMap<Position, String>> getTokens() {
         return mTokens;
     }
-    
-    public BookEntity getBook(){
+
+    public BookEntity getBook() {
         return mBook;
     }
 
@@ -104,11 +104,11 @@ public class BookGenerator {
         ASTNode node = mYiAnParser.parse(mGrammar, tokens);
 
         String sectionName = getSectionName(file.getName());
-        SectionEntity current  = createSection(parent, sectionName);
+        SectionEntity current = createSection(parent, sectionName);
         YiAnBuilderVisitor builder = new YiAnBuilderVisitor(current, mHerbAliasManager, lexer.getDataProvider());
         node.accept(builder);
-        
-        String key = Paths.get(getRelativePath(file).toString(),  sectionName).toString();
+
+        String key = Paths.get(getRelativePath(file).toString(), sectionName).toString();
         mYiAns.put(key, builder.getYiAns());
         mTokens.addAll(builder.getTokens());
 
@@ -128,11 +128,10 @@ public class BookGenerator {
             FileWriter writer = new FileWriter(filePath);
             for (SortedMap<Position, String> temp : tokens) {
                 for (Map.Entry<Position, String> entry : temp.entrySet()) {
-                    String content = provider.getContent(entry.getKey());
-                    content = Constants.TokenStartTag + entry.getValue() + Constants.TokenEndTag + content;
+                    String content = provider.getFullContent(entry.getKey());
                     writer.write(content + "\n");
                 }
-                writer.write(Constants.TokenStartTag + Constants.End + Constants.TokenEndTag + "\n");
+                writer.write(provider.getEndLine() + "\n");
             }
             writer.close();
         } catch (IOException e) {
@@ -203,6 +202,7 @@ public class BookGenerator {
 
     protected HerbAliasManager mHerbAliasManager;
 
-    protected Map<String, List<YiAnEntity>> mYiAns = new HashMap<String, List<YiAnEntity>>();//new ArrayList<YiAnEntity>();
+    protected Map<String, List<YiAnEntity>> mYiAns = new HashMap<String, List<YiAnEntity>>();// new
+                                                                                             // ArrayList<YiAnEntity>();
     private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
 }

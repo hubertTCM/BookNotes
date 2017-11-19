@@ -40,7 +40,6 @@ public class TagTokenExtractor implements ITokenExtractor {
         return new Pair<>(false, "");
     }
 
-    // isRawTag
     protected ArrayList<Pair<String, ContentType>> mTags = new ArrayList<Pair<String, ContentType>>();
     protected YiAnTokenType mTokenType;
     protected DataProvider mDataProvider;
