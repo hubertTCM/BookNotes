@@ -6,6 +6,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/DataGenerator"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Entity"/>
 	<classpathentry kind="lib" path="../lib/commons-collections4-4.1.jar" sourcepath="/tmp/.org.sf.feeling.decompiler1506501749592/source/commons-collections4-4.1-sources.jar"/>
-	<classpathentry kind="src" path="/Training"/>
+	<classpathentry kind="src" path="/Algorithm"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
