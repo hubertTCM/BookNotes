@@ -11,22 +11,12 @@ public class FPTree<T> {
         build();
     }
 
-    public List<Pair<Integer, List<T>>> get(T value, int limit) {
-        HeadNode<T> head = findHead(value);
-        return get(head, limit);
-    }
-
-    public List<Pair<Integer, List<T>>> getAll(int limit) {
+    public List<Pair<Integer, List<T>>> getAll() {
         List<Pair<Integer, List<T>>> result = new ArrayList<Pair<Integer, List<T>>>();
-        for (HeadNode<T> head : mHeads) {
-            result.addAll(get(head, limit));
-        }
-        return result;
-    }
-
-    private List<Pair<Integer, List<T>>> get(HeadNode<T> head, int lowerLimit) {
-        List<Pair<Integer, List<T>>> result = new ArrayList<Pair<Integer, List<T>>>();
-        head.merge(result, lowerLimit);
+//        for (HeadNode head : mHeads) {
+//            List<Pair<Integer, List<T>>> pair = head.get(mLowerLimit);
+//            result.addAll(pair);
+//        }
         return result;
     }
 
@@ -46,8 +36,8 @@ public class FPTree<T> {
 
             @Override
             public int compare(T o1, T o2) {
-                HeadNode<T> h1 = findHead(o1);
-                HeadNode<T> h2 = findHead(o2);
+                HeadNode h1 = findHead(o1);
+                HeadNode h2 = findHead(o2);
                 if (h1.getCount() > h2.getCount()) {
                     return 1;
                 }
@@ -62,7 +52,7 @@ public class FPTree<T> {
     private void adjustHeads() {
         sortHeads();
         for (int i = mHeads.size() - 1; i >= 0; --i) {
-            HeadNode<T> head = mHeads.get(i);
+            HeadNode head = mHeads.get(i);
             if (head.getCount() < mLowerLimit) {
                 mHeads.remove(i);
                 continue;
@@ -72,9 +62,9 @@ public class FPTree<T> {
     }
 
     protected void sortHeads() {
-        mHeads.sort(new Comparator<HeadNode<T>>() {
+        mHeads.sort(new Comparator<HeadNode>() {
             @Override
-            public int compare(FPTree<T>.HeadNode<T> o1, FPTree<T>.HeadNode<T> o2) {
+            public int compare(FPTree<T>.HeadNode o1, FPTree<T>.HeadNode o2) {
                 int diff = o1.getCount() - o2.getCount();
                 if (diff > 0) {
                     return 1;
@@ -87,9 +77,9 @@ public class FPTree<T> {
         });
     }
 
-    private HeadNode<T> findHead(T data) {
-        for (HeadNode<T> temp : mHeads) {
-            if (temp.getValue() == data) {
+    private HeadNode findHead(T data) {
+        for (HeadNode temp : mHeads) {
+            if (data.equals(temp.getValue())) {
                 return temp;
             }
         }
@@ -98,8 +88,8 @@ public class FPTree<T> {
 
     private void buildHead(Collection<T> source) {
         for (T data : source) {
-            HeadNode<T> head = null;
-            for (HeadNode<T> temp : mHeads) {
+            HeadNode head = null;
+            for (HeadNode temp : mHeads) {
                 if (temp.getValue() == data) {
                     head = temp;
                     head.increaseCount();
@@ -107,7 +97,7 @@ public class FPTree<T> {
                 }
             }
             if (head == null) {
-                head = new HeadNode<T>(data, 1);
+                head = new HeadNode(data, 1);
                 mHeads.add(head);
             }
         }
@@ -118,13 +108,13 @@ public class FPTree<T> {
         temp.addAll(source);
         sort(temp);
 
-        TreeNode<T> currentNode = mRoot;
+        TreeNode currentNode = mRoot;
         for (T data : temp) {
-            HeadNode<T> head = findHead(data);
+            HeadNode head = findHead(data);
             if (head == null) {
                 break;
             }
-            TreeNode<T> child = currentNode.findChild(data);
+            TreeNode child = currentNode.findChild(data);
             if (child == null) {
                 child = currentNode.addChild(data);
                 head.insert(child);
@@ -136,8 +126,8 @@ public class FPTree<T> {
 
     }
 
-    private class NodeBase<T> {
-        protected NodeBase(T value, int count) {
+    private class NodeBase {
+        public NodeBase(T value, int count) {
             mValue = value;
             mCount = count;
         }
@@ -158,17 +148,28 @@ public class FPTree<T> {
         protected T mValue;
     }
 
-    private class TreeNode<T> extends NodeBase<T> {
+    private class TreeNode extends NodeBase {
         public TreeNode(T value) {
             super(value, 1);
         }
 
-        public TreeNode<T> getParent() {
-            return mParent;
-        }
+//        public TreeNode getParent() {
+//            return mParent;
+//        }
 
-        public TreeNode<T> findChild(T value) {
-            for (TreeNode<T> child : mChildren) {
+//        public Pair<Integer, List<T>> getAllItems() {
+//            List<T> temp = new ArrayList<T>();
+//            temp.add(mValue);
+//            TreeNode node = mParent;
+//            while (node.getParent() != null) {
+//                temp.add(node.getValue());
+//                node = node.getParent();
+//            }
+//            return new Pair<>(getCount(), temp);
+//        }
+
+        public TreeNode findChild(T value) {
+            for (TreeNode child : mChildren) {
                 if (child.getValue() == value) {
                     return child;
                 }
@@ -176,102 +177,71 @@ public class FPTree<T> {
             return null;
         }
 
-        public TreeNode<T> addChild(T value) {
-            TreeNode<T> node = new TreeNode<T>(value);
+        public TreeNode addChild(T value) {
+            TreeNode node = new TreeNode(value);
             node.mParent = this;
             this.mChildren.add(node);
             return node;
         }
 
-        private TreeNode<T> mParent;
-        private List<TreeNode<T>> mChildren = new ArrayList<TreeNode<T>>();
+        private TreeNode mParent;
+        private List<TreeNode> mChildren = new ArrayList<TreeNode>();
     }
 
-    private class ListNode<T> {
-        public ListNode(TreeNode<T> node) {
+    private class ListNode {
+        public ListNode(TreeNode node) {
             mNext = null;
             mValue = node;
         }
 
-        public ListNode<T> getNext() {
+        public ListNode getNext() {
             return mNext;
         }
 
-        public List<Pair<Integer, List<T>>> getAllItems() {
-            List<Pair<Integer, List<T>>> result = new ArrayList<Pair<Integer, List<T>>>();
-            //List<T> current = new ArrayList<T>();
-            //ListNode<T> currentNode = mNext;
-            return result;
-        }
+//        public Pair<Integer, List<T>> getAllItems() {
+//            return mValue.getAllItems();
+//        }
 
         public int getCount() {
             return mValue.getCount();
         }
 
-        public ListNode<T> insertAfter(TreeNode<T> value) {
-            ListNode<T> node = new ListNode<T>(value);
+        public ListNode insertAfter(TreeNode value) {
+            ListNode node = new ListNode(value);
             node.mNext = mNext.mNext;
             mNext.mNext = node;
             return node;
         }
 
-        // public void swap(ListNode<T> to){
-        // if (to == null){
-        // return;
-        // }
-        //
-        // // just change the data value is OK here
-        // TreeNode<T> temp = mValue;
-        // mValue = to.getValue();
-        // to.mValue = temp;
-        // }
-
-        TreeNode<T> mValue;
-        ListNode<T> mNext;
+        TreeNode mValue;
+        ListNode mNext;
     }
 
-    private class HeadNode<T> extends NodeBase<T> {
+    private class HeadNode extends NodeBase {
         public HeadNode(T value, int count) {
             super(value, count);
             mNode = null;
         }
 
-        public void merge(List<Pair<Integer, List<T>>> source, int lowerLimit) {
-            if (mCount < lowerLimit) {
-                return;
-            }
+//        public List<Pair<Integer, List<T>>> get(int lowerLimit) {
+//            ListNode node = mNode;
+//            List<Pair<Integer, List<T>>> result  = new ArrayList<Pair<Integer, List<T>>>();
+//            while (node != null) {
+//                Pair<Integer, List<T>> singlePath = node.getAllItems();
+//                result.add(singlePath);
+//                node = node.getNext();
+//            }
+//            return result;
+//        }
 
-            ListNode<T> node = mNode;
-            while (node != null) {
-                List<Pair<Integer, List<T>>> temp = node.getAllItems();
-                merge(source, temp);
-                node = node.getNext();
-            }
-        }
-
-        private void merge(List<Pair<Integer, List<T>>> to, List<Pair<Integer, List<T>>> from) {
-            for (int i = 0; i < from.size(); i++) {
-                for (int j = 0; j < to.size(); j++) {
-                    Pair<Integer, List<T>> pairI = from.get(i);
-                    List<T> valueI = pairI.getValue();
-                    Pair<Integer, List<T>> pairJ = to.get(j);
-                    List<T> valueJ = pairJ.getValue();
-                    if (!valueI.containsAll(valueJ) || !valueJ.contains(valueI)) {
-                        continue;
-                    }
-                    to.set(j, new Pair<>(pairI.getKey() + pairJ.getKey(), valueJ));
-                }
-            }
-        }
-
-        public void insert(TreeNode<T> node) {
+        public void insert(TreeNode node) {
             if (mNode == null) {
-                mNode = new ListNode<T>(node);
+                mNode = new ListNode(node);
                 return;
             }
-            ListNode<T> current = mNode;
+            ListNode current = mNode;
             while (true) {
-                ListNode<T> next = current.getNext();
+                ListNode next = current.getNext();
                 if (next == null || next.getCount() < node.getCount()) {
                     current.insertAfter(node);
                     break;
@@ -280,11 +250,11 @@ public class FPTree<T> {
             }
         }
 
-        ListNode<T> mNode;
+        ListNode mNode;
     }
 
-    private List<HeadNode<T>> mHeads = new ArrayList<HeadNode<T>>();
-    private TreeNode<T> mRoot = new TreeNode<T>(null);
+    private List<HeadNode> mHeads = new Vector<HeadNode>();
+    private TreeNode mRoot = new TreeNode(null);
     private Collection<Collection<T>> mSource;
     private int mLowerLimit = 0;
 }
