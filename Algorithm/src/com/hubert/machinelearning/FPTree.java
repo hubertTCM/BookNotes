@@ -6,9 +6,8 @@ import javafx.util.*;
 // http://www.cnblogs.com/pinard/p/6307064.html
 public class FPTree<T> {
     public FPTree(Collection<Collection<T>> source, int lowerLimit) {
-        mSource = source;
         mLowerLimit = lowerLimit;
-        build();
+        build(source);
     }
 
     public List<Pair<Integer, List<T>>> getAll() {
@@ -20,13 +19,13 @@ public class FPTree<T> {
         return result;
     }
 
-    private void build() {
-        for (Collection<T> temp : mSource) {
+    private void build(Collection<Collection<T>> source) {
+        for (Collection<T> temp : source) {
             buildHead(temp);
         }
         adjustHeads();
 
-        for (Collection<T> item : mSource) {
+        for (Collection<T> item : source) {
             updateTree(item);
         }
     }
@@ -255,6 +254,5 @@ public class FPTree<T> {
 
     private List<HeadNode> mHeads = new Vector<HeadNode>();
     private TreeNode mRoot = new TreeNode(null);
-    private Collection<Collection<T>> mSource;
     private int mLowerLimit = 0;
 }
