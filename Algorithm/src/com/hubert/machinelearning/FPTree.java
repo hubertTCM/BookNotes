@@ -9,24 +9,88 @@ public class FPTree<T> {
         mLowerLimit = lowerLimit;
         build(source);
     }
+    public FPTree(List<Pair<Integer, List<T>>> source, int lowerLimit, List<T> postfix){
+        mLowerLimit = lowerLimit;
+        mPostfix.addAll(postfix);
+        build(source);
+    }
 
     public List<Pair<Integer, List<T>>> getAll() {
         List<Pair<Integer, List<T>>> result = new ArrayList<Pair<Integer, List<T>>>();
-//        for (HeadNode head : mHeads) {
-//            List<Pair<Integer, List<T>>> pair = head.get(mLowerLimit);
-//            result.addAll(pair);
-//        }
+        for (HeadNode head : mHeads) {
+            List<Pair<Integer, List<T>>> pair = get(head);
+            result.addAll(pair);
+        }
+        return result;
+    }
+    
+    private List<Pair<Integer, List<T>>> get(HeadNode head){
+        List<Pair<Integer, List<T>>> result = new ArrayList<Pair<Integer, List<T>>>();
+        
+        List<T> postfix = new ArrayList<T>();
+        postfix.add(head.getValue());
+        postfix.addAll(mPostfix);
+        
+        if (head.isSignlePath()){
+            if (postfix.size() > 1){
+                result.add(new Pair<Integer, List<T>>(head.getFrequency(), postfix));
+            }
+            
+            for(Pair<Integer, List<T>> prefixPath : head.getAllPrefixPath()){
+                List<T> path = new ArrayList<T>();
+                path.addAll(postfix);
+                for(int i = 0; i < prefixPath.getValue().size(); i++){
+                    path.addAll(prefixPath.getValue().subList(i,  prefixPath.getValue().size()));
+                    result.add(new Pair<Integer, List<T>>(prefixPath.getKey(), path));
+                }
+            }
+        }
+        else{
+            for(Pair<Integer, List<T>> prefixPath : head.getAllPrefixPath()){
+                List<T> path = new ArrayList<T>();
+                path.addAll(prefixPath.getValue());
+                Pair<Integer, List<T>> pair = new Pair<Integer, List<T>>(prefixPath.getKey(), path);
+                result.add(pair);
+            }
+            
+            if (!result.isEmpty()){
+                
+                FPTree<T> conditionalTree = new FPTree<T>(result, mLowerLimit, postfix);
+                List<Pair<Integer, List<T>>> conditionalResult = conditionalTree.getAll();
+                for(Pair<Integer, List<T>> pair : conditionalResult){
+                    pair.getValue().addAll(postfix);
+                }
+                result.addAll(conditionalResult);
+            }
+            else{
+              if (postfix.size() > 1){
+                  result.add(new Pair<Integer, List<T>>(head.getFrequency(), postfix));
+              }
+            }
+        }
+        
         return result;
     }
 
+    private void build(List<Pair<Integer, List<T>>> source){
+        for (Pair<Integer, List<T>> temp : source) {
+            buildHead(temp.getValue(), temp.getKey());
+        }
+        adjustHeads();
+
+        for (Pair<Integer, List<T>> temp : source) {
+            updateTree(temp.getValue(), temp.getKey());
+        }
+    }
+    
     private void build(Collection<Collection<T>> source) {
         for (Collection<T> temp : source) {
-            buildHead(temp);
+            buildHead(temp, 1);
         }
         adjustHeads();
 
         for (Collection<T> item : source) {
-            updateTree(item);
+            updateTree(item, 1);
         }
     }
 
@@ -37,10 +101,10 @@ public class FPTree<T> {
             public int compare(T o1, T o2) {
                 HeadNode h1 = findHead(o1);
                 HeadNode h2 = findHead(o2);
-                if (h1.getCount() > h2.getCount()) {
+                if (h1.getFrequency() > h2.getFrequency()) {
                     return 1;
                 }
-                if (h1.getCount() < h2.getCount()) {
+                if (h1.getFrequency() < h2.getFrequency()) {
                     return -1;
                 }
                 return 0;
@@ -52,7 +116,7 @@ public class FPTree<T> {
         sortHeads();
         for (int i = mHeads.size() - 1; i >= 0; --i) {
             HeadNode head = mHeads.get(i);
-            if (head.getCount() < mLowerLimit) {
+            if (head.getFrequency() < mLowerLimit) {
                 mHeads.remove(i);
                 continue;
             }
@@ -64,7 +128,7 @@ public class FPTree<T> {
         mHeads.sort(new Comparator<HeadNode>() {
             @Override
             public int compare(FPTree<T>.HeadNode o1, FPTree<T>.HeadNode o2) {
-                int diff = o1.getCount() - o2.getCount();
+                int diff = o1.getFrequency() - o2.getFrequency();
                 if (diff > 0) {
                     return 1;
                 }
@@ -85,24 +149,24 @@ public class FPTree<T> {
         return null;
     }
 
-    private void buildHead(Collection<T> source) {
+    private void buildHead(Collection<T> source, int frequency) {
         for (T data : source) {
             HeadNode head = null;
             for (HeadNode temp : mHeads) {
                 if (temp.getValue() == data) {
                     head = temp;
-                    head.increaseCount();
+                    head.increaseFrequency(frequency);
                     break;
                 }
             }
             if (head == null) {
-                head = new HeadNode(data, 1);
+                head = new HeadNode(data, frequency);
                 mHeads.add(head);
             }
         }
     }
 
-    private void updateTree(Collection<T> source) {
+    private void updateTree(Collection<T> source, int frequency) {
         ArrayList<T> temp = new ArrayList<T>();
         temp.addAll(source);
         sort(temp);
@@ -113,12 +177,13 @@ public class FPTree<T> {
             if (head == null) {
                 break;
             }
+            mRoot.increaseFrequency(frequency);
             TreeNode child = currentNode.findChild(data);
             if (child == null) {
-                child = currentNode.addChild(data);
+                child = currentNode.addChild(data, frequency);
                 head.insert(child);
             } else {
-                child.increaseCount();
+                child.increaseFrequency(frequency);
             }
             currentNode = child;
         }
@@ -126,46 +191,45 @@ public class FPTree<T> {
     }
 
     private class NodeBase {
-        public NodeBase(T value, int count) {
+        public NodeBase(T value, int frequency) {
             mValue = value;
-            mCount = count;
+            mFrequency = frequency;
         }
 
         public T getValue() {
             return mValue;
         }
 
-        public int getCount() {
-            return mCount;
+        public int getFrequency() {
+            return mFrequency;
         }
 
-        public void increaseCount() {
-            mCount += 1;
+        public void increaseFrequency(int frequency) {
+            mFrequency += frequency;
         }
 
-        protected int mCount;
+        protected int mFrequency;
         protected T mValue;
     }
 
     private class TreeNode extends NodeBase {
-        public TreeNode(T value) {
-            super(value, 1);
+        public TreeNode(T value, int frequency) {
+            super(value, frequency);
         }
 
-//        public TreeNode getParent() {
-//            return mParent;
-//        }
-
-//        public Pair<Integer, List<T>> getAllItems() {
-//            List<T> temp = new ArrayList<T>();
-//            temp.add(mValue);
-//            TreeNode node = mParent;
-//            while (node.getParent() != null) {
-//                temp.add(node.getValue());
-//                node = node.getParent();
-//            }
-//            return new Pair<>(getCount(), temp);
-//        }
+        public TreeNode getParent() {
+            return mParent;
+        }
+        
+        public List<T> getPrefixPath(){
+            List<T> path = new ArrayList<T>();
+            TreeNode node = mParent;
+            while(node.mParent !=  null){
+                path.add(node.getValue());
+                node = node.mParent;
+            }
+            return path;
+        }
 
         public TreeNode findChild(T value) {
             for (TreeNode child : mChildren) {
@@ -176,8 +240,8 @@ public class FPTree<T> {
             return null;
         }
 
-        public TreeNode addChild(T value) {
-            TreeNode node = new TreeNode(value);
+        public TreeNode addChild(T value, int frequency) {
+            TreeNode node = new TreeNode(value, frequency);
             node.mParent = this;
             this.mChildren.add(node);
             return node;
@@ -197,12 +261,32 @@ public class FPTree<T> {
             return mNext;
         }
 
-//        public Pair<Integer, List<T>> getAllItems() {
-//            return mValue.getAllItems();
-//        }
+        public boolean isSignlePath(){
+            if (mNext != null) {
+                return false;
+            }
+            TreeNode current = mValue;
+            
+            while(current.getParent()!= null){
+                if (current.mChildren.size() > 0){
+                    return false;
+                }
+                current = current.getParent();
+            }
+            return true;
+        }
+
+        public Pair<Integer, List<T>> getPrefixPath() {
+            List<T> path = mValue.getPrefixPath();
+            if (path.isEmpty()){
+                return null;
+            }
+
+            return new Pair<Integer, List<T>>(mValue.getFrequency(), path);
+        }
 
         public int getCount() {
-            return mValue.getCount();
+            return mValue.getFrequency();
         }
 
         public ListNode insertAfter(TreeNode value) {
@@ -221,17 +305,26 @@ public class FPTree<T> {
             super(value, count);
             mNode = null;
         }
-
-//        public List<Pair<Integer, List<T>>> get(int lowerLimit) {
-//            ListNode node = mNode;
-//            List<Pair<Integer, List<T>>> result  = new ArrayList<Pair<Integer, List<T>>>();
-//            while (node != null) {
-//                Pair<Integer, List<T>> singlePath = node.getAllItems();
-//                result.add(singlePath);
-//                node = node.getNext();
-//            }
-//            return result;
-//        }
+        
+        public boolean isSignlePath(){
+            if (mNode == null){
+                return true;
+            }
+            return mNode.isSignlePath();
+        }
+        
+        public List<Pair<Integer, List<T>>> getAllPrefixPath(){
+            List<Pair<Integer, List<T>>> result = new ArrayList<Pair<Integer, List<T>>>();
+            ListNode node = mNode;
+            while(node != null){
+                Pair<Integer, List<T>> prefixPath = node.getPrefixPath();
+                if (prefixPath != null) {
+                    result.add(prefixPath);
+                }
+                node = node.getNext();
+            }
+            return result;
+        }
 
         public void insert(TreeNode node) {
             if (mNode == null) {
@@ -241,7 +334,7 @@ public class FPTree<T> {
             ListNode current = mNode;
             while (true) {
                 ListNode next = current.getNext();
-                if (next == null || next.getCount() < node.getCount()) {
+                if (next == null || next.getCount() < node.getFrequency()) {
                     current.insertAfter(node);
                     break;
                 }
@@ -253,6 +346,7 @@ public class FPTree<T> {
     }
 
     private List<HeadNode> mHeads = new Vector<HeadNode>();
-    private TreeNode mRoot = new TreeNode(null);
+    private TreeNode mRoot = new TreeNode(null, 0);
     private int mLowerLimit = 0;
+    private List<T> mPostfix = new Vector<T>();
 }
