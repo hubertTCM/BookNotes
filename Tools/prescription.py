@@ -9,20 +9,40 @@ def parse_prescription(source, to):
     source_file = codecs.open(source, 'r', 'utf-8', 'ignore')
     to_file = codecs.open(to, 'w+', 'utf-8')
     
-    # 炙甘草汤（又名复脉汤）
+    # 炙甘草汤（复脉汤）
     # 炙草 桂枝 人参 麻仁 生地 阿胶 麦冬 生姜 大枣
     
     # 桂枝汤
     # 桂枝 白芍 炙草 生姜 大枣
     
-    #桂枝加附子汤 即桂枝汤加附子。
+    # 桂枝加附子汤 即桂枝汤加附子。
+    
+    name = None  # name:text
     for line in source_file:
         line = line.strip()
-        if (line.startswith("<D>")):
+        if (line.endswith("。")):
+            line = line[:-1]
+        if (line.startswith("<D>") or not line):
+            name =None
             continue
-        to_file.write(line + "\n")
+        if ("即" in line):  # 桂枝加附子汤 即桂枝汤加附子
+            to_file.write(line + "\n")
+            name =None
+            continue
         
-    to_file.write("hello world")
+        if (not name): #炙甘草汤（复脉汤）
+            name = line.replace("（", " ").replace("）", " ")
+        else:
+            names = name.split()
+            name = None
+            for item in names:
+                item = item.strip()
+                if (not item):
+                    continue
+                to_file.write(item + ": " + line + "\n")
+        
+        # to_file.write(line + "\n")
+        
     source_file.close()
     to_file.close()
     
