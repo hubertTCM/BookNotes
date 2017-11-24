@@ -29,8 +29,8 @@ def parse_prescription(source, to):
     print (to)
 
 if __name__ == "__main__":
-    source_file = os.path.abspath("../resource/集方.txt")
-    to_file = os.path.abspath("../resource/常见处方.txt")
+    source_file = os.path.abspath("../DataGenerator/resource/集方.txt")
+    to_file = os.path.abspath("../DataGenerator/resource/常见处方.txt")
 
     parse_prescription(source_file, to_file)
     print("done")
