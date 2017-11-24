@@ -57,6 +57,8 @@ public class BookSpliter {
             currentWriter.write(line + "\n");
 
         }
+        
+        currentWriter.close();
     }
 
     private List<String> mKeywords = new ArrayList<String>();
