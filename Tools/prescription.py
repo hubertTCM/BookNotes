@@ -74,6 +74,7 @@ def parse_prescription(source, to):
 def adjust_prescription(source, to):
     source_file = codecs.open(source, 'r', 'utf-8', 'ignore')
     all_prescriptions = {}
+    unknown = []
     for line in source_file:
         line = line.strip()
         if not line:
@@ -81,6 +82,10 @@ def adjust_prescription(source, to):
         
         if line.startswith("//"):
             continue
+        if ("即" in line):
+            unknown.append(line)
+            continue
+        
         index = line.find(":")
         name = line[:index].strip()
         value = line[index + 1:].strip()
@@ -96,6 +101,10 @@ def adjust_prescription(source, to):
         value = all_prescriptions[name]
         for item in value:
             to_file.write(name + ": " + item + "\n")
+    
+    to_file.write("// TBD:\n")
+    for line in unknown:
+        to_file.write(line + "\n")
     to_file.close()
 
 
