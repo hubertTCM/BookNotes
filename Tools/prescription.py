@@ -75,6 +75,10 @@ def adjust_prescription(source, to):
     source_file = codecs.open(source, 'r', 'utf-8', 'ignore')
     all_prescriptions = {}
     for line in source_file:
+        line = line.strip()
+        if not line:
+            continue
+        
         if line.startswith("//"):
             continue
         index = line.find(":")
@@ -99,7 +103,7 @@ if __name__ == "__main__":
     source_file = os.path.abspath("../DataGenerator/resource/集方.txt")
     to_file = os.path.abspath("../DataGenerator/resource/debug/常用处方_ignore.txt")
 
-    parse_prescription(source_file, to_file)
+    #parse_prescription(source_file, to_file)
     
     final_file = os.path.abspath("../DataGenerator/resource/常用处方.txt")
     adjust_prescription(to_file, final_file)
