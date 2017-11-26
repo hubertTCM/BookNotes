@@ -71,8 +71,11 @@ def update_detail_file(source_file_path, to_file_path, prescriptions, alias):
     write_file = codecs.open(to_file_path, 'w', 'utf-8', 'ignore')
     for line in lines:
         line= line.strip()
-        write_file.write(line + "\n")
         value = get_refered_prescriptions(line, prescriptions, alias)
+        if (not value or len(value) ==0):
+            write_file.write(line + "\n")
+        else:
+            write_file.write('[abbr]' + line + "\n")
         for content in value:
             write_file.write("<format> " + content + "\n")
     write_file.close()
