@@ -35,6 +35,7 @@ public class FPGrowthTest {
         }
         
         FPTree<Character> tree = new FPTree<Character>(source, 2);
+        tree.setDumpFile("resource/FPGrowthTest/debug/tree.json");
         Collection<Pair<Integer, List<Character>>> result =  tree.getAll();
         for(Pair<Integer, List<Character>> item : result){
             System.out.print(item.getKey());
