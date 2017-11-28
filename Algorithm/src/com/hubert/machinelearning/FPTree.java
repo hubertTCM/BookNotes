@@ -1,5 +1,7 @@
 package com.hubert.machinelearning;
 
+import java.io.*;
+import java.nio.file.Paths;
 import java.util.*;
 import javafx.util.*;
 
@@ -16,9 +18,90 @@ public class FPTree<T> {
         build(source);
     }
 
+    public void setDumpFile(String path) {
+        mDumpFilePath = path;
+    }
+
+    public void dump() {
+        try {
+            Paths.get(mDumpFilePath).getParent().toFile().mkdirs();
+            FileWriter writer = new FileWriter(mDumpFilePath, true);
+            writer.write("heads\n");
+            for (HeadNode head : mHeads) {
+                String text = head.getValue().toString() + "(" + head.getFrequency() + "):";
+                ListNode node = head.mNode;
+                while (node != null) {
+                    text += " " + node.getValue().toString() + "(" + node.getCount() + ")";
+                    node = node.getNext();
+                }
+                text = text.trim();
+                writer.write("//" + text + "\n");
+            }
+
+            dump(mRoot, writer, 0);
+            writer.write("\n ==================== \n");
+            writer.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    private void dump(TreeNode node, FileWriter writer, int indent) throws IOException {
+        String prefix = "";
+        for (int i = 0; i < indent; i++) {
+            prefix += "    ";
+        }
+        boolean isFirstChild = true;
+        if (node.mParent != null){
+            isFirstChild = (node.mParent.mChildren.indexOf(node) == 0);
+        }
+        if (isFirstChild){
+            writer.write("{\n");
+        }
+        else{
+            writer.write(prefix + "{");
+        }
+
+        String value = "Root";
+        if (node.getValue() != null) {
+            value = node.getValue().toString();
+        }
+        writer.write(prefix + "    " + value + ":" + node.getFrequency() + ",\n");
+
+        if (node.mChildren.size() > 0) {
+            writer.write(prefix + "    children:[");
+
+            for (int i = 0; i < node.mChildren.size(); i++) {
+                dump(node.mChildren.get(i), writer, indent + 1);
+                if (i < node.mChildren.size() - 1){
+                    writer.write("\n");
+                }
+            }
+
+            writer.write("]\n");
+        }
+
+        
+        writer.write(prefix + "}");
+
+        boolean isLastChild = false;
+        if (node.mParent != null){
+            isLastChild = (node.mParent.mChildren.indexOf(node ) == node.mParent.mChildren.size() - 1);
+        }
+        if (!isLastChild){
+            writer.write(",\n");
+        }
+
+    }
+
     public List<Pair<Integer, List<T>>> getAll() {
+        dump();
         List<Pair<Integer, List<T>>> result = new ArrayList<Pair<Integer, List<T>>>();
-        for (HeadNode head : mHeads) {
+        // for (HeadNode head : mHeads) {
+        for (int i = mHeads.size() - 1; i >= 0; i--) {
+            HeadNode head = mHeads.get(i);
             List<Pair<Integer, List<T>>> pair = get(head);
             result.addAll(pair);
         }
@@ -57,6 +140,7 @@ public class FPTree<T> {
 
             if (!prefixPaths.isEmpty()) {
                 FPTree<T> conditionalTree = new FPTree<T>(prefixPaths, mLowerLimit, postfix);
+                conditionalTree.setDumpFile(mDumpFilePath);
                 List<Pair<Integer, List<T>>> conditionalResult = conditionalTree.getAll();
                 allResult.addAll(conditionalResult);
             } else {
@@ -286,6 +370,10 @@ public class FPTree<T> {
             return mValue.getFrequency();
         }
 
+        public T getValue() {
+            return mValue.getValue();
+        }
+
         public void append(TreeNode value) {
             ListNode node = new ListNode(value);
             node.mNext = mNext;
@@ -345,4 +433,6 @@ public class FPTree<T> {
     private TreeNode mRoot = new TreeNode(null, 0);
     private int mLowerLimit = 0;
     private List<T> mPostfix = new Vector<T>();
+
+    private String mDumpFilePath;
 }
