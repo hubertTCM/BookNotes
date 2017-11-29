@@ -54,13 +54,12 @@ public class FPTree<T> {
             prefix += "    ";
         }
         boolean isFirstChild = true;
-        if (node.mParent != null){
+        if (node.mParent != null) {
             isFirstChild = (node.mParent.mChildren.indexOf(node) == 0);
         }
-        if (isFirstChild){
+        if (isFirstChild) {
             writer.write("{\n");
-        }
-        else{
+        } else {
             writer.write(prefix + "{");
         }
 
@@ -75,7 +74,7 @@ public class FPTree<T> {
 
             for (int i = 0; i < node.mChildren.size(); i++) {
                 dump(node.mChildren.get(i), writer, indent + 1);
-                if (i < node.mChildren.size() - 1){
+                if (i < node.mChildren.size() - 1) {
                     writer.write("\n");
                 }
             }
@@ -83,14 +82,13 @@ public class FPTree<T> {
             writer.write("]\n");
         }
 
-        
         writer.write(prefix + "}");
 
         boolean isLastChild = false;
-        if (node.mParent != null){
-            isLastChild = (node.mParent.mChildren.indexOf(node ) == node.mParent.mChildren.size() - 1);
+        if (node.mParent != null) {
+            isLastChild = (node.mParent.mChildren.indexOf(node) == node.mParent.mChildren.size() - 1);
         }
-        if (!isLastChild){
+        if (!isLastChild) {
             writer.write(",\n");
         }
 
@@ -99,17 +97,47 @@ public class FPTree<T> {
     public List<Pair<Integer, List<T>>> getAll() {
         dump();
         List<Pair<Integer, List<T>>> result = new ArrayList<Pair<Integer, List<T>>>();
-        // for (HeadNode head : mHeads) {
         for (int i = mHeads.size() - 1; i >= 0; i--) {
             HeadNode head = mHeads.get(i);
             List<Pair<Integer, List<T>>> pair = get(head);
             result.addAll(pair);
         }
+        result.sort(new Comparator< Pair<Integer, List<T>> >(){
+
+            @Override
+            public int compare(Pair<Integer, List<T>> o1, Pair<Integer, List<T>> o2) {
+                int frequencyDiff = o2.getKey() - o1.getKey();
+                if (frequencyDiff != 0){
+                    return frequencyDiff;
+                }
+                return o2.getValue().size() - o1.getValue().size();
+            }});
         return result;
     }
 
+    private void merge(List<Pair<Integer, List<T>>> to, List<Pair<Integer, List<T>>> from) {
+        for (Pair<Integer, List<T>> item : from) {
+            merge(to, item);
+        }
+    }
+
+    private void merge(List<Pair<Integer, List<T>>> to, Pair<Integer, List<T>> from) {
+        for (int i = 0; i < to.size(); i++) {
+            Pair<Integer, List<T>> item = to.get(i);
+            if (item.getValue().size() != from.getValue().size() || !item.getValue().containsAll(from.getValue())) {
+                continue;
+            }
+            int count = item.getKey() + from.getKey();
+            Pair<Integer, List<T>> temp = new Pair<Integer, List<T>>(count, item.getValue());
+            to.remove(i);
+            to.add(temp);
+            return;
+        }
+        to.add(from);
+    }
+
     private List<Pair<Integer, List<T>>> get(HeadNode head) {
-        List<Pair<Integer, List<T>>> allResult = new ArrayList<Pair<Integer, List<T>>>();
+        List<Pair<Integer, List<T>>> allResults = new ArrayList<Pair<Integer, List<T>>>();
 
         List<T> postfix = new ArrayList<T>();
         postfix.add(head.getValue());
@@ -117,7 +145,7 @@ public class FPTree<T> {
 
         if (head.isSignlePath()) {
             if (postfix.size() > 1) {
-                allResult.add(new Pair<Integer, List<T>>(head.getFrequency(), postfix));
+                merge(allResults, new Pair<Integer, List<T>>(head.getFrequency(), postfix));
             }
 
             for (Pair<Integer, List<T>> prefixPath : head.getAllPrefixPath()) {
@@ -125,7 +153,7 @@ public class FPTree<T> {
                 path.addAll(postfix);
                 for (int i = 0; i < prefixPath.getValue().size(); i++) {
                     path.addAll(prefixPath.getValue().subList(i, prefixPath.getValue().size()));
-                    allResult.add(new Pair<Integer, List<T>>(prefixPath.getKey(), path));
+                    merge(allResults, new Pair<Integer, List<T>>(prefixPath.getKey(), path));
                 }
             }
         } else {
@@ -135,22 +163,22 @@ public class FPTree<T> {
                 path.addAll(prefixPath.getValue());
                 path.addAll(postfix);
                 Pair<Integer, List<T>> pair = new Pair<Integer, List<T>>(prefixPath.getKey(), path);
-                allResult.add(pair);
+                merge(allResults, pair);
             }
 
             if (!prefixPaths.isEmpty()) {
                 FPTree<T> conditionalTree = new FPTree<T>(prefixPaths, mLowerLimit, postfix);
                 conditionalTree.setDumpFile(mDumpFilePath);
                 List<Pair<Integer, List<T>>> conditionalResult = conditionalTree.getAll();
-                allResult.addAll(conditionalResult);
+                merge(allResults, conditionalResult);
             } else {
                 if (postfix.size() > 1) {
-                    allResult.add(new Pair<Integer, List<T>>(head.getFrequency(), postfix));
+                    merge(allResults, new Pair<Integer, List<T>>(head.getFrequency(), postfix));
                 }
             }
         }
 
-        return allResult;
+        return allResults;
     }
 
     private void build(List<Pair<Integer, List<T>>> source) {
