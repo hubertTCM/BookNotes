@@ -38,9 +38,9 @@ def get_refered_prescriptions(line, prescriptions, alias):
     names = sorted(prescriptions.keys(), reverse=True)
     alias_names = sorted(alias.keys(), reverse=True)
     for name in names:
-            index = line.find(name)
-            if (index >=0):
-                return prescriptions[name]
+        index = line.find(name)
+        if (index >=0):
+            return prescriptions[name]
 
     for name in alias_names:
         index = line.find(name)
@@ -82,7 +82,7 @@ def update_detail_file(source_file_path, to_file_path, prescriptions, alias):
 
 if __name__ == "__main__":
     consilia_directory = os.path.abspath("../DataGenerator/resource/临证指南医案/test")
-    to_directory = os.path.abspath("../DataGenerator/resource/临证指南医案/test_ignore")
+    to_directory = os.path.abspath("../DataGenerator/resource/临证指南医案/test_fill_prescription")
     prescription_file = os.path.abspath("../DataGenerator/resource/常用处方.txt")
     
     all_prescriptions = load_prescriptions(prescription_file)
