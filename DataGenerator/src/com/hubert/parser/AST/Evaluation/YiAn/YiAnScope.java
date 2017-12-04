@@ -29,6 +29,10 @@ public class YiAnScope {
         return getVariable(YiAnScope.ActiveSectionEntityKey);
     }
     
+    public BlockPositionManager getBlockPositionManager(){
+        return getVariable(YiAnScope.BlockPositionManagerKey);
+    }
+    
     public BookEntity getBook(){
         return getVariable(YiAnScope.BookKey);
     }
@@ -102,6 +106,7 @@ public class YiAnScope {
     public final static String RootSectionKey = "Global.RootSection";
     public final static String BookKey = "Global.Book";
     public final static String ActiveSectionEntityKey = "Global.SectionEntity";
+    public final static String BlockPositionManagerKey = "Global.BlockPositionManager";
     
     private Storage mStorage;
 

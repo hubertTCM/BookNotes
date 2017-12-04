@@ -28,12 +28,12 @@ public class importor {
                     HerbAliasManager.getInstance());
             Map<String, List<YiAnEntity>> temp = generator.doImport();
             List<YiAnEntity> yiAns = Utils.merge(temp);
-            BookEntity book = generator.getBook();
             
             DbBuilder builder = new DbBuilder();
             builder.build();
-//            YiAnImporter yiAnImporter = new YiAnImporter();
-//            yiAnImporter.save(book, yiAns);
+            //BookEntity book = generator.getBook();
+            //YiAnImporter yiAnImporter = new YiAnImporter();
+            //yiAnImporter.save(book, yiAns);
 
             List<YiAnPrescriptionEntity> prescriptions = new ArrayList<YiAnPrescriptionEntity>();
             for (YiAnEntity yiAn : yiAns) {

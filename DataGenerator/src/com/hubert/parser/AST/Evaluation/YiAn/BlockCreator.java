@@ -34,11 +34,16 @@ public class BlockCreator<T> implements IBlockCreator {
             String content = provider.getContent(entry.getKey());
             entity.content += content + "\n";
         }
+        BlockPositionManager positionManager = mYiAnScope.getBlockPositionManager();
+        positionManager.setPosition(entity, mTokenTypes.firstKey());
 
         List<BlockEntity> blocks = getAllBlocks(entity);
         if (mParent != null) {
             mParent.addPropertyBlock(blocks);
         }
+        SectionEntity section = mYiAnScope.getActiveSection();
+        section.blocks.add(entity);
+        entity.section = section;
 
         return blocks;
     }
@@ -67,12 +72,30 @@ public class BlockCreator<T> implements IBlockCreator {
 
     private List<BlockEntity> getAllBlocks(BlockEntity block) {
         List<BlockEntity> blocks = new ArrayList<BlockEntity>();
+        // avoid 又  生地 阿胶 牡蛎 川斛 知母 twice. One in prescription, one in recipe description.
         for (int i = 0; i < mPropertyBlocks.size(); i++) {
-            blocks.addAll(mPropertyBlocks.get(i));
+            List<BlockEntity> tempPropertyBlocks = mPropertyBlocks.get(i);
+            //blocks.addAll(mPropertyBlocks.get(i));
+            for(BlockEntity temp : tempPropertyBlocks){
+                if (temp.content.equals(block.content)){
+                    remove(temp);
+                    continue;
+                }
+                blocks.add(temp);
+            }
         }
         blocks.add(block);
         block.order = blocks.size();
         return blocks;
+    }
+    
+    private void remove(BlockEntity block){
+        SectionEntity section = block.section;
+        if (section == null){
+            return;
+        }
+        section.blocks.remove(block);
+        block.section = null;
     }
 
     private T mEntity;
