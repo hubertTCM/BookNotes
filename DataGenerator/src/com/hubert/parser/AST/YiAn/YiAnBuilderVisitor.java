@@ -32,6 +32,7 @@ public class YiAnBuilderVisitor implements IVisitor {
         context.setGlobalData(YiAnScope.OriginalTokenKey, mTokens);
         context.setGlobalData(YiAnScope.RootSectionKey, mParentSection);
         context.setGlobalData(YiAnScope.BookKey, mBook);
+        context.setGlobalData(YiAnScope.BlockPositionManagerKey, mBlockPositionManager);
 
         mEvaluators.add(new SectionNameEvaluator(context));
         mEvaluators.add(new YiAnEvaluator(context, mYiAns));
@@ -68,21 +69,46 @@ public class YiAnBuilderVisitor implements IVisitor {
 
     }
 
-    public void AddYiAn(YiAnEntity yiAn) {
-        mYiAns.add(yiAn);
-    }
+//    public void AddYiAn(YiAnEntity yiAn) {
+//        mYiAns.add(yiAn);
+//    }
 
     public List<YiAnEntity> getYiAns() {
+        sortBlocks(mParentSection);
         return mYiAns;
     }
     
     public List<SortedMap<Position, String>> getTokens(){
         return mTokens;
     }
+    private void sortBlocks(SectionEntity section){
+        List<BlockEntity> temp = new Vector<BlockEntity>();
+        temp.addAll(section.blocks);
+        temp.sort(new Comparator<BlockEntity>(){
+
+            @Override
+            public int compare(BlockEntity o1, BlockEntity o2) {
+                Position x = mBlockPositionManager.getPosition(o1);
+                Position y = mBlockPositionManager.getPosition(o2);
+                return x.compareTo(y);
+            }});
+        section.blocks.clear();
+        
+        for(int i = 0; i < temp.size(); i++){
+            BlockEntity entity = temp.get(i);
+            entity.order = i+ 1;
+            section.blocks.add(entity);
+        }
+       
+        for(SectionEntity child : section.childSections){
+            sortBlocks(child);
+        }
+    }
 
     private List<IEvaluator> mEvaluators = new ArrayList<IEvaluator>();
     private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
     private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
+    private BlockPositionManager mBlockPositionManager = new BlockPositionManager();
     private SectionEntity mParentSection;
     private BookEntity mBook;
 }
