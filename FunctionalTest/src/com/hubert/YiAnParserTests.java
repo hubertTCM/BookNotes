@@ -51,6 +51,8 @@ public class YiAnParserTests {
             entity.book = new BookEntity();
             entity.name = "test1";
             entity.book.name = "debug";
+            entity.blocks = new Vector<BlockEntity>();
+            entity.childSections = new Vector<SectionEntity>();
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
@@ -106,6 +108,8 @@ public class YiAnParserTests {
             entity.book = new BookEntity();
             entity.name = "test2";
             entity.book.name = "debug";
+            entity.blocks = new Vector<BlockEntity>();
+            entity.childSections = new Vector<SectionEntity>();
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
@@ -188,6 +192,8 @@ public class YiAnParserTests {
             entity.book = new BookEntity();
             entity.name = "test3";
             entity.book.name = "debug";
+            entity.blocks = new Vector<BlockEntity>();
+            entity.childSections = new Vector<SectionEntity>();
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
@@ -265,6 +271,8 @@ public class YiAnParserTests {
             entity.book = new BookEntity();
             entity.name = "test4";
             entity.book.name = "debug";
+            entity.blocks = new Vector<BlockEntity>();
+            entity.childSections = new Vector<SectionEntity>();
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
@@ -326,6 +334,8 @@ public class YiAnParserTests {
             entity.book = new BookEntity();
             entity.name = "test5";
             entity.book.name = "debug";
+            entity.blocks = new Vector<BlockEntity>();
+            entity.childSections = new Vector<SectionEntity>();
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
@@ -388,6 +398,8 @@ public class YiAnParserTests {
             entity.name = "test6";
             entity.book = new BookEntity();
             entity.book.name = "debug";
+            entity.blocks = new Vector<BlockEntity>();
+            entity.childSections = new Vector<SectionEntity>();
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 

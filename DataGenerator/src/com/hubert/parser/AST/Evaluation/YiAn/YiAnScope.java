@@ -26,7 +26,11 @@ public class YiAnScope {
     }
 
     public SectionEntity getActiveSection(){
-        return getVariable(YiAnScope.ActiveSectionEntityKey);
+        SectionEntity section = getVariable(YiAnScope.ActiveSectionEntityKey);
+        if (section != null){
+            return section;
+        }
+        return getRootSection();
     }
     
     public BlockPositionManager getBlockPositionManager(){

@@ -31,9 +31,9 @@ public class importor {
             
             DbBuilder builder = new DbBuilder();
             builder.build();
-            //BookEntity book = generator.getBook();
-            //YiAnImporter yiAnImporter = new YiAnImporter();
-            //yiAnImporter.save(book, yiAns);
+            BookEntity book = generator.getBook();
+            YiAnImporter yiAnImporter = new YiAnImporter();
+            yiAnImporter.save(book, yiAns);
 
             List<YiAnPrescriptionEntity> prescriptions = new ArrayList<YiAnPrescriptionEntity>();
             for (YiAnEntity yiAn : yiAns) {
