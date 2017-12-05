@@ -17,5 +17,6 @@ public class YiAnNodeConstants {
     public static final String RecipeComment = YiAnTokenType.RecipeComment.name();
     public static final String Herb = YiAnTokenType.Herb.name(); 
 
+    public static final String SummaryComment = YiAnTokenType.SummaryComment.name();
     public static final String SectionName = YiAnTokenType.SectionName.name();
 }

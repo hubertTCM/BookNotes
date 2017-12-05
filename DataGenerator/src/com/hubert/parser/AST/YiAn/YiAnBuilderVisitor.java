@@ -42,6 +42,7 @@ public class YiAnBuilderVisitor implements IVisitor {
         mEvaluators.add(new RecipeCompositionChildEvaluator(context));
         mEvaluators.add(new RecipeDetailEvaluator(context));
         mEvaluators.add(new RecipePropertyEvaluator(context));
+        mEvaluators.add(new CommentEvaluator(context));
     }
 
 
