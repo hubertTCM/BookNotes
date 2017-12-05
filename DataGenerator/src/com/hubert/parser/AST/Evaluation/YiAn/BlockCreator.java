@@ -83,7 +83,6 @@ public class BlockCreator<T> implements IBlockCreator {
         List<BlockEntity> blocks = new ArrayList<BlockEntity>();
         // avoid 又 生地 阿胶 牡蛎 川斛 知母 twice. One in prescription, one in recipe
         // description.
-        // blocks.addAll(mPropertyBlocks.get(i));
         for (BlockEntity temp : mPropertyBlocks) {
             if (content.equals(temp.content)) {
                 remove(temp);
