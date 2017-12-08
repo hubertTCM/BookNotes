@@ -6,3 +6,11 @@
 医家用药规律
 常用药对
 
+
+DB Design
+Block, Section: raw text
+BlockGroup: group the data by business logic: YiAn, Prescription etc
+Prescription: name, content, block, linkType. linkType: RawContent, YiAn, YiHua
+HerbGroup (药对): name
+HerbGroupLink: herbGroup, block, linkType. linkType: YiAn, Prescription
+
