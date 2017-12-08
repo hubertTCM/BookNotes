@@ -18,14 +18,14 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        BlockCreator<YiAnDetailEntity> temp = mYiAnScope.getYiAnDetail();
+        BlockLinkCreator<YiAnDetailEntity> temp = mYiAnScope.getYiAnDetail();
         YiAnDetailEntity yiAnDetail = temp.getEntity();
         YiAnPrescriptionEntity prescription = new YiAnPrescriptionEntity();
         prescription.items = new ArrayList<YiAnPrescriptionItemEntity>();
         prescription.order = yiAnDetail.prescriptions.size();
         yiAnDetail.prescriptions.add(prescription);
 
-        BlockCreator<YiAnPrescriptionEntity> creator = mYiAnScope.setYiAnPrescription(prescription);
+        BlockLinkCreator<YiAnPrescriptionEntity> creator = mYiAnScope.setYiAnPrescription(prescription);
         creator.setParent(temp);
         
         return true;
@@ -33,7 +33,7 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean postEvaluateCore(ASTNode node) {
-        BlockCreator<YiAnPrescriptionEntity> temp = mYiAnScope.getYiAnPrescription();
+        BlockLinkCreator<YiAnPrescriptionEntity> temp = mYiAnScope.getYiAnPrescription();
         YiAnPrescriptionEntity prescription = temp.getEntity();
         ArrayList<String> herbs = new ArrayList<String>();
         for (YiAnPrescriptionItemEntity item : prescription.items) {

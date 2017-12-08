@@ -16,7 +16,7 @@ public class RecipeCompositionEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        BlockCreator<YiAnPrescriptionEntity> temp = mYiAnScope.getYiAnPrescription();
+        BlockLinkCreator<YiAnPrescriptionEntity> temp = mYiAnScope.getYiAnPrescription();
         YiAnPrescriptionEntity prescription = temp.getEntity();
         YiAnPrescriptionItemEntity item = new YiAnPrescriptionItemEntity();
         prescription.items.add(item);
@@ -38,7 +38,7 @@ public class RecipeCompositionEvaluator extends AbstractEvaluator {
             sibling = tempNode;
         }
 
-        BlockCreator<YiAnPrescriptionEntity> prescriptionBlockCreator = mYiAnScope.getYiAnPrescription();
+        BlockLinkCreator<YiAnPrescriptionEntity> prescriptionBlockCreator = mYiAnScope.getYiAnPrescription();
         if (sibling != null && YiAnNodeConstants.RecipeAbbreviation.equals(sibling.getTag())) {
             prescriptionBlockCreator.addToken(sibling.getSourcePosition(), sibling.getTag());
         }

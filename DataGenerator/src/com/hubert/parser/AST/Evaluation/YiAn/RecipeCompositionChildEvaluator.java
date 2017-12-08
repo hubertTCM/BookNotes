@@ -16,7 +16,7 @@ public class RecipeCompositionChildEvaluator extends AbstractEvaluator {
         YiAnPrescriptionItemEntity entity = mYiAnScope.getYiAnPrescriptionItem();
         entity.herb = node.getValue();
         
-        BlockCreator<YiAnPrescriptionEntity> prescriptionBlockCreator = mYiAnScope.getYiAnPrescription();
+        BlockLinkCreator<YiAnPrescriptionEntity> prescriptionBlockCreator = mYiAnScope.getYiAnPrescription();
         prescriptionBlockCreator.addToken(node.getSourcePosition(), YiAnNodeConstants.RecipeContent);
         return true;
     }
