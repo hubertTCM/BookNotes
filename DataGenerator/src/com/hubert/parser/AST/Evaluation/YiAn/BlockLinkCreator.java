@@ -9,8 +9,8 @@ import com.hubert.parser.tokenextractor.*;
 
 // TODO: BlockCreator should not depend on YiAnScope, as YiAnScope is destroyed
 //   after the single node is visited.
-public class BlockCreator<T> implements IBlockCreator {
-    public BlockCreator(T entity, String blockType, YiAnScope yiAnScope) {
+public class BlockLinkCreator<T> implements IBlockCreator {
+    public BlockLinkCreator(T entity, String blockType, YiAnScope yiAnScope) {
         mEntity = entity;
         mBlockType = blockType;
         mYiAnScope = yiAnScope;

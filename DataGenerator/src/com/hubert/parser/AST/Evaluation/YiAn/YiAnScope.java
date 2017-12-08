@@ -49,7 +49,7 @@ public class YiAnScope {
         setRawVariable(YiAnKey, yiAn);
     }
     
-    public BlockCreator<YiAnDetailEntity> getYiAnDetail(){
+    public BlockLinkCreator<YiAnDetailEntity> getYiAnDetail(){
         return getVariable(YiAnDetailKey);
     }
     
@@ -57,11 +57,11 @@ public class YiAnScope {
         setVariable(YiAnDetailKey, value, YiAnNodeConstants.Description);
     }
 
-    public BlockCreator<YiAnPrescriptionEntity> getYiAnPrescription() {
+    public BlockLinkCreator<YiAnPrescriptionEntity> getYiAnPrescription() {
         return getVariable(YiAnPresciption);
     }
 
-    public BlockCreator<YiAnPrescriptionEntity> setYiAnPrescription(YiAnPrescriptionEntity value) {
+    public BlockLinkCreator<YiAnPrescriptionEntity> setYiAnPrescription(YiAnPrescriptionEntity value) {
         return setVariable(YiAnPresciption, value, YiAnNodeConstants.RecipeDetail);
     }
     
@@ -97,8 +97,8 @@ public class YiAnScope {
         return mStorage.setVariable(key, value);
     }
     
-    protected <T> BlockCreator<T> setVariable(String key, T value, String blockType) {
-        BlockCreator<T> provider = new BlockCreator<>(value, blockType, this);
+    protected <T> BlockLinkCreator<T> setVariable(String key, T value, String blockType) {
+        BlockLinkCreator<T> provider = new BlockLinkCreator<>(value, blockType, this);
         mStorage.setVariable(key, provider).getEntity();
         return provider;
     }

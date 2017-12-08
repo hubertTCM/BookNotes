@@ -15,7 +15,7 @@ public class RecipePropertyEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        BlockCreator<YiAnPrescriptionEntity> temp = mYiAnScope.getYiAnPrescription();
+        BlockLinkCreator<YiAnPrescriptionEntity> temp = mYiAnScope.getYiAnPrescription();
         YiAnPrescriptionEntity yiAnPrescription = temp.getEntity();
         String tag = node.getTag();
         if (YiAnNodeConstants.RecipeComment.equals(tag)) {
