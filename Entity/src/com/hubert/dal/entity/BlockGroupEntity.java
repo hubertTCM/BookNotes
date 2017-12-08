@@ -1,5 +1,7 @@
 package com.hubert.dal.entity;
 
+import java.util.Collection;
+
 import com.j256.ormlite.field.*;
 import com.j256.ormlite.table.*;
 
@@ -10,4 +12,8 @@ public class BlockGroupEntity {
 
     @DatabaseField(dataType = DataType.ENUM_STRING)
     BlockGroupTypeEnum type;
+    
+
+    @ForeignCollectionField(eager = false)
+    public Collection<BlockEntity> blocks;
 }
