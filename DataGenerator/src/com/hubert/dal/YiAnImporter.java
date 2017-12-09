@@ -55,12 +55,7 @@ public class YiAnImporter {
         mBookDao = DaoManager.createDao(mConnectionSource, BookEntity.class);
         mSectionDao = DaoManager.createDao(mConnectionSource, SectionEntity.class);
         mBlockDao = DaoManager.createDao(mConnectionSource, BlockEntity.class);
-
-        mPrescriptionDao = DaoManager.createDao(mConnectionSource, PrescriptionEntity.class);
-        mPrescriptionUnitDao = DaoManager.createDao(mConnectionSource, PrescriptionUnitEntity.class);
-        mPrescriptionBlockLinkDao = DaoManager.createDao(mConnectionSource, PrescriptionBlockLinkEntity.class);
-        mPrescriptionAliasDao = DaoManager.createDao(mConnectionSource, PrescriptionAliasEntity.class);
-    }
+        }
 
     private ConnectionSource mConnectionSource;
 
@@ -68,8 +63,4 @@ public class YiAnImporter {
     Dao<SectionEntity, Integer> mSectionDao;
     Dao<BlockEntity, Integer> mBlockDao;
 
-    Dao<PrescriptionEntity, Integer> mPrescriptionDao;
-    Dao<PrescriptionUnitEntity, Integer> mPrescriptionUnitDao;
-    Dao<PrescriptionBlockLinkEntity, Integer> mPrescriptionBlockLinkDao;
-    Dao<PrescriptionAliasEntity, Integer> mPrescriptionAliasDao;
 }

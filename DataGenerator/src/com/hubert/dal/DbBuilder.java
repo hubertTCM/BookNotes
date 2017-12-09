@@ -17,13 +17,9 @@ public class DbBuilder {
 
             JdbcConnectionSource connectionSource = new JdbcConnectionSource(Constant.DATABASE_URL);
 
-            TableUtils.createTable(connectionSource, PrescriptionAliasEntity.class);
             TableUtils.createTable(connectionSource, BookEntity.class);
             TableUtils.createTable(connectionSource, SectionEntity.class);
             TableUtils.createTable(connectionSource, BlockEntity.class);
-            TableUtils.createTable(connectionSource, PrescriptionEntity.class);
-            TableUtils.createTable(connectionSource, PrescriptionUnitEntity.class);
-            TableUtils.createTable(connectionSource, PrescriptionBlockLinkEntity.class);
 
             TableUtils.createTable(connectionSource, YiAnEntity.class);
             TableUtils.createTable(connectionSource, YiAnDetailEntity.class);

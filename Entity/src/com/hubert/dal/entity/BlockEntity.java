@@ -24,6 +24,4 @@ public class BlockEntity {
     @DatabaseField()
     public long order;
 
-    @ForeignCollectionField(eager = false)
-    public Collection<PrescriptionBlockLinkEntity> prescriptions;
 }
