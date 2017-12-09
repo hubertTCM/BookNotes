@@ -14,6 +14,8 @@ public class BlockGroupCreator {
         mTokensContainer = tokensContainer;
         mPositionManager = positionManager;
 
+        mBlockGroup = new BlockGroupEntity();
+        mBlockGroup.type = blockGroupType;
     }
 
     public boolean add(BlockCreator creator) {
@@ -21,10 +23,9 @@ public class BlockGroupCreator {
     }
 
     public BlockGroupEntity create() {
-        if (mBlockGroup != null){
+        if (mBlockGroup.blocks != null){
             return mBlockGroup;
         }
-        mBlockGroup = new BlockGroupEntity();
         mBlockGroup.blocks = new Vector<BlockEntity>();
 
         for (BlockCreator creator : mBlockCreators) {
@@ -33,6 +34,11 @@ public class BlockGroupCreator {
             for (Entry<Position, BlockEntity> entry : blocks.entrySet()) {
                 addBlock(entry.getKey(), entry.getValue());
             }
+        }
+        
+        for(BlockGroupCreator child : mChildBlockGroupCreators){
+            BlockGroupEntity temp = child.create();
+            temp.parent = mBlockGroup;
         }
 
         return mBlockGroup;
@@ -55,6 +61,7 @@ public class BlockGroupCreator {
 
     private List<BlockCreator> mBlockCreators = new Vector<BlockCreator>();
     private BlockPositionManager mPositionManager;
+    private List<BlockGroupCreator> mChildBlockGroupCreators = new Vector<BlockGroupCreator>();
     SortedMap<Position, String> mTokensContainer;
     private BlockGroupEntity mBlockGroup;
 }

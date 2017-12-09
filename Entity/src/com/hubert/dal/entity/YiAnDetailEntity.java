@@ -7,6 +7,7 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 // 初诊 二诊 三诊
+// TODO: delete, replaced by BlockGroup
 @DatabaseTable(tableName = "yiandetail")
 public class YiAnDetailEntity {
     @DatabaseField(generatedId = true)

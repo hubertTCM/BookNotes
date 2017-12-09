@@ -14,7 +14,7 @@ public class YiAnScope {
     }
     
     public DataProvider getDataProvider(){
-        return getVariable(YiAnScope.YiAnDataProviderKey);
+        return getVariable(YiAnScope.RawContentProvider);
     }
     
     public HerbAliasManager getHerbAliasManager(){
@@ -104,7 +104,7 @@ public class YiAnScope {
     }
 
     
-    public final static String YiAnDataProviderKey = "Global.DataProvider";
+    public final static String RawContentProvider = "Global.RawContentProvider";
     public final static String HerbAliasManagerKey = "Global.HerbAliasManager";
     public final static String OriginalTokenKey = "Global.OriginalToken";
     public final static String RootSectionKey = "Global.RootSection";
@@ -115,8 +115,11 @@ public class YiAnScope {
     private Storage mStorage;
 
     private final static String YiAnKey = "YiAn";
-    private final static String YiAnDetailKey = "YiAnDetail";
-    private final static String YiAnPresciption = "YiAnPrescription";
+    private final static String YiAnDetailKey = "YiAnDetail"; // TODO: delete
+    private final static String YiAnPresciption = "YiAnPrescription"; 
     private final static String YiAnPrescriptionItem = "YiAnPrescriptionItem";
     private final static String YiAnTokens = "YiAnTokens";
+    
+    private final static String YiAnBlockGroupKey = "YiAnBlockGroup";
+    private final static String YiAnDetailBlockGroupKey = "YiAnDetailBlockGroup";
 }

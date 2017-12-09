@@ -6,6 +6,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
+// TODO: only save the summary for search
 @DatabaseTable(tableName = "yianprescription")
 public class YiAnPrescriptionEntity {
     @DatabaseField(generatedId = true)
