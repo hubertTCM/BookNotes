@@ -27,7 +27,7 @@ public class YiAnBuilderVisitor implements IVisitor {
         }
 
         Context context = new Context();
-        context.setGlobalData(YiAnScope.YiAnDataProviderKey, dataProvider);
+        context.setGlobalData(YiAnScope.RawContentProvider, dataProvider);
         context.setGlobalData(YiAnScope.HerbAliasManagerKey, herbAliasManager);
         context.setGlobalData(YiAnScope.OriginalTokenKey, mTokens);
         context.setGlobalData(YiAnScope.RootSectionKey, mParentSection);

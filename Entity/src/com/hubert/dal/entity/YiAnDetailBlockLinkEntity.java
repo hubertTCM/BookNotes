@@ -3,6 +3,7 @@ package com.hubert.dal.entity;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+// TODO: delete
 @DatabaseTable(tableName = "yiandetailblocklink")
 public class YiAnDetailBlockLinkEntity {
     @DatabaseField(generatedId = true)
