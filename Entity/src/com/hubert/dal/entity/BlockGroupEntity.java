@@ -16,7 +16,6 @@ public class BlockGroupEntity {
 
     @DatabaseField(canBeNull = true, foreign = true)
     public BlockGroupEntity parent;
-    
 
     // yes, the book can be found by Block.Section.Book
     // keep here for shortcut
