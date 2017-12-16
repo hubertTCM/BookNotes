@@ -30,7 +30,7 @@ public class BlockLinkCreator<T> implements IBlockCreator {
         String blockContent = "";
         for (Entry<Position, String> entry : mTokenTypes.entrySet()) {
             ContentType contentType = provider.getContentType(entry.getKey());
-            if (contentType.equals(ContentType.AdditionalText)) {
+            if (contentType.equals(ContentType.AdjustedContentForParser)) {
                 continue;
             }
             String content = provider.getContent(entry.getKey());

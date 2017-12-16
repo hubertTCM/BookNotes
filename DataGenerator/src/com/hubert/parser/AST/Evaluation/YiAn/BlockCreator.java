@@ -19,7 +19,7 @@ public class BlockCreator {
         for (Entry<Position, String> entry : mTokenTypes.entrySet()) {
             ContentType contentType = mDataProvider.getContentType(entry.getKey());
             String content = mDataProvider.getContent(entry.getKey());
-            if (contentType.equals(ContentType.AdditionalText)) {
+            if (contentType.equals(ContentType.AdjustedContentForParser)) {
                 blocks.put(entry.getKey(), createBlock(content));
                 continue;
             }

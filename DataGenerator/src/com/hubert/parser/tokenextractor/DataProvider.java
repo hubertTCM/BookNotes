@@ -6,8 +6,8 @@ import javafx.util.*;
 
 public class DataProvider {
     public DataProvider() {
-        mContentTypeTags.put(ContentType.OrignalText, new Pair<>("[", "]"));
-        mContentTypeTags.put(ContentType.AdditionalText, new Pair<>("<", ">"));
+        mContentTypeTags.put(ContentType.RawContent, new Pair<>("[", "]"));
+        mContentTypeTags.put(ContentType.AdjustedContentForParser, new Pair<>("<", ">"));
     }
 
     public Pair<String, String> getContentTypeTag(ContentType contentType) {
@@ -16,7 +16,7 @@ public class DataProvider {
 
     public void setContent(int line, String content) {
         InternalData data = getOrCreate(line);
-        data.contentType = ContentType.OrignalText;
+        data.contentType = ContentType.RawContent;
         data.content = content;
 
         if (content == null) {
@@ -71,7 +71,7 @@ public class DataProvider {
 
     public String getEndLine() {
 
-        ContentType contentType = ContentType.OrignalText;
+        ContentType contentType = ContentType.RawContent;
         String startTag = getContentTypeStartTag(contentType);
         String endTag = getContentTypeEndTag(contentType);
 
