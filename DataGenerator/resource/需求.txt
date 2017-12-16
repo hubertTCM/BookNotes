@@ -9,8 +9,9 @@
 
 DB Design
 Block, Section: raw text
-BlockGroup: group the data by business logic: YiAn, Prescription etc
+BlockGroup: group the data by business logic: YiAn, Prescription, Clause etc
 Prescription: name, content, block, linkType. linkType: RawContent, YiAn, YiHua
+// why not save HerbGroup to prescription?
 HerbGroup (药对): name
 HerbGroupLink: herbGroup, block, linkType. linkType: YiAn, Prescription
 
