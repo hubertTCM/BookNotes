@@ -25,6 +25,10 @@ public class RecipePropertyEvaluator extends AbstractEvaluator {
             //yiAnPrescription.
         }
         temp.addToken(node.getSourcePosition(), node.getTag());
+        
+        BlockCreator creator = mYiAnScope.getBlockCreator();
+        creator.addToken(node.getSourcePosition(), node.getTag());
+
         return true;
     }
 }

@@ -17,6 +17,9 @@ public class YiAnDetailPropertyEvaluator extends AbstractEvaluator {
         YiAnDetailEntity yiAnDetail = temp.getEntity();
         yiAnDetail.content = node.getValue();
         temp.addToken(node.getSourcePosition(), node.getTag());
+        
+        BlockCreator creator = mYiAnScope.createBlockCreator(BlockTypeEnum.YiAnDescription);
+        creator.addToken(node.getSourcePosition(), node.getTag());
         return true;
     }
 }

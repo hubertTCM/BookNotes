@@ -10,8 +10,7 @@ import com.hubert.parser.AST.YiAn.*;
 public class RecipeCompositionEvaluator extends AbstractEvaluator {
 
     public RecipeCompositionEvaluator(Context context) {
-        super(Arrays.asList(/* YiAnNodeConstants.RecipeComposition, */YiAnNodeConstants.RecipeCompositionHerbOnly,
-                YiAnNodeConstants.RecipeContent), context);
+        super(Arrays.asList(YiAnNodeConstants.RecipeCompositionHerbOnly, YiAnNodeConstants.RecipeContent), context);
     }
 
     @Override
@@ -24,7 +23,6 @@ public class RecipeCompositionEvaluator extends AbstractEvaluator {
 
         return true;
     }
-    
 
     @Override
     protected boolean postEvaluateCore(ASTNode node) {
