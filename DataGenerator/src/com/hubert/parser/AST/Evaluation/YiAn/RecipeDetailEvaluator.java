@@ -28,6 +28,8 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
         BlockLinkCreator<YiAnPrescriptionEntity> creator = mYiAnScope.setYiAnPrescription(prescription);
         creator.setParent(temp);
         
+
+        mYiAnScope.createBlockCreator(BlockTypeEnum.YiAnPrescription);
         return true;
     }
 

@@ -15,6 +15,9 @@ public class BlockEntity {
     @DatabaseField(canBeNull = true, foreign = true)
     public SectionEntity section;
 
+    @DatabaseField(canBeNull = true, foreign = true)
+    public BlockGroupEntity blockGroup;
+
     @DatabaseField(width = 3000)
     public String content;
 

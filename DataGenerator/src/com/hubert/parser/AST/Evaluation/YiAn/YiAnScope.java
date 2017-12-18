@@ -88,6 +88,32 @@ public class YiAnScope {
     public SortedMap<Position, String> getCurrentTokens(){
         return getVariable(YiAnScope.YiAnTokens);
     }
+    
+    public BlockGroupCreator getBlockGroupCreator(){
+        return getVariable(BlockGroupCreatorKey);
+    }
+    
+    public BlockGroupCreator createBlockGroupCreator(BlockGroupTypeEnum type) {
+        BlockGroupCreator creator = new BlockGroupCreator(getBlockGroupCreator(), type,
+                getBlockPositionManager(), getCurrentTokens());
+        
+        setRawVariable(BlockGroupCreatorKey, creator);
+        return creator;
+    }
+    
+    public BlockCreator createBlockCreator(BlockTypeEnum type){
+        BlockCreator creator = new BlockCreator(type, getDataProvider(), getActiveSection());
+        
+        BlockGroupCreator blockGroupCreator = getBlockGroupCreator();
+        blockGroupCreator.add(creator);
+        
+        setRawVariable(BlockCreatorKey, creator);
+        return creator;
+    }
+    
+    public BlockCreator getBlockCreator(){
+        return getVariable(BlockCreatorKey);
+    }
 
     protected <T> T getVariable(String key) {
         return mStorage.getVariable(key);
@@ -122,4 +148,7 @@ public class YiAnScope {
     
     private final static String YiAnBlockGroupKey = "YiAnBlockGroup";
     private final static String YiAnDetailBlockGroupKey = "YiAnDetailBlockGroup";
+    
+    private final static String BlockGroupCreatorKey = "BlockGroupCreator";
+    private final static String BlockCreatorKey = "BlockCreatorKey";
 }

@@ -22,6 +22,8 @@ public class YiAnEvaluator extends AbstractEvaluator {
         mYiAns.add(yiAn);
 
         mYiAnScope.initCurrentTokens();
+        mYiAnScope.createBlockGroupCreator(BlockGroupTypeEnum.YiAn);
+        
         return true;
     }
 
