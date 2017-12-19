@@ -20,20 +20,20 @@ public class BlockCreator {
             ContentType contentType = mDataProvider.getContentType(entry.getKey());
             String content = mDataProvider.getContent(entry.getKey());
             if (contentType.equals(ContentType.AdjustedContentForParser)) {
-                blocks.put(entry.getKey(), createBlock(content));
+                blocks.put(entry.getKey(), createBlock(content, BlockTypeEnum.ParserText));
                 continue;
             }
             blockContent += content + "\n";
         }
 
-        blocks.put(mTokenTypes.firstKey(), createBlock(blockContent));
+        blocks.put(mTokenTypes.firstKey(), createBlock(blockContent, mBlockType));
 
         return blocks;
     }
 
-    private BlockEntity createBlock(String blockContent) {
+    private BlockEntity createBlock(String blockContent, BlockTypeEnum blockType) {
         BlockEntity entity = new BlockEntity();
-        entity.blockType = mBlockType.name();
+        entity.blockType = blockType.name();
         entity.content = blockContent;
 
         mSection.blocks.add(entity);
