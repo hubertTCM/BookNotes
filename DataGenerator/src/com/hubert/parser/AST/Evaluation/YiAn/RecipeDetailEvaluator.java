@@ -9,6 +9,7 @@ import com.hubert.dataprovider.*;
 import com.hubert.parser.AST.ASTNode;
 import com.hubert.parser.AST.Evaluation.Common.*;
 import com.hubert.parser.AST.YiAn.*;
+import com.hubert.parser.tokenextractor.Position;
 
 public class RecipeDetailEvaluator extends AbstractEvaluator {
 
@@ -58,6 +59,20 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
         prescription.summary = StringUtils.trim(prescription.summary);
 
         temp.create();
+        
+        
+        BlockCreator blockCreator = mYiAnScope.getBlockCreator();
+        SortedMap<Position, BlockEntity> blocks = blockCreator.create();
+        for(Map.Entry<Position, BlockEntity> entry : blocks.entrySet()){
+            BlockEntity block = entry.getValue();
+            if (block.blockType.equals(BlockTypeEnum.ParserText.name())){
+                continue;
+            }
+            
+            prescription.block = block;
+            break;
+        }
+        
         return true;
     }
 

@@ -30,4 +30,7 @@ public class YiAnPrescriptionEntity {
 
     @ForeignCollectionField(eager = false)
     public Collection<YiAnPrescriptionItemEntity> items;
+
+    @DatabaseField(canBeNull = false, foreign = true)
+    public BlockEntity block;
 }
