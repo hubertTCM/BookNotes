@@ -26,6 +26,15 @@ public class YiAnEvaluator extends AbstractEvaluator {
         
         return true;
     }
+    
+    @Override
+    public boolean postEvaluateCore(ASTNode node) {
+        BlockGroupCreator creator = mYiAnScope.getBlockGroupCreator();
+        List<BlockGroupEntity> groups = mYiAnScope.getBlockGroups();
+        groups.add(creator.create());
+
+        return true;
+    }
 
     private List<YiAnEntity> mYiAns = null;// new ArrayList<YiAnEntity>();
 }

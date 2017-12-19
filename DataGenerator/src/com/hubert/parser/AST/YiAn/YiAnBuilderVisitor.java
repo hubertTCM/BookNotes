@@ -33,6 +33,8 @@ public class YiAnBuilderVisitor implements IVisitor {
         context.setGlobalData(YiAnScope.RootSectionKey, mParentSection);
         context.setGlobalData(YiAnScope.BookKey, mBook);
         context.setGlobalData(YiAnScope.BlockPositionManagerKey, mBlockPositionManager);
+        context.setGlobalData(YiAnScope.BlockGroupKey, mBlockGroups);
+        context.setGlobalData(YiAnScope.PrescriptionKey, mPrescriptions);
 
         mEvaluators.add(new SectionNameEvaluator(context));
         mEvaluators.add(new YiAnEvaluator(context, mYiAns));
@@ -67,16 +69,20 @@ public class YiAnBuilderVisitor implements IVisitor {
             evaluator.postEvaluate(node);
             evaluator.clear();
         }
-
     }
-
-//    public void AddYiAn(YiAnEntity yiAn) {
-//        mYiAns.add(yiAn);
-//    }
 
     public List<YiAnEntity> getYiAns() {
         sortBlocks(mParentSection);
         return mYiAns;
+    }
+    
+    public List<BlockGroupEntity> getBlockGroups(){
+        return mBlockGroups;
+    }
+    
+    public List<YiAnPrescriptionEntity> getPrescriptions(){
+        sortBlocks(mParentSection);
+        return mPrescriptions;
     }
     
     public List<SortedMap<Position, String>> getTokens(){
@@ -108,6 +114,8 @@ public class YiAnBuilderVisitor implements IVisitor {
 
     private List<IEvaluator> mEvaluators = new ArrayList<IEvaluator>();
     private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
+    private List<YiAnPrescriptionEntity> mPrescriptions = new Vector<YiAnPrescriptionEntity>();
+    private List<BlockGroupEntity> mBlockGroups = new Vector<BlockGroupEntity>();
     private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
     private BlockPositionManager mBlockPositionManager = new BlockPositionManager();
     private SectionEntity mParentSection;

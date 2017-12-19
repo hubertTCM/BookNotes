@@ -40,6 +40,7 @@ public class BookGenerator {
         debugDirectory.mkdirs();
     }
 
+    // TODO: Prescriptions
     public Map<String, List<YiAnEntity>> doImport() {
         try {
             loadSections(null, mBookDirectory);
@@ -110,6 +111,7 @@ public class BookGenerator {
 
         String key = Paths.get(getRelativePath(file).toString(), sectionName).toString();
         mYiAns.put(key, builder.getYiAns());
+        mPrescriptions.put(key, builder.getPrescriptions());
         mTokens.addAll(builder.getTokens());
 
         Pair<String, String> debugPathInfo = extractDebugDirectory(file);
@@ -202,6 +204,8 @@ public class BookGenerator {
 
     protected HerbAliasManager mHerbAliasManager;
 
+    protected Map<String, List<YiAnPrescriptionEntity>> mPrescriptions = new HashMap<String, List<YiAnPrescriptionEntity>>();
+    
     protected Map<String, List<YiAnEntity>> mYiAns = new HashMap<String, List<YiAnEntity>>();// new
                                                                                              // ArrayList<YiAnEntity>();
     private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
