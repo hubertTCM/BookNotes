@@ -53,6 +53,10 @@ public class BookGenerator {
         }
         return mYiAns;
     }
+    
+    public Map<String, List<YiAnPrescriptionEntity>> getPrescriptions(){
+        return mPrescriptions;
+    }
 
     public List<SortedMap<Position, String>> getTokens() {
         return mTokens;
