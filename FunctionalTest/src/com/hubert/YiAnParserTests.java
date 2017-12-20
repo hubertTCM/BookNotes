@@ -56,20 +56,18 @@ public class YiAnParserTests {
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
-            List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();
-            assertEquals("only one YiAn", 1, yiAns.size());
-            YiAnEntity yiAn = yiAns.get(0);
-            assertEquals("only one YiAn Detail", 1, yiAn.details.size());
-            YiAnDetailEntity detail = (YiAnDetailEntity) yiAn.details.toArray()[0];
-            // Token description = tokens.stream().filter(x -> x.getType() ==
-            // TokenType.Description).findFirst().get();
-            assertEquals("check description", description, detail.content);
+            List<BlockGroupEntity> blockGroups = yiAnBuilder.getBlockGroups();
+            List<BlockGroupEntity> yiAnBlockGroups = filterBlockGroups(blockGroups, BlockGroupTypeEnum.YiAn);
+            assertEquals("only one YiAn", 1, yiAnBlockGroups.size());
 
-            // Token recipe = tokens.stream().filter(x -> x.getType() ==
-            // TokenType.LiteralText).findFirst().get();
-            assertEquals("check prescriptions", 1, detail.prescriptions.size());
-            checkHerbs(recipe, detail.prescriptions.iterator().next().items);
+            List<BlockGroupEntity> yiAnDetailGroups = filterBlockGroups(yiAnBlockGroups.get(0).children,
+                    BlockGroupTypeEnum.YiAnDetail);
+            assertEquals("only 1 YiAn Detail", 1, yiAnDetailGroups.size());
 
+            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            assertEquals("only 1 prescriptions", 1, prescriptions.size());
+
+            checkHerbs(recipe, IterableUtils.get(prescriptions, 0).items);
         } catch (Exception e) {
             e.printStackTrace(new PrintStream(System.out));
             fail(e.toString());
@@ -113,18 +111,23 @@ public class YiAnParserTests {
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
-            List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();
-            assertEquals("only one YiAn", 1, yiAns.size());
-            YiAnEntity yiAn = yiAns.get(0);
-            assertEquals("only one YiAn Detail", 1, yiAn.details.size());
-            YiAnDetailEntity detail = (YiAnDetailEntity) yiAn.details.toArray()[0];
-            // Token description = tokens.stream().filter(x -> x.getType() ==
-            // TokenType.Description).findFirst().get();
-            assertEquals("check description", description, detail.content);
+            List<BlockGroupEntity> blockGroups = yiAnBuilder.getBlockGroups();
+            List<BlockGroupEntity> yiAnBlockGroups = filterBlockGroups(blockGroups, BlockGroupTypeEnum.YiAn);
+            assertEquals("only one YiAn", 1, yiAnBlockGroups.size());
 
-            // List<Token> herbs =
-            // tokens.stream().filter(x->TokenType.Herb.equals(x.getType())).collect(Collectors.toList());
-            checkHerbs(herbs, detail.prescriptions.iterator().next().items);
+            List<BlockGroupEntity> yiAnDetailGroups = filterBlockGroups(yiAnBlockGroups.get(0).children,
+                    BlockGroupTypeEnum.YiAnDetail);
+            assertEquals("only 1 YiAn Detail", 1, yiAnDetailGroups.size());
+
+            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            assertEquals("only 1 prescriptions", 1, prescriptions.size());
+
+            checkHerbs(herbs, IterableUtils.get(prescriptions, 0).items);
+
+            // TODO: verify it when DataProvider is ready for UT
+            // BlockGroupEntity detailGroup = yiAnDetailGroups.get(0);
+            // assertEquals("check description", description,
+            // IterableUtils.get(detailGroup.blocks, 0).content);
 
         } catch (Exception e) {
             e.printStackTrace(new PrintStream(System.out));
@@ -197,21 +200,22 @@ public class YiAnParserTests {
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
-            List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();
-            assertEquals("only one YiAn", 1, yiAns.size());
-            YiAnEntity yiAn = yiAns.get(0);
-            assertEquals("only two YiAn Detail", 2, yiAn.details.size());
-            YiAnDetailEntity detail1 = (YiAnDetailEntity) yiAn.details.toArray()[0];
-            assertEquals("check description", description1, detail1.content);
+            List<BlockGroupEntity> blockGroups = yiAnBuilder.getBlockGroups();
+            List<BlockGroupEntity> yiAnBlockGroups = filterBlockGroups(blockGroups, BlockGroupTypeEnum.YiAn);
+            assertEquals("only one YiAn", 1, yiAnBlockGroups.size());
 
-            assertEquals("check prescriptions", 1, detail1.prescriptions.size());
-            checkHerbs(herbs1, detail1.prescriptions.iterator().next().items);
+            List<BlockGroupEntity> yiAnDetailGroups = filterBlockGroups(yiAnBlockGroups.get(0).children,
+                    BlockGroupTypeEnum.YiAnDetail);
+            assertEquals("only 2 YiAn Detail", 2, yiAnDetailGroups.size());
 
-            YiAnDetailEntity detail2 = (YiAnDetailEntity) yiAn.details.toArray()[1];
-            assertEquals("check prescriptions", 2, detail2.prescriptions.size());
-            checkHerbs(herbs2, IterableUtils.get(detail2.prescriptions, 0).items);
-            checkHerbs(recipe2, IterableUtils.get(detail2.prescriptions, 1).items);
+            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            assertEquals("only 3 prescriptions", 3, prescriptions.size());
 
+            YiAnPrescriptionEntity p1 = IterableUtils.get(prescriptions, 0);
+            checkHerbs(herbs1, p1.items);
+            //
+            checkHerbs(herbs2, IterableUtils.get(prescriptions, 1).items);
+            checkHerbs(recipe2, IterableUtils.get(prescriptions, 2).items);
         } catch (Exception e) {
             e.printStackTrace(new PrintStream(System.out));
             fail(e.toString());
@@ -276,29 +280,36 @@ public class YiAnParserTests {
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
 
-            List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();
-            assertEquals("only one YiAn", 1, yiAns.size());
-            YiAnEntity yiAn = yiAns.get(0);
-            assertEquals("only two YiAn Detail", 3, yiAn.details.size());
-            YiAnDetailEntity detail1 = IterableUtils.get(yiAn.details, 0);// (YiAnDetailEntity)
-                                                                          // yiAn.details.toArray()[0];
-            assertEquals("check description", description1, detail1.content);
+            List<BlockGroupEntity> blockGroups = yiAnBuilder.getBlockGroups();
+            List<BlockGroupEntity> yiAnBlockGroups = filterBlockGroups(blockGroups, BlockGroupTypeEnum.YiAn);
+            assertEquals("only one YiAn", 1, yiAnBlockGroups.size());
 
-            assertEquals("check prescriptions", 1, detail1.prescriptions.size());
-            checkHerbs(herbs1, detail1.prescriptions.iterator().next().items);
+            List<BlockGroupEntity> yiAnDetailGroups = filterBlockGroups(yiAnBlockGroups.get(0).children,
+                    BlockGroupTypeEnum.YiAnDetail);
+            assertEquals("only three YiAn Detail", 3, yiAnDetailGroups.size());
 
-            YiAnDetailEntity detail2 = IterableUtils.get(yiAn.details, 1);
-            assertEquals("check prescriptions", 1, detail2.prescriptions.size());
-            checkHerbs(herbs2, IterableUtils.get(detail2.prescriptions, 0).items);
+            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            assertEquals("only three prescriptions", 3, prescriptions.size());
 
-            YiAnDetailEntity detail3 = IterableUtils.get(yiAn.details, 2);
-            assertEquals("check prescriptions", 1, detail3.prescriptions.size());
-            checkHerbs(herbs3, IterableUtils.get(detail3.prescriptions, 0).items);
+            checkHerbs(herbs1, IterableUtils.get(prescriptions, 0).items);
+            checkHerbs(herbs2, IterableUtils.get(prescriptions, 1).items);
+            checkHerbs(herbs3, IterableUtils.get(prescriptions, 2).items);
 
         } catch (Exception e) {
             e.printStackTrace(new PrintStream(System.out));
             fail(e.toString());
         }
+    }
+
+    private List<BlockGroupEntity> filterBlockGroups(Collection<BlockGroupEntity> blockGroups,
+            BlockGroupTypeEnum type) {
+        List<BlockGroupEntity> yiAnBlockGroups = new Vector<BlockGroupEntity>();
+        for (BlockGroupEntity temp : blockGroups) {
+            if (temp.type.equals(type)) {
+                yiAnBlockGroups.add(temp);
+            }
+        }
+        return yiAnBlockGroups;
     }
 
     @Test
@@ -338,22 +349,29 @@ public class YiAnParserTests {
             entity.childSections = new Vector<SectionEntity>();
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
+            
 
-            List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();
-            assertEquals("only 2 YiAn", 2, yiAns.size());
-            YiAnEntity yiAn1 = yiAns.get(0);
-            assertEquals("only 1 YiAn Detail", 1, yiAn1.details.size());
-            YiAnDetailEntity detail1 = IterableUtils.get(yiAn1.details, 0);// (YiAnDetailEntity)
-                                                                           // yiAn.details.toArray()[0];
-            assertEquals("check description", description1, detail1.content);
-            checkHerbs(herbs1, IterableUtils.get(detail1.prescriptions, 0).items);
+            List<BlockGroupEntity> blockGroups = yiAnBuilder.getBlockGroups();
+            List<BlockGroupEntity> yiAnBlockGroups = filterBlockGroups(blockGroups, BlockGroupTypeEnum.YiAn);
+            assertEquals("only 2 YiAn", 2, yiAnBlockGroups.size());
 
-            YiAnEntity yiAn2 = yiAns.get(1);
-            assertEquals("only 1 YiAn Detail", 1, yiAn1.details.size());
-            YiAnDetailEntity detail2 = IterableUtils.get(yiAn2.details, 0);// (YiAnDetailEntity)
-                                                                           // yiAn.details.toArray()[0];
-            assertEquals("check description", description2, detail2.content);
-            checkHerbs(herbs2, IterableUtils.get(detail2.prescriptions, 0).items);
+            BlockGroupEntity yiAnGroup1 = yiAnBlockGroups.get(0);
+            List<BlockGroupEntity> yiAnDetailGroups = filterBlockGroups(yiAnGroup1.children,
+                    BlockGroupTypeEnum.YiAnDetail);
+            assertEquals("only 1 YiAn Detail", 1, yiAnDetailGroups.size());
+            
+
+            BlockGroupEntity yiAnGroup2 = yiAnBlockGroups.get(0);
+            List<BlockGroupEntity> yiAnDetail2Groups = filterBlockGroups(yiAnGroup2.children,
+                    BlockGroupTypeEnum.YiAnDetail);
+            assertEquals("only 1 YiAn Detail", 1, yiAnDetail2Groups.size());
+
+            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            assertEquals("only 2 prescriptions", 2, prescriptions.size());
+
+            YiAnPrescriptionEntity p1 = IterableUtils.get(prescriptions, 0);
+            checkHerbs(herbs1, p1.items);
+            checkHerbs(herbs2, IterableUtils.get(prescriptions, 1).items);
 
         } catch (Exception e) {
             e.printStackTrace(new PrintStream(System.out));
@@ -402,16 +420,30 @@ public class YiAnParserTests {
             entity.childSections = new Vector<SectionEntity>();
             YiAnBuilderVisitor yiAnBuilder = new YiAnBuilderVisitor(entity, mHerbAliasManager, null);
             node.accept(yiAnBuilder);
+            
 
-            List<YiAnEntity> yiAns = yiAnBuilder.getYiAns();
-            assertEquals("only 2 YiAn", 1, yiAns.size());
-            YiAnEntity yiAn1 = yiAns.get(0);
-            assertEquals("only 1 YiAn Detail", 1, yiAn1.details.size());
-            YiAnDetailEntity detail1 = IterableUtils.get(yiAn1.details, 0);// (YiAnDetailEntity)
-                                                                           // yiAn.details.toArray()[0];
-            assertEquals("check description", description, detail1.content);
-            checkHerbs(recipe1, IterableUtils.get(detail1.prescriptions, 0).items);
-            checkHerbs(herbs2, IterableUtils.get(detail1.prescriptions, 1).items);
+            List<BlockGroupEntity> blockGroups = yiAnBuilder.getBlockGroups();
+            List<BlockGroupEntity> yiAnBlockGroups = filterBlockGroups(blockGroups, BlockGroupTypeEnum.YiAn);
+            assertEquals("only 1 YiAn", 1, yiAnBlockGroups.size());
+
+            BlockGroupEntity yiAnGroup1 = yiAnBlockGroups.get(0);
+            List<BlockGroupEntity> yiAnDetailGroups = filterBlockGroups(yiAnGroup1.children,
+                    BlockGroupTypeEnum.YiAnDetail);
+            assertEquals("only 1 YiAn Detail", 1, yiAnDetailGroups.size());
+            
+
+            BlockGroupEntity yiAnGroup2 = yiAnBlockGroups.get(0);
+            List<BlockGroupEntity> yiAnDetail2Groups = filterBlockGroups(yiAnGroup2.children,
+                    BlockGroupTypeEnum.YiAnDetail);
+            assertEquals("only 1 YiAn Detail", 1, yiAnDetail2Groups.size());
+
+            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            assertEquals("only 2 prescriptions", 2, prescriptions.size());
+
+            YiAnPrescriptionEntity p1 = IterableUtils.get(prescriptions, 0);
+            checkHerbs(recipe1, p1.items);
+            checkHerbs(herbs2, IterableUtils.get(prescriptions, 1).items);
+
 
         } catch (Exception e) {
             e.printStackTrace(new PrintStream(System.out));
