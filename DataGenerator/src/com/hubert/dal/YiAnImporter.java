@@ -12,7 +12,7 @@ import com.j256.ormlite.support.ConnectionSource;
 
 public class YiAnImporter {
 
-    public void save(BookEntity book, List<YiAnEntity> yiAns) {
+    public void save(BookEntity book) {
         try {
             System.out.println("start update database");
 
