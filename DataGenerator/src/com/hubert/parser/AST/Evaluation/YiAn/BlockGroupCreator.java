@@ -31,6 +31,7 @@ public class BlockGroupCreator {
             return mBlockGroup;
         }
         mBlockGroup.blocks = new Vector<BlockEntity>();
+        mBlockGroup.children = new Vector<BlockGroupEntity>();
 
         for (BlockCreator creator : mBlockCreators) {
             SortedMap<Position, BlockEntity> blocks = creator.create();
@@ -43,6 +44,7 @@ public class BlockGroupCreator {
         for (BlockGroupCreator child : mChildBlockGroupCreators) {
             BlockGroupEntity temp = child.create();
             temp.parent = mBlockGroup;
+            mBlockGroup.children.add(temp);
         }
 
         return mBlockGroup;

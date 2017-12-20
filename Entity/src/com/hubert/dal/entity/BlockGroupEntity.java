@@ -15,7 +15,10 @@ public class BlockGroupEntity {
     public BlockGroupTypeEnum type;
 
     @DatabaseField(canBeNull = true, foreign = true)
-    public BlockGroupEntity parent;
+    public BlockGroupEntity parent;   
+
+    @ForeignCollectionField(eager = false)
+    public Collection<BlockGroupEntity> children;
 
     // yes, the book can be found by Block.Section.Book
     // keep here for shortcut
