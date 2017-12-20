@@ -14,30 +14,7 @@ public class YiAnDetailEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        YiAnEntity yiAn = mYiAnScope.getYiAn();
-        YiAnDetailEntity yiAnDetail = new YiAnDetailEntity();
-        yiAnDetail.prescriptions = new ArrayList<YiAnPrescriptionEntity>();
-        yiAnDetail.blockLinks = new ArrayList<>();
-        yiAnDetail.order = yiAn.details.size() + 1;
-        yiAn.details.add(yiAnDetail);
-
-        mYiAnScope.setYiAnDetail(yiAnDetail);
-
         mYiAnScope.createBlockGroupCreator(BlockGroupTypeEnum.YiAnDetail);
-        return true;
-    }
-    
-    @Override
-    public boolean postEvaluateCore(ASTNode node) {
-        BlockLinkCreator<YiAnDetailEntity> temp = mYiAnScope.getYiAnDetail();
-        List<BlockEntity> blocks = temp.create();
-        for(BlockEntity block : blocks){
-            YiAnDetailEntity yiAnDetail = temp.getEntity();
-            YiAnDetailBlockLinkEntity link = new YiAnDetailBlockLinkEntity();
-            link.block = block;
-            link.yian = yiAnDetail;
-            yiAnDetail.blockLinks.add(link);
-        }
         return true;
     }
 

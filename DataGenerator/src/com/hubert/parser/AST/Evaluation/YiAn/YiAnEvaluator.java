@@ -15,10 +15,6 @@ public class YiAnEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        YiAnEntity yiAn = new YiAnEntity();
-        yiAn.details = new ArrayList<YiAnDetailEntity>();
-        mYiAnScope.setYiAn(yiAn);
-
         mYiAnScope.initCurrentTokens();
         mYiAnScope.createBlockGroupCreator(BlockGroupTypeEnum.YiAn);
         

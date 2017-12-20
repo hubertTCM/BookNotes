@@ -19,25 +19,18 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        BlockLinkCreator<YiAnDetailEntity> temp = mYiAnScope.getYiAnDetail();
-        YiAnDetailEntity yiAnDetail = temp.getEntity();
         YiAnPrescriptionEntity prescription = new YiAnPrescriptionEntity();
         prescription.items = new ArrayList<YiAnPrescriptionItemEntity>();
-        prescription.order = yiAnDetail.prescriptions.size();
-        yiAnDetail.prescriptions.add(prescription);
-
-        BlockLinkCreator<YiAnPrescriptionEntity> creator = mYiAnScope.setYiAnPrescription(prescription);
-        creator.setParent(temp);
+        mYiAnScope.setYiAnPrescription(prescription);
+       
         
-
         mYiAnScope.createBlockCreator(BlockTypeEnum.YiAnPrescription);
         return true;
     }
 
     @Override
     protected boolean postEvaluateCore(ASTNode node) {
-        BlockLinkCreator<YiAnPrescriptionEntity> temp = mYiAnScope.getYiAnPrescription();
-        YiAnPrescriptionEntity prescription = temp.getEntity();
+        YiAnPrescriptionEntity prescription = mYiAnScope.getYiAnPrescription();
         ArrayList<String> herbs = new ArrayList<String>();
         for (YiAnPrescriptionItemEntity item : prescription.items) {
             HerbAliasManager herbAliasManager = mYiAnScope.getHerbAliasManager();
@@ -58,8 +51,6 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
         }
         prescription.summary = StringUtils.trim(prescription.summary);
 
-        temp.create();
-        
         
         BlockCreator blockCreator = mYiAnScope.getBlockCreator();
         SortedMap<Position, BlockEntity> blocks = blockCreator.create();

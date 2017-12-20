@@ -41,30 +41,30 @@ public class YiAnScope {
         return getVariable(YiAnScope.BookKey);
     }
 
-    public YiAnEntity getYiAn() {
-        return getVariable(YiAnKey);
-    }
+//    public YiAnEntity getYiAn() {
+//        return getVariable(YiAnKey);
+//    }
 
-    public void setYiAn(YiAnEntity yiAn) {
-        setRawVariable(YiAnKey, yiAn);
-    }
+//    public void setYiAn(YiAnEntity yiAn) {
+//        setRawVariable(YiAnKey, yiAn);
+//    }
 
-    public BlockLinkCreator<YiAnDetailEntity> getYiAnDetail() {
-        return getVariable(YiAnDetailKey);
-    }
+//    public BlockLinkCreator<YiAnDetailEntity> getYiAnDetail() {
+//        return getVariable(YiAnDetailKey);
+//    }
+//
+//    public void setYiAnDetail(YiAnDetailEntity value) {
+//        setVariable(YiAnDetailKey, value, YiAnNodeConstants.Description);
+//    }
 
-    public void setYiAnDetail(YiAnDetailEntity value) {
-        setVariable(YiAnDetailKey, value, YiAnNodeConstants.Description);
-    }
-
-    public BlockLinkCreator<YiAnPrescriptionEntity> getYiAnPrescription() {
+    public YiAnPrescriptionEntity getYiAnPrescription() {
         return getVariable(YiAnPresciption);
     }
 
-    public BlockLinkCreator<YiAnPrescriptionEntity> setYiAnPrescription(YiAnPrescriptionEntity value) {
+    public YiAnPrescriptionEntity setYiAnPrescription(YiAnPrescriptionEntity value) {
         List<YiAnPrescriptionEntity> prescriptions = getPrescriptions();
         prescriptions.add(value);
-        return setVariable(YiAnPresciption, value, YiAnNodeConstants.RecipeDetail);
+        return setRawVariable(YiAnPresciption, value);
     }
 
     public YiAnPrescriptionItemEntity getYiAnPrescriptionItem() {
