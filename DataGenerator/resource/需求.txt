@@ -15,3 +15,7 @@ Prescription: name, content, block, linkType. linkType: RawContent, YiAn, YiHua
 HerbGroup (药对): name
 HerbGroupLink: herbGroup, block, linkType. linkType: YiAn, Prescription
 
+
+TODO:
+rename PrescriptionEntity to BlockReferenceEntity(id, content, type, blockId, similarity)
+define Prescription as DTO
