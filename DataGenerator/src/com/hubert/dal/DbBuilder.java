@@ -21,8 +21,6 @@ public class DbBuilder {
             TableUtils.createTable(connectionSource, SectionEntity.class);
             TableUtils.createTable(connectionSource, BlockEntity.class);
 
-            TableUtils.createTable(connectionSource, YiAnEntity.class);
-            TableUtils.createTable(connectionSource, YiAnDetailEntity.class);
             TableUtils.createTable(connectionSource, YiAnPrescriptionEntity.class);
             TableUtils.createTable(connectionSource, YiAnPrescriptionItemEntity.class);
 
