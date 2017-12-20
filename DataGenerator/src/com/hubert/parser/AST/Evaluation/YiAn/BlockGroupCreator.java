@@ -8,7 +8,7 @@ import com.hubert.parser.tokenextractor.Position;
 
 public class BlockGroupCreator {
 
-    public BlockGroupCreator(BlockGroupCreator parentCreator, BlockGroupTypeEnum blockGroupType,
+    public BlockGroupCreator(BookEntity book, BlockGroupCreator parentCreator, BlockGroupTypeEnum blockGroupType,
             BlockPositionManager positionManager, SortedMap<Position, String> tokensContainer) {
 
         mTokensContainer = tokensContainer;
@@ -16,8 +16,9 @@ public class BlockGroupCreator {
 
         mBlockGroup = new BlockGroupEntity();
         mBlockGroup.type = blockGroupType;
-        
-        if (parentCreator != null){
+        mBlockGroup.book = book;
+
+        if (parentCreator != null) {
             parentCreator.mChildBlockGroupCreators.add(this);
         }
     }
@@ -50,19 +51,28 @@ public class BlockGroupCreator {
         return mBlockGroup;
     }
 
-    private void addBlock(Position position, BlockEntity blockEntity) {
+    private void addBlock(Position position, BlockEntity block) {
         for (BlockEntity existing : mBlockGroup.blocks) {
-            if (blockEntity.content.equals(existing.content)) {
+            if (block.content.equals(existing.content)) {
+                remove(block);
                 return;
             }
             Position existingPosition = mPositionManager.getPosition(existing);
             if (existingPosition.compareTo(position) == 0) {
+                remove(block);
                 return;
             }
         }
 
-        mBlockGroup.blocks.add(blockEntity);
-        mPositionManager.setPosition(blockEntity, position);
+        block.blockGroup = mBlockGroup;
+        mBlockGroup.blocks.add(block);
+        mPositionManager.setPosition(block, position);
+    }
+    
+    private void remove(BlockEntity block){
+        if (block.section != null){
+            block.section.blocks.remove(block);
+        }
     }
 
     private List<BlockCreator> mBlockCreators = new Vector<BlockCreator>();

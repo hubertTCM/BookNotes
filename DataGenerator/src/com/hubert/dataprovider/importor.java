@@ -30,10 +30,10 @@ public class importor {
             List<PrescriptionEntity> prescriptions = Utils.merge(temp);
             DbBuilder builder = new DbBuilder();
             builder.build();
-//            List<BlockGroupEntity> blockGroups = generator.getBlockGroups();
-//            BookEntity book = generator.getBook();
-//            YiAnImporter yiAnImporter = new YiAnImporter();
-//            yiAnImporter.save(book, blockGroups, prescriptions);
+            List<BlockGroupEntity> blockGroups = generator.getBlockGroups();
+            BookEntity book = generator.getBook();
+            YiAnImporter yiAnImporter = new YiAnImporter();
+            yiAnImporter.save(book, blockGroups, prescriptions);
 
             DistanceCacheProxy<PrescriptionClusterLeafNode> leafDistance = new DistanceCacheProxy<PrescriptionClusterLeafNode>(
                     new IDistanceCalculator<PrescriptionClusterLeafNode>() {

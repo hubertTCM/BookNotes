@@ -64,6 +64,12 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
             break;
         }
         
+        // TODO: 
+        if (prescription.block == null){
+            List<PrescriptionEntity> prescriptions = mYiAnScope.getPrescriptions();
+            prescriptions.remove(prescription);
+        }
+        
         return true;
     }
 
