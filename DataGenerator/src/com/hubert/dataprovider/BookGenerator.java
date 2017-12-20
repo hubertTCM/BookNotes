@@ -40,8 +40,7 @@ public class BookGenerator {
         debugDirectory.mkdirs();
     }
 
-    // TODO: Prescriptions
-    public Map<String, List<YiAnEntity>> doImport() {
+    public Map<String, List<YiAnPrescriptionEntity>> doImport() {
         try {
             loadSections(null, mBookDirectory);
         } catch (IOException e) {
@@ -51,10 +50,10 @@ public class BookGenerator {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return mYiAns;
+        return mPrescriptions;
     }
-    
-    public Map<String, List<YiAnPrescriptionEntity>> getPrescriptions(){
+
+    public Map<String, List<YiAnPrescriptionEntity>> getPrescriptions() {
         return mPrescriptions;
     }
 
@@ -114,7 +113,6 @@ public class BookGenerator {
         node.accept(builder);
 
         String key = Paths.get(getRelativePath(file).toString(), sectionName).toString();
-        mYiAns.put(key, builder.getYiAns());
         mPrescriptions.put(key, builder.getPrescriptions());
         mTokens.addAll(builder.getTokens());
 
@@ -209,8 +207,6 @@ public class BookGenerator {
     protected HerbAliasManager mHerbAliasManager;
 
     protected Map<String, List<YiAnPrescriptionEntity>> mPrescriptions = new HashMap<String, List<YiAnPrescriptionEntity>>();
-    
-    protected Map<String, List<YiAnEntity>> mYiAns = new HashMap<String, List<YiAnEntity>>();// new
-                                                                                             // ArrayList<YiAnEntity>();
+
     private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
 }

@@ -9,9 +9,8 @@ import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 
 public class YiAnEvaluator extends AbstractEvaluator {
 
-    public YiAnEvaluator(Context context, List<YiAnEntity> yiAns) {
+    public YiAnEvaluator(Context context) {
         super(Arrays.asList(YiAnNodeConstants.YN, YiAnNodeConstants.YN2), context);
-        mYiAns = yiAns;
     }
 
     @Override
@@ -19,7 +18,6 @@ public class YiAnEvaluator extends AbstractEvaluator {
         YiAnEntity yiAn = new YiAnEntity();
         yiAn.details = new ArrayList<YiAnDetailEntity>();
         mYiAnScope.setYiAn(yiAn);
-        mYiAns.add(yiAn);
 
         mYiAnScope.initCurrentTokens();
         mYiAnScope.createBlockGroupCreator(BlockGroupTypeEnum.YiAn);
@@ -35,6 +33,4 @@ public class YiAnEvaluator extends AbstractEvaluator {
 
         return true;
     }
-
-    private List<YiAnEntity> mYiAns = null;// new ArrayList<YiAnEntity>();
 }

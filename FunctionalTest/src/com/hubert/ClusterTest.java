@@ -19,8 +19,7 @@ public class ClusterTest {
         try {
             BookGenerator generator = new BookGenerator(sGrammarFile, "../DataGenerator/resource/临证指南医案",
                     sHerbAliasManager);
-            generator.doImport();
-            Map<String, List<YiAnPrescriptionEntity>> prescriptions = generator.getPrescriptions();
+            Map<String, List<YiAnPrescriptionEntity>> prescriptions = generator.doImport();
             for (Map.Entry<String, List<YiAnPrescriptionEntity>> entry : prescriptions.entrySet()) {
                 createCluster(entry.getKey(), entry.getValue());
             }

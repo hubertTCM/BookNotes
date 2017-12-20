@@ -37,7 +37,7 @@ public class YiAnBuilderVisitor implements IVisitor {
         context.setGlobalData(YiAnScope.PrescriptionKey, mPrescriptions);
 
         mEvaluators.add(new SectionNameEvaluator(context));
-        mEvaluators.add(new YiAnEvaluator(context, mYiAns));
+        mEvaluators.add(new YiAnEvaluator(context));
         mEvaluators.add(new YiAnDetailEvaluator(context));
         mEvaluators.add(new YiAnDetailPropertyEvaluator(context));
         mEvaluators.add(new RecipeCompositionEvaluator(context));
@@ -69,11 +69,6 @@ public class YiAnBuilderVisitor implements IVisitor {
             evaluator.postEvaluate(node);
             evaluator.clear();
         }
-    }
-
-    public List<YiAnEntity> getYiAns() {
-        sortBlocks(mParentSection);
-        return mYiAns;
     }
     
     public List<BlockGroupEntity> getBlockGroups(){
@@ -113,7 +108,6 @@ public class YiAnBuilderVisitor implements IVisitor {
     }
 
     private List<IEvaluator> mEvaluators = new ArrayList<IEvaluator>();
-    private List<YiAnEntity> mYiAns = new ArrayList<YiAnEntity>();
     private List<YiAnPrescriptionEntity> mPrescriptions = new Vector<YiAnPrescriptionEntity>();
     private List<BlockGroupEntity> mBlockGroups = new Vector<BlockGroupEntity>();
     private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
