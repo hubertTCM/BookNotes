@@ -16,9 +16,8 @@ public class BlockCreator {
     }
 
     public SortedMap<Position, BlockEntity> create() {
-        SortedMap<Position, BlockEntity> blocks = new TreeMap<Position, BlockEntity>();
-        if (mTokenTypes.isEmpty() || mDataProvider == null) {
-            return blocks;
+        if (!mBlocks.isEmpty() || mTokenTypes.isEmpty() || mDataProvider == null) {
+            return mBlocks;
         }
 
         String blockContent = "";
@@ -26,19 +25,22 @@ public class BlockCreator {
             ContentType contentType = mDataProvider.getContentType(entry.getKey());
             String content = mDataProvider.getContent(entry.getKey());
             if (contentType.equals(ContentType.AdjustedContentForParser)) {
-                //blocks.put(entry.getKey(), createBlock(content, BlockTypeEnum.ParserText));
+                // blocks.put(entry.getKey(), createBlock(content,
+                // BlockTypeEnum.ParserText));
                 continue;
             }
             blockContent += content + "\n";
         }
 
-        blocks.put(mTokenTypes.firstKey(), createBlock(blockContent, mBlockType));
-        
-        for(Entry<Position, BlockEntity> temp : blocks.entrySet()){
+        if (!blockContent.isEmpty()) {
+            mBlocks.put(mTokenTypes.firstKey(), createBlock(blockContent, mBlockType));
+        }
+
+        for (Entry<Position, BlockEntity> temp : mBlocks.entrySet()) {
             mPositionManager.setPosition(temp.getValue(), temp.getKey());
         }
 
-        return blocks;
+        return mBlocks;
     }
 
     private BlockEntity createBlock(String blockContent, BlockTypeEnum blockType) {
@@ -70,4 +72,6 @@ public class BlockCreator {
     private BlockPositionManager mPositionManager;
     private SectionEntity mSection;
     private SortedMap<Position, String> mTokenTypes = new TreeMap<Position, String>();
+
+    SortedMap<Position, BlockEntity> mBlocks = new TreeMap<Position, BlockEntity>();
 }

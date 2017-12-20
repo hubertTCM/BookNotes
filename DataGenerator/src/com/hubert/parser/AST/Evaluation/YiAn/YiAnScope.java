@@ -41,21 +41,21 @@ public class YiAnScope {
         return getVariable(YiAnScope.BookKey);
     }
 
-//    public YiAnEntity getYiAn() {
-//        return getVariable(YiAnKey);
-//    }
+    // public YiAnEntity getYiAn() {
+    // return getVariable(YiAnKey);
+    // }
 
-//    public void setYiAn(YiAnEntity yiAn) {
-//        setRawVariable(YiAnKey, yiAn);
-//    }
+    // public void setYiAn(YiAnEntity yiAn) {
+    // setRawVariable(YiAnKey, yiAn);
+    // }
 
-//    public BlockLinkCreator<YiAnDetailEntity> getYiAnDetail() {
-//        return getVariable(YiAnDetailKey);
-//    }
-//
-//    public void setYiAnDetail(YiAnDetailEntity value) {
-//        setVariable(YiAnDetailKey, value, YiAnNodeConstants.Description);
-//    }
+    // public BlockLinkCreator<YiAnDetailEntity> getYiAnDetail() {
+    // return getVariable(YiAnDetailKey);
+    // }
+    //
+    // public void setYiAnDetail(YiAnDetailEntity value) {
+    // setVariable(YiAnDetailKey, value, YiAnNodeConstants.Description);
+    // }
 
     public PrescriptionEntity getYiAnPrescription() {
         return getVariable(YiAnPresciption);
@@ -96,8 +96,8 @@ public class YiAnScope {
     }
 
     public BlockGroupCreator createBlockGroupCreator(BlockGroupTypeEnum type) {
-        BlockGroupCreator creator = new BlockGroupCreator(getBlockGroupCreator(), type, getBlockPositionManager(),
-                getCurrentTokens());
+        BlockGroupCreator creator = new BlockGroupCreator(getBook(), getBlockGroupCreator(), type,
+                getBlockPositionManager(), getCurrentTokens());
 
         setRawVariable(BlockGroupCreatorKey, creator);
         return creator;
