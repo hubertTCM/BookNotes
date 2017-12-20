@@ -19,8 +19,8 @@ public class ClusterTest {
         try {
             BookGenerator generator = new BookGenerator(sGrammarFile, "../DataGenerator/resource/临证指南医案",
                     sHerbAliasManager);
-            Map<String, List<YiAnPrescriptionEntity>> prescriptions = generator.doImport();
-            for (Map.Entry<String, List<YiAnPrescriptionEntity>> entry : prescriptions.entrySet()) {
+            Map<String, List<PrescriptionEntity>> prescriptions = generator.doImport();
+            for (Map.Entry<String, List<PrescriptionEntity>> entry : prescriptions.entrySet()) {
                 createCluster(entry.getKey(), entry.getValue());
             }
 
@@ -30,7 +30,7 @@ public class ClusterTest {
         }
     }
 
-    private void createCluster(String pathPrefix, List<YiAnPrescriptionEntity> prescriptions) {
+    private void createCluster(String pathPrefix, List<PrescriptionEntity> prescriptions) {
         DistanceCacheProxy<PrescriptionClusterLeafNode> leafDistance = new DistanceCacheProxy<PrescriptionClusterLeafNode>(
                 new IDistanceCalculator<PrescriptionClusterLeafNode>() {
 

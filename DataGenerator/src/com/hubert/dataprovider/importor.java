@@ -26,14 +26,14 @@ public class importor {
 
             BookGenerator generator = new BookGenerator("resource/临证指南医案/grammar.xml", "resource/临证指南医案",
                     HerbAliasManager.getInstance());
-            Map<String, List<YiAnPrescriptionEntity>> temp = generator.doImport();
-            List<YiAnPrescriptionEntity> prescriptions = Utils.merge(temp);
-            
+            Map<String, List<PrescriptionEntity>> temp = generator.doImport();
+            List<PrescriptionEntity> prescriptions = Utils.merge(temp);
             DbBuilder builder = new DbBuilder();
             builder.build();
-            //BookEntity book = generator.getBook();
-            //YiAnImporter yiAnImporter = new YiAnImporter();
-            //yiAnImporter.save(book);
+//            List<BlockGroupEntity> blockGroups = generator.getBlockGroups();
+//            BookEntity book = generator.getBook();
+//            YiAnImporter yiAnImporter = new YiAnImporter();
+//            yiAnImporter.save(book, blockGroups, prescriptions);
 
             DistanceCacheProxy<PrescriptionClusterLeafNode> leafDistance = new DistanceCacheProxy<PrescriptionClusterLeafNode>(
                     new IDistanceCalculator<PrescriptionClusterLeafNode>() {

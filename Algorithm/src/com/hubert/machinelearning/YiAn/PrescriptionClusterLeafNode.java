@@ -5,7 +5,7 @@ import java.util.*;
 import com.hubert.dal.entity.*;
 
 public class PrescriptionClusterLeafNode {
-    public PrescriptionClusterLeafNode(YiAnPrescriptionEntity entity) {
+    public PrescriptionClusterLeafNode(PrescriptionEntity entity) {
         mYiAnPrescriptionEntity = entity;
         String[] herbs = mYiAnPrescriptionEntity.summary.split(" ");
         mHerbs.addAll(Arrays.asList(herbs));
@@ -21,6 +21,6 @@ public class PrescriptionClusterLeafNode {
 
     // private List<PrescriptionClusterLeafNode> mChildren = new
     // ArrayList<PrescriptionClusterLeafNode>();
-    private YiAnPrescriptionEntity mYiAnPrescriptionEntity;
+    private PrescriptionEntity mYiAnPrescriptionEntity;
     private Set<String> mHerbs = new HashSet<String>();
 }

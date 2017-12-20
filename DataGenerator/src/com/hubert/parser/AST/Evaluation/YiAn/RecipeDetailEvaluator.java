@@ -19,8 +19,8 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        YiAnPrescriptionEntity prescription = new YiAnPrescriptionEntity();
-        prescription.items = new ArrayList<YiAnPrescriptionItemEntity>();
+        PrescriptionEntity prescription = new PrescriptionEntity();
+        prescription.items = new ArrayList<PrescriptionItem>();
         mYiAnScope.setYiAnPrescription(prescription);
        
         
@@ -30,9 +30,9 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean postEvaluateCore(ASTNode node) {
-        YiAnPrescriptionEntity prescription = mYiAnScope.getYiAnPrescription();
+        PrescriptionEntity prescription = mYiAnScope.getYiAnPrescription();
         ArrayList<String> herbs = new ArrayList<String>();
-        for (YiAnPrescriptionItemEntity item : prescription.items) {
+        for (PrescriptionItem item : prescription.items) {
             HerbAliasManager herbAliasManager = mYiAnScope.getHerbAliasManager();
             String standardName = herbAliasManager.getStandardName(item.herb);
             if (!herbs.contains(standardName)) {

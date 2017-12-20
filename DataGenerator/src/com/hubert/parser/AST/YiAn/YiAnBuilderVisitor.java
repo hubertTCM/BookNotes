@@ -75,7 +75,7 @@ public class YiAnBuilderVisitor implements IVisitor {
         return mBlockGroups;
     }
     
-    public List<YiAnPrescriptionEntity> getPrescriptions(){
+    public List<PrescriptionEntity> getPrescriptions(){
         sortBlocks(mParentSection);
         return mPrescriptions;
     }
@@ -108,7 +108,7 @@ public class YiAnBuilderVisitor implements IVisitor {
     }
 
     private List<IEvaluator> mEvaluators = new ArrayList<IEvaluator>();
-    private List<YiAnPrescriptionEntity> mPrescriptions = new Vector<YiAnPrescriptionEntity>();
+    private List<PrescriptionEntity> mPrescriptions = new Vector<PrescriptionEntity>();
     private List<BlockGroupEntity> mBlockGroups = new Vector<BlockGroupEntity>();
     private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
     private BlockPositionManager mBlockPositionManager = new BlockPositionManager();

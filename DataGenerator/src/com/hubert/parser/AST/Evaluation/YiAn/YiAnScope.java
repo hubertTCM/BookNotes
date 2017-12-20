@@ -57,21 +57,21 @@ public class YiAnScope {
 //        setVariable(YiAnDetailKey, value, YiAnNodeConstants.Description);
 //    }
 
-    public YiAnPrescriptionEntity getYiAnPrescription() {
+    public PrescriptionEntity getYiAnPrescription() {
         return getVariable(YiAnPresciption);
     }
 
-    public YiAnPrescriptionEntity setYiAnPrescription(YiAnPrescriptionEntity value) {
-        List<YiAnPrescriptionEntity> prescriptions = getPrescriptions();
+    public PrescriptionEntity setYiAnPrescription(PrescriptionEntity value) {
+        List<PrescriptionEntity> prescriptions = getPrescriptions();
         prescriptions.add(value);
         return setRawVariable(YiAnPresciption, value);
     }
 
-    public YiAnPrescriptionItemEntity getYiAnPrescriptionItem() {
+    public PrescriptionItem getYiAnPrescriptionItem() {
         return getVariable(YiAnPrescriptionItem);
     }
 
-    public void setYiAnPrescriptionItem(YiAnPrescriptionItemEntity value) {
+    public void setYiAnPrescriptionItem(PrescriptionItem value) {
         setRawVariable(YiAnPrescriptionItem, value);
     }
 
@@ -121,7 +121,7 @@ public class YiAnScope {
         return getVariable(BlockGroupKey);
     }
 
-    protected List<YiAnPrescriptionEntity> getPrescriptions() {
+    protected List<PrescriptionEntity> getPrescriptions() {
         return getVariable(PrescriptionKey);
     }
 
