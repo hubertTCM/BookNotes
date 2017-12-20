@@ -133,12 +133,6 @@ public class YiAnScope {
         return mStorage.setVariable(key, value);
     }
 
-    protected <T> BlockLinkCreator<T> setVariable(String key, T value, String blockType) {
-        BlockLinkCreator<T> provider = new BlockLinkCreator<>(value, blockType, this);
-        mStorage.setVariable(key, provider).getEntity();
-        return provider;
-    }
-
     public final static String RawContentProvider = "Global.RawContentProvider";
     public final static String HerbAliasManagerKey = "Global.HerbAliasManager";
     public final static String OriginalTokenKey = "Global.OriginalToken";
