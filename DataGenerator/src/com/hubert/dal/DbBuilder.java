@@ -21,8 +21,8 @@ public class DbBuilder {
             TableUtils.createTable(connectionSource, SectionEntity.class);
             TableUtils.createTable(connectionSource, BlockEntity.class);
 
-            TableUtils.createTable(connectionSource, YiAnPrescriptionEntity.class);
-            TableUtils.createTable(connectionSource, YiAnPrescriptionItemEntity.class);
+            TableUtils.createTable(connectionSource, PrescriptionEntity.class);
+            TableUtils.createTable(connectionSource, PrescriptionItem.class);
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block

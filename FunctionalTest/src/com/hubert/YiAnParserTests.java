@@ -64,7 +64,7 @@ public class YiAnParserTests {
                     BlockGroupTypeEnum.YiAnDetail);
             assertEquals("only 1 YiAn Detail", 1, yiAnDetailGroups.size());
 
-            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            List<PrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
             assertEquals("only 1 prescriptions", 1, prescriptions.size());
 
             checkHerbs(recipe, IterableUtils.get(prescriptions, 0).items);
@@ -119,7 +119,7 @@ public class YiAnParserTests {
                     BlockGroupTypeEnum.YiAnDetail);
             assertEquals("only 1 YiAn Detail", 1, yiAnDetailGroups.size());
 
-            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            List<PrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
             assertEquals("only 1 prescriptions", 1, prescriptions.size());
 
             checkHerbs(herbs, IterableUtils.get(prescriptions, 0).items);
@@ -208,10 +208,10 @@ public class YiAnParserTests {
                     BlockGroupTypeEnum.YiAnDetail);
             assertEquals("only 2 YiAn Detail", 2, yiAnDetailGroups.size());
 
-            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            List<PrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
             assertEquals("only 3 prescriptions", 3, prescriptions.size());
 
-            YiAnPrescriptionEntity p1 = IterableUtils.get(prescriptions, 0);
+            PrescriptionEntity p1 = IterableUtils.get(prescriptions, 0);
             checkHerbs(herbs1, p1.items);
             //
             checkHerbs(herbs2, IterableUtils.get(prescriptions, 1).items);
@@ -288,7 +288,7 @@ public class YiAnParserTests {
                     BlockGroupTypeEnum.YiAnDetail);
             assertEquals("only three YiAn Detail", 3, yiAnDetailGroups.size());
 
-            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            List<PrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
             assertEquals("only three prescriptions", 3, prescriptions.size());
 
             checkHerbs(herbs1, IterableUtils.get(prescriptions, 0).items);
@@ -366,10 +366,10 @@ public class YiAnParserTests {
                     BlockGroupTypeEnum.YiAnDetail);
             assertEquals("only 1 YiAn Detail", 1, yiAnDetail2Groups.size());
 
-            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            List<PrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
             assertEquals("only 2 prescriptions", 2, prescriptions.size());
 
-            YiAnPrescriptionEntity p1 = IterableUtils.get(prescriptions, 0);
+            PrescriptionEntity p1 = IterableUtils.get(prescriptions, 0);
             checkHerbs(herbs1, p1.items);
             checkHerbs(herbs2, IterableUtils.get(prescriptions, 1).items);
 
@@ -437,10 +437,10 @@ public class YiAnParserTests {
                     BlockGroupTypeEnum.YiAnDetail);
             assertEquals("only 1 YiAn Detail", 1, yiAnDetail2Groups.size());
 
-            List<YiAnPrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
+            List<PrescriptionEntity> prescriptions = yiAnBuilder.getPrescriptions();
             assertEquals("only 2 prescriptions", 2, prescriptions.size());
 
-            YiAnPrescriptionEntity p1 = IterableUtils.get(prescriptions, 0);
+            PrescriptionEntity p1 = IterableUtils.get(prescriptions, 0);
             checkHerbs(recipe1, p1.items);
             checkHerbs(herbs2, IterableUtils.get(prescriptions, 1).items);
 
@@ -451,7 +451,7 @@ public class YiAnParserTests {
         }
     }
 
-    private void checkHerbs(String expect, Collection<YiAnPrescriptionItemEntity> actual) {
+    private void checkHerbs(String expect, Collection<PrescriptionItem> actual) {
         if (expect == null || expect.isEmpty()) {
             assertEquals("check empty herb compositions", 0, actual.size());
             return;
@@ -470,7 +470,7 @@ public class YiAnParserTests {
         checkHerbs(herbs, actual);
     }
 
-    private void checkHerbs(List<Token> expectHerbs, Collection<YiAnPrescriptionItemEntity> actual) {
+    private void checkHerbs(List<Token> expectHerbs, Collection<PrescriptionItem> actual) {
 
         assertEquals("check tokens", expectHerbs.size(), actual.size());
 
@@ -481,7 +481,7 @@ public class YiAnParserTests {
                 continue;
             }
             String herb = token.getValue();
-            Optional<YiAnPrescriptionItemEntity> entity = actual.stream().filter(x -> x.herb.equals(herb)).findFirst();
+            Optional<PrescriptionItem> entity = actual.stream().filter(x -> x.herb.equals(herb)).findFirst();
             if (entity == null || !entity.isPresent()) {
                 errorMessage += " " + herb;
             }

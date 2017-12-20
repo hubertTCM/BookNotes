@@ -7,7 +7,7 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "yianprescription")
-public class YiAnPrescriptionEntity {
+public class PrescriptionEntity {
     @DatabaseField(generatedId = true)
     public long id;
 
@@ -16,8 +16,7 @@ public class YiAnPrescriptionEntity {
     @DatabaseField(width = 1500)
     public String summary;
 
-    @ForeignCollectionField(eager = false)
-    public Collection<YiAnPrescriptionItemEntity> items;
+    public Collection<PrescriptionItem> items;
 
     @DatabaseField(canBeNull = false, foreign = true)
     public BlockEntity block;

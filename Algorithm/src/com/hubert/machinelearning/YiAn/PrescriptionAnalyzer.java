@@ -6,8 +6,8 @@ import com.hubert.dal.entity.*;
 import com.hubert.machinelearning.*;
 
 public class PrescriptionAnalyzer {
-    public PrescriptionAnalyzer(List<YiAnPrescriptionEntity> source) {
-        for (YiAnPrescriptionEntity entity : source) {
+    public PrescriptionAnalyzer(List<PrescriptionEntity> source) {
+        for (PrescriptionEntity entity : source) {
             PrescriptionClusterLeafNode leaf = new PrescriptionClusterLeafNode(entity);
             mLeafNodes.add(leaf);
         }
