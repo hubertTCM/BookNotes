@@ -4,39 +4,39 @@ import java.util.*;
 
 import com.hubert.machinelearning.JaccardDistanceCalculator;
 
-public class CenterCalculator {
-    public CenterCalculator(List<Set<String>> sets) {
+public class CenterCalculator<T> {
+    public CenterCalculator(List<Set<T>> sets) {
         mAllSets.addAll(sets);
-        for (Set<String> item : sets) {
-            for (String temp : item) {
-                if (!mAllElements.containsKey(temp)) {
-                    mAllElements.put(temp, 1);
+        for (Set<T> tempSet : sets) {
+            for (T tempItem : tempSet) {
+                if (!mAllElements.containsKey(tempItem)) {
+                    mAllElements.put(tempItem, 1);
                 } else {
-                    Integer count = mAllElements.get(temp) + 1;
-                    mAllElements.put(temp, count);
+                    Integer count = mAllElements.get(tempItem) + 1;
+                    mAllElements.put(tempItem, count);
                 }
             }
         }
-        HerbCountComparator herbCountComparator = new HerbCountComparator(mAllElements);
-        mLeftItems = new PriorityQueue<String>(mAllElements.size(), herbCountComparator);
+        FrequencyComparator herbCountComparator = new FrequencyComparator(mAllElements);
+        mLeftItems = new PriorityQueue<T>(mAllElements.size(), herbCountComparator);
     }
 
-    public Set<String> getCenter() {
+    public Set<T> getCenter() {
         if (mCenter == null) {
             mCenter = calculateCenter();
         }
         return mCenter;
     }
 
-    private Set<String> calculateCenter() {
-        mCenter = new HashSet<String>();
+    private Set<T> calculateCenter() {
+        mCenter = new HashSet<T>();
         mCenter.addAll(mAllElements.keySet());
         mLeftItems.addAll(mAllElements.keySet());
 
         double minDistance = distance(mCenter);
         while (!mLeftItems.isEmpty()) {
-            String herb = mLeftItems.remove();
-            HashSet<String> candidate = new HashSet<String>(mCenter);
+            T herb = mLeftItems.remove();
+            HashSet<T> candidate = new HashSet<T>(mCenter);
             candidate.remove(herb);
 
             double temp = distance(candidate);
@@ -51,28 +51,28 @@ public class CenterCalculator {
 
     }
 
-    private double distance(Set<String> candidate) {
+    private double distance(Set<T> candidate) {
         double result = 0;
         // for (HashSet<String> value : mPrescriptions.values()) {
-        for (Set<String> item : mAllSets) {
+        for (Set<T> item : mAllSets) {
             result += mDistanceCalculator.distance(candidate, item);
         }
         return result;
     }
 
-    private List<Set<String>> mAllSets = new ArrayList<Set<String>>();
-    private Map<String, Integer> mAllElements = new HashMap<String, Integer>();
-    private Set<String> mCenter = null;
-    private PriorityQueue<String> mLeftItems = null;
-    private JaccardDistanceCalculator<Set<String>, String> mDistanceCalculator = new JaccardDistanceCalculator<Set<String>, String>();
+    private List<Set<T>> mAllSets = new ArrayList<Set<T>>();
+    private Map<T, Integer> mAllElements = new HashMap<T, Integer>();
+    private Set<T> mCenter = null;
+    private PriorityQueue<T> mLeftItems = null;
+    private JaccardDistanceCalculator<Set<T>, T> mDistanceCalculator = new JaccardDistanceCalculator<Set<T>, T>();
 
-    private class HerbCountComparator implements Comparator<String> {
-        public HerbCountComparator(Map<String, Integer> herbCount) {
+    private class FrequencyComparator implements Comparator<T> {
+        public FrequencyComparator(Map<T, Integer> herbCount) {
             mHerbCount = herbCount;
         }
 
         @Override
-        public int compare(String x, String y) {
+        public int compare(T x, T y) {
             if (!mHerbCount.containsKey(x) || !mHerbCount.containsKey(y)) {
                 System.out.println("Error, unknow herb");
                 return 0;
@@ -88,6 +88,6 @@ public class CenterCalculator {
             return 0;
         }
 
-        Map<String, Integer> mHerbCount;
+        Map<T, Integer> mHerbCount;
     }
 }

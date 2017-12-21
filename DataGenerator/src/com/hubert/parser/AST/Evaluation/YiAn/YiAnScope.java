@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.*;
+import com.hubert.dto.*;
 import com.hubert.parser.AST.Evaluation.Common.*;
 import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 import com.hubert.parser.tokenextractor.*;
@@ -57,12 +58,12 @@ public class YiAnScope {
     // setVariable(YiAnDetailKey, value, YiAnNodeConstants.Description);
     // }
 
-    public PrescriptionEntity getYiAnPrescription() {
+    public Prescription getYiAnPrescription() {
         return getVariable(YiAnPresciption);
     }
 
-    public PrescriptionEntity setYiAnPrescription(PrescriptionEntity value) {
-        List<PrescriptionEntity> prescriptions = getPrescriptions();
+    public Prescription setYiAnPrescription(Prescription value) {
+        List<Prescription> prescriptions = getPrescriptions();
         prescriptions.add(value);
         return setRawVariable(YiAnPresciption, value);
     }
@@ -122,7 +123,7 @@ public class YiAnScope {
         return getVariable(BlockGroupKey);
     }
 
-    protected List<PrescriptionEntity> getPrescriptions() {
+    protected List<Prescription> getPrescriptions() {
         return getVariable(PrescriptionKey);
     }
 

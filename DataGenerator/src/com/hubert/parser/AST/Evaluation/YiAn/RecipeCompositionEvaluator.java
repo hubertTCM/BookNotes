@@ -1,8 +1,9 @@
 package com.hubert.parser.AST.Evaluation.YiAn;
 
-import java.util.Arrays;
+import java.util.*;
 
 import com.hubert.dal.entity.*;
+import com.hubert.dto.*;
 import com.hubert.parser.AST.ASTNode;
 import com.hubert.parser.AST.Evaluation.Common.Context;
 import com.hubert.parser.AST.YiAn.*;
@@ -19,8 +20,9 @@ public class RecipeCompositionEvaluator extends AbstractEvaluator {
         mYiAnScope.setYiAnPrescriptionItem(item);
         
 
-        PrescriptionEntity prescription = mYiAnScope.getYiAnPrescription();
-        prescription.items.add(item);
+        Prescription prescription = mYiAnScope.getYiAnPrescription();
+        Collection<PrescriptionItem> items  = prescription.getItems();
+        items.add(item);
 
         return true;
     }

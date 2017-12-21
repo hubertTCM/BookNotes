@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.*;
+import com.hubert.dto.*;
 import com.hubert.parser.AST.ASTNode;
 import com.hubert.parser.AST.Evaluation.Common.*;
 import com.hubert.parser.AST.YiAn.*;
@@ -19,20 +20,20 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        PrescriptionEntity prescription = new PrescriptionEntity();
-        prescription.items = new ArrayList<PrescriptionItem>();
+        Prescription prescription = new Prescription();
         mYiAnScope.setYiAnPrescription(prescription);
        
         
-        mYiAnScope.createBlockCreator(BlockTypeEnum.YiAnPrescription, prescription);
+        mYiAnScope.createBlockCreator(BlockTypeEnum.YiAnPrescription, prescription.getEntity());
         return true;
     }
 
     @Override
     protected boolean postEvaluateCore(ASTNode node) {
-        PrescriptionEntity prescription = mYiAnScope.getYiAnPrescription();
+        Prescription prescription = mYiAnScope.getYiAnPrescription();
         ArrayList<String> herbs = new ArrayList<String>();
-        for (PrescriptionItem item : prescription.items) {
+        Collection<PrescriptionItem> items = prescription.getItems();
+        for (PrescriptionItem item : items) {
             HerbAliasManager herbAliasManager = mYiAnScope.getHerbAliasManager();
             String standardName = herbAliasManager.getStandardName(item.herb);
             if (!herbs.contains(standardName)) {
@@ -45,11 +46,12 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
                 return s1.compareToIgnoreCase(s2);
             }
         });
-        prescription.summary = "";
+        String summary = "";
         for (String herb : herbs) {
-            prescription.summary += " " + herb;
+            summary += " " + herb;
         }
-        prescription.summary = StringUtils.trim(prescription.summary);
+        summary = StringUtils.trim(summary);
+        prescription.setSummary(summary);
 
         
 //        BlockCreator blockCreator = mYiAnScope.getBlockCreator();

@@ -8,6 +8,7 @@ import java.util.*;
 
 import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.*;
+import com.hubert.dto.*;
 import com.hubert.parser.AST.ASTNode;
 import com.hubert.parser.AST.IVisitor;
 import com.hubert.parser.AST.Evaluation.Common.Context;
@@ -75,7 +76,7 @@ public class YiAnBuilderVisitor implements IVisitor {
         return mBlockGroups;
     }
     
-    public List<PrescriptionEntity> getPrescriptions(){
+    public List<Prescription> getPrescriptions(){
         sortBlocks(mParentSection);
         return mPrescriptions;
     }
@@ -108,7 +109,7 @@ public class YiAnBuilderVisitor implements IVisitor {
     }
 
     private List<IEvaluator> mEvaluators = new ArrayList<IEvaluator>();
-    private List<PrescriptionEntity> mPrescriptions = new Vector<PrescriptionEntity>();
+    private List<Prescription> mPrescriptions = new Vector<Prescription>();
     private List<BlockGroupEntity> mBlockGroups = new Vector<BlockGroupEntity>();
     private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
     private BlockPositionManager mBlockPositionManager = new BlockPositionManager();

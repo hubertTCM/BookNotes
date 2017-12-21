@@ -9,6 +9,7 @@ import org.junit.*;
 
 import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.*;
+import com.hubert.dto.Prescription;
 import com.hubert.machinelearning.*;
 import com.hubert.machinelearning.YiAn.*;
 
@@ -19,8 +20,8 @@ public class ClusterTest {
         try {
             BookGenerator generator = new BookGenerator(sGrammarFile, "../DataGenerator/resource/临证指南医案",
                     sHerbAliasManager);
-            Map<String, List<PrescriptionEntity>> prescriptions = generator.doImport();
-            for (Map.Entry<String, List<PrescriptionEntity>> entry : prescriptions.entrySet()) {
+            Map<String, List<Prescription>> prescriptions = generator.doImport();
+            for (Map.Entry<String, List<Prescription>> entry : prescriptions.entrySet()) {
                 createCluster(entry.getKey(), entry.getValue());
             }
 
@@ -30,42 +31,50 @@ public class ClusterTest {
         }
     }
 
-    private void createCluster(String pathPrefix, List<PrescriptionEntity> prescriptions) {
-        DistanceCacheProxy<PrescriptionClusterLeafNode> leafDistance = new DistanceCacheProxy<PrescriptionClusterLeafNode>(
-                new IDistanceCalculator<PrescriptionClusterLeafNode>() {
+    private void createCluster(String pathPrefix, List<Prescription> prescriptions) {
+        DistanceCacheProxy<Prescription> leafDistance = new DistanceCacheProxy<Prescription>(
+                new IDistanceCalculator<Prescription>() {
 
                     @Override
-                    public double distance(PrescriptionClusterLeafNode x, PrescriptionClusterLeafNode y) {
+                    public double distance(Prescription x, Prescription y) {
                         JaccardDistanceCalculator<Set<String>, String> core = new JaccardDistanceCalculator<Set<String>, String>();
                         return core.distance(x.getHerbs(), y.getHerbs());
 
                     }
-                }, new IStringConverter<PrescriptionClusterLeafNode>() {
+                }, new IStringConverter<Prescription>() {
 
                     @Override
-                    public String convert(PrescriptionClusterLeafNode x) {
+                    public String convert(Prescription x) {
                         return x.getSummary();
                     }
                 });
 
-        PrescriptionAnalyzer analyzer = new PrescriptionAnalyzer(prescriptions);
-        SingleLinkageDistanceCalculator singleDistance = new SingleLinkageDistanceCalculator(leafDistance);
-        PrescriptionClusterCompositeNode root = analyzer.analyze(singleDistance);
-        ClusterAnalayer visitor = new ClusterAnalayer();
+        AgensAnalyzer<Prescription> analyzer = new AgensAnalyzer<Prescription>(prescriptions);
+        SingleLinkageDistanceCalculator<Prescription> singleDistance = new SingleLinkageDistanceCalculator<Prescription>(
+                leafDistance);
+        CompositeNode<Prescription> root = analyzer.analyze(singleDistance);
+        ClusterAnalayer<Prescription> visitor = new ClusterAnalayer<Prescription>();
         // visitor.split(root);
-        for (PrescriptionClusterCompositeNode node : visitor.getNodes(root, 3)) {
-            node.getCenter();
+        for (CompositeNode<Prescription> node : visitor.getNodes(root, 3)) {
+            // node.getCenter();
         }
 
-        AverageLinkageDistanceCalculator distance2 = new AverageLinkageDistanceCalculator(leafDistance);
+        AverageLinkageDistanceCalculator<Prescription> distance2 = new AverageLinkageDistanceCalculator<Prescription>(
+                leafDistance);
         root = analyzer.analyze(distance2);
-        for (PrescriptionClusterCompositeNode node : visitor.getNodes(root, 4)) {
-            node.getCenter();
+        for (CompositeNode<Prescription> node : visitor.getNodes(root, 4)) {
+            // node.getCenter();
         }
 
         String fileName = pathPrefix + "_cluster.js";
         String actualFilePath = getActualFilePath(fileName);
-        ClusterRender render = new ClusterRender(actualFilePath);
+        ClusterRender<Prescription, String> render = new ClusterRender<Prescription, String>(actualFilePath,
+                new IConverter<Prescription, String>() {
+                    @Override
+                    public Set<String> convert(Prescription x) {
+                        return x.getHerbs();
+                    }
+                });
         render.rend(root);
 
         String expectFilePath = getExpectFilePath(fileName);

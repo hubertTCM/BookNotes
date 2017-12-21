@@ -5,19 +5,18 @@ package com.hubert.machinelearning.YiAn;
 import com.hubert.machinelearning.*;
 
 // D(I, J) = min {d(i, j) }
-public class SingleLinkageDistanceCalculator implements IDistanceCalculator<PrescriptionClusterCompositeNode> {
+public class SingleLinkageDistanceCalculator<T> implements IDistanceCalculator<CompositeNode<T>> {
 
-    public SingleLinkageDistanceCalculator(IDistanceCalculator<PrescriptionClusterLeafNode> leafDistanceCalculator) {
-
-        mLeafNodeDistanceCalculator = leafDistanceCalculator;
+    public SingleLinkageDistanceCalculator(IDistanceCalculator<T> distanceCalculator) {
+        mDistanceCalculator = distanceCalculator;
     }
 
     @Override
-    public double distance(PrescriptionClusterCompositeNode x, PrescriptionClusterCompositeNode y) {
+    public double distance(CompositeNode<T> x, CompositeNode<T> y) {
         double min = -1.0;
-        for (PrescriptionClusterLeafNode xLeaf : x.getLeafNodes()) {
-            for (PrescriptionClusterLeafNode yLeaf : y.getLeafNodes()) {
-                double distance = this.mLeafNodeDistanceCalculator.distance(xLeaf, yLeaf);
+        for (LeafNode<T> xLeaf : x.getLeafNodes()) {
+            for (LeafNode<T> yLeaf : y.getLeafNodes()) {
+                double distance = mDistanceCalculator.distance(xLeaf.getValue(), yLeaf.getValue());
                 if (min < 0 || distance < min) {
                     min = distance;
                 }
@@ -29,5 +28,5 @@ public class SingleLinkageDistanceCalculator implements IDistanceCalculator<Pres
         return min;
     }
 
-    private IDistanceCalculator<PrescriptionClusterLeafNode> mLeafNodeDistanceCalculator;
+    private IDistanceCalculator<T> mDistanceCalculator;
 }

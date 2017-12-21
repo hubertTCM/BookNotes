@@ -12,6 +12,7 @@ import java.util.*;
 import org.apache.commons.lang3.StringUtils;
 
 import com.hubert.dal.entity.*;
+import com.hubert.dto.*;
 //import com.hubert.parser.*;
 import com.hubert.parser.AST.*;
 import com.hubert.parser.AST.YiAn.*;
@@ -40,7 +41,7 @@ public class BookGenerator {
         debugDirectory.mkdirs();
     }
 
-    public Map<String, List<PrescriptionEntity>> doImport() {
+    public Map<String, List<Prescription>> doImport() {
         try {
             loadSections(null, mBookDirectory);
         } catch (IOException e) {
@@ -207,7 +208,7 @@ public class BookGenerator {
 
     protected HerbAliasManager mHerbAliasManager;
 
-    protected Map<String, List<PrescriptionEntity>> mPrescriptions = new HashMap<String, List<PrescriptionEntity>>();
+    protected Map<String, List<Prescription>> mPrescriptions = new HashMap<String, List<Prescription>>();
 
     protected List<BlockGroupEntity> mBlockGroups = new Vector<BlockGroupEntity>();
     private List<SortedMap<Position, String>> mTokens = new ArrayList<SortedMap<Position, String>>();
