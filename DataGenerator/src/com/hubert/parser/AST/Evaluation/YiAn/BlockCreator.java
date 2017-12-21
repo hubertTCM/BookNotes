@@ -7,12 +7,13 @@ import com.hubert.dal.entity.*;
 import com.hubert.parser.tokenextractor.*;
 
 public class BlockCreator {
-    public BlockCreator(BlockTypeEnum blockType, DataProvider dataProvider, BlockPositionManager positionManager,
-            SectionEntity section) {
+    public BlockCreator(BlockTypeEnum blockType, PrescriptionEntity blockReference, DataProvider dataProvider,
+            BlockPositionManager positionManager, SectionEntity section) {
         mBlockType = blockType;
         mDataProvider = dataProvider;
         mPositionManager = positionManager;
         mSection = section;
+        mBlockReferenceLink = blockReference;
     }
 
     public SortedMap<Position, BlockEntity> create() {
@@ -43,6 +44,10 @@ public class BlockCreator {
         return mBlocks;
     }
 
+    public PrescriptionEntity getBlockReference() {
+        return mBlockReferenceLink;
+    }
+
     private BlockEntity createBlock(String blockContent, BlockTypeEnum blockType) {
         BlockEntity entity = new BlockEntity();
         entity.blockType = blockType.name();
@@ -71,7 +76,7 @@ public class BlockCreator {
     private DataProvider mDataProvider;
     private BlockPositionManager mPositionManager;
     private SectionEntity mSection;
+    private PrescriptionEntity mBlockReferenceLink;
     private SortedMap<Position, String> mTokenTypes = new TreeMap<Position, String>();
-
-    SortedMap<Position, BlockEntity> mBlocks = new TreeMap<Position, BlockEntity>();
+    private SortedMap<Position, BlockEntity> mBlocks = new TreeMap<Position, BlockEntity>();
 }

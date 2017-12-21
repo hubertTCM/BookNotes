@@ -24,7 +24,7 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
         mYiAnScope.setYiAnPrescription(prescription);
        
         
-        mYiAnScope.createBlockCreator(BlockTypeEnum.YiAnPrescription);
+        mYiAnScope.createBlockCreator(BlockTypeEnum.YiAnPrescription, prescription);
         return true;
     }
 
@@ -52,23 +52,23 @@ public class RecipeDetailEvaluator extends AbstractEvaluator {
         prescription.summary = StringUtils.trim(prescription.summary);
 
         
-        BlockCreator blockCreator = mYiAnScope.getBlockCreator();
-        SortedMap<Position, BlockEntity> blocks = blockCreator.create();
-        for(Map.Entry<Position, BlockEntity> entry : blocks.entrySet()){
-            BlockEntity block = entry.getValue();
-            if (block.blockType.equals(BlockTypeEnum.ParserText.name())){
-                continue;
-            }
-            
-            prescription.block = block;
-            break;
-        }
+//        BlockCreator blockCreator = mYiAnScope.getBlockCreator();
+//        SortedMap<Position, BlockEntity> blocks = blockCreator.create();
+//        for(Map.Entry<Position, BlockEntity> entry : blocks.entrySet()){
+//            BlockEntity block = entry.getValue();
+//            if (block.blockType.equals(BlockTypeEnum.ParserText.name())){
+//                continue;
+//            }
+//            
+//            prescription.block = block;
+//            break;
+//        }
         
-        // TODO: 
-        if (prescription.block == null){
-            List<PrescriptionEntity> prescriptions = mYiAnScope.getPrescriptions();
-            prescriptions.remove(prescription);
-        }
+//        // TODO: 
+//        if (prescription.block == null){
+//            List<PrescriptionEntity> prescriptions = mYiAnScope.getPrescriptions();
+//            prescriptions.remove(prescription);
+//        }
         
         return true;
     }
