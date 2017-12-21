@@ -4,13 +4,16 @@ import java.io.*;
 import java.nio.file.Paths;
 import java.util.*;
 
+import com.hubert.machinelearning.*;
+
 // Similar with LogVisitor, merge later
-public class ClusterRender {
-    public ClusterRender(String fileName) {
+public class ClusterRender<T, U> {
+    public ClusterRender(String fileName, IConverter<T, U> converter) {
         mLogFilePath = fileName;
+        mConverter = converter;
     }
 
-    public void rend(PrescriptionClusterCompositeNode root) {
+    public void rend(CompositeNode<T> root) {
 
         try {
             open();
@@ -22,16 +25,23 @@ public class ClusterRender {
         }
     }
 
-    private String getNodeValue(PrescriptionClusterCompositeNode node) {
+    private String getNodeValue(CompositeNode<T> node) {
         String value = Integer.toString(node.getLeafNodes().size()); // + ",";
-        Set<String> center = node.getCenter();
-        for (String item : center) {
+        
+        List<Set<U>> temp = new Vector<Set<U>>();
+        for(LeafNode<T> leaf : node.getLeafNodes()){
+            temp.add(mConverter.convert(leaf.getValue()));
+        }
+
+        CenterCalculator<U> centerCalculator = new CenterCalculator<U>(temp);
+        Set<U> center = centerCalculator.getCenter();
+        for (U item : center) {
             value += " " + item;
         }
         return value;
     }
 
-    private void renderCore(PrescriptionClusterCompositeNode node, boolean isLast) throws IOException {
+    private void renderCore(CompositeNode<T> node, boolean isLast) throws IOException {
         String prefix = "";
         for (int i = 0; i < mIndent; ++i) {
             prefix += "    ";
@@ -39,7 +49,7 @@ public class ClusterRender {
 
         mFileWriter.write(prefix + " {\"value\":\"" + getNodeValue(node) + "\",\n");
 
-        List<PrescriptionClusterCompositeNode> children = node.getCompositeNodes();
+        List<CompositeNode<T>> children = node.getCompositeNodes();
         if (children.isEmpty()) {
             mFileWriter.write(prefix + " \"children\": []\n");
         } else {
@@ -47,7 +57,7 @@ public class ClusterRender {
             mIndent += 1;
 
             for (int i = 0; i < children.size(); ++i) {
-                PrescriptionClusterCompositeNode child = children.get(i);
+                CompositeNode<T> child = children.get(i);
                 renderCore(child, i == children.size() - 1);
             }
             mFileWriter.write(prefix + "    ]\n");
@@ -73,5 +83,6 @@ public class ClusterRender {
 
     private FileWriter mFileWriter;
     private String mLogFilePath;
+    private IConverter<T, U> mConverter;
     private int mIndent = 0;
 }

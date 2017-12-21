@@ -16,7 +16,7 @@ public class PrescriptionEntity {
     @DatabaseField(width = 1500)
     public String summary;
 
-    public Collection<PrescriptionItem> items;
+    //public Collection<PrescriptionItem> items;
 
     @DatabaseField(canBeNull = false, foreign = true)
     public BlockEntity block;

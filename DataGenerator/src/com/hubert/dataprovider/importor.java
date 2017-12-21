@@ -6,6 +6,7 @@ import java.util.*;
 import com.hubert.dal.*;
 //import com.hubert.dal.DbBuilder;
 import com.hubert.dal.entity.*;
+import com.hubert.dto.*;
 import com.hubert.machinelearning.*;
 import com.hubert.machinelearning.YiAn.*;
 //import com.hubert.parser.AST.*;
@@ -17,59 +18,69 @@ public class importor {
 
     public static void main(String[] args) {
         try {
-            //https://stackoverflow.com/questions/40740819/cannot-disable-ormlites-logging
+            // https://stackoverflow.com/questions/40740819/cannot-disable-ormlites-logging
             System.setProperty("com.j256.ormlite.logger.type", "LOCAL");
             System.setProperty("com.j256.ormlite.logger.level", "ERROR");
-            
+
             BookSpliter s = new BookSpliter("resource/临证指南医案/临证指南医案_summary.txt", "resource/临证指南医案/test");
             s.split();
 
             BookGenerator generator = new BookGenerator("resource/临证指南医案/grammar.xml", "resource/临证指南医案",
                     HerbAliasManager.getInstance());
-            Map<String, List<PrescriptionEntity>> temp = generator.doImport();
-            List<PrescriptionEntity> prescriptions = Utils.merge(temp);
+            Map<String, List<Prescription>> temp = generator.doImport();
+            List<Prescription> prescriptions = Utils.merge(temp);
             DbBuilder builder = new DbBuilder();
             builder.build();
             List<BlockGroupEntity> blockGroups = generator.getBlockGroups();
             BookEntity book = generator.getBook();
             YiAnImporter yiAnImporter = new YiAnImporter();
-            yiAnImporter.save(book, blockGroups, prescriptions);
 
-            DistanceCacheProxy<PrescriptionClusterLeafNode> leafDistance = new DistanceCacheProxy<PrescriptionClusterLeafNode>(
-                    new IDistanceCalculator<PrescriptionClusterLeafNode>() {
+            List<PrescriptionEntity> prescriptionEntities = new Vector<PrescriptionEntity>();
+            yiAnImporter.save(book, blockGroups, prescriptionEntities);
 
+            DistanceCacheProxy<Prescription> leafDistance = new DistanceCacheProxy<Prescription>(
+                    new IDistanceCalculator<Prescription>() {
                         @Override
-                        public double distance(PrescriptionClusterLeafNode x, PrescriptionClusterLeafNode y) {
+                        public double distance(Prescription x, Prescription y) {
                             JaccardDistanceCalculator<Set<String>, String> core = new JaccardDistanceCalculator<Set<String>, String>();
                             return core.distance(x.getHerbs(), y.getHerbs());
-
                         }
-                    }, new IStringConverter<PrescriptionClusterLeafNode>() {
+                    }, new IStringConverter<Prescription>() {
 
                         @Override
-                        public String convert(PrescriptionClusterLeafNode x) {
+                        public String convert(Prescription x) {
                             return x.getSummary();
                         }
                     });
 
-            PrescriptionAnalyzer analyzer = new PrescriptionAnalyzer(prescriptions);
-            SingleLinkageDistanceCalculator singleDistance = new SingleLinkageDistanceCalculator(leafDistance);
-            PrescriptionClusterCompositeNode root = analyzer.analyze(singleDistance);
-            ClusterAnalayer visitor = new ClusterAnalayer();
+            AgensAnalyzer<Prescription> analyzer = new AgensAnalyzer<Prescription>(prescriptions);
+            SingleLinkageDistanceCalculator<Prescription> singleDistance = new SingleLinkageDistanceCalculator<Prescription>(
+                    leafDistance);
+            CompositeNode<Prescription> root = analyzer.analyze(singleDistance);
+            ClusterAnalayer<Prescription> visitor = new ClusterAnalayer<Prescription>();
             // visitor.split(root);
-            for (PrescriptionClusterCompositeNode node : visitor.getNodes(root, 3)) {
-                node.getCenter();
-            }
+            // for (CompositeNode<Prescription> node : visitor.getNodes(root,
+            // 3)) {
+            // node.getCenter();
+            // }
 
             System.out.println("*****");
 
-            AverageLinkageDistanceCalculator distance2 = new AverageLinkageDistanceCalculator(leafDistance);
+            AverageLinkageDistanceCalculator<Prescription> distance2 = new AverageLinkageDistanceCalculator<Prescription>(
+                    leafDistance);
             root = analyzer.analyze(distance2);
-            for (PrescriptionClusterCompositeNode node : visitor.getNodes(root, 4)) {
-                node.getCenter();
-            }
+            // for (CompositeNode<Prescription> node : visitor.getNodes(root,
+            // 4)) {
+            // node.getCenter();
+            // }
 
-            ClusterRender render = new ClusterRender("resource/debug/cluster.js");
+            ClusterRender<Prescription, String> render = new ClusterRender<Prescription, String>(
+                    "resource/debug/cluster.js", new IConverter<Prescription, String>() {
+                        @Override
+                        public Set<String> convert(Prescription x) {
+                            return x.getHerbs();
+                        }
+                    });
             render.rend(root);
 
             System.out.println("done");
