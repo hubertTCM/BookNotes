@@ -4,8 +4,6 @@ import java.io.*;
 import java.nio.file.Paths;
 import java.util.*;
 
-import com.hubert.machinelearning.*;
-
 // Similar with LogVisitor, merge later
 public class ClusterRender<T, U> {
     public ClusterRender(String fileName, IConverter<T, U> converter) {

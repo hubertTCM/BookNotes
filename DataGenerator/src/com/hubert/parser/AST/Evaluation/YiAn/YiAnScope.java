@@ -6,7 +6,6 @@ import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.*;
 import com.hubert.dto.*;
 import com.hubert.parser.AST.Evaluation.Common.*;
-import com.hubert.parser.AST.YiAn.YiAnNodeConstants;
 import com.hubert.parser.tokenextractor.*;
 
 public class YiAnScope {
@@ -148,8 +147,6 @@ public class YiAnScope {
 
     private Storage mStorage;
 
-    private final static String YiAnKey = "YiAn";
-    private final static String YiAnDetailKey = "YiAnDetail"; // TODO: delete
     private final static String YiAnPresciption = "YiAnPrescription";
     private final static String YiAnPrescriptionItem = "YiAnPrescriptionItem";
     private final static String YiAnTokens = "YiAnTokens";

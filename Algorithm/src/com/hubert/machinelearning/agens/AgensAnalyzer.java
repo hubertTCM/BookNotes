@@ -2,9 +2,7 @@ package com.hubert.machinelearning.agens;
 
 import java.util.*;
 
-import com.hubert.machinelearning.*;
-import com.hubert.machinelearning.distance.DistanceCacheProxy;
-import com.hubert.machinelearning.distance.IDistanceCalculator;
+import com.hubert.machinelearning.distance.*;
 
 public class AgensAnalyzer<T> {
     public AgensAnalyzer(Collection<T> source) {

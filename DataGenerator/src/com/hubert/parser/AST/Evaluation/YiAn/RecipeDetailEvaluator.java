@@ -10,7 +10,6 @@ import com.hubert.dto.*;
 import com.hubert.parser.AST.ASTNode;
 import com.hubert.parser.AST.Evaluation.Common.*;
 import com.hubert.parser.AST.YiAn.*;
-import com.hubert.parser.tokenextractor.Position;
 
 public class RecipeDetailEvaluator extends AbstractEvaluator {
 
