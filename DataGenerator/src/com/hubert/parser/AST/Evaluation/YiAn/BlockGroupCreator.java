@@ -34,11 +34,26 @@ public class BlockGroupCreator {
         mBlockGroup.blocks = new Vector<BlockEntity>();
         mBlockGroup.children = new Vector<BlockGroupEntity>();
 
+        BlockEntity previousBlock = null;
         for (BlockCreator creator : mBlockCreators) {
             SortedMap<Position, BlockEntity> blocks = creator.create();
             mTokensContainer.putAll(creator.getTokenTypes());
+
+            PrescriptionEntity blockReference = creator.getBlockReference();
+            if (blockReference != null) {
+                if (blocks.isEmpty()) {
+                    blockReference.block = previousBlock;
+                    continue;
+                }
+                blockReference.block = null;
+            }
+
             for (Entry<Position, BlockEntity> entry : blocks.entrySet()) {
-                addBlock(entry.getKey(), entry.getValue());
+                previousBlock = addBlock(entry.getKey(), entry.getValue());
+
+                if (blockReference != null && blockReference.block == null) {
+                    blockReference.block = previousBlock;
+                }
             }
         }
 
@@ -51,26 +66,27 @@ public class BlockGroupCreator {
         return mBlockGroup;
     }
 
-    private void addBlock(Position position, BlockEntity block) {
+    private BlockEntity addBlock(Position position, BlockEntity block) {
         for (BlockEntity existing : mBlockGroup.blocks) {
             if (block.content.equals(existing.content)) {
                 remove(block);
-                return;
+                return existing;
             }
             Position existingPosition = mPositionManager.getPosition(existing);
             if (existingPosition.compareTo(position) == 0) {
                 remove(block);
-                return;
+                return existing;
             }
         }
 
         block.blockGroup = mBlockGroup;
         mBlockGroup.blocks.add(block);
         mPositionManager.setPosition(block, position);
+        return block;
     }
-    
-    private void remove(BlockEntity block){
-        if (block.section != null){
+
+    private void remove(BlockEntity block) {
+        if (block.section != null) {
             block.section.blocks.remove(block);
         }
     }

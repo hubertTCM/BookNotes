@@ -13,7 +13,7 @@ public class YiAnDetailPropertyEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        BlockCreator creator = mYiAnScope.createBlockCreator(BlockTypeEnum.YiAnDescription);
+        BlockCreator creator = mYiAnScope.createBlockCreator(BlockTypeEnum.YiAnDescription, null);
         creator.addToken(node.getSourcePosition(), node.getTag());
         return true;
     }
