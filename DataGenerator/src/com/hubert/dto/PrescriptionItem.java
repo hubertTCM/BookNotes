@@ -1,6 +1,5 @@
-package com.hubert.dal.entity;
+package com.hubert.dto;
 
-// TODO: delete
 public class PrescriptionItem {
 
     public String herb;
