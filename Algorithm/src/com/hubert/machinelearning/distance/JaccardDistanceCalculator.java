@@ -1,4 +1,4 @@
-package com.hubert.machinelearning;
+package com.hubert.machinelearning.distance;
 
 import java.util.*;
 

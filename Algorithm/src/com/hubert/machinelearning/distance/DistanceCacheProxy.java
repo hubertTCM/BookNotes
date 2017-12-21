@@ -1,6 +1,8 @@
-package com.hubert.machinelearning;
+package com.hubert.machinelearning.distance;
 
 import java.util.*;
+
+import com.hubert.machinelearning.agens.IStringConverter;
 
 public class DistanceCacheProxy<T> implements IDistanceCalculator<T> {
 

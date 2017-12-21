@@ -1,4 +1,4 @@
-package com.hubert.machinelearning.YiAn;
+package com.hubert.machinelearning.agens;
 
 public class LeafNode<T> {
     public LeafNode(T entity) {
