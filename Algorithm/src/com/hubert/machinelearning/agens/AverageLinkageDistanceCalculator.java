@@ -1,6 +1,6 @@
-package com.hubert.machinelearning.YiAn;
+package com.hubert.machinelearning.agens;
 
-import com.hubert.machinelearning.IDistanceCalculator;
+import com.hubert.machinelearning.distance.IDistanceCalculator;
 
 public class AverageLinkageDistanceCalculator<T> implements IDistanceCalculator<CompositeNode<T>> {
 

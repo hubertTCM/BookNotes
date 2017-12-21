@@ -1,4 +1,4 @@
-package com.hubert.machinelearning;
+package com.hubert.machinelearning.agens;
 
 import java.util.*;
 

@@ -1,8 +1,9 @@
-package com.hubert.machinelearning.YiAn;
+package com.hubert.machinelearning.agens;
 
 //import java.util.*;
 
 import com.hubert.machinelearning.*;
+import com.hubert.machinelearning.distance.IDistanceCalculator;
 
 // D(I, J) = min {d(i, j) }
 public class SingleLinkageDistanceCalculator<T> implements IDistanceCalculator<CompositeNode<T>> {

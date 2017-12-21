@@ -1,8 +1,8 @@
-package com.hubert.machinelearning.YiAn;
+package com.hubert.machinelearning.agens;
 
 import java.util.*;
 
-import com.hubert.machinelearning.JaccardDistanceCalculator;
+import com.hubert.machinelearning.distance.JaccardDistanceCalculator;
 
 public class CenterCalculator<T> {
     public CenterCalculator(List<Set<T>> sets) {
