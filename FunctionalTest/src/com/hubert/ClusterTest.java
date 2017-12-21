@@ -7,11 +7,10 @@ import java.util.*;
 
 import org.junit.*;
 
-import com.hubert.dal.entity.*;
 import com.hubert.dataprovider.*;
 import com.hubert.dto.Prescription;
-import com.hubert.machinelearning.*;
-import com.hubert.machinelearning.YiAn.*;
+import com.hubert.machinelearning.agens.*;
+import com.hubert.machinelearning.distance.*;
 
 public class ClusterTest {
 

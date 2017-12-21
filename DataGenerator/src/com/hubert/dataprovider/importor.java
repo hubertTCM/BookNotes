@@ -7,8 +7,8 @@ import com.hubert.dal.*;
 //import com.hubert.dal.DbBuilder;
 import com.hubert.dal.entity.*;
 import com.hubert.dto.*;
-import com.hubert.machinelearning.*;
-import com.hubert.machinelearning.YiAn.*;
+import com.hubert.machinelearning.agens.*;
+import com.hubert.machinelearning.distance.*;
 //import com.hubert.parser.AST.*;
 //import com.hubert.parser.AST.YiAn.*;
 //import com.hubert.parser.tokenextractor.*;
@@ -58,11 +58,6 @@ public class importor {
                     leafDistance);
             CompositeNode<Prescription> root = analyzer.analyze(singleDistance);
             ClusterAnalayer<Prescription> visitor = new ClusterAnalayer<Prescription>();
-            // visitor.split(root);
-            // for (CompositeNode<Prescription> node : visitor.getNodes(root,
-            // 3)) {
-            // node.getCenter();
-            // }
 
             System.out.println("*****");
 

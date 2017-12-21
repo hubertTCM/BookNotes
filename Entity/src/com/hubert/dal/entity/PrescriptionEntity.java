@@ -1,10 +1,7 @@
 package com.hubert.dal.entity;
 
-import java.util.*;
-
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.field.ForeignCollectionField;
-import com.j256.ormlite.table.DatabaseTable;
+import com.j256.ormlite.field.*;
+import com.j256.ormlite.table.*;
 
 @DatabaseTable(tableName = "yianprescription")
 public class PrescriptionEntity {
