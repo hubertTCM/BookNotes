@@ -3,8 +3,8 @@ package com.hubert.dal.entity;
 import com.j256.ormlite.field.*;
 import com.j256.ormlite.table.*;
 
-@DatabaseTable(tableName = "yianprescription")
-public class PrescriptionEntity {
+@DatabaseTable(tableName = "blockreference")
+public class BookReferenceEntity {
     @DatabaseField(generatedId = true)
     public long id;
 

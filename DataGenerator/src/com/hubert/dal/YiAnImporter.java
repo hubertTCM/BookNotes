@@ -14,7 +14,7 @@ public class YiAnImporter {
 
     public void save(BookEntity book,
             List<BlockGroupEntity> blockGroups,
-            List<PrescriptionEntity> prescriptions) {
+            List<BookReferenceEntity> prescriptions) {
         try {
             System.out.println("start update database");
 
@@ -25,7 +25,7 @@ public class YiAnImporter {
             internalSave(book);
             internalSave(blockGroups);
             
-            for(PrescriptionEntity prescription : prescriptions){
+            for(BookReferenceEntity prescription : prescriptions){
                 internalSave(prescription);
             }
 
@@ -76,8 +76,8 @@ public class YiAnImporter {
         internalSave(blockGroup.children);
     }
     
-    private void internalSave(PrescriptionEntity prescription) throws SQLException{
-        mPrescriptionDao.createOrUpdate(prescription);
+    private void internalSave(BookReferenceEntity blockReference) throws SQLException{
+        mBlockReferenceDao.createOrUpdate(blockReference);
     }
 
     private void initDaoObjects() throws SQLException {
@@ -85,7 +85,7 @@ public class YiAnImporter {
         mSectionDao = DaoManager.createDao(mConnectionSource, SectionEntity.class);
         mBlockDao = DaoManager.createDao(mConnectionSource, BlockEntity.class);
         mBlockGroupDao = DaoManager.createDao(mConnectionSource, BlockGroupEntity.class);
-        mPrescriptionDao = DaoManager.createDao(mConnectionSource, PrescriptionEntity.class);
+        mBlockReferenceDao = DaoManager.createDao(mConnectionSource, BookReferenceEntity.class);
     }
     
 
@@ -95,6 +95,6 @@ public class YiAnImporter {
     private Dao<SectionEntity, Integer> mSectionDao;
     private Dao<BlockEntity, Integer> mBlockDao;
     private Dao<BlockGroupEntity, Integer> mBlockGroupDao;
-    private Dao<PrescriptionEntity, Integer> mPrescriptionDao;
+    private Dao<BookReferenceEntity, Integer> mBlockReferenceDao;
 
 }

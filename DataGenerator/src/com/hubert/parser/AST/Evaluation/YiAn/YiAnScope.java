@@ -103,7 +103,7 @@ public class YiAnScope {
         return creator;
     }
 
-    public BlockCreator createBlockCreator(BlockTypeEnum type, PrescriptionEntity blockReference) {
+    public BlockCreator createBlockCreator(BlockTypeEnum type, BookReferenceEntity blockReference) {
         BlockCreator creator = new BlockCreator(type, blockReference, getDataProvider(), getBlockPositionManager(),
                 getActiveSection());
 

@@ -39,7 +39,7 @@ public class BlockGroupCreator {
             SortedMap<Position, BlockEntity> blocks = creator.create();
             mTokensContainer.putAll(creator.getTokenTypes());
 
-            PrescriptionEntity blockReference = creator.getBlockReference();
+            BookReferenceEntity blockReference = creator.getBlockReference();
             if (blockReference != null) {
                 if (blocks.isEmpty()) {
                     blockReference.block = previousBlock;
