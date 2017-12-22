@@ -2,6 +2,7 @@ package com.hubert.dataprovider;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.Map.Entry;
 
 import com.hubert.dal.*;
 //import com.hubert.dal.DbBuilder;
@@ -28,14 +29,31 @@ public class importor {
             BookGenerator generator = new BookGenerator("resource/临证指南医案/grammar.xml", "resource/临证指南医案",
                     HerbAliasManager.getInstance());
             Map<String, List<Prescription>> temp = generator.doImport();
-            List<Prescription> prescriptions = Utils.merge(temp);
+            List<BookReferenceEntity> prescriptionEntities = new Vector<BookReferenceEntity>();
+            List<Prescription> prescriptions = new Vector<Prescription>();
+            for (Entry<String, List<Prescription>> kvp : temp.entrySet()) {
+                List<Prescription> prescriptionsDto = kvp.getValue();
+                prescriptions.addAll(prescriptionsDto);
+                List<BookReferenceEntity> tempEntities = new Vector<BookReferenceEntity>();
+                for (Prescription tempPrescription : prescriptionsDto) {
+                    tempEntities.add(tempPrescription.getEntity());
+                }
+                tempEntities.sort(new Comparator<BookReferenceEntity>() {
+                    @Override
+                    public int compare(BookReferenceEntity o1, BookReferenceEntity o2) {
+                        return (int) (o1.block.order - o2.block.order);
+                    }
+                });
+
+                prescriptionEntities.addAll(tempEntities);
+            }
+            // List<Prescription> prescriptions = Utils.merge(temp);
             DbBuilder builder = new DbBuilder();
             builder.build();
             List<BlockGroupEntity> blockGroups = generator.getBlockGroups();
             BookEntity book = generator.getBook();
             YiAnImporter yiAnImporter = new YiAnImporter();
 
-            List<PrescriptionEntity> prescriptionEntities = new Vector<PrescriptionEntity>();
             yiAnImporter.save(book, blockGroups, prescriptionEntities);
 
             DistanceCacheProxy<Prescription> leafDistance = new DistanceCacheProxy<Prescription>(

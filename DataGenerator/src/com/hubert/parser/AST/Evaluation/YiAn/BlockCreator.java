@@ -7,7 +7,7 @@ import com.hubert.dal.entity.*;
 import com.hubert.parser.tokenextractor.*;
 
 public class BlockCreator {
-    public BlockCreator(BlockTypeEnum blockType, PrescriptionEntity blockReference, DataProvider dataProvider,
+    public BlockCreator(BlockTypeEnum blockType, BookReferenceEntity blockReference, DataProvider dataProvider,
             BlockPositionManager positionManager, SectionEntity section) {
         mBlockType = blockType;
         mDataProvider = dataProvider;
@@ -44,7 +44,7 @@ public class BlockCreator {
         return mBlocks;
     }
 
-    public PrescriptionEntity getBlockReference() {
+    public BookReferenceEntity getBlockReference() {
         return mBlockReferenceLink;
     }
 
@@ -76,7 +76,7 @@ public class BlockCreator {
     private DataProvider mDataProvider;
     private BlockPositionManager mPositionManager;
     private SectionEntity mSection;
-    private PrescriptionEntity mBlockReferenceLink;
+    private BookReferenceEntity mBlockReferenceLink;
     private SortedMap<Position, String> mTokenTypes = new TreeMap<Position, String>();
     private SortedMap<Position, BlockEntity> mBlocks = new TreeMap<Position, BlockEntity>();
 }

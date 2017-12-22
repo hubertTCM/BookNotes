@@ -6,7 +6,7 @@ import com.hubert.dal.entity.*;
 
 public class Prescription {
     public Prescription() {
-        mPrescriptionEntity = new PrescriptionEntity();
+        mPrescriptionEntity = new BookReferenceEntity();
         mItems = new Vector<PrescriptionItem>();
     }
 
@@ -34,11 +34,11 @@ public class Prescription {
         return mHerbs;
     }
 
-    public PrescriptionEntity getEntity() {
+    public BookReferenceEntity getEntity() {
         return mPrescriptionEntity;
     }
 
-    private PrescriptionEntity mPrescriptionEntity;
+    private BookReferenceEntity mPrescriptionEntity;
     private Collection<PrescriptionItem> mItems;
     private Set<String> mHerbs = new HashSet<String>();
 }
