@@ -1,0 +1,2 @@
+https://developer.android.com/studio/projects/index.html#LibraryProjects
+https://www.androidhive.info/2016/02/android-how-to-integrate-google-admob-in-your-app/
