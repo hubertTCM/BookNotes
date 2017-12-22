@@ -14,7 +14,9 @@ public class YiAnDetailEvaluator extends AbstractEvaluator {
 
     @Override
     protected boolean evaluateCore(ASTNode node) {
-        mYiAnScope.createBlockGroupCreator(BlockGroupTypeEnum.YiAnDetail);
+        if (node.getTag().equals(YiAnNodeConstants.YiAnDetail)) {
+            mYiAnScope.createBlockGroupCreator(BlockGroupTypeEnum.YiAnDetail);
+        }
         return true;
     }
 
