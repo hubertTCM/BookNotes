@@ -67,13 +67,6 @@ export const createHerbAlias = async (
     terminal: false
   });
 
-  //   readInterface.on("line", function(line) {
-  //     const temp = parseSingleLine(line);
-  //     temp && result.push(temp);
-  //     console.log(`${result.length}`);
-  //   });
-  //   readInterface.emit("on");
-
   for await (const line of readInterface) {
     const temp = parseSingleLine(line);
     temp && result.push(temp);
