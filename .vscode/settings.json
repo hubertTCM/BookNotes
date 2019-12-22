@@ -1,4 +1,14 @@
 {
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.printWidth": 120,
+  // For ESLint
+  "eslint.autoFixOnSave": true,
+  // For TSLint
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  // For Stylelint
+  "stylelint.autoFixOnSave": true,
   "editor.formatOnSave": true,
   "search.exclude": {
     "**/node_modules": true,
