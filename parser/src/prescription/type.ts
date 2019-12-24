@@ -18,13 +18,8 @@ export type Quantity = {
   value: number;
   uom: UOMKeyWordType;
 };
-export type Composition = {
+export type PrescriptionItem = {
   herb: string;
   quantity?: Quantity;
-  comment?: string;
-};
-export type Prescription = {
-  name?: string;
-  compositions: Composition[];
   comment?: string;
 };
