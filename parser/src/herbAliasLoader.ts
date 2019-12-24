@@ -1,6 +1,5 @@
 import fs from "fs";
 import readline from "readline";
-//import split from "split";
 
 export type HerbAlias = {
   name: string;
@@ -57,9 +56,7 @@ export const parseSingleLine = (line: string): HerbAlias | null => {
   return { name, alias };
 };
 
-export const createHerbAlias = async (
-  filePath: string
-): Promise<HerbAlias[]> => {
+export const createHerbAlias = async (filePath: string): Promise<HerbAlias[]> => {
   let result: HerbAlias[] = [];
   const readInterface = readline.createInterface({
     input: fs.createReadStream(filePath),
@@ -73,4 +70,17 @@ export const createHerbAlias = async (
   }
 
   return result.sort((x, y) => x.name.length - y.name.length);
+};
+
+export const exportHerbAlias = async () => {
+  const aliasResult = await createHerbAlias("./resource/常用中药处方别名.txt");
+  const herbs = {
+    allHerbNames: aliasResult
+      .reduce((previousResult, item) => {
+        return [...previousResult, item.name].concat(item.alias);
+      }, [] as string[])
+      .sort((x, y) => y.length - x.length),
+    alias: aliasResult
+  };
+  fs.writeFileSync("src/herbs.json", `${JSON.stringify(herbs, null, 2)}`);
 };
