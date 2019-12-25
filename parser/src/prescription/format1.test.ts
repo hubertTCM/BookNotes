@@ -1,5 +1,6 @@
 import { Token, parseTokens, token2PrescriptionItems, tryParsePrescription } from "./format1";
 import { PrescriptionItem } from "./type";
+import { convertUom1 } from "./convertUom";
 
 type TestData = {
   source: string;
@@ -122,13 +123,23 @@ describe("format1", () => {
           { herb: "三七", quantity: { uom: "两", value: 3 } },
           { herb: "生姜", quantity: { uom: "两", value: 7 } }
         ]
+      },
+      {
+        source: "牡蛎（熬）　泽泻　蜀漆（暖水洗去腥）　葶苈子（熬）　商陆根（熬）　海藻（洗去咸）　栝蒌根各等分",
+        expected: [
+          { herb: "牡蛎", comment: "熬" },
+          { herb: "泽泻" },
+          { herb: "蜀漆", comment: "暖水洗去腥" },
+          { herb: "葶苈子", comment: "熬" },
+          { herb: "商陆根", comment: "熬" },
+          { herb: "海藻", comment: "洗去咸" },
+          { herb: "栝蒌根" }
+        ]
       }
     ];
 
     testDataSet.forEach(({ source, expected }) => {
-      var actualResult = tryParsePrescription(source, quantity => {
-        return { ...quantity, uom: "两" };
-      });
+      var actualResult = tryParsePrescription(source, convertUom1);
       expect(actualResult).toEqual(expected);
     });
   });

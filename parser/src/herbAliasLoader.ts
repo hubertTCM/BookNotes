@@ -6,16 +6,16 @@ export type HerbAlias = {
   alias: string[];
 };
 
-export const parseSingleLine = (line: string): HerbAlias | null => {
+export const parseAliasFromSingleLine = (line: string): HerbAlias | null => {
   // 土三七：  藤三七，为落葵科植物落葵薯的块茎。处方别名：土三七 藤三七
   // 混淆品：关白附：为毛茛科植物黄花乌头的块根。处方别名：关白附、竹节白附
   const cleanValue = line && line.trim();
-  const ignorePrefix = "混淆品：";
   if (!cleanValue) {
     return null;
   }
+  const ignorePrefix = "混淆品：";
   if (cleanValue.startsWith(ignorePrefix)) {
-    return parseSingleLine(cleanValue.substring(ignorePrefix.length));
+    return parseAliasFromSingleLine(cleanValue.substring(ignorePrefix.length));
   }
   const nameIndex = cleanValue.indexOf("：");
   if (nameIndex <= 0) {
@@ -64,9 +64,22 @@ export const createHerbAlias = async (filePath: string): Promise<HerbAlias[]> =>
     terminal: false
   });
 
+  let herbSection = false;
   for await (const line of readInterface) {
-    const temp = parseSingleLine(line);
-    temp && result.push(temp);
+    if (line.startsWith("==== 处方药：")) {
+      herbSection = true;
+      continue;
+    }
+    if (herbSection) {
+      const herbs = line.trim().split(" ");
+      herbs.forEach(herb => {
+        result.push({ name: herb, alias: [] });
+      });
+    }
+    if (!herbSection) {
+      const temp = parseAliasFromSingleLine(line);
+      temp && result.push(temp);
+    }
   }
 
   return result.sort((x, y) => x.name.length - y.name.length);
