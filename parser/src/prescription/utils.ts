@@ -10,8 +10,12 @@ export const findHerb = (text: string, start: number = 0): string | null => {
   return herb ? herb : null;
 };
 
-export const toNumber = (keyword: NumberKeyWordType): number => {
+const singleItemToNumber = (keyword: NumberKeyWordType): number => {
   switch (keyword) {
+    case "零":
+      return 0;
+    case "半":
+      return 0.5;
     case "一":
       return 1;
     case "二":
@@ -30,8 +34,27 @@ export const toNumber = (keyword: NumberKeyWordType): number => {
       return 8;
     case "九":
       return 9;
+    case "十":
+      return 10;
     default:
       throw new Error(`unkown number: ${keyword}`);
   }
-  return 0;
+};
+
+export const toNumber = (text: string): number => {
+  let number = 0;
+
+  let format1 = true; // 九八
+  let temp = "";
+  for (let i = 0; i < text.length; ++i) {
+    if (text[i] === "半" || text[i] == "十") {
+      format1 = false;
+    }
+    temp = `${temp}${singleItemToNumber(text[i] as NumberKeyWordType)}`;
+    number += singleItemToNumber(text[i] as NumberKeyWordType);
+  }
+  if (format1) {
+    return parseInt(temp, 10);
+  }
+  return number;
 };
