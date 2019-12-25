@@ -1,10 +1,11 @@
 // 生姜三两（切）　大枣十二枚（擘）生姜一两六铢（切）杏仁十六个（去皮尖）白术　茯苓各三两
 // 生姜 大枣
+// 麻黄六两（去节）　桂枝二两（去皮）　甘草二两（炙）　杏仁四十枚（去皮尖）　生姜三两（切） 大枣十枚（擘）　石膏如鸡子大（碎）
 import { numberKeyWords, NumberKeyWordType, uomKeyWords, UOMKeyWordType, PrescriptionItem, Quantity } from "./type";
 import { findHerb, toNumber } from "./utils";
 
 export type Token = {
-  type: "herb" | "number" | "uom" | "comment" | "applyQuantityToPrevious";
+  type: "herb" | "number" | "uom" | "comment" | "applyQuantityToPrevious" | "sameQuantityForAllHerbs";
   value: string;
 };
 
@@ -54,14 +55,19 @@ export const parseTokens = (text: string) => {
       ++i;
       continue;
     }
-    if (char === " ") {
+    if (char === " " || char == "\u3000") {
       endNumber();
       ++i;
       continue;
     }
     if (char === "各") {
-      tokens.push({ type: "applyQuantityToPrevious", value: "各" });
-      ++i;
+      if (text.substring(i, i + 3) === "各等分") {
+        tokens.push({ type: "sameQuantityForAllHerbs", value: "各等分" });
+        i += 3;
+      } else {
+        tokens.push({ type: "applyQuantityToPrevious", value: "各" });
+        ++i;
+      }
       continue;
     }
     if (uomKeyWords.includes(char as UOMKeyWordType)) {
@@ -79,7 +85,7 @@ export const parseTokens = (text: string) => {
       ++i;
       continue;
     }
-    ++i;
+    throw new Error(`Unknown char: "${char}"  text: "${text}"`);
   }
   return tokens;
 };
@@ -125,7 +131,11 @@ export const token2PrescriptionItems = (
           throw new Error(`unkown prescription. ${token.type} ${token.value}`);
         }
         if (currentItem.comment) {
-          throw new Error(`comment already set. prescrition:${JSON.stringify(currentItem)} comment ${token.value}`);
+          throw new Error(
+            `comment already set. prescrition:${JSON.stringify(currentItem)} comment ${
+              token.value
+            } tokens ${JSON.stringify(tokens)}`
+          );
         }
         currentItem.comment = token.value;
         break;
@@ -154,6 +164,8 @@ export const token2PrescriptionItems = (
         break;
       case "applyQuantityToPrevious":
         applyQuantityToPrevious = true;
+      case "sameQuantityForAllHerbs":
+        break;
       default:
         throw new Error(`unkonw token: ${token.type} ${token.value}`);
     }
