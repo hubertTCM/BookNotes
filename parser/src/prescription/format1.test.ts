@@ -124,6 +124,8 @@ describe("format1", () => {
           { herb: "生姜", quantity: { uom: "两", value: 7 } }
         ]
       },
+      { source: "半夏十四枚", expected: [{ herb: "半夏", quantity: { uom: "枚", value: 14 } }] },
+      { source: "半夏三四枚", expected: [{ herb: "半夏", quantity: { uom: "枚", value: 34 } }] },
       {
         source: "牡蛎（熬）　泽泻　蜀漆（暖水洗去腥）　葶苈子（熬）　商陆根（熬）　海藻（洗去咸）　栝蒌根各等分",
         expected: [

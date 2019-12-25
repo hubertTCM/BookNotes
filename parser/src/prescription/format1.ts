@@ -143,7 +143,7 @@ export const token2PrescriptionItems = (
         if (!currentItem) {
           throw new Error(`unkown prescription. ${token.type} ${token.value}`);
         }
-        currentNumber = toNumber(token.value as NumberKeyWordType);
+        currentNumber = toNumber(token.value);
         break;
       case "uom":
         if (!currentItem) {
