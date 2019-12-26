@@ -6,6 +6,7 @@ import { PrescriptionItem } from "../prescription/type";
 import { tryParsePrescription } from "../prescription/format1";
 import { convertUom1 } from "../prescription/convertUom";
 import { toNumber } from "../prescription/utils";
+import { Stack } from "../stack";
 
 type Prescription = {
   name: string;
@@ -16,7 +17,7 @@ type Prescription = {
 type TiaoWen = {
   order: number;
   text: string;
-  prescription?: Prescription;
+  prescriptions: Prescription[];
 };
 
 type TiaoWenTextToken = {
@@ -34,6 +35,24 @@ type PrescriptionItemToken = {
 };
 
 type Token = TextToken | TiaoWenTextToken | PrescriptionItemToken;
+
+type ASTTiaowenText = {
+  type: "tiaowenText";
+  value: string;
+  order: number;
+};
+
+type ASTPrescriptionName = {
+  type: "prescriptionName";
+  value: string;
+};
+
+type ASTPrescription = {
+  type: "prescription";
+  value: Prescription;
+};
+
+type ASTNode = ASTTiaowenText | ASTPrescriptionName | ASTPrescription;
 
 // regex: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 const tryParseTiaoWenText = (line: string): TiaoWenTextToken | undefined => {
@@ -86,54 +105,87 @@ export const parse = async (): Promise<Token[]> => {
   return tokens;
 };
 
+const createTiaowen = (astStack: Stack<ASTNode>): TiaoWen | undefined => {
+  let node = astStack.pop();
+  const prescriptions: Prescription[] = [];
+  while (node) {
+    switch (node.type) {
+      case "tiaowenText":
+        if (astStack.count() > 0) {
+          throw new Error("");
+        }
+        return { order: node.order, text: node.value, prescriptions };
+      case "prescription":
+        prescriptions.push(node.value);
+        break;
+      default:
+        throw new Error(`unexpected node. "${JSON.stringify(node)}"`);
+    }
+    node = astStack.pop();
+  }
+
+  return undefined;
+};
+
 const token2Tiaowen = (tokens: Token[]): TiaoWen[] => {
   const tiaowen: TiaoWen[] = [];
-  let currentTiaowen: TiaoWen | undefined = undefined;
-  let currentPrescriptionName: string = "";
-  let currentPrescriptionItmes: PrescriptionItem[] | undefined = undefined;
-  let currentComment: string | undefined = undefined;
-  tokens.forEach(token => {
+  const astStack = new Stack<ASTNode>();
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
     switch (token.type) {
       case "tiaowenText":
+        const currentTiaowen = createTiaowen(astStack);
         if (currentTiaowen !== undefined) {
           tiaowen.push(currentTiaowen);
         }
-        currentTiaowen = {
-          text: token.value,
-          order: token.order
-        };
-        if (currentPrescriptionName === undefined && currentPrescriptionItmes !== undefined) {
-          throw new Error(`failed to parse tiaowen ${JSON.stringify(currentTiaowen)}`);
-        }
-        currentTiaowen.prescription = {
-          name: currentPrescriptionName || "",
-          items: currentPrescriptionItmes || [],
-          comment: currentComment
-        };
-        currentPrescriptionName = "";
-        currentPrescriptionItmes = undefined;
-        currentComment = undefined;
+        astStack.push({ ...token });
         break;
       case "presctionName":
-        currentPrescriptionName = token.value;
+        astStack.push({ type: "prescriptionName", value: token.value });
         break;
       case "prescriptionItems":
-        currentPrescriptionItmes = token.value;
-        break;
-      case "data":
-        if (currentComment) {
+        const nameNode = astStack.pop();
+        if (nameNode === undefined) {
+          throw new Error(`no name for prescription: ${JSON.stringify(token)}`);
+        }
+        if (nameNode.type !== "prescriptionName") {
           throw new Error(
-            `comment already there. current comment "${currentComment}" token:"${JSON.stringify(
-              token
-            )}" currentTiaowen "${JSON.stringify(currentTiaowen)}"`
+            `no name for prescription. prescription "${JSON.stringify(token)}" node:"${JSON.stringify(nameNode)}"`
           );
         }
-        currentComment = token.value;
+        astStack.push({
+          type: "prescription",
+          value: {
+            name: nameNode.value,
+            items: token.value
+          }
+        });
+        break;
+      case "data":
+        const prescriptionNode = astStack.pop();
+        if (prescriptionNode === undefined) {
+          throw new Error(`no prescription for: "${JSON.stringify(token)}"`);
+        }
+        if (prescriptionNode.type !== "prescription") {
+          throw new Error(
+            `expect prescription for comment: "${JSON.stringify(token)}", actual is ${JSON.stringify(prescriptionNode)}`
+          );
+        }
+        const existingComment = prescriptionNode.value.comment;
+        if (existingComment) {
+          throw new Error(
+            `comment already there. current comment "${existingComment}" token:"${JSON.stringify(
+              token
+            )}" prescriptionNode "${JSON.stringify(prescriptionNode)}"`
+          );
+        }
+        prescriptionNode.value.comment = token.value;
         break;
     }
-  });
-  if (currentTiaowen !== undefined) {
-    tiaowen.push(currentTiaowen);
+  }
+  const lastTiaowen = createTiaowen(astStack);
+  if (lastTiaowen !== undefined) {
+    tiaowen.push(lastTiaowen);
   }
   return tiaowen;
 };
