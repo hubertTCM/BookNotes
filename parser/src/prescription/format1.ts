@@ -27,12 +27,6 @@ export const parseTokens = (text: string) => {
 
   let i = 0;
   while (i < text.length) {
-    const herbData = findHerb(text, i);
-    if (herbData !== null) {
-      tokens.push({ type: "herb", value: herbData.herb });
-      i += herbData.length;
-      continue;
-    }
     const char = text.charAt(i);
     if (char === "（") {
       endNumber();
@@ -53,6 +47,21 @@ export const parseTokens = (text: string) => {
     if (currentTokenType === "comment") {
       currentTokenValue += char;
       ++i;
+      continue;
+    }
+    if (text.charAt(i - 1) === "如" && text.substring(i).startsWith("鸡子")) {
+      const uom = findUom(text, i);
+      if (uom) {
+        endNumber();
+        tokens.push({ type: "uom", value: uom });
+        i += uom.length;
+        continue;
+      }
+    }
+    const herbData = findHerb(text, i);
+    if (herbData !== null) {
+      tokens.push({ type: "herb", value: herbData.herb });
+      i += herbData.length;
       continue;
     }
     if (char === " " || char == "\u3000") {

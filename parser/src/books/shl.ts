@@ -8,13 +8,13 @@ import { convertUom1 } from "../prescription/convertUom";
 import { toNumber } from "../prescription/utils";
 import { Stack } from "../stack";
 
-type Prescription = {
+export type Prescription = {
   name: string;
   items: PrescriptionItem[];
   comment?: string;
 };
 
-type TiaoWen = {
+export type TiaoWen = {
   order: number;
   text: string;
   prescriptions: Prescription[];
@@ -69,11 +69,25 @@ const tryParseTiaoWenText = (line: string): TiaoWenTextToken | undefined => {
   }
 };
 
-export const isTiaowenComment = (text: string) => {
+const isTiaowenComment = (text: string) => {
   return text.startsWith("臣（林）亿等谨按：") || text.startsWith("附子泻心汤，本云：");
 };
 
-export const parse = async (): Promise<Token[]> => {
+const tryParsePrescriptionName = (text: string): string | undefined => {
+  // 猪胆汁方（附方）
+  const endTags = ["方（附方）", "方"];
+  const endTag = endTags.find(tag => {
+    if (text.endsWith(tag)) {
+      return tag;
+    }
+  });
+  if (endTag) {
+    return text.substring(0, text.length - endTag.length);
+  }
+  return undefined;
+};
+
+const createTokens = async (): Promise<Token[]> => {
   const filePath = "./resource/伤寒论.txt";
 
   const readInterface = readline.createInterface({
@@ -94,9 +108,9 @@ export const parse = async (): Promise<Token[]> => {
       tokens.push(tiaowenTextToken);
       continue;
     }
-    if (line.endsWith("方")) {
-      const name = line.substring(0, line.length - 1);
-      tokens.push({ type: "presctionName", value: name });
+    const prescriptionName = tryParsePrescriptionName(line);
+    if (prescriptionName) {
+      tokens.push({ type: "presctionName", value: prescriptionName });
       continue;
     }
     const prescriptionItems = tryParsePrescription(rawText, convertUom1);
@@ -107,6 +121,10 @@ export const parse = async (): Promise<Token[]> => {
 
     if (isTiaowenComment(line)) {
       tokens.push({ type: "tiaowenComment", value: line });
+      continue;
+    }
+
+    if (line === "土瓜根方（附方佚）") {
       continue;
     }
 
@@ -210,7 +228,7 @@ const token2Tiaowen = (tokens: Token[]): TiaoWen[] => {
 };
 
 export const exportShl = async (): Promise<TiaoWen[]> => {
-  const tokens = await parse();
+  const tokens = await createTokens();
   const tiaowen = token2Tiaowen(tokens);
   console.log(JSON.stringify(tiaowen));
   return tiaowen;
