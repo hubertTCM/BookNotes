@@ -132,6 +132,13 @@ describe("format1", () => {
         ]
       },
       {
+        source: "半夏（洗，破如枣核）十四枚　鸡子一枚（去黄，内上苦酒，着鸡子壳中）",
+        expected: [
+          { herb: "半夏", quantity: { uom: "枚", value: 14 }, comment: "洗，破如枣核" },
+          { herb: "鸡子", quantity: { uom: "枚", value: 1 }, comment: "去黄，内上苦酒，着鸡子壳中" }
+        ]
+      },
+      {
         source: "大黄六两 甘遂一钱匕",
         expected: [
           { herb: "大黄", quantity: { uom: "两", value: 6 } },
