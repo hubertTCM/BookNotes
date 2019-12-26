@@ -1,5 +1,5 @@
 import herbInfo from "../../src/herbs.json";
-import { NumberKeyWordType } from "./type.js";
+import { NumberKeyWordType, UOMKeyWordType, uomKeyWords } from "./type";
 
 export const findHerb = (text: string, start: number = 0): string | null => {
   if (!text || text.length <= start) {
@@ -8,6 +8,15 @@ export const findHerb = (text: string, start: number = 0): string | null => {
   const source = start > 0 ? text.substring(start) : text;
   const herb = herbInfo.allHerbNames.find(x => source.startsWith(x));
   return herb ? herb : null;
+};
+
+export const findUom = (text: string, start: number): UOMKeyWordType | null => {
+  if (!text || text.length <= start) {
+    return null;
+  }
+  const source = start > 0 ? text.substring(start) : text;
+  const uom = uomKeyWords.find(x => source.startsWith(x));
+  return uom ? uom : null;
 };
 
 const singleItemToNumber = (keyword: NumberKeyWordType): number => {

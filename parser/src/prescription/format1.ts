@@ -2,7 +2,7 @@
 // 生姜 大枣
 // 麻黄六两（去节）　桂枝二两（去皮）　甘草二两（炙）　杏仁四十枚（去皮尖）　生姜三两（切） 大枣十枚（擘）　石膏如鸡子大（碎）
 import { numberKeyWords, NumberKeyWordType, uomKeyWords, UOMKeyWordType, PrescriptionItem, Quantity } from "./type";
-import { findHerb, toNumber } from "./utils";
+import { findHerb, toNumber, findUom } from "./utils";
 
 export type Token = {
   type: "herb" | "number" | "uom" | "comment" | "applyQuantityToPrevious" | "sameQuantityForAllHerbs";
@@ -70,10 +70,16 @@ export const parseTokens = (text: string) => {
       }
       continue;
     }
-    if (uomKeyWords.includes(char as UOMKeyWordType)) {
-      endNumber();
-      tokens.push({ type: "uom", value: char });
+    // 石膏如鸡子大
+    if (char === "如") {
       ++i;
+      continue;
+    }
+    const uom = findUom(text, i);
+    if (uom !== null) {
+      endNumber();
+      tokens.push({ type: "uom", value: uom });
+      i += uom.length;
       continue;
     }
     if (numberKeyWords.includes(char as NumberKeyWordType)) {
