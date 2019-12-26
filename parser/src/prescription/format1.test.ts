@@ -131,6 +131,17 @@ describe("format1", () => {
           { herb: "石膏", quantity: { uom: "鸡子大", value: 1 }, comment: "碎" }
         ]
       },
+      {
+        source: "大黄六两 甘遂一钱匕",
+        expected: [
+          { herb: "大黄", quantity: { uom: "两", value: 6 } },
+          { herb: "甘遂", quantity: { uom: "钱匕", value: 1 } }
+        ]
+      },
+      {
+        source: "代赭石一两",
+        expected: [{ herb: "代赭石", quantity: { uom: "两", value: 1 } }]
+      },
       { source: "半夏十四枚", expected: [{ herb: "半夏", quantity: { uom: "枚", value: 14 } }] },
       { source: "半夏三四枚", expected: [{ herb: "半夏", quantity: { uom: "枚", value: 34 } }] },
       {

@@ -1,13 +1,20 @@
 import herbInfo from "../../src/herbs.json";
 import { NumberKeyWordType, UOMKeyWordType, uomKeyWords } from "./type";
 
-export const findHerb = (text: string, start: number = 0): string | null => {
+export const findHerb = (text: string, start: number = 0): { herb: string; length: number } | null => {
   if (!text || text.length <= start) {
     return null;
   }
   const source = start > 0 ? text.substring(start) : text;
   const herb = herbInfo.allHerbNames.find(x => source.startsWith(x));
-  return herb ? herb : null;
+  if (!herb) {
+    return null;
+  }
+  // 栝蒌实大者一枚
+  if (source.startsWith(`${herb}大者`)) {
+    return { herb, length: herb.length + 2 };
+  }
+  return { herb, length: herb.length };
 };
 
 export const findUom = (text: string, start: number): UOMKeyWordType | null => {
