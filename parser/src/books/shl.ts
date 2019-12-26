@@ -18,6 +18,7 @@ type TiaoWen = {
   order: number;
   text: string;
   prescriptions: Prescription[];
+  comment: string;
 };
 
 type TiaoWenTextToken = {
@@ -26,7 +27,7 @@ type TiaoWenTextToken = {
   order: number;
 };
 type TextToken = {
-  type: "data" | "presctionName";
+  type: "data" | "presctionName" | "tiaowenComment";
   value: string;
 };
 type PrescriptionItemToken = {
@@ -42,8 +43,8 @@ type ASTTiaowenText = {
   order: number;
 };
 
-type ASTPrescriptionName = {
-  type: "prescriptionName";
+type ASTText = {
+  type: "prescriptionName" | "tiaowenComment";
   value: string;
 };
 
@@ -52,7 +53,7 @@ type ASTPrescription = {
   value: Prescription;
 };
 
-type ASTNode = ASTTiaowenText | ASTPrescriptionName | ASTPrescription;
+type ASTNode = ASTTiaowenText | ASTText | ASTPrescription;
 
 // regex: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 const tryParseTiaoWenText = (line: string): TiaoWenTextToken | undefined => {
@@ -66,6 +67,10 @@ const tryParseTiaoWenText = (line: string): TiaoWenTextToken | undefined => {
   } catch (e) {
     return undefined;
   }
+};
+
+export const isTiaowenComment = (text: string) => {
+  return text.startsWith("臣（林）亿等谨按：") || text.startsWith("附子泻心汤，本云：");
 };
 
 export const parse = async (): Promise<Token[]> => {
@@ -100,6 +105,11 @@ export const parse = async (): Promise<Token[]> => {
       continue;
     }
 
+    if (isTiaowenComment(line)) {
+      tokens.push({ type: "tiaowenComment", value: line });
+      continue;
+    }
+
     tokens.push({ type: "data", value: line });
   }
   return tokens;
@@ -107,6 +117,7 @@ export const parse = async (): Promise<Token[]> => {
 
 const createTiaowen = (astStack: Stack<ASTNode>): TiaoWen | undefined => {
   let node = astStack.pop();
+  let tiaowenComment: string = "";
   const prescriptions: Prescription[] = [];
   while (node) {
     switch (node.type) {
@@ -114,9 +125,12 @@ const createTiaowen = (astStack: Stack<ASTNode>): TiaoWen | undefined => {
         if (astStack.count() > 0) {
           throw new Error("");
         }
-        return { order: node.order, text: node.value, prescriptions };
+        return { order: node.order, text: node.value, prescriptions, comment: tiaowenComment };
       case "prescription":
         prescriptions.push(node.value);
+        break;
+      case "tiaowenComment":
+        tiaowenComment = node.value;
         break;
       default:
         throw new Error(`unexpected node. "${JSON.stringify(node)}"`);
@@ -181,6 +195,11 @@ const token2Tiaowen = (tokens: Token[]): TiaoWen[] => {
         }
         prescriptionNode.value.comment = token.value;
         break;
+      case "tiaowenComment":
+        astStack.push({ type: "tiaowenComment", value: token.value });
+        break;
+      default:
+        throw new Error(`unknown token "${JSON.stringify(token)}"`);
     }
   }
   const lastTiaowen = createTiaowen(astStack);

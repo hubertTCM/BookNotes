@@ -27,10 +27,10 @@ export const parseTokens = (text: string) => {
 
   let i = 0;
   while (i < text.length) {
-    const herb = findHerb(text, i);
-    if (herb !== null) {
-      tokens.push({ type: "herb", value: herb });
-      i += herb.length;
+    const herbData = findHerb(text, i);
+    if (herbData !== null) {
+      tokens.push({ type: "herb", value: herbData.herb });
+      i += herbData.length;
       continue;
     }
     const char = text.charAt(i);
