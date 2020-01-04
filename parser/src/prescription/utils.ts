@@ -1,4 +1,3 @@
-import { Stack } from "../stack";
 import herbInfo from "../../src/herbs.json";
 import { NumberKeyWordType, UOMKeyWordType, uomKeyWords } from "./type";
 
