@@ -11,11 +11,12 @@ export const uomKeyWords = [
   "升",
   "把",
   "合",
-  "尺"
+  "尺",
+  "茎"
 ] as const;
 export type UOMKeyWordType = typeof uomKeyWords[number];
 
-export const numberKeyWords = ["零", "半", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"] as const;
+export const numberKeyWords = ["零", "半", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "百"] as const;
 export type NumberKeyWordType = typeof numberKeyWords[number];
 
 export type Quantity = {

@@ -125,6 +125,10 @@ describe("format1", () => {
         ]
       },
       {
+        source: "乌梅三百枚",
+        expected: [{ herb: "乌梅", quantity: { uom: "枚", value: 300 } }]
+      },
+      {
         source: "麻黄六两 石膏如鸡子大（碎）",
         expected: [
           { herb: "麻黄", quantity: { uom: "两", value: 6 } },

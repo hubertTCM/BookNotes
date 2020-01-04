@@ -200,7 +200,7 @@ export const tryParsePrescription = (
     const tokens = parseTokens(text);
     return tokens ? token2PrescriptionItems(tokens, convertUOM) : null;
   } catch (e) {
-    console.log("Error:", e);
+    //console.log("Error:", e);
     return null;
   }
 };

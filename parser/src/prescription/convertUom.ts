@@ -1,6 +1,13 @@
 import { Quantity } from "./type";
 
-/* 单位换算: https://www.haodf.com/zhuanjiaguandian/luoluludr_6474775810.htm
+/* 
+http://www.cntcm.com.cn/xueshu/2016-05/06/content_14730.htm
+“古秤唯有铢两，而无分名。今则以十黍为一铢，六铢为一分，四分成一两，十六两为一斤。
+虽有子谷黍之制，从来均之已久，正尔依此用之。但古秤皆复，今南秤是也。
+晋秤始后，汉末以来，分一斤为二斤耳，一两为二两耳。金银丝绵，并与药同，无轻重矣。
+古方唯有仲景，而已涉今秤，若用古秤作汤，则水为殊少，故知非复秤，悉用今者尔。”
+
+单位换算: https://www.haodf.com/zhuanjiaguandian/luoluludr_6474775810.htm
 1 石 = 四钧 
 1 钧 = 三十斤
 1 斤 = 16 两
@@ -48,6 +55,10 @@ export const convertUom1 = (quantity: Quantity): Quantity => {
       return { value: quantity.value * 16, uom: "两" };
     case "两":
       return { ...quantity };
+    // 麻黄升麻汤：
+    // 麻黄二两半（去节）　升麻一两一分　当归一两一分 ...
+    case "分":
+      return { value: quantity.value / 4.0, uom: "两" };
     case "铢":
       const value = quantity.value / 24.0;
       return { value, uom: "两" };
