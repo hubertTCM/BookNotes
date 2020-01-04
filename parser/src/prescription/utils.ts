@@ -1,3 +1,4 @@
+import { Stack } from "../stack";
 import herbInfo from "../../src/herbs.json";
 import { NumberKeyWordType, UOMKeyWordType, uomKeyWords } from "./type";
 
@@ -52,25 +53,42 @@ const singleItemToNumber = (keyword: NumberKeyWordType): number => {
       return 9;
     case "十":
       return 10;
+    case "百":
+      return 100;
     default:
       throw new Error(`unkown number: ${keyword}`);
   }
 };
 
-export const toNumber = (text: string): number => {
-  let number = 0;
-
-  let format1 = true; // 九八
-  let temp = "";
-  for (let i = 0; i < text.length; ++i) {
-    if (text[i] === "半" || text[i] == "十") {
-      format1 = false;
+export const formatNumberText = (from: string): string => {
+  let to: string = "";
+  for (let i = from.length - 1; i >= 0; i--) {
+    const temp = singleItemToNumber(from[i] as NumberKeyWordType);
+    const digitLength = String(temp).length;
+    if (temp > 9) {
+      const zeroFillCount = digitLength - 1 - to.length;
+      if (zeroFillCount > 0) {
+        to = new Array(zeroFillCount + 1).join("零") + to;
+      }
+      if (i === 0) {
+        to = `一${to}`;
+      }
+      if (zeroFillCount < 0) {
+        throw new Error(`invalid number ${from}`);
+      }
+    } else {
+      to = from[i] + to;
     }
-    temp = `${temp}${singleItemToNumber(text[i] as NumberKeyWordType)}`;
-    number += singleItemToNumber(text[i] as NumberKeyWordType);
   }
-  if (format1) {
-    return parseInt(temp, 10);
+  return to;
+};
+
+export const toNumber = (text: string): number => {
+  const formattedText = formatNumberText(text);
+  let result: string = "";
+  for (let i = 0; i < formattedText.length; ++i) {
+    const temp = singleItemToNumber(formattedText[i] as NumberKeyWordType);
+    result = `${result}${temp}`;
   }
-  return number;
+  return parseInt(result, 10);
 };

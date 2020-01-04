@@ -99,7 +99,7 @@ const createTokens = async (): Promise<Token[]> => {
   const tokens: Token[] = [];
   for await (const rawText of readInterface) {
     const line = rawText.trim();
-    console.log(rawText);
+    //console.log(rawText);
     if (!line) {
       continue;
     }
