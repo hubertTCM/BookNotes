@@ -60,11 +60,6 @@ export const parseTokens = (text: string) => {
       ++i;
       continue;
     }
-    // if (currentTokenType === "data") {
-    //   currentTokenValue += char;
-    //   ++i;
-    //   continue;
-    // }
     const herbData = findHerb(text, i);
     if (herbData !== null) {
       endData();
@@ -96,6 +91,15 @@ export const parseTokens = (text: string) => {
       ++i;
       continue;
     }
+
+    if (currentTokenType !== "data") {
+      if (char === " " || char == "\u3000") {
+        endNumber();
+        ++i;
+        continue;
+      }
+    }
+
     endNumber();
     if (currentTokenType === undefined) {
       currentTokenType = "data";

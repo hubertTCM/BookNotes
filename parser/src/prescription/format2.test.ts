@@ -24,6 +24,17 @@ describe("format1", () => {
         ]
       },
       {
+        source: "生姜 熟地（四两）",
+        expectedTokens: [
+          { type: "herb", value: "生姜" },
+          { type: "herb", value: "熟地" },
+          { type: "bracketsStart", value: "（" },
+          { type: "number", value: "四" },
+          { type: "uom", value: "两" },
+          { type: "bracketsEnd", value: "）" }
+        ]
+      },
+      {
         source: "牛膝（四两半）",
         expectedTokens: [
           { type: "herb", value: "牛膝" },
