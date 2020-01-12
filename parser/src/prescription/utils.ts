@@ -92,6 +92,14 @@ export const toNumber = (text: string): number => {
   return parseFloat(result);
 };
 
+export const tryConvertToNumber = (text: string): number | undefined => {
+  try {
+    return toNumber(text);
+  } catch (e) {
+    return undefined;
+  }
+};
+
 export const toQuanity = (
   tokens: QuantityToken[],
   convertUOM: (quanity: Quantity) => Quantity
