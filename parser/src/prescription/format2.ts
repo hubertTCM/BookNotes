@@ -1,5 +1,5 @@
-import { Quantity, PrescriptionItem, NumberKeyWordType, numberKeyWords, UOMKeyWordType } from "./type";
-import { findHerb, findUom, toNumber } from "./utils";
+import { Quantity, PrescriptionItem, NumberKeyWordType, numberKeyWords, UOMKeyWordType, QuantityToken } from "./type";
+import { findHerb, findUom, toNumber, toQuanity } from "./utils";
 
 /*
 临证指南医案格式：
@@ -7,18 +7,12 @@ import { findHerb, findUom, toNumber } from "./utils";
 - 制首乌（四两，烘） 枸杞子（去蒂，二两） 归身（二两，用独枝者，去梢） 怀牛膝（二两，蒸） 明天麻（二两，面煨） 三角胡麻（二两，打碎，水洗十次，烘） 黄甘菊（三两，水煎汁） 川石斛（四两，水煎汁） 小黑豆皮（四两，煎汁）
 - 
  */
-export type Token = {
-  type:
-    | "herb"
-    | "number"
-    | "uom"
-    | "bracketsStart"
-    | "bracketsEnd"
-    | "applyQuantityToPrevious"
-    | "sameQuantityForAllHerbs"
-    | "data";
-  value: string;
-};
+export type Token =
+  | {
+      type: "herb" | "bracketsStart" | "bracketsEnd" | "data";
+      value: string;
+    }
+  | QuantityToken;
 
 export const parseTokens = (text: string) => {
   if (!text) {
@@ -111,11 +105,59 @@ export const parseTokens = (text: string) => {
     ++i;
     continue;
   }
-  //console.log(JSON.stringify(tokens));
   return tokens;
 };
+const toQuantityTokens = (tokens: Token[], start: number, end: number): QuantityToken[] => {
+  const quantityTokens: QuantityToken[] = [];
+  for (let i = start; i < end; ++i) {
+    const temp = tokens[i];
+    if (temp.type !== "number" && temp.type !== "uom") {
+      throw new Error(`token ${JSON.stringify(temp)} is not quantity`);
+    }
+    quantityTokens.push(temp);
+  }
+  return quantityTokens;
+};
+//TODO: can be done better
+const extractDetails = (
+  herb: string,
+  tokens: Token[],
+  convertUOM: (quanity: Quantity) => Quantity
+): PrescriptionItem => {
+  const endToken = tokens[tokens.length - 1];
+  let comment: string | undefined = undefined;
+  let quantity: Quantity | undefined;
+  if (endToken.type === "uom" || endToken.type === "number") {
+    // （洗净，另熬膏，一斤）
+    let lastDataIndex = tokens.length - 1;
+    for (; lastDataIndex >= 0; lastDataIndex--) {
+      if (tokens[lastDataIndex].type === "data") {
+        break;
+      }
+    }
+    for (let i = 0; i < lastDataIndex + 1; ++i) {
+      comment = `${comment || ""}${tokens[i].value}`;
+    }
+    const quantityTokens = toQuantityTokens(tokens, lastDataIndex + 1, tokens.length);
+    quantity = toQuanity(quantityTokens, convertUOM);
+    return { herb, quantity, comment };
+  }
+  // 三角胡麻（四两，打碎，水洗十次，烘）
+  // 牛膝（四两半）
+  let firstDataIndex = 0;
+  for (; firstDataIndex < tokens.length; ++firstDataIndex) {
+    if (tokens[firstDataIndex].type === "data") {
+      break;
+    }
+  }
+  for (let i = firstDataIndex; i < tokens.length; ++i) {
+    comment = `${comment || ""}${tokens[i].value}`;
+  }
+  const quantityTokens = toQuantityTokens(tokens, 0, firstDataIndex);
+  quantity = toQuanity(quantityTokens, convertUOM);
+  return { herb, quantity, comment };
+};
 
-// TODO:
 export const token2PrescriptionItems = (
   tokens: Token[],
   convertUOM: (quanity: Quantity) => Quantity
@@ -124,68 +166,44 @@ export const token2PrescriptionItems = (
     return null;
   }
   let items: PrescriptionItem[] = [];
-  let currentItem: PrescriptionItem | undefined = undefined;
-  let currentNumber: number | undefined = undefined;
-  let applyQuantityToPrevious: boolean = false;
-  for (let i = 0; i < tokens.length; ++i) {
+  let herb: string | null = null;
+  let i = 0;
+  while (i < tokens.length) {
     const token = tokens[i];
-    switch (token.type) {
-      case "herb":
-        if (currentItem) {
-          currentNumber = undefined;
-
-          if (applyQuantityToPrevious) {
-            if (!currentItem.quantity) {
-              throw new Error(`not quantity when applyQuantityToPrevious is true. herb:${currentItem.herb}`);
-            }
-            for (let j = items.length - 1; j >= 0; --j) {
-              const temp = items[j];
-              if (temp.quantity !== undefined) {
-                break;
-              }
-              temp.quantity = { ...currentItem.quantity };
-            }
-          }
-
-          items.push(currentItem);
+    if (token.type === "herb") {
+      if (herb) {
+        items.push({ herb });
+      }
+      herb = token.value;
+      ++i;
+      continue;
+    }
+    if (token.type === "bracketsStart") {
+      if (!herb) {
+        throw new Error(`expect herb. tokens:${JSON.stringify(tokens.slice(i))}`);
+      }
+      let endIndex = i + 1;
+      let tempTokens: Token[] = [];
+      let endToken: Token | undefined = undefined;
+      for (endIndex; endIndex < tokens.length; ++endIndex) {
+        endToken = tokens[endIndex];
+        if (endToken.type === "bracketsEnd") {
+          break;
         }
-        currentItem = { herb: token.value };
-        applyQuantityToPrevious = false;
-        break;
-      case "number":
-        if (!currentItem) {
-          throw new Error(`unkown prescription. ${token.type} ${token.value}`);
-        }
-        currentNumber = toNumber(token.value);
-        break;
-      case "uom":
-        if (!currentItem) {
-          throw new Error(`unkown prescription. ${token.type} ${token.value}`);
-        }
-        const quanity = convertUOM({
-          uom: token.value as UOMKeyWordType,
-          value: currentNumber !== undefined ? currentNumber : 1
-        });
-        if (!currentItem.quantity) {
-          currentItem.quantity = quanity;
-        } else {
-          if (currentItem.quantity.uom != quanity.uom) {
-            throw new Error(`uom not match: ${quanity.uom} not match ${currentItem.quantity.uom}`);
-          }
-          currentItem.quantity.value += quanity.value;
-        }
-        break;
-      case "applyQuantityToPrevious":
-        applyQuantityToPrevious = true;
-      case "sameQuantityForAllHerbs":
-        break;
-      default:
-        throw new Error(`unkonw token: ${token.type} ${token.value}`);
+        tempTokens.push(endToken);
+      }
+      if (!endToken || endToken.type !== "bracketsEnd") {
+        throw new Error(`no ) tokens: ${JSON.stringify(tokens.slice(i))}`);
+      }
+      const item = extractDetails(herb, tempTokens, convertUOM);
+      items.push(item);
+      herb = null;
+      i = endIndex + 1;
     }
   }
 
-  if (currentItem) {
-    items.push(currentItem);
+  if (herb) {
+    items.push({ herb });
   }
   return items;
 };
