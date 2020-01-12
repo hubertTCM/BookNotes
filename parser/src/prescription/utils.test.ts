@@ -1,4 +1,10 @@
-import { toNumber, formatNumberText } from "./utils";
+import { toNumber, formatNumberText, toQuanity } from "./utils";
+import { QuantityToken, Quantity } from "./type";
+
+type ToQuantityTestData = {
+  tokens: QuantityToken[];
+  expected: Quantity;
+};
 describe("utils", () => {
   it("formatNumberText", () => {
     const testDataSet = [
@@ -17,6 +23,7 @@ describe("utils", () => {
   });
   it("toNumber", () => {
     const testDataSet = [
+      { source: "半", expected: 0.5 },
       { source: "三百", expected: 300 },
       { source: "五百三十四", expected: 534 },
       { source: "十四", expected: 14 },
@@ -27,6 +34,25 @@ describe("utils", () => {
     ];
     testDataSet.forEach(({ source, expected }) => {
       var actualResult = toNumber(source);
+      expect(actualResult).toEqual(expected);
+    });
+  });
+
+  it("toQuanity", () => {
+    const testDataSet: ToQuantityTestData[] = [
+      {
+        tokens: [
+          { type: "number", value: "四" },
+          { type: "uom", value: "两" },
+          { type: "number", value: "半" }
+        ],
+        expected: { uom: "两", value: 4.5 }
+      }
+    ];
+    testDataSet.forEach(({ tokens, expected }) => {
+      var actualResult = toQuanity(tokens, quantity => {
+        return { ...quantity, uom: "两" };
+      });
       expect(actualResult).toEqual(expected);
     });
   });

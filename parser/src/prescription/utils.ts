@@ -1,5 +1,5 @@
 import herbInfo from "../../src/herbs.json";
-import { NumberKeyWordType, UOMKeyWordType, uomKeyWords } from "./type";
+import { NumberKeyWordType, UOMKeyWordType, uomKeyWords, QuantityToken, Quantity } from "./type";
 
 export const findHerb = (text: string, start: number = 0): { herb: string; length: number } | null => {
   if (!text || text.length <= start) {
@@ -89,5 +89,43 @@ export const toNumber = (text: string): number => {
     const temp = singleItemToNumber(formattedText[i] as NumberKeyWordType);
     result = `${result}${temp}`;
   }
-  return parseInt(result, 10);
+  return parseFloat(result);
+};
+
+export const toQuanity = (
+  tokens: QuantityToken[],
+  convertUOM: (quanity: Quantity) => Quantity
+): Quantity | undefined => {
+  let currentNumber: number | undefined = undefined;
+  let quantity: Quantity | undefined = undefined;
+  for (let i = 0; i < tokens.length; ++i) {
+    const token = tokens[i];
+    switch (token.type) {
+      case "number":
+        currentNumber = toNumber(token.value);
+        break;
+      case "uom":
+        const temp = convertUOM({
+          uom: token.value as UOMKeyWordType,
+          value: currentNumber !== undefined ? currentNumber : 1
+        });
+        if (quantity === undefined) {
+          quantity = temp;
+        } else {
+          if (temp.uom != quantity.uom) {
+            throw new Error(`uom not match: ${quantity.uom} not match ${temp.uom}`);
+          }
+          quantity.value += temp.value;
+        }
+        currentNumber = undefined;
+        break;
+      default:
+        throw new Error(`unkonw token: ${token.type} ${token.value}`);
+    }
+  }
+
+  if (quantity && currentNumber === 0.5) {
+    return { uom: quantity.uom, value: quantity.value + currentNumber };
+  }
+  return quantity;
 };
