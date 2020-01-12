@@ -27,3 +27,4 @@ Learn_Tensorflow/Python2.7/*/*
 Learn_Tensorflow/Python2.7/*/*.pyc
 **/**/node_modules
 **/**/bin
+.DS_Store
