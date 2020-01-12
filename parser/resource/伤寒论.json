@@ -751,7 +751,7 @@
             "herb": "芒硝",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             }
           }
         ],
@@ -934,7 +934,7 @@
             "herb": "半夏",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "洗"
           },
@@ -962,7 +962,7 @@
           {
             "herb": "葛根",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             }
           },
@@ -1182,7 +1182,7 @@
             "herb": "五味子",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             }
           },
           {
@@ -1190,7 +1190,7 @@
             "comment": "洗",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             }
           }
         ],
@@ -1501,7 +1501,7 @@
           {
             "herb": "石膏",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             },
             "comment": "碎、绵裹"
@@ -1551,7 +1551,7 @@
           {
             "herb": "茯苓",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             }
           },
@@ -1595,7 +1595,7 @@
           {
             "herb": "厚朴",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             },
             "comment": "炙，去皮"
@@ -1603,7 +1603,7 @@
           {
             "herb": "生姜",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             },
             "comment": "切"
@@ -1612,7 +1612,7 @@
             "herb": "半夏",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "洗"
           },
@@ -1808,7 +1808,7 @@
             "herb": "桂枝",
             "quantity": {
               "uom": "两",
-              "value": 0
+              "value": 0.5
             },
             "comment": "去皮"
           }
@@ -2190,7 +2190,7 @@
           {
             "herb": "柴胡",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             }
           },
@@ -2212,7 +2212,7 @@
             "herb": "半夏",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "洗"
           },
@@ -2345,7 +2345,7 @@
           {
             "herb": "柴胡",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             }
           },
@@ -2367,7 +2367,7 @@
             "herb": "半夏",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "洗"
           },
@@ -3004,7 +3004,7 @@
           {
             "herb": "大黄",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             }
           },
@@ -3012,7 +3012,7 @@
             "herb": "葶苈子",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "熬"
           },
@@ -3020,14 +3020,14 @@
             "herb": "芒硝",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             }
           },
           {
             "herb": "杏仁",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "去皮尖，熬黑"
           }
@@ -3120,7 +3120,7 @@
             "herb": "半夏",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "洗"
           },
@@ -3312,7 +3312,7 @@
           {
             "herb": "柴胡",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             }
           },
@@ -3384,7 +3384,7 @@
             "herb": "半夏",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "洗"
           },
@@ -3602,7 +3602,7 @@
             "herb": "半夏",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "洗"
           },
@@ -3653,7 +3653,7 @@
             "herb": "半夏",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "洗"
           },
@@ -3767,7 +3767,7 @@
             "herb": "半夏",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "洗"
           },
@@ -3952,7 +3952,7 @@
             "herb": "半夏",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "洗"
           },
@@ -4054,7 +4054,7 @@
             "herb": "半夏",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             },
             "comment": "洗"
           },
@@ -4313,7 +4313,7 @@
           {
             "herb": "麦门冬",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             },
             "comment": "去心"
@@ -4322,7 +4322,7 @@
             "herb": "麻仁",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             }
           },
           {
@@ -4567,7 +4567,7 @@
           {
             "herb": "厚朴",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             },
             "comment": "炙，去皮"
@@ -4961,14 +4961,14 @@
           {
             "herb": "芍药",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             }
           },
           {
             "herb": "枳实",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             },
             "comment": "炙"
@@ -6401,7 +6401,7 @@
           {
             "herb": "生姜",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             },
             "comment": "切"
@@ -7100,7 +7100,7 @@
           {
             "herb": "半夏",
             "quantity": {
-              "value": 0,
+              "value": 8,
               "uom": "两"
             },
             "comment": "洗"
@@ -7132,7 +7132,7 @@
             "herb": "粳米",
             "quantity": {
               "uom": "升",
-              "value": 0
+              "value": 0.5
             }
           }
         ],
