@@ -60,13 +60,15 @@ export const parseTokens = (text: string) => {
       ++i;
       continue;
     }
-    if (currentTokenType === "data") {
-      currentTokenValue += char;
-      ++i;
-      continue;
-    }
+    // if (currentTokenType === "data") {
+    //   currentTokenValue += char;
+    //   ++i;
+    //   continue;
+    // }
     const herbData = findHerb(text, i);
     if (herbData !== null) {
+      endData();
+      endNumber();
       tokens.push({ type: "herb", value: herbData.herb });
       i += herbData.length;
       currentTokenType = undefined;
@@ -75,6 +77,7 @@ export const parseTokens = (text: string) => {
 
     const uom = findUom(text, i);
     if (uom !== null) {
+      endData();
       endNumber();
       tokens.push({ type: "uom", value: uom });
       currentTokenType = undefined;
@@ -82,6 +85,7 @@ export const parseTokens = (text: string) => {
       continue;
     }
     if (numberKeyWords.includes(char as NumberKeyWordType)) {
+      endData();
       currentTokenValue += char;
       if (currentTokenType !== undefined && currentTokenType !== "number") {
         throw new Error(

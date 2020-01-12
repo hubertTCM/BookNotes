@@ -52,7 +52,20 @@ describe("format1", () => {
           { type: "bracketsStart", value: "（" },
           { type: "number", value: "四" },
           { type: "uom", value: "两" },
-          { type: "data", value: "，打碎，水洗十次，烘" },
+          { type: "data", value: "，打碎，水洗" },
+          { type: "number", value: "十" },
+          { type: "data", value: "次，烘" },
+          { type: "bracketsEnd", value: "）" }
+        ]
+      },
+      {
+        source: "燕窝菜（洗净，另熬膏，一斤）",
+        expectedTokens: [
+          { type: "herb", value: "燕窝菜" },
+          { type: "bracketsStart", value: "（" },
+          { type: "data", value: "洗净，另熬膏，" },
+          { type: "number", value: "一" },
+          { type: "uom", value: "斤" },
           { type: "bracketsEnd", value: "）" }
         ]
       }
