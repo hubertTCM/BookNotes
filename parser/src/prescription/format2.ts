@@ -35,18 +35,33 @@ export const parseTokens = (text: string) => {
       currentTokenType = undefined;
     }
   };
+  const endData = () => {
+    if (currentTokenType === "data") {
+      tokens.push({ type: "data", value: currentTokenValue });
+      currentTokenValue = "";
+      currentTokenType = undefined;
+    }
+  };
 
   let i = 0;
   while (i < text.length) {
     const char = text.charAt(i);
     if (char === "（") {
       tokens.push({ type: "bracketsStart", value: char });
+      currentTokenType = undefined;
       ++i;
       continue;
     }
     if (char === "）") {
       endNumber();
+      endData();
       tokens.push({ type: "bracketsEnd", value: char });
+      currentTokenType = undefined;
+      ++i;
+      continue;
+    }
+    if (currentTokenType === "data") {
+      currentTokenValue += char;
       ++i;
       continue;
     }
@@ -54,41 +69,41 @@ export const parseTokens = (text: string) => {
     if (herbData !== null) {
       tokens.push({ type: "herb", value: herbData.herb });
       i += herbData.length;
+      currentTokenType = undefined;
       continue;
     }
-    if (char === " " || char == "\u3000") {
-      endNumber();
-      ++i;
-      continue;
-    }
-    if (char === "各") {
-      if (text.substring(i, i + 3) === "各等分") {
-        tokens.push({ type: "sameQuantityForAllHerbs", value: "各等分" });
-        i += 3;
-      } else {
-        tokens.push({ type: "applyQuantityToPrevious", value: "各" });
-        ++i;
-      }
-      continue;
-    }
+
     const uom = findUom(text, i);
     if (uom !== null) {
       endNumber();
       tokens.push({ type: "uom", value: uom });
+      currentTokenType = undefined;
       i += uom.length;
       continue;
     }
     if (numberKeyWords.includes(char as NumberKeyWordType)) {
       currentTokenValue += char;
       if (currentTokenType !== undefined && currentTokenType !== "number") {
-        throw new Error("failed");
+        throw new Error(
+          `expect tokenType:number|undefined, actual tokenType:${currentTokenType} char:${char} text:${text}`
+        );
       }
       currentTokenType = "number";
       ++i;
       continue;
     }
-    throw new Error(`Unknown char: "${char}"  text: "${text}"`);
+    endNumber();
+    if (currentTokenType === undefined) {
+      currentTokenType = "data";
+    }
+    if (currentTokenType !== "data") {
+      throw new Error(`expect tokenType:data, actual tokenType:${currentTokenType} char:${char} text:${text}`);
+    }
+    currentTokenValue += char;
+    ++i;
+    continue;
   }
+  //console.log(JSON.stringify(tokens));
   return tokens;
 };
 

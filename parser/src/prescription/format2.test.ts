@@ -22,6 +22,39 @@ describe("format1", () => {
           { type: "uom", value: "两" },
           { type: "bracketsEnd", value: "）" }
         ]
+      },
+      {
+        source: "牛膝（四两半）",
+        expectedTokens: [
+          { type: "herb", value: "牛膝" },
+          { type: "bracketsStart", value: "（" },
+          { type: "number", value: "四" },
+          { type: "uom", value: "两" },
+          { type: "number", value: "半" },
+          { type: "bracketsEnd", value: "）" }
+        ]
+      },
+      {
+        source: "制首乌（四两，烘） ",
+        expectedTokens: [
+          { type: "herb", value: "制首乌" },
+          { type: "bracketsStart", value: "（" },
+          { type: "number", value: "四" },
+          { type: "uom", value: "两" },
+          { type: "data", value: "，烘" },
+          { type: "bracketsEnd", value: "）" }
+        ]
+      },
+      {
+        source: "三角胡麻（四两，打碎，水洗十次，烘）",
+        expectedTokens: [
+          { type: "herb", value: "三角胡麻" },
+          { type: "bracketsStart", value: "（" },
+          { type: "number", value: "四" },
+          { type: "uom", value: "两" },
+          { type: "data", value: "，打碎，水洗十次，烘" },
+          { type: "bracketsEnd", value: "）" }
+        ]
       }
     ];
     testDataSet.forEach(({ source, expectedTokens }) => {
