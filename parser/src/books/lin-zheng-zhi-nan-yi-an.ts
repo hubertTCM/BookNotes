@@ -1,9 +1,11 @@
-import fs from "fs";
+import fs, { readFile } from "fs";
 import os from "os";
 import path from "path";
 import readline from "readline";
+import { promisify } from "util";
 import { tryConvertToNumber } from "../prescription/utils";
 
+const readdir = promisify(fs.readdir);
 const formattedFolder = path.join("./resource", "format", "临证指南医案");
 const splitToFiles = async () => {
   const filePath = "./resource/临证指南医案.txt";
@@ -51,9 +53,52 @@ const splitToFiles = async () => {
   }
 };
 
-// TODO:
-const groupYiAn = () => {};
+const groupYiAn = async () => {
+  const processFile = async (filePath: string) => {
+    const readInterface = readline.createInterface({
+      input: fs.createReadStream(filePath),
+      output: process.stdout,
+      terminal: false
+    });
+    const lines: string[] = [];
+    for await (const rawText of readInterface) {
+      let line = rawText.trim();
+      if (!lines.length) {
+        lines.push(line);
+        continue;
+      }
+
+      if (line.startsWith("又")) {
+        lines.push(line);
+        continue;
+      }
+      //钱 偏枯在左
+      //沈（四九）
+      const secondChar = line.charAt(1);
+      if (secondChar === " " || secondChar === "\u3000" || secondChar === "（") {
+        lines.push("");
+      }
+
+      // <D>风为百病之长
+      if (line.startsWith("<D>")) {
+        lines.push("");
+      }
+
+      lines.push(line);
+    }
+    fs.writeFileSync(filePath, lines.join(os.EOL));
+  };
+  const processDirectory = async (directory: string) => {
+    const dirents = await readdir(directory, { withFileTypes: true });
+    const files = dirents.filter(x => x.isFile()).map(f => path.join(directory, f.name));
+    await Promise.all(files.map(processFile));
+    const dirs = dirents.filter(x => x.isDirectory()).map(x => path.join(directory, x.name));
+    await Promise.all(dirs.map(processDirectory));
+  };
+  await processDirectory(formattedFolder);
+};
 
 export const exportImpl = async () => {
   await splitToFiles();
+  await groupYiAn();
 };
