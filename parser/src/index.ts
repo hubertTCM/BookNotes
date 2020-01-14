@@ -5,7 +5,7 @@ import chalk from "chalk";
 import { exportShl } from "./books/shl";
 import { exportHerbAlias } from "./herbAliasLoader";
 import { exportImpl as exportLinZhengZhiNan } from "./books/lin-zheng-zhi-nan-yi-an";
-
+import { findMissingHerbs } from "./findMissingHerbs";
 const majorVersion = parseInt(process.versions.node.split(".")[0], 10);
 
 (async () => {
@@ -15,6 +15,7 @@ const majorVersion = parseInt(process.versions.node.split(".")[0], 10);
   }
   exportHerbAlias();
   //await exportShl();
+  await findMissingHerbs();
   await exportLinZhengZhiNan();
   console.log("done");
   //console.log(chalk.red.bold(`${JSON.stringify(tokens).substring(0, 80)}`));

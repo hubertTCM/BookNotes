@@ -213,7 +213,7 @@ export const exportImpl = async () => {
   //   const result = await createTokens(filePath);
   //   const toFilePath = path.join("./resource", "format", "临证指南医案", "debug.txt");
   //   fs.writeFileSync(toFilePath, JSON.stringify(result, null, 2));
-  //await processDirectory(path.join(formattedFolder, "2.卷二"), createTokens);
-  await processDirectory(formattedFolder, createTokens);
+  await processDirectory(path.join(formattedFolder, "2.卷二"), createTokens);
+  //await processDirectory(formattedFolder, createTokens);
   console.log("临证指南医案: done");
 };
