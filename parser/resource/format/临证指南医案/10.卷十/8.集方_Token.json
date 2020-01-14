@@ -1,0 +1,5502 @@
+[
+  [
+    {
+      "type": "text",
+      "value": "<D>案中所用诸方，开载于后，以便初学之士查阅。</D>"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂枝"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "桂枝加附子汤 即桂枝汤加附子。"
+    },
+    {
+      "type": "text",
+      "value": "苓桂术甘汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "炙草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "小建中汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "大枣"
+        },
+        {
+          "herb": "饴糖"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "桂枝去芍药加蜀漆龙骨牡蛎救逆汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "大枣"
+        },
+        {
+          "herb": "蜀漆"
+        },
+        {
+          "herb": "龙骨"
+        },
+        {
+          "herb": "牡蛎"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生姜"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "半夏"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "附子"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "大黄"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄芩"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "阿胶"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "阿胶"
+        },
+        {
+          "herb": "鸡子黄"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "旋覆花"
+        },
+        {
+          "herb": "代赭石"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "旋覆花"
+        },
+        {
+          "herb": "代赭石"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "炙甘草",
+          "comment": "汤又名复脉汤"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "麻仁"
+        },
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "阿胶"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "乌梅"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "乌梅"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "黄柏"
+        },
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "蜀椒"
+        },
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "细辛"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "白虎汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "石膏"
+        },
+        {
+          "herb": "知母"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "粳米"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "白虎加人参汤 即白虎汤加人参。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "竹叶"
+        },
+        {
+          "herb": "石膏"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "竹叶"
+        },
+        {
+          "herb": "石膏"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "粳米"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "白头翁"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "白头翁"
+        },
+        {
+          "herb": "秦皮"
+        },
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "黄柏"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "黄连"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "黄连"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "猪肤"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "猪肤"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "四逆汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "附子"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "人参四逆汤即四逆汤加人参。"
+    },
+    {
+      "type": "text",
+      "value": "通脉四逆汤 即四逆汤加葱白，更有随症加法。"
+    },
+    {
+      "type": "text",
+      "value": "通脉四逆加猪胆汁汤 即通脉四逆汤加猪胆汁。"
+    },
+    {
+      "type": "text",
+      "value": "白通汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "葱白"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "附子"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "白通加猪胆汁汤 即白通汤加猪胆汁人尿。"
+    },
+    {
+      "type": "text",
+      "value": "术附汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "附子"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "理中汤（丸同）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "干姜"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "吴茱萸"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "吴茱萸"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "真武汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "生姜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "桃花汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "赤石脂"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "粳米"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "麻黄"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "石膏"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "麻黄"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "石膏"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "小青龙汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "麻黄"
+        },
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "细辛"
+        },
+        {
+          "herb": "五味子"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "半夏"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "栀子"
+        },
+        {
+          "herb": "豉"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "栀子"
+        },
+        {
+          "herb": "香豉"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桃仁"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桃仁"
+        },
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "芒硝"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "四逆散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "柴胡"
+        },
+        {
+          "herb": "枳实"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "白散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桔梗"
+        },
+        {
+          "herb": "贝母"
+        },
+        {
+          "herb": "巴豆"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "五苓散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "猪苓"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "泽泻"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "桂枝"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "猪苓"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "猪苓"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "泽泻"
+        },
+        {
+          "herb": "阿胶"
+        },
+        {
+          "herb": "滑石"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "牡蛎"
+        },
+        {
+          "herb": "泽泻"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "牡蛎"
+        },
+        {
+          "herb": "泽泻"
+        },
+        {
+          "herb": "海藻"
+        },
+        {
+          "herb": "蜀漆"
+        },
+        {
+          "herb": "葶苈"
+        },
+        {
+          "herb": "商陆根"
+        },
+        {
+          "herb": "瓜蒌根"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "<D>上仲景伤寒中方。</D>"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "鳖甲"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "鳖甲 乌扇 黄芩 柴胡 鼠妇 干姜 大黄 芍药 桂枝 葶苈 石苇 厚朴 丹皮 瞿麦 紫威 半夏 人参 A2J5虫 阿胶 蜂窠 赤硝 蜣螂 桃仁 灶下灰 清酒"
+    },
+    {
+      "type": "text",
+      "value": "千金方有海藻、大戟，无鼠妇、赤硝。"
+    },
+    {
+      "type": "text",
+      "value": "白虎加桂枝汤 即白虎汤加桂枝"
+    },
+    {
+      "type": "text",
+      "value": "崔氏八味丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "干地黄"
+        },
+        {
+          "herb": "山茱萸"
+        },
+        {
+          "herb": "山药"
+        },
+        {
+          "herb": "丹皮"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "泽泻"
+        },
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "桂枝"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "桂枝加龙骨牡蛎汤 即桂枝汤加龙骨、牡蛎。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "酸枣仁"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "枣仁"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "知母"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "川芎"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "黄芪建中汤 即小建中汤加黄芪。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "皂荚"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "皂荚"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "麦门冬"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "大枣"
+        },
+        {
+          "herb": "粳米"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "葶苈"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "葶苈"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "千金苇茎汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "苇茎"
+        },
+        {
+          "herb": "苡仁"
+        },
+        {
+          "herb": "桃仁"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "瓜蒌"
+        },
+        {
+          "herb": "薤白"
+        },
+        {
+          "herb": "白酒"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "瓜蒌实 薤白 白酒"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "赤石脂"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "蜀椒 乌头 附子 炮姜 赤石脂"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "粳米"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "粳米"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "生姜"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "生姜"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "甘遂"
+        },
+        {
+          "herb": "半夏"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "甘遂"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "芍药"
+        },
+        {
+          "herb": "甘草",
+          "comment": "本无"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "木防己"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "木防己"
+        },
+        {
+          "herb": "石膏"
+        },
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "人参"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "小半夏汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "生姜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "外台茯苓饮"
+    },
+    {
+      "type": "text",
+      "value": "茯苓 人参 白术 枳实 橘皮 生姜"
+    },
+    {
+      "type": "text",
+      "value": "桂苓五味甘草汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "五味"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "越婢汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "麻黄"
+        },
+        {
+          "herb": "石膏"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "防己"
+        },
+        {
+          "herb": "茯苓"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "防己"
+        },
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "大半夏汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "人参"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "大黄"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "大黄 丹皮 桃仁 瓜子 芒硝"
+    },
+    {
+      "type": "text",
+      "value": "当归建中汤即小建中汤加当归。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "小麦"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "小麦"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "旋覆花"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "旋覆花"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "肾气丸"
+    },
+    {
+      "type": "text",
+      "value": "与崔氏八味丸同。"
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "<D>上金匮要略中方。</D>"
+    },
+    {
+      "type": "text",
+      "value": "六味地黄丸 即八味去桂附，煎服名六味地黄汤。"
+    },
+    {
+      "type": "text",
+      "value": "都气丸 即六味丸加北味，再加附子，名附都气丸。"
+    },
+    {
+      "type": "text",
+      "value": "还少丹"
+    },
+    {
+      "type": "text",
+      "value": "熟地 山药 牛膝 枸杞 山萸 茯苓 杜仲 远志 五味子 楮实 小茴 巴戟 苁蓉 石菖蒲"
+    },
+    {
+      "type": "text",
+      "value": "丹溪滋阴大补丸 即还少丹去楮实。"
+    },
+    {
+      "type": "text",
+      "value": "黑地黄丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "苍术"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "五味"
+        },
+        {
+          "herb": "干姜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "虎潜丸"
+    },
+    {
+      "type": "text",
+      "value": "熟地 虎胫骨 龟板 黄柏 知母 琐阳 当归 牛膝 白芍 陈皮 羯羊肉"
+    },
+    {
+      "type": "text",
+      "value": "天真丸"
+    },
+    {
+      "type": "text",
+      "value": "精羊肉 肉苁蓉 山药 当归 天冬 黄芪 人参 白术"
+    },
+    {
+      "type": "text",
+      "value": "三才汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "天冬"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "人参"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "大造丸"
+    },
+    {
+      "type": "text",
+      "value": "紫河车 龟板 人参 熟地 天冬 麦冬 黄柏 牛膝 杜仲"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "天冬"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "熟地"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "补心丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "玄参"
+        },
+        {
+          "herb": "丹参"
+        },
+        {
+          "herb": "枣仁"
+        },
+        {
+          "herb": "远志"
+        },
+        {
+          "herb": "茯神"
+        },
+        {
+          "herb": "柏子仁"
+        },
+        {
+          "herb": "天冬"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "五味"
+        },
+        {
+          "herb": "桔梗"
+        },
+        {
+          "herb": "石菖蒲"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "枕中丹"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "龙骨"
+        },
+        {
+          "herb": "龟板"
+        },
+        {
+          "herb": "远志"
+        },
+        {
+          "herb": "菖蒲"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "大补阴丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄柏"
+        },
+        {
+          "herb": "知母"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "龟板"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "滋肾丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄柏"
+        },
+        {
+          "herb": "知母"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "斑龙丸"
+    },
+    {
+      "type": "text",
+      "value": "鹿角胶 鹿角霜 熟地 菟丝子 柏子仁"
+    },
+    {
+      "type": "text",
+      "value": "玉真丸"
+    },
+    {
+      "type": "text",
+      "value": "硫黄 硝石 石膏 半夏 姜汁糊丸"
+    },
+    {
+      "type": "text",
+      "value": "来复丹"
+    },
+    {
+      "type": "text",
+      "value": "玄精石 硫黄 硝石 五灵脂 青皮 陈皮"
+    },
+    {
+      "type": "text",
+      "value": "半硫丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "半夏"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "黑锡丹"
+    },
+    {
+      "type": "text",
+      "value": "黑铅 硫黄"
+    },
+    {
+      "type": "text",
+      "value": "二至丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "冬青子"
+        },
+        {
+          "herb": "旱莲草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "参苓白术散"
+    },
+    {
+      "type": "text",
+      "value": "人参 茯苓 白术 甘草 山药 扁豆 苡仁 建莲 砂仁 桔梗 陈皮"
+    },
+    {
+      "type": "text",
+      "value": "玉屏风散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "防风"
+        },
+        {
+          "herb": "白术"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "四君子汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "六君子汤 即四君子加陈皮半夏。"
+    },
+    {
+      "type": "text",
+      "value": "异功散 即四君子汤加陈皮。"
+    },
+    {
+      "type": "text",
+      "value": "四兽饮 即六君子汤加乌梅草果生姜大枣。"
+    },
+    {
+      "type": "text",
+      "value": "六神散 即四君子汤加山药扁豆姜枣煎。"
+    },
+    {
+      "type": "text",
+      "value": "补中益气汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "升麻"
+        },
+        {
+          "herb": "柴胡"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "三拗汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "麻黄"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "葱豉汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "葱白"
+        },
+        {
+          "herb": "淡豆豉"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "川芎"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "川芎"
+        },
+        {
+          "herb": "薄荷"
+        },
+        {
+          "herb": "荆芥"
+        },
+        {
+          "herb": "羌活"
+        },
+        {
+          "herb": "白芷"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "防风"
+        },
+        {
+          "herb": "细辛"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "为末，茶调服。"
+    },
+    {
+      "type": "text",
+      "value": "霞天膏 牛肉熬膏加面。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "防风"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "防风"
+        },
+        {
+          "herb": "荆芥"
+        },
+        {
+          "herb": "麻黄"
+        },
+        {
+          "herb": "连翘"
+        },
+        {
+          "herb": "薄荷"
+        },
+        {
+          "herb": "川芎"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "山栀"
+        },
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "芒硝"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "石膏"
+        },
+        {
+          "herb": "桔梗"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "滑石"
+        },
+        {
+          "herb": "姜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "温胆汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "枳实"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "十味温胆汤 即温胆汤加人参远志枣仁熟地。"
+    },
+    {
+      "type": "text",
+      "value": "逍遥散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "柴胡"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "煨姜"
+        },
+        {
+          "herb": "薄荷"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "本方加丹皮山栀，名加味逍遥散。"
+    },
+    {
+      "type": "text",
+      "value": "六和汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "砂仁"
+        },
+        {
+          "herb": "藿香"
+        },
+        {
+          "herb": "厚朴"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "扁豆"
+        },
+        {
+          "herb": "木瓜"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "赤茯苓"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "姜"
+        },
+        {
+          "herb": "枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "藿香"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "藿香 紫苏 白芷 大腹皮 茯苓 白术 陈皮 半夏曲 厚朴 桔梗 甘草 姜 枣"
+    },
+    {
+      "type": "text",
+      "value": "驻车丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "阿胶"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "当归"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "越鞠丸"
+    },
+    {
+      "type": "text",
+      "value": "香附 苍术 川芎 神曲 山栀"
+    },
+    {
+      "type": "text",
+      "value": "四物汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "川芎"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "张子和玉烛散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "归尾"
+        },
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "川芎"
+        },
+        {
+          "herb": "赤芍"
+        },
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "芒硝"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "归脾汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "茯神"
+        },
+        {
+          "herb": "枣仁"
+        },
+        {
+          "herb": "龙眼肉"
+        },
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "远志"
+        },
+        {
+          "herb": "木香"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "人参 茯苓 白术 甘草 当归 白芍 熟地 黄芪 肉桂 五味 远志 陈皮 加姜、枣。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "犀角"
+        },
+        {
+          "herb": "地黄"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "犀角"
+        },
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "丹皮"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "地黄"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "熟地 巴戟 山萸 苁蓉 附子 官桂 石斛 茯苓 菖蒲 远志 麦冬 五味"
+    },
+    {
+      "type": "text",
+      "value": "活络丹"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "川乌"
+        },
+        {
+          "herb": "草乌"
+        },
+        {
+          "herb": "胆星"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "附子理中汤 即理中汤加附子。"
+    },
+    {
+      "type": "text",
+      "value": "理中安蛔丸 即理中汤去甘草，加茯苓、川椒、乌梅。"
+    },
+    {
+      "type": "text",
+      "value": "连理汤 即理中汤加黄连茯苓。"
+    },
+    {
+      "type": "text",
+      "value": "治中汤 即理中汤加青皮陈皮。"
+    },
+    {
+      "type": "text",
+      "value": "四神丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "破故纸"
+        },
+        {
+          "herb": "五味"
+        },
+        {
+          "herb": "肉果"
+        },
+        {
+          "herb": "吴萸"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "清暑益气汤"
+    },
+    {
+      "type": "text",
+      "value": "人参 黄芪 白术 苍术 青皮 陈皮 神曲 甘草 麦冬 五味 当归 黄柏 泽泻 升麻 葛根 加姜枣"
+    },
+    {
+      "type": "text",
+      "value": "生脉散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "五味"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "益元散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "滑石"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "大顺散"
+    },
+    {
+      "type": "text",
+      "value": "干姜 肉桂 杏仁 甘草"
+    },
+    {
+      "type": "text",
+      "value": "四苓散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "猪苓"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "泽泻"
+        },
+        {
+          "herb": "白术"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "桂苓丸"
+    },
+    {
+      "type": "text",
+      "value": "肉桂 茯苓"
+    },
+    {
+      "type": "text",
+      "value": "蜜丸。"
+    },
+    {
+      "type": "text",
+      "value": "胃苓散 即平胃散合五苓散。"
+    },
+    {
+      "type": "text",
+      "value": "加味肾气丸 即六味丸加附子、肉桂、车前、牛膝。"
+    },
+    {
+      "type": "text",
+      "value": "浚川散"
+    },
+    {
+      "type": "text",
+      "value": "黑牵牛 大黄 甘遂 芒硝 郁李仁 木香"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "萆薢"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "川萆薢 石菖蒲 乌药 益智仁 甘草梢 食盐 茯苓"
+    },
+    {
+      "type": "text",
+      "value": "禹功散"
+    },
+    {
+      "type": "text",
+      "value": "黑牵牛 茴香"
+    },
+    {
+      "type": "text",
+      "value": "姜汁调或加木香。"
+    },
+    {
+      "type": "text",
+      "value": "琼玉膏"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "地黄"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "人参"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "仙加琥珀沉香。"
+    },
+    {
+      "type": "text",
+      "value": "通幽汤"
+    },
+    {
+      "type": "text",
+      "value": "当归 升麻 桃仁 红花 甘草 生地 熟地"
+    },
+    {
+      "type": "text",
+      "value": "白虎加苍术汤 即白虎汤加苍术。"
+    },
+    {
+      "type": "text",
+      "value": "凉膈散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "连翘"
+        },
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "芒硝"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "山栀"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "薄荷"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "当归"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "当归 龙胆草 山栀 黄连 黄柏 黄芩 大黄 青黛 芦荟 木香 麝香"
+    },
+    {
+      "type": "text",
+      "value": "蜜丸，姜汤下。"
+    },
+    {
+      "type": "text",
+      "value": "左金丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "吴萸"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "水泛丸。"
+    },
+    {
+      "type": "text",
+      "value": "戊己汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "吴萸"
+        },
+        {
+          "herb": "白芍"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "甘露饮"
+    },
+    {
+      "type": "text",
+      "value": "生地 熟地 天冬 麦冬 石斛 茵陈 黄芩 枳壳 枇杷叶 甘草"
+    },
+    {
+      "type": "text",
+      "value": "一方加桂苓，名桂苓甘露饮。"
+    },
+    {
+      "type": "text",
+      "value": "河间桂苓甘露饮"
+    },
+    {
+      "type": "text",
+      "value": "滑石 石膏 寒水石 甘草 白术 茯苓 泽泻猪苓 肉桂"
+    },
+    {
+      "type": "text",
+      "value": "每服五钱，张子和去猪苓，减三石一半，加人参干葛藿香木香，亦名桂苓甘露饮。"
+    },
+    {
+      "type": "text",
+      "value": "泻白散"
+    },
+    {
+      "type": "text",
+      "value": "桑皮 地骨皮 甘草 粳米"
+    },
+    {
+      "type": "text",
+      "value": "导赤散"
+    },
+    {
+      "type": "text",
+      "value": "生地 木通 甘草梢 淡竹叶"
+    },
+    {
+      "type": "text",
+      "value": "紫雪丹"
+    },
+    {
+      "type": "text",
+      "value": "黄金 寒水石 石膏 滑石 磁石 升麻 玄参 甘草 犀角 羚羊角 沉香 木香 丁香 朴硝 硝石 辰砂 麝香"
+    },
+    {
+      "type": "text",
+      "value": "清骨散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "银柴胡"
+        },
+        {
+          "herb": "胡黄连"
+        },
+        {
+          "herb": "秦艽"
+        },
+        {
+          "herb": "鳖甲"
+        },
+        {
+          "herb": "地骨皮"
+        },
+        {
+          "herb": "青蒿"
+        },
+        {
+          "herb": "知母"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "二陈汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "生姜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "二贤散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "控涎丹"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "甘遂"
+        },
+        {
+          "herb": "大戟"
+        },
+        {
+          "herb": "白芥子"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "滚痰丸"
+    },
+    {
+      "type": "text",
+      "value": "青礞石 沉香 大黄 黄芩 焰硝"
+    },
+    {
+      "type": "text",
+      "value": "白金丸"
+    },
+    {
+      "type": "text",
+      "value": "白矾 郁金"
+    },
+    {
+      "type": "text",
+      "value": "平胃散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "苍术"
+        },
+        {
+          "herb": "厚朴"
+        },
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "橘半枳术丸"
+    },
+    {
+      "type": "text",
+      "value": "白术 枳实 橘皮 半夏"
+    },
+    {
+      "type": "text",
+      "value": "保和丸"
+    },
+    {
+      "type": "text",
+      "value": "山楂 神曲 茯苓 半夏 陈皮 卜子 连翘"
+    },
+    {
+      "type": "text",
+      "value": "水陆二仙丹"
+    },
+    {
+      "type": "text",
+      "value": "金樱膏 芡实"
+    },
+    {
+      "type": "text",
+      "value": "桑螵蛸散"
+    },
+    {
+      "type": "text",
+      "value": "人参 茯神 远志 石菖蒲 桑螵蛸 龙骨 龟板 当归"
+    },
+    {
+      "type": "text",
+      "value": "蜡矾丸"
+    },
+    {
+      "type": "text",
+      "value": "黄蜡 白矾"
+    },
+    {
+      "type": "text",
+      "value": "胶艾四物汤 即四物汤加阿胶艾叶。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "柏子仁"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "柏仁"
+        },
+        {
+          "herb": "牛膝"
+        },
+        {
+          "herb": "卷柏"
+        },
+        {
+          "herb": "泽兰"
+        },
+        {
+          "herb": "续断"
+        },
+        {
+          "herb": "熟地"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "<D>上汪訒庵医方集解中方。</D>"
+    },
+    {
+      "type": "text",
+      "value": "补阴益气煎"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "山药"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "升麻"
+        },
+        {
+          "herb": "柴胡"
+        },
+        {
+          "herb": "生姜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "两仪膏"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "熟地"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "熬膏，白蜜收。"
+    },
+    {
+      "type": "text",
+      "value": "贞元饮"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "当归"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "玉女"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "生石膏 熟地 麦冬 知母 牛膝"
+    },
+    {
+      "type": "text",
+      "value": "理阴煎"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "炙甘草"
+        },
+        {
+          "herb": "干姜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "或加肉桂。"
+    },
+    {
+      "type": "text",
+      "value": "何人饮"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "何首乌"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "煨姜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "参附汤"
+    },
+    {
+      "type": "text",
+      "value": "人参 制附子"
+    },
+    {
+      "type": "text",
+      "value": "参附汤"
+    },
+    {
+      "type": "text",
+      "value": "黄芪 制附子"
+    },
+    {
+      "type": "text",
+      "value": "加生姜。"
+    },
+    {
+      "type": "text",
+      "value": "青囊斑龙丸"
+    },
+    {
+      "type": "text",
+      "value": "鹿角胶 鹿角霜 柏子仁 菟丝子 熟地 茯苓 补骨脂"
+    },
+    {
+      "type": "text",
+      "value": "斑龙二至百补丸"
+    },
+    {
+      "type": "text",
+      "value": "鹿角 黄精 杞子 熟地 菟丝子 金樱子 天冬 麦冬 牛膝 楮实子 龙眼肉"
+    },
+    {
+      "type": "text",
+      "value": "以上药同鹿角熬成膏，加入炼蜜，调入后药末，杵合为丸。"
+    },
+    {
+      "type": "text",
+      "value": "鹿角霜 人参 黄芪 芡实 茯苓 山药 知母 熟地 萸肉 五味子"
+    },
+    {
+      "type": "text",
+      "value": "十味为细末，和前膏为丸。"
+    },
+    {
+      "type": "text",
+      "value": "秫米半夏汤"
+    },
+    {
+      "type": "text",
+      "value": "秫米 半夏"
+    },
+    {
+      "type": "text",
+      "value": "钱氏益黄散"
+    },
+    {
+      "type": "text",
+      "value": "陈皮 青皮 诃子肉 炙草 丁香"
+    },
+    {
+      "type": "text",
+      "value": "和中丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "厚朴"
+        },
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "槟榔"
+        },
+        {
+          "herb": "枳实"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "木香"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "东垣和中丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "炮姜"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "木瓜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "神保丸"
+    },
+    {
+      "type": "text",
+      "value": "木香 胡椒 干蝎 巴豆"
+    },
+    {
+      "type": "text",
+      "value": "子和导水丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "滑石"
+        },
+        {
+          "herb": "黑丑"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "脾约丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "厚朴"
+        },
+        {
+          "herb": "麻仁"
+        },
+        {
+          "herb": "枳实"
+        },
+        {
+          "herb": "芍药"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "华盖散"
+    },
+    {
+      "type": "text",
+      "value": "麻黄 苏子 桑皮 杏仁 赤苓 橘红 甘草"
+    },
+    {
+      "type": "text",
+      "value": "石刻安肾丸"
+    },
+    {
+      "type": "text",
+      "value": "附子 肉桂 川乌 川椒 巴戟 菟丝子 破故 赤石脂 远志 茯神 茯苓 苍术 山茱萸 杜仲 胡芦巴 石斛 韭子 小茴 苁蓉 柏子仁 川楝子 鹿茸 青盐 山药"
+    },
+    {
+      "type": "text",
+      "value": "王荆公妙香散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "龙骨"
+        },
+        {
+          "herb": "益智仁"
+        },
+        {
+          "herb": "茯神"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "远志"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "朱砂"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "猪肚丸"
+    },
+    {
+      "type": "text",
+      "value": "白术 苦参 牡蛎 猪肚一具"
+    },
+    {
+      "type": "text",
+      "value": "刘松石方。"
+    },
+    {
+      "type": "text",
+      "value": "威喜丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "猪苓"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "交加散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "生姜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "乌鲗鱼骨丸"
+    },
+    {
+      "type": "text",
+      "value": "乌鲗鱼骨 A2J9茹（即茜草根） 雀卵"
+    },
+    {
+      "type": "text",
+      "value": "鲍鱼汤下。"
+    },
+    {
+      "type": "text",
+      "value": "三豆饮"
+    },
+    {
+      "type": "text",
+      "value": "大黑豆 赤小豆 绿豆"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "万氏牛黄清心丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "山栀"
+        },
+        {
+          "herb": "郁金"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "<D>上景岳全书中方。"
+    },
+    {
+      "type": "text",
+      "value": "以上四部书，谅业医者必备，故但开药品，其分量炮制加减服法，以及治症，俱未载明，并内有峻利之方，所服不过几厘几粒者，须按方查阅，切勿草率臆度，且不遵古法，不惟无效，反有遗误，慎之。</D>"
+    },
+    {
+      "type": "text",
+      "value": "清燥救肺汤"
+    },
+    {
+      "type": "text",
+      "value": "经霜桑叶（三钱） 杏仁（七分去皮尖炒黄） 麦冬（一钱二分去心） 石膏（二钱半） 人参（七分） 阿胶（八分） 胡麻仁（一钱炒） 甘草（一钱） 枇杷叶（一片去毛筋）"
+    },
+    {
+      "type": "text",
+      "value": "水一碗，煎六分，食远服。"
+    },
+    {
+      "type": "text",
+      "value": "进退黄连汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "川黄连",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          },
+          "comment": "姜汁炒"
+        },
+        {
+          "herb": "干姜",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          },
+          "comment": "炮"
+        },
+        {
+          "herb": "人参",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          },
+          "comment": "人乳拌蒸"
+        },
+        {
+          "herb": "桂枝",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "半夏",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          },
+          "comment": "姜制"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "上进法，用本方六味，不制，水三茶钟，煎减半，温服，退法，桂枝不用，黄连减半，或加肉桂五分，如上制，煎服。"
+    },
+    {
+      "type": "text",
+      "value": "当归桂枝汤 即桂枝汤加当归。"
+    },
+    {
+      "type": "text",
+      "value": "茯苓桂枝汤即桂枝汤加茯苓。"
+    },
+    {
+      "type": "text",
+      "value": "参归桂枝汤即桂枝汤加人参、当归。"
+    },
+    {
+      "type": "text",
+      "value": "人参建中汤即建中汤加人参。"
+    },
+    {
+      "type": "text",
+      "value": "参芪建中汤即建中汤加人参、黄芪。"
+    },
+    {
+      "type": "text",
+      "value": "归芪建中汤即建中汤加当归、黄芪。"
+    },
+    {
+      "type": "text",
+      "value": "吴萸理中汤即理中汤加吴萸。"
+    },
+    {
+      "type": "text",
+      "value": "人参温胆汤即温胆汤加人参。"
+    },
+    {
+      "type": "text",
+      "value": "黄连温胆汤即温胆汤加黄连。"
+    },
+    {
+      "type": "text",
+      "value": "星附六君子汤 即六君子汤加制南星白附子。"
+    },
+    {
+      "type": "text",
+      "value": "生脉四君子汤即生脉散合四君子汤。"
+    },
+    {
+      "type": "text",
+      "value": "生脉六味汤即生脉散合六味汤。"
+    },
+    {
+      "type": "text",
+      "value": "养营汤即人参养营汤。"
+    },
+    {
+      "type": "text",
+      "value": "六神汤即陈无择六神散。即四君子加山药扁豆。"
+    },
+    {
+      "type": "text",
+      "value": "戊己汤即四君子汤加陈皮白芍。"
+    },
+    {
+      "type": "text",
+      "value": "苓姜术桂汤只此四味。"
+    },
+    {
+      "type": "text",
+      "value": "五子五皮汤即五皮饮加杏仁苏子葶苈白芥子卜子。"
+    },
+    {
+      "type": "text",
+      "value": "加桂理中汤即理中汤加桂。"
+    },
+    {
+      "type": "text",
+      "value": "子和桂苓汤即子和桂苓饮。"
+    },
+    {
+      "type": "text",
+      "value": "资生丸"
+    },
+    {
+      "type": "text",
+      "value": "人参 白术（土炒） 苡仁（各三两） 山楂肉 神曲 橘红（各二两） 扁豆 莲肉 厚朴（各一两） 山药 茯苓 麦芽 芡实（各一两半） 桔梗 甘草（炙） 藿香（各五钱） 泽泻 川黄连 白豆蔻（各三钱半）"
+    },
+    {
+      "type": "text",
+      "value": "上制为末，炼蜜丸每丸重二钱，每服一丸，醉饱后二丸，细嚼淡姜汤下。"
+    },
+    {
+      "type": "text",
+      "value": "聚精丸"
+    },
+    {
+      "type": "text",
+      "value": "黄鱼螵胶（一斤切碎蛤粉炒） 沙苑蒺藜（八两马乳浸隔汤煮一炷香）"
+    },
+    {
+      "type": "text",
+      "value": "上为末，炼蜜丸，每服八十丸，白汤下。"
+    },
+    {
+      "type": "text",
+      "value": "禹余粮丸"
+    },
+    {
+      "type": "text",
+      "value": "蛇含石（本草名蛇黄大者三两醋煅透） 禹余粮石（三两层数多者佳醋煅透） 钢针砂（五两醋煅透）"
+    },
+    {
+      "type": "text",
+      "value": "三物各研极细，配入下项药。"
+    },
+    {
+      "type": "text",
+      "value": "羌活 川芎 三棱 蓬术 白蔻 白蒺 陈皮 青皮 木香 大茴（炒） 牛膝 当归 炮姜 附子（炮） 肉桂（各五钱）"
+    },
+    {
+      "type": "text",
+      "value": "上制为末，入前药拌匀，神曲糊为丸，如桐子大，食前或温酒或白汤送下三十丸至五十丸，最要忌盐，一毫不可入口，否则病发愈甚，日三服，兼用温和调补药助之，此方又名大针砂丸。"
+    },
+    {
+      "type": "text",
+      "value": "此方去附子蓬术青皮加茯苓，叶氏名针砂丸。"
+    },
+    {
+      "type": "text",
+      "value": "小温中丸"
+    },
+    {
+      "type": "text",
+      "value": "白术（二两） 茯苓（一两） 陈皮（一两） 熟半夏（一两） 甘草（三钱） 神曲（炒一两） 生香附（一两半） 苦参（炒五钱） 黄连（炒五钱） 针砂（醋炒红研如飞面一两半）"
+    },
+    {
+      "type": "text",
+      "value": "为末，醋水各半，打神曲糊为丸桐子大，每服七八十丸，白术六钱陈皮一钱生姜一片煎汤下，虚甚者加人参一钱，本方去黄连加厚朴半两，忌口，病轻服至六七两，小便长甚者服一斤，小便始长。"
+    },
+    {
+      "type": "text",
+      "value": "缪仲淳脾肾双补丸"
+    },
+    {
+      "type": "text",
+      "value": "人参 莲肉（炒） 山萸（烘） 山药（炒各一斤） 五味子（蜜蒸） 菟丝子（各一斤半） 橘红 砂仁（炒各六两） 车前子（米泔洗） 巴戟肉（甘草汁煮各十二两） 肉豆蔻（十两） 补骨脂（盐水浸二日炒一斤）"
+    },
+    {
+      "type": "text",
+      "value": "上为末，炼蜜丸，如虚而有火者，或火盛肺热者，去人参肉豆蔻巴戟补骨脂，忌羊肉羊血。"
+    },
+    {
+      "type": "text",
+      "value": "阿魏丸"
+    },
+    {
+      "type": "text",
+      "value": "阿魏（七钱） 鳖甲（二两） 黄芪 广皮 枳实 柴胡 白术（各一两） 青皮 草果 黄芩 当归 茯苓（各八钱） 白蔻仁（七钱） 山楂（一两） 神曲（一两） 延胡"
+    },
+    {
+      "type": "text",
+      "value": "水法丸。"
+    },
+    {
+      "type": "text",
+      "value": "又方"
+    },
+    {
+      "type": "text",
+      "value": "阿魏 连翘 胡黄连 山楂 青皮 山棱 蓬术 陈皮 半夏 麦芽 厚朴 莱菔子 甘草"
+    },
+    {
+      "type": "text",
+      "value": "更衣丸"
+    },
+    {
+      "type": "text",
+      "value": "朱砂（五钱研） 芦荟（七钱研）"
+    },
+    {
+      "type": "text",
+      "value": "好酒和丸，每服一钱二分。"
+    },
+    {
+      "type": "text",
+      "value": "济生肾气丸 即八味丸加车前牛膝，叶氏用茯苓八两为君，熟地只用四两，又薛氏济生丸分量不同。"
+    },
+    {
+      "type": "text",
+      "value": "海粉丸"
+    },
+    {
+      "type": "text",
+      "value": "蛤粉 瓜蒌实 杏仁（各一两） 广皮 紫苏（各二两） 白术 土贝母（各四两） 紫菀 （三两） 木香（五钱）"
+    },
+    {
+      "type": "text",
+      "value": "炼蜜丸。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "葱白"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "熟地（四两） 白芍 当归 川楝子 茯苓（各二两） 川芎 枳壳 厚朴 青皮 神曲 麦芽（各一两半） 三棱 蓬术（各一两） 干姜 大茴 木香（各七钱） 肉桂（五钱）"
+    },
+    {
+      "type": "text",
+      "value": "用葱白汁丸。"
+    },
+    {
+      "type": "text",
+      "value": "又方"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "阿胶"
+        },
+        {
+          "herb": "川芎"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "厚朴"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "用葱白汁丸。"
+    },
+    {
+      "type": "text",
+      "value": "安胃丸"
+    },
+    {
+      "type": "text",
+      "value": "乌梅 川椒 附子 桂枝 干姜（各一两） 黄柏（二两） 黄连（五钱） 川楝子肉 广皮 青皮（各二两） 白芍（三两） 人参（量加如有邪者可勿用）"
+    },
+    {
+      "type": "text",
+      "value": "再用川椒乌梅汤法丸，一方无广皮，有当归细辛。"
+    },
+    {
+      "type": "text",
+      "value": "妙香丸"
+    },
+    {
+      "type": "text",
+      "value": "巴豆（三百十五粒去皮心膜炒熟研如面） 牛黄（研） 龙脑（研） 麝香（研） 轻粉（研各三两） 朱砂（研飞九两） 真金箔（九十片）"
+    },
+    {
+      "type": "text",
+      "value": "上各研匀，炼黄蜡六两，入白蜜三分同炼，匀为丸，每两作三十丸。"
+    },
+    {
+      "type": "text",
+      "value": "海蛤丸"
+    },
+    {
+      "type": "text",
+      "value": "天冬 瓜蒌霜 海浮石 蛤粉 风化硝 桔梗 橘红 香附 竹沥 姜汁"
+    },
+    {
+      "type": "text",
+      "value": "蜜丸。"
+    },
+    {
+      "type": "text",
+      "value": "术菟丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "菟丝"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又景岳新方苓术菟丝丸。"
+    },
+    {
+      "type": "text",
+      "value": "局方龙荟丸即当归龙荟丸。"
+    },
+    {
+      "type": "text",
+      "value": "白蒺藜丸 即一味。用山栀汤制为丸。用大豆黄卷汤送下。"
+    },
+    {
+      "type": "text",
+      "value": "禹粮石脂丸 即二味为丸。"
+    },
+    {
+      "type": "text",
+      "value": "橘术丸即二味为丸。"
+    },
+    {
+      "type": "text",
+      "value": "真武丸即真武汤作丸。"
+    },
+    {
+      "type": "text",
+      "value": "归脾丸 即归脾汤料作丸。"
+    },
+    {
+      "type": "text",
+      "value": "桑麻丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桑叶"
+        },
+        {
+          "herb": "黑芝麻"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "蜜丸。"
+    },
+    {
+      "type": "text",
+      "value": "浚川丸 即浚川散。"
+    },
+    {
+      "type": "text",
+      "value": "禹功丸 即禹功散。"
+    },
+    {
+      "type": "text",
+      "value": "生脉六味丸 即六味丸合生脉散。"
+    },
+    {
+      "type": "text",
+      "value": "肥儿丸 景岳全书中有四方。"
+    },
+    {
+      "type": "text",
+      "value": "益母丸 此方不一，总用益母草膏为君，有加四物香附山楂者，有去山楂加阿胶者，有加八珍香附砂仁楂肉者。"
+    },
+    {
+      "type": "text",
+      "value": "东垣清心凉膈散"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "连翘"
+        },
+        {
+          "herb": "薄荷"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "山栀"
+        },
+        {
+          "herb": "桔梗"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "竹叶"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "水煎服。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "金铃子"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "金铃子",
+          "quantity": {
+            "uom": "两",
+            "value": 1
+          },
+          "comment": "即川楝子，去核，"
+        },
+        {
+          "herb": "延胡索",
+          "quantity": {
+            "uom": "两",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "为末，每服三钱，酒调服，水煎服亦可。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "虎杖"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "杜牛膝根汁（二三两，古方本用虎杖草汁，今人不识此草，故以土牛膝根汁，代之） 当门子麝香（一分，研）"
+    },
+    {
+      "type": "text",
+      "value": "上将麝香入汁中和匀，隔汤炖温服。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "葛"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "花蕊石"
+    },
+    {
+      "type": "text",
+      "value": "煅存性，研如粉，以童便一盏，男人入酒少许，女人入醋少许，煎温食后调服三钱，甚者五钱，能使瘀血化为黄水，后用独参汤补之。"
+    },
+    {
+      "type": "text",
+      "value": "归芍异功散即异功散加当归、白芍。"
+    },
+    {
+      "type": "text",
+      "value": "鸡鸣散牛蒡子（炒香，研细，临服加入雄鸡冠血五匙、状元红酒少许，调匀，以炒荆芥三分煎汤送。）"
+    },
+    {
+      "type": "text",
+      "value": "通圣散即防风通圣散。"
+    },
+    {
+      "type": "text",
+      "value": "归芪异功散即异功散加当归、黄芪。"
+    },
+    {
+      "type": "text",
+      "value": "香砂异功散即异功散加木香砂仁。"
+    },
+    {
+      "type": "text",
+      "value": "正气散 即藿香正气散。"
+    },
+    {
+      "type": "text",
+      "value": "玉壶丹即扁鹊玉壶丸，治命门火衰，阳气暴绝。寒水臌胀，却有神效，古吴王晋三先生得异授制法，当宗之。"
+    },
+    {
+      "type": "text",
+      "value": "好硫黄八两，配真麻油八两，以硫打碎，入冷油内炖炉上，炭火宜微勿烈，以桑条徐调，候硫溶尽，即倾入大水内，急搀去上面油水，其色如金，取缸底净硫，称见若干两，仍配香麻油若干两，照前火候再溶再倾，连前共三转，第四转用真棉花核油配硫若干两，照前火候再溶，再倾入大水内，搀去上面油水，其色如绛，第五转用肥皂四两，水中同煮六时，第六转用皂荚四两，水中同煮六时，拔净制硫之油，搀去其水，其色如硫火之紫，第七转用炉中炭灰淋碱水制六时，第八转用水豆腐制六时，拔净皂碱之性，第九转用田字草（出水荒稻田中，其叶如田字，八九月采）捣汁，和水煮六时，临用研如飞面，凡净硫一两，配炒糯米粉二两，或水法或湿捣为丸，每服以硫三分为准，渐加至一钱止，开水温下。"
+    },
+    {
+      "type": "text",
+      "value": "回生丹"
+    },
+    {
+      "type": "text",
+      "value": "大黑豆（三升用水浸取壳用绢袋盛壳用豆煮熟去豆不用将壳晒干其汁留用） 红花（三两炒黄色入好酒四碗煎十余滚去渣存汁听用） 苏木（三两河水五碗煎汁三碗听用） 大黄（一斤为末） 陈米醋（九斤）"
+    },
+    {
+      "type": "text",
+      "value": "上将大黄末一斤，入净锅，下醋三斤，文火熬，用长木筋不住手搅之，将成膏，再加醋三斤熬之，又加醋三斤，次第加毕，然后下黑豆汁三碗，次下苏木汁，次下红花汁，熬成大黄膏，取入瓦盆盛之，大黄锅焦亦铲下，入后药同磨。"
+    },
+    {
+      "type": "text",
+      "value": "人参（二两） 川芎 当归 熟地 茯苓 香附 延胡 苍术（米泔浸炒） 桃仁 蒲黄（各一两） 乌药（二两半） 牛膝 地榆 橘红 白芍 羌活 炙草 五灵脂 山萸 三棱（各五钱） 良姜 木香（各四钱） 木瓜 青皮 白术（各三钱） 益母草（二两） 乳香 没药（各二钱） 马鞭草（五钱） 秋葵子（三钱）"
+    },
+    {
+      "type": "text",
+      "value": "上三十味，并前黑豆壳共晒干为细末，入石臼内，下大黄膏，再下炼熟蜜一斤，共捣千捶为丸，每丸重二钱七分，静室阴干二十余日，不可烘晒，干后止重二钱，外以蜡作壳护之，用时去蜡调服，一方无益母草马鞭草秋葵子三味，并不用蜜，醋止用八碗。"
+    },
+    {
+      "type": "text",
+      "value": "至宝丹"
+    },
+    {
+      "type": "text",
+      "value": "犀角（镑） 朱砂（研水飞） 雄黄（研水飞） 琥珀（研） 玳瑁（各一两镑） 水安息香 （一两无灰酒熬成膏如无以旱安息香代之） 西牛黄（五钱） 麝香（一钱） 龙脑（一钱） 金银箔（各五十片）"
+    },
+    {
+      "type": "text",
+      "value": "为极细末，将安息香膏重汤煮，入诸药搜和，分作百丸，蜡护，临服剖，用参汤化下。"
+    },
+    {
+      "type": "text",
+      "value": "紫金丹"
+    },
+    {
+      "type": "text",
+      "value": "牛黄 冰片 狗宝 鸦片（各六分） 广木香（二两）"
+    },
+    {
+      "type": "text",
+      "value": "上为末，人乳丸，重五厘，金箔为衣。"
+    },
+    {
+      "type": "text",
+      "value": "震灵丹"
+    },
+    {
+      "type": "text",
+      "value": "禹粮石 赤石脂 紫石英 代赭石（各四两）"
+    },
+    {
+      "type": "text",
+      "value": "上四味作小块，入净锅中，盐泥封固，候干，用炭十斤煅，炭尽为度，入地出火气，必得二昼夜，研细末。"
+    },
+    {
+      "type": "text",
+      "value": "乳香（二两） 没药（二两） 朱砂（水飞一两） 五灵脂（二两）"
+    },
+    {
+      "type": "text",
+      "value": "为末，同前四味和匀，糯米饭丸，宜坚细。"
+    },
+    {
+      "type": "text",
+      "value": "四顺清凉饮"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "芍药"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "各等分，水煎服。"
+    },
+    {
+      "type": "text",
+      "value": "露姜饮"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "生姜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "水煎，露一宿，空心隔汤炖温服。"
+    },
+    {
+      "type": "text",
+      "value": "子和桂苓饮即桂苓甘露饮。"
+    },
+    {
+      "type": "text",
+      "value": "七香饼"
+    },
+    {
+      "type": "text",
+      "value": "香附（一两二钱） 丁香皮（一两二钱） 甘松（八钱） 益智仁（六钱） 砂仁（二钱） 蓬术（二钱） 广皮（二钱）"
+    },
+    {
+      "type": "text",
+      "value": "阿胶鸡子黄汤（非黄连阿胶汤） 河间中满分消汤 清阿胶丸 蠲痛丹 香连饮 以上五方俟考。"
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "<D>按先生虽善用古方，然但取其法，而并不胶柱，观其加减之妙，如复脉建中泻心等类，至用牡蛎泽泻散，只取此二味，故案中有但书用某方，而不开明药味者，决非尽用板方，必有加减之处，观者以意会之可也，论中所述诸方开列于后以便查阅。</D>"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "麻黄"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "芍药"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "麻黄"
+        },
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "五味"
+        },
+        {
+          "herb": "当归"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "生甘草"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "大枣"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "调中益气汤 即补中益气汤去当归、白术，加木香、苍术。"
+    },
+    {
+      "type": "text",
+      "value": "升阳益胃汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "羌活"
+        },
+        {
+          "herb": "防风"
+        },
+        {
+          "herb": "独活"
+        },
+        {
+          "herb": "白芍",
+          "quantity": {
+            "value": 0.5,
+            "uom": "两"
+          },
+          "comment": "各"
+        },
+        {
+          "herb": "广皮",
+          "quantity": {
+            "value": 0.4,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "黄芪",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "炙甘草",
+          "quantity": {
+            "value": 0.5,
+            "uom": "两"
+          },
+          "comment": "各"
+        },
+        {
+          "herb": "柴胡"
+        },
+        {
+          "herb": "黄连",
+          "quantity": {
+            "value": 0.2,
+            "uom": "两"
+          },
+          "comment": "各"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "泽泻",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          },
+          "comment": "各"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "每服三钱，加姜枣煎。"
+    },
+    {
+      "type": "text",
+      "value": "桂枝黄连汤 即仲景黄连汤。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "炙草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "温脾汤"
+    },
+    {
+      "type": "text",
+      "value": "干姜 肉桂心 熟附子 炙草 枳实 厚朴（各二两） 大黄（四钱）"
+    },
+    {
+      "type": "text",
+      "value": "用一两水煎服。"
+    },
+    {
+      "type": "text",
+      "value": "橘皮汤"
+    },
+    {
+      "type": "text",
+      "value": "橘皮 生姜"
+    },
+    {
+      "type": "text",
+      "value": "橘皮竹茹汤"
+    },
+    {
+      "type": "text",
+      "value": "橘皮 竹茹 大枣 生姜 甘草 人参"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "半夏"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "生姜"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "苍术"
+        },
+        {
+          "herb": "石膏"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "苍术"
+        },
+        {
+          "herb": "石膏"
+        },
+        {
+          "herb": "知母"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "滋燥养营汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "秦艽"
+        },
+        {
+          "herb": "防风"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "兰草"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "兰草",
+          "comment": "即省头草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "洁古芍药汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "芍药"
+        },
+        {
+          "herb": "归尾"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "木香"
+        },
+        {
+          "herb": "槟榔"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "葛根"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "葛根"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "黄连"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "茅术理中汤 即理中汤白术换茅术。"
+    },
+    {
+      "type": "text",
+      "value": "厚朴三物汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "厚朴"
+        },
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "枳实"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "厚朴"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "厚朴"
+        },
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "木香"
+        },
+        {
+          "herb": "草蔻"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "茯苓"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "下瘀血汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "桃仁"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "舒筋汤"
+    },
+    {
+      "type": "text",
+      "value": "赤芍 海桐皮 当归 白术（各钱半） 片姜黄（二钱） 羌活 炙草（各一钱）"
+    },
+    {
+      "type": "text",
+      "value": "水姜煎，去渣，磨入沉香汁少许，食前服。"
+    },
+    {
+      "type": "text",
+      "value": "通气防风汤"
+    },
+    {
+      "type": "text",
+      "value": "柴胡 升麻 黄芪（各一钱） 防风 陈皮 羌活 人参 甘草（各五分） 藁本 青皮（各三分） 蔻仁（二分） 黄柏（一分）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "玄参"
+        },
+        {
+          "herb": "升麻"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "玄参 升麻 僵蚕 牛蒡 连翘 防风 黄芩 黄连 桔梗 甘草"
+    },
+    {
+      "type": "text",
+      "value": "芎归汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "川芎"
+        },
+        {
+          "herb": "当归"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "泽术汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "泽泻"
+        },
+        {
+          "herb": "白术"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "茵陈四逆汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "茵陈"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "坎气汤（即坎气丹）"
+    },
+    {
+      "type": "text",
+      "value": "坎气 人乳粉 熟地 人参 枸杞子"
+    },
+    {
+      "type": "text",
+      "value": "酒酿白蜜同炼捣丸，米饮送。"
+    },
+    {
+      "type": "text",
+      "value": "补血汤"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "当归"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "黄连竹茹橘皮半夏汤"
+    },
+    {
+      "type": "text",
+      "value": "黄连 竹茹 橘皮 半夏"
+    },
+    {
+      "type": "text",
+      "value": "左归丸"
+    },
+    {
+      "type": "text",
+      "value": "熟地 山药 枸杞 山萸 牛膝 菟丝子 鹿角胶 龟胶"
+    },
+    {
+      "type": "text",
+      "value": "右归丸"
+    },
+    {
+      "type": "text",
+      "value": "熟地 山药 枸杞 山萸 菟丝子 鹿角胶 杜仲 当归 肉桂 附子"
+    },
+    {
+      "type": "text",
+      "value": "金刚丸"
+    },
+    {
+      "type": "text",
+      "value": "萆薢 杜仲 肉苁蓉 菟丝子"
+    },
+    {
+      "type": "text",
+      "value": "四斤丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "木瓜"
+        },
+        {
+          "herb": "天麻"
+        },
+        {
+          "herb": "苁蓉"
+        },
+        {
+          "herb": "牛膝"
+        },
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "虎骨"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "或加乳香没药。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "柏子仁"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "柏子仁 人参 白术 半夏 北味 牡蛎 麻黄根 麦麸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "枣"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "五仁丸"
+    },
+    {
+      "type": "text",
+      "value": "火麻仁 郁李仁 柏子仁 松子仁 桃仁"
+    },
+    {
+      "type": "text",
+      "value": "指迷丸 茯苓丸 即指迷茯苓丸。"
+    },
+    {
+      "type": "text",
+      "value": "清六丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "滑石"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "苏合香丸"
+    },
+    {
+      "type": "text",
+      "value": "苏合香 安息香 犀角 冰片 射香 香附 木香 薰陆香 沉香 丁香 白术"
+    },
+    {
+      "type": "text",
+      "value": "炼蜜丸，朱砂为衣，外作蜡丸。"
+    },
+    {
+      "type": "text",
+      "value": "五痫丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "朱砂"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "炼蜜丸如麻子大，每服三四丸。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "朱砂"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "朱砂"
+        },
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "茯神"
+        },
+        {
+          "herb": "枣仁"
+        },
+        {
+          "herb": "远志"
+        },
+        {
+          "herb": "益智仁"
+        },
+        {
+          "herb": "牡蛎"
+        },
+        {
+          "herb": "朱砂"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "枣"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "茯菟丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "菟丝子"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "酒糊丸，或加五味子。"
+    },
+    {
+      "type": "text",
+      "value": "苓术菟丝丸"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "菟丝子"
+        },
+        {
+          "herb": "莲肉"
+        },
+        {
+          "herb": "山药"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "五味子"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "济生固精丸"
+    },
+    {
+      "type": "text",
+      "value": "牡蛎 菟丝子 韭子 龙骨 北五味 桑螵蛸 白石脂 茯苓"
+    },
+    {
+      "type": "text",
+      "value": "家韭子丸"
+    },
+    {
+      "type": "text",
+      "value": "家韭子 鹿茸 肉苁蓉 牛膝 菟丝子 熟地 当归 巴戟 杜仲 石斛 肉桂 炮姜"
+    },
+    {
+      "type": "text",
+      "value": "乌鸡煎丸"
+    },
+    {
+      "type": "text",
+      "value": "乌骨雄鸡（一只） 乌药 蛇床子 丹皮 白术 人参 黄芪（各一两） 茅术（米泔浸一两半） 海桐皮 红花 白芍 肉桂 附子（炮） 川乌（炮） 莪术 陈皮（各二两） 熟地（洗焙） 延胡 木香 肉果 草果 琥珀（各五钱）"
+    },
+    {
+      "type": "text",
+      "value": "上细锉，以乌鸡汤挦去毛及肠杂，将上药纳鸡肚内，用新瓷瓶以好酒一斗同煮令干，去鸡骨，以油单盛焙干为末，炼蜜和丸如桐子大，每服三十丸，随症用汤引下。"
+    },
+    {
+      "type": "text",
+      "value": "安蛔丸即理中安蛔丸。"
+    },
+    {
+      "type": "text",
+      "value": "侯氏黑散"
+    },
+    {
+      "type": "text",
+      "value": "菊花 白术 防风 桔梗 黄芩 细辛 茯苓 牡蛎 人参 矾石 当归 干姜 川芎 桂枝"
+    },
+    {
+      "type": "text",
+      "value": "为散，酒服。"
+    },
+    {
+      "type": "text",
+      "value": "鸡金散"
+    },
+    {
+      "type": "text",
+      "value": "鸡内金 沉香 砂仁 陈香橼皮"
+    },
+    {
+      "type": "text",
+      "value": "天水散即六一散。"
+    },
+    {
+      "type": "text",
+      "value": "本事方神效散"
+    },
+    {
+      "type": "text",
+      "value": "白海浮石 蛤粉 蝉蜕"
+    },
+    {
+      "type": "text",
+      "value": "为细末，用大鲫鱼胆七个，调服三钱。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "羌活"
+        },
+        {
+          "herb": "独活"
+        },
+        {
+          "herb": "柴胡"
+        },
+        {
+          "herb": "前胡"
+        },
+        {
+          "herb": "川芎"
+        },
+        {
+          "herb": "桔梗"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "枳壳"
+        },
+        {
+          "herb": "薄荷"
+        },
+        {
+          "herb": "生姜"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "瓜蒂"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "瓜蒂"
+        },
+        {
+          "herb": "赤小豆"
+        },
+        {
+          "herb": "香豉"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "苍耳"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "白芷 薄荷 辛夷 苍耳"
+    },
+    {
+      "type": "text",
+      "value": "为末，葱茶汤调服。"
+    },
+    {
+      "type": "text",
+      "value": "圣济透关散"
+    },
+    {
+      "type": "text",
+      "value": "雄黄 猪牙皂荚 藜芦"
+    },
+    {
+      "type": "text",
+      "value": "等分研末，先含水一口，用药吹鼻，即吐去水，备急如圣散有白矾等分。"
+    },
+    {
+      "type": "text",
+      "value": "花蕊石散"
+    },
+    {
+      "type": "text",
+      "value": "花蕊石（四两） 硫黄（一两）"
+    },
+    {
+      "type": "text",
+      "value": "研细，泥封煅赤，服一钱，童便下。"
+    },
+    {
+      "type": "text",
+      "value": "失笑散"
+    },
+    {
+      "type": "text",
+      "value": "蒲黄 五灵脂"
+    },
+    {
+      "type": "text",
+      "value": "五积散"
+    },
+    {
+      "type": "text",
+      "value": "白芷 陈皮 厚朴 当归 川芎 芍药 茯苓 桔梗 苍术 枳壳 半夏 麻黄 干姜 肉桂 甘草 姜 葱"
+    },
+    {
+      "type": "text",
+      "value": "牛黄膏"
+    },
+    {
+      "type": "text",
+      "value": "牛黄（二钱半） 朱砂 郁金 丹皮（各三钱） 冰片（一钱） 甘草（一钱）"
+    },
+    {
+      "type": "text",
+      "value": "炼蜜丸如舶子大，每服一丸，新水化下。"
+    },
+    {
+      "type": "text",
+      "value": "三才封髓丹"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "天冬"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "黄柏"
+        },
+        {
+          "herb": "砂仁"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "琥珀黑龙丹（即黑龙丹）"
+    },
+    {
+      "type": "text",
+      "value": "当归 五灵脂 川芎 良姜 熟地（各二两、锉碎入砂锅内，纸筋盐泥固济，火煅过） 百草霜（一两） 硫黄 乳香（各二钱） 琥珀 花蕊石（各一钱）"
+    },
+    {
+      "type": "text",
+      "value": "上为细末，醋糊丸如弹子大，每用一二丸，炭火煅红，投入生姜自然汁浸碎，以童便合酒，调灌下。"
+    },
+    {
+      "type": "text",
+      "value": "左归饮"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "山药"
+        },
+        {
+          "herb": "枸杞"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "茯苓"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "右归饮 即左归饮去茯苓，加杜仲肉桂附子。"
+    },
+    {
+      "type": "text",
+      "value": "温胃饮"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "炮姜"
+        },
+        {
+          "herb": "扁豆"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "炙草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "归气饮"
+    },
+    {
+      "type": "text",
+      "value": "熟地 茯苓 扁豆 炮姜 丁香 藿香 炙草 陈皮"
+    },
+    {
+      "type": "text",
+      "value": "大和中饮"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "枳实"
+        },
+        {
+          "herb": "砂仁"
+        },
+        {
+          "herb": "麦芽"
+        },
+        {
+          "herb": "厚朴"
+        },
+        {
+          "herb": "山楂"
+        },
+        {
+          "herb": "泽泻"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "四柱饮"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "木香"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "六柱饮 即四柱饮加肉豆蔻诃子。"
+    },
+    {
+      "type": "text",
+      "value": "五磨饮子"
+    },
+    {
+      "type": "text",
+      "value": "乌药 沉香 槟榔 枳实 木香"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "白酒"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "生铁落饮"
+    },
+    {
+      "type": "text",
+      "value": "生铁落，清水浸研澄，饮水。"
+    },
+    {
+      "type": "text",
+      "value": "普济消毒饮"
+    },
+    {
+      "type": "text",
+      "value": "黄芩 黄连 陈皮 甘草 玄参 连翘 板蓝根 牛蒡 薄荷 僵蚕 升麻 柴胡 桔梗 马勃"
+    },
+    {
+      "type": "text",
+      "value": "或加人参。便闭加大黄。"
+    },
+    {
+      "type": "text",
+      "value": "清心莲子饮"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "石莲肉"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "柴胡"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "地骨皮"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "车前"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "七福饮"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "枣仁"
+        },
+        {
+          "herb": "远志"
+        },
+        {
+          "herb": "炙草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "胃关煎"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "山药"
+        },
+        {
+          "herb": "扁豆"
+        },
+        {
+          "herb": "炮姜"
+        },
+        {
+          "herb": "吴萸"
+        },
+        {
+          "herb": "炙草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "二阴煎"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "枣仁"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "玄参"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "黄芩"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "秘元煎"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "枣仁"
+        },
+        {
+          "herb": "山药"
+        },
+        {
+          "herb": "芡实"
+        },
+        {
+          "herb": "五味"
+        },
+        {
+          "herb": "远志"
+        },
+        {
+          "herb": "金樱子"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "固阴煎"
+    },
+    {
+      "type": "text",
+      "value": "人参 熟地 山药 山萸 远志 炙草 五味 菟丝子"
+    },
+    {
+      "type": "text",
+      "value": "保阴煎"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "山药"
+        },
+        {
+          "herb": "川断"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "黄柏"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "寿脾煎"
+    },
+    {
+      "type": "text",
+      "value": "人参 白术 炙草 当归 山药 枣仁 炮姜 建莲肉 远志"
+    },
+    {
+      "type": "text",
+      "value": "玉钥匙"
+    },
+    {
+      "type": "text",
+      "value": "马牙硝（一两半） 硼砂（五钱） 白僵蚕（一钱半） 冰片（一字）"
+    },
+    {
+      "type": "text",
+      "value": "为末，以纸管吹五分入喉中。"
+    },
+    {
+      "type": "text",
+      "value": "蒲黄酒"
+    },
+    {
+      "type": "text",
+      "value": "蒲黄（一两，炒褐色）"
+    },
+    {
+      "type": "text",
+      "value": "清酒十爵沃之，温服。"
+    }
+  ]
+]

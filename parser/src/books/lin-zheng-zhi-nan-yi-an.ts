@@ -56,6 +56,27 @@ const splitToFiles = async () => {
   }
 };
 
+const processDirectory = async <T>(directory: string, processFile: (x: string) => Promise<T>) => {
+  const dirents = await readdir(directory, { withFileTypes: true });
+  const files = dirents
+    .filter(x => {
+      if (!x.isFile()) {
+        return false;
+      }
+      const extension = path.extname(x.name);
+      const fileName = path.basename(x.name, extension);
+      if (fileName === "debug" || extension === ".json") {
+        return false;
+      }
+      console.log(`${x.name} -- ${fileName} --${extension}`);
+      return true;
+    })
+    .map(f => path.join(directory, f.name));
+  await Promise.all(files.map(processFile));
+  const dirs = dirents.filter(x => x.isDirectory()).map(x => path.join(directory, x.name));
+  await Promise.all(dirs.map(dir => processDirectory(dir, processFile)));
+};
+
 const groupYiAn = async () => {
   const processFile = async (filePath: string) => {
     const readInterface = readline.createInterface({
@@ -91,14 +112,14 @@ const groupYiAn = async () => {
     }
     fs.writeFileSync(filePath, lines.join(os.EOL));
   };
-  const processDirectory = async (directory: string) => {
-    const dirents = await readdir(directory, { withFileTypes: true });
-    const files = dirents.filter(x => x.isFile()).map(f => path.join(directory, f.name));
-    await Promise.all(files.map(processFile));
-    const dirs = dirents.filter(x => x.isDirectory()).map(x => path.join(directory, x.name));
-    await Promise.all(dirs.map(processDirectory));
-  };
-  await processDirectory(formattedFolder);
+  //   const processDirectory = async (directory: string) => {
+  //     const dirents = await readdir(directory, { withFileTypes: true });
+  //     const files = dirents.filter(x => x.isFile()).map(f => path.join(directory, f.name));
+  //     await Promise.all(files.map(processFile));
+  //     const dirs = dirents.filter(x => x.isDirectory()).map(x => path.join(directory, x.name));
+  //     await Promise.all(dirs.map(processDirectory));
+  //   };
+  await processDirectory(formattedFolder, processFile);
 };
 
 type TextToken = {
@@ -186,11 +207,13 @@ const createTokens = async (filePath: string): Promise<Array<Token[]>> => {
 };
 
 export const exportImpl = async () => {
-  //await splitToFiles();
-  //await groupYiAn();
+  console.log("临证指南医案: start");
+  await splitToFiles();
+  await groupYiAn();
   const filePath = path.join("./resource", "format", "临证指南医案", "1.卷一", "1.中风.txt");
   const result = await createTokens(filePath);
   const toFilePath = path.join("./resource", "format", "临证指南医案", "debug.txt");
   fs.writeFileSync(toFilePath, JSON.stringify(result, null, 2));
-  console.log("done");
+  await processDirectory(formattedFolder, createTokens);
+  console.log("临证指南医案: done");
 };
