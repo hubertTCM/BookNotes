@@ -4,6 +4,9 @@ import path from "path";
 import readline from "readline";
 import { promisify } from "util";
 import { tryConvertToNumber } from "../prescription/utils";
+import { PrescriptionItem } from "../prescription/type";
+import { tryParsePrescription } from "../prescription/format2";
+import { convertUom2 } from "../prescription/convertUom";
 
 const readdir = promisify(fs.readdir);
 const formattedFolder = path.join("./resource", "format", "临证指南医案");
@@ -98,7 +101,53 @@ const groupYiAn = async () => {
   await processDirectory(formattedFolder);
 };
 
+type TextToken = {
+  type: "text";
+  value: string;
+};
+type PrescriptionItemToken = {
+  type: "prescriptionItems";
+  value: PrescriptionItem[];
+};
+type Token = TextToken | PrescriptionItemToken;
+
+const createTokens = async (filePath: string): Promise<Array<Token[]>> => {
+  const readInterface = readline.createInterface({
+    input: fs.createReadStream(filePath),
+    output: process.stdout,
+    terminal: false
+  });
+
+  const result: Array<Token[]> = [];
+  let tokens: Token[] = [];
+  for await (const line of readInterface) {
+    if (!line) {
+      if (tokens.length) {
+        result.push(tokens);
+      }
+      tokens = [];
+      continue;
+    }
+    const prescriptionItems = tryParsePrescription(line, convertUom2);
+    if (prescriptionItems !== null) {
+      tokens.push({ type: "prescriptionItems", value: prescriptionItems });
+      continue;
+    }
+    tokens.push({ type: "text", value: line });
+  }
+
+  if (tokens.length) {
+    result.push(tokens);
+  }
+  return result;
+};
+
 export const exportImpl = async () => {
-  await splitToFiles();
-  await groupYiAn();
+  //await splitToFiles();
+  //await groupYiAn();
+  const filePath = path.join("./resource", "format", "临证指南医案", "1.卷一", "1.中风.txt");
+  const result = await createTokens(filePath);
+  const toFilePath = path.join("./resource", "format", "临证指南医案", "debug.txt");
+  fs.writeFileSync(toFilePath, JSON.stringify(result, null, 2));
+  console.log("done");
 };

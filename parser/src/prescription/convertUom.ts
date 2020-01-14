@@ -66,3 +66,16 @@ export const convertUom1 = (quantity: Quantity): Quantity => {
       return { ...quantity };
   }
 };
+
+export const convertUom2 = (quantity: Quantity): Quantity => {
+  switch (quantity.uom) {
+    case "斤":
+      return { value: quantity.value * 16, uom: "两" };
+    case "两":
+      return { ...quantity };
+    case "分":
+      return { value: quantity.value / 10.0, uom: "两" };
+    default:
+      return { ...quantity };
+  }
+};

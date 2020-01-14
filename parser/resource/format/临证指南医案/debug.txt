@@ -1,0 +1,2556 @@
+[
+  [
+    {
+      "type": "text",
+      "value": "钱 偏枯在左，血虚不萦筋骨，内风袭络，脉左缓大。（肝肾虚，内风动。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "制首乌",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "，烘"
+        },
+        {
+          "herb": "枸杞子",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "去蒂，"
+        },
+        {
+          "herb": "归身",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "，用独枝者，去梢"
+        },
+        {
+          "herb": "怀牛膝",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "，蒸"
+        },
+        {
+          "herb": "明天麻",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "，面煨"
+        },
+        {
+          "herb": "三角胡麻",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "，打碎，水洗十次，烘"
+        },
+        {
+          "herb": "黄甘菊",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          },
+          "comment": "，水煎汁"
+        },
+        {
+          "herb": "川石斛",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "，水煎汁"
+        },
+        {
+          "herb": "小黑豆皮",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "，煎汁"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "用三汁膏加蜜，丸极细，早服四钱，滚水送。"
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "陈（四七） 肝血肾液内枯，阳扰风旋乘窍。大忌风药寒凉。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "炒杞子"
+        },
+        {
+          "herb": "桂圆肉"
+        },
+        {
+          "herb": "炒菊花"
+        },
+        {
+          "herb": "炙黑甘草"
+        },
+        {
+          "herb": "黄芪",
+          "comment": "去心"
+        },
+        {
+          "herb": "牡蛎"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "金 失血有年，阴气久伤，复遭忧悲悒郁，阳挟内风大冒，血舍自空，气乘于左，口肢麻，舌喑无声，足痿不耐行走。明明肝肾虚馁，阴气不主上承。重培其下，冀得风熄，议以河间法。"
+    },
+    {
+      "type": "text",
+      "value": "熟地（四两） 牛膝（一两半） 萸肉（二两） 远志（一两半，炒黑） 杞子（二两） 菊花（二两，炒） 五味（一两半） 川斛（二两四钱） 茯神（二两） 淡苁蓉干（一两二钱）"
+    },
+    {
+      "type": "text",
+      "value": "加蜜丸，服四钱。"
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "沈（四九） 脉细而数，细为脏阴之亏，数为营液之耗。上年夏秋病伤，更因冬暖失藏，入春地气升，肝木风动，遂令右肢偏痿，舌本络强，言謇，都因根蒂有亏之症。庸俗泄气降痰，发散攻风，再劫真阴，渐渐神愦如寐，倘加昏厥，将何疗治。议用仲景复脉法，液虚风动。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "姜"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "熟地"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "天冬"
+        },
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "五味"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "金（六九） 初起神呆遗溺，老人厥中显然，数月来夜不得寐，是阳气不交于阴。勿谓痰火，专以攻消，乃下虚不纳。议与潜阳。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "龟腹甲心"
+        },
+        {
+          "herb": "熟地炭"
+        },
+        {
+          "herb": "干苁蓉"
+        },
+        {
+          "herb": "天冬"
+        },
+        {
+          "herb": "生虎胫骨"
+        },
+        {
+          "herb": "怀牛膝"
+        },
+        {
+          "herb": "炒杞子"
+        },
+        {
+          "herb": "黄柏"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "卢 嗔怒动阳，恰值春木司升，厥阴内风乘阳明脉络之虚，上凌咽喉，环绕耳后清空之地，升腾太过，脂液无以营养四末，而指节为之麻木。是皆痱中根萌，所谓下虚上实，多致巅顶之疾。夫情志变蒸之热，阅方书无芩连苦降，羌防辛散之理。肝为刚脏，非柔润不能调和也。（阳升热蒸液亏。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "鲜生地"
+        },
+        {
+          "herb": "玄参心"
+        },
+        {
+          "herb": "桑叶"
+        },
+        {
+          "herb": "丹皮"
+        },
+        {
+          "herb": "羚羊角"
+        },
+        {
+          "herb": "连翘心"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "阿胶"
+        },
+        {
+          "herb": "牡蛎"
+        },
+        {
+          "herb": "川斛"
+        },
+        {
+          "herb": "知母"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "汪（五三） 左肢麻木，膝盖中牵纵，忽如针刺。中年后，精血内虚，虚风自动，乃阴中之阳损伤。（阴中阳虚。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "淡苁蓉干",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "枸杞",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          }
+        },
+        {
+          "herb": "归身",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "生虎骨",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "沙苑",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "巴戟天",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "明天麻",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "桑寄生",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "阿胶"
+        },
+        {
+          "herb": "人参"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "钱（五八） 用力努挣，精从溺管沥出，已经两耳失聪，肾窍失司，显然虚象。凡肾液虚耗，肝风鸱张，身肢麻木，内风暗袭，多有痱中之累。滋液熄风，温柔药涵养肝肾。经言肝为刚脏，而肾脏恶燥，若攻风劫痰，舍本求末矣。（阴阳并虚。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "枸杞"
+        },
+        {
+          "herb": "苁蓉"
+        },
+        {
+          "herb": "石菖蒲"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "沙苑"
+        },
+        {
+          "herb": "巴戟"
+        },
+        {
+          "herb": "远志"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "张（四九） 中风以后，肢麻言謇，足不能行，是肝肾精血残惫，虚风动络，下寒，二便艰阻。凡肾虚忌燥，以辛润温药。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "苁蓉"
+        },
+        {
+          "herb": "枸杞"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "柏子仁"
+        },
+        {
+          "herb": "牛膝"
+        },
+        {
+          "herb": "巴戟"
+        },
+        {
+          "herb": "川斛"
+        },
+        {
+          "herb": "小茴"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "陈（五九） 中络，舌喑不言，痛自足起渐上，麻木A1J8胀，已属痼疾，参、苓益气，兼养血络，仅堪保久。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "枸杞"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "天麻"
+        },
+        {
+          "herb": "桑叶"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "周 大寒土旺节候，中年劳倦，阳气不藏，内风动越，令人麻痹，肉瞤心悸，汗泄烦躁，乃里虚欲暴中之象，议用封固护阳为主，无暇论及痰饮他歧。（阳虚卫疏。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "附子"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "某 阳明脉络空虚，内风暗动，右肩胛及指麻木。（胃虚表疏。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "屏风"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "天麻"
+        },
+        {
+          "herb": "童桑"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "俞（氏） 寡居一十四载，独阴无阳，平昔操持，有劳无逸。当夏四月，阳气大泄主令，忽然右肢麻木，如堕不举，汗出麻冷，心中卒痛，而呵欠不已，大便不通。诊脉小弱。岂是外感，病象似乎痱中，其因在乎意伤忧愁则肢废也。攻风劫痰之治，非其所宜，大旨以固卫阳为主，而宣通脉络佐之。（卫虚络痹。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "生黄芪"
+        },
+        {
+          "herb": "炒远志"
+        },
+        {
+          "herb": "片姜黄"
+        },
+        {
+          "herb": "羌活"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "唐（六六） 男子右属气虚，麻木一年，入春口眼歪邪。乃虚风内动，老年力衰。当时令之发泄，忌投风药，宜以固卫益气。（气虚。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "广皮"
+        },
+        {
+          "herb": "归身"
+        },
+        {
+          "herb": "天麻"
+        },
+        {
+          "herb": "煨姜"
+        },
+        {
+          "herb": "南枣"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "炙草"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "胡（五六） 阳明脉络已空，厥阴阳气易逆，风胜为肿，热久为燥，面热，喉舌干涸，心中填塞。无非阳化内风，胃受冲侮，不饥不纳矣。有年久延，颇虑痱中。（风阳燥热。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "羚羊角"
+        },
+        {
+          "herb": "连翘"
+        },
+        {
+          "herb": "丹皮"
+        },
+        {
+          "herb": "黑山栀"
+        },
+        {
+          "herb": "青菊叶"
+        },
+        {
+          "herb": "玄参"
+        },
+        {
+          "herb": "花粉"
+        },
+        {
+          "herb": "天麻"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "张（五七） 痱中经年，眩晕汗出，阳气有升无降，内风无时不动，此竟夜不寐，属卫阳不肯交于营阴矣。沉痼之症，循理按法，尚难速效，纷纷乱药，焉望向安。议用固阳明一法。（胃虚阳升。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂枝木"
+        },
+        {
+          "herb": "生黄芪"
+        },
+        {
+          "herb": "川熟附"
+        },
+        {
+          "herb": "炒远志"
+        },
+        {
+          "herb": "龙骨"
+        },
+        {
+          "herb": "牡蛎"
+        },
+        {
+          "herb": "姜"
+        },
+        {
+          "herb": "枣"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "刘（七三） 神伤思虑则肉脱，意伤忧愁则肢废，皆痿象也。缘高年阳明脉虚，加以愁烦，则厥阴风动，木横土衰。培中可效。若穷治风痰，便是劫烁，则谬。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "于术"
+        },
+        {
+          "herb": "桑寄生"
+        },
+        {
+          "herb": "天麻"
+        },
+        {
+          "herb": "白蒺藜"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "枸杞"
+        },
+        {
+          "herb": "菊花汁"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "加蜜丸。"
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "包 老年隆冬暴中，乃阴阳失交本病。脉左大右濡，内风掀越，中阳已虚，第五日已更衣，神惫欲寐。宗王先生议，阳明厥阴主治法以候裁。（肝胃同治。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "白蒺藜"
+        },
+        {
+          "herb": "炒半夏"
+        },
+        {
+          "herb": "炒杞子"
+        },
+        {
+          "herb": "甘菊"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "某 阳明虚，内风动，右肢麻痹，痰多眩晕。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "天麻"
+        },
+        {
+          "herb": "钩藤"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "广皮"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "芳香",
+          "comment": "宣窍解毒，勿令壅塞致危也。胞络热邪阻窍。"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "至宝丹四丸，匀四服。"
+    }
+  ],
+  [
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "葛"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "至宝丹。"
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "程 脉濡无热，厥后右肢偏痿，口舌歪，声音不出。此阴风湿晦中于脾络，加以寒滞汤药蔽其清阳，致清气无由展舒。法宗古人星附六君子汤益气，仍能攻风祛痰。若曰风中廉泉，乃任脉为病，与太阴脾络有间矣。（风湿中脾络。）"
+    },
+    {
+      "type": "text",
+      "value": "人参 茯苓 新会皮 香附汁 南星（姜汁炒） 竹节白附子（姜汁炒）"
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "吕（五九） 阳邪袭经络而为偏痱，血中必热，艾灸反助络热，病剧废食。清凉固是正治，然须柔剂，不致伤血，且有熄风功能。（艾灸络热。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "犀角"
+        },
+        {
+          "herb": "羚角"
+        },
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "玄参"
+        },
+        {
+          "herb": "连翘"
+        },
+        {
+          "herb": "橘红"
+        },
+        {
+          "herb": "胆星"
+        },
+        {
+          "herb": "石菖蒲"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "杨 中后不复，交至节四日，寒战汗泄，遂神昏不醒。是阴阳失于交恋，真气欲绝，有暴脱之虑。拟进回阳摄阴法。（脱。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "淡附子"
+        },
+        {
+          "herb": "五味"
+        },
+        {
+          "herb": "猪胆汁"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参",
+          "quantity": {
+            "uom": "钱",
+            "value": 3
+          }
+        },
+        {
+          "herb": "附子",
+          "quantity": {
+            "uom": "钱",
+            "value": 3
+          }
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "附子"
+        },
+        {
+          "herb": "五味"
+        },
+        {
+          "herb": "龙骨"
+        },
+        {
+          "herb": "牡蛎"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "龚（五七） 厥症，脉虚数，病在左躯。肾虚液少，肝风内动，为病偏枯，非外来之邪。（肾阴虚，肝风动。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "制首乌"
+        },
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "杞子"
+        },
+        {
+          "herb": "茯神"
+        },
+        {
+          "herb": "明天麻"
+        },
+        {
+          "herb": "菊花"
+        },
+        {
+          "herb": "川斛"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "徐（四一） 水亏风动，舌强肢麻，中络之象。当通补下焦，复以清上。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "淡苁蓉"
+        },
+        {
+          "herb": "杞子"
+        },
+        {
+          "herb": "牛膝"
+        },
+        {
+          "herb": "五味"
+        },
+        {
+          "herb": "远志"
+        },
+        {
+          "herb": "羚羊角"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "菖蒲"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "蜜丸。"
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "丁 大寒节，真气少藏，阳挟内风旋动，以致痱中，舌边赤，中有苔滞。忌投攻风劫痰，益肾凉肝，治本为法。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "玄参"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "川斛"
+        },
+        {
+          "herb": "远志"
+        },
+        {
+          "herb": "石菖蒲"
+        },
+        {
+          "herb": "蔗浆"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "曾（五二） 脉弦动，眩晕耳聋，行走气促无力，肛痔下垂。此未老欲衰，肾阴弱，收纳无权，肝阳炽，虚风蒙窍，乃上实下虚之象。质厚填阴，甘味熄风，节劳戒饮，可免仆中。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "锁阳"
+        },
+        {
+          "herb": "知母"
+        },
+        {
+          "herb": "肉苁蓉"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "地黄"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "某（妪） 今年风木司天，春夏阳升之候，兼因平昔怒劳忧思，以致五志气火交并于上，肝胆内风鼓动盘旋，上盛则下虚，故足膝无力。肝木内风壮火，乘袭胃土，胃主肌肉，脉络应肢，绕出环口，故唇舌麻木，肢节如痿，固为中厥之萌。观河间内火召风之论，都以苦降辛泄，少佐微酸，最合经旨。折其上腾之威，使清空诸窍毋使浊痰壮火蒙蔽，乃暂药权衡也。至于颐养工夫，寒暄保摄，尤当加意于药饵之先。上午服："
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "金石斛",
+          "quantity": {
+            "uom": "钱",
+            "value": 3
+          }
+        },
+        {
+          "herb": "化橘红",
+          "quantity": {
+            "value": 0.5,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "白蒺藜",
+          "quantity": {
+            "uom": "钱",
+            "value": 2
+          }
+        },
+        {
+          "herb": "真北秦皮",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          }
+        },
+        {
+          "herb": "草决明",
+          "quantity": {
+            "uom": "钱",
+            "value": 2
+          }
+        },
+        {
+          "herb": "冬桑叶",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          }
+        },
+        {
+          "herb": "嫩钩藤",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          }
+        },
+        {
+          "herb": "生白芍",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 前议苦辛酸降一法，肝风胃阳已折其上引之威，是诸症亦觉小愈，虽曰治标，正合岁气节候而设。思夏至一阴来复，高年本病，预宜持护，自来中厥，最防于暴寒骤加，致身中阴阳两不接续耳。议得摄纳肝肾真气，补益下虚本病。"
+    },
+    {
+      "type": "text",
+      "value": "九制熟地（先用水煮半日，徐加醇酒、砂仁，再煮一日，晒干再蒸，如法九次，干者炒存性，八两） 肉苁蓉（用大而黑色者，去甲切片，盛竹篮内，放长流水中浸七日，晒干，以极淡为度，四两） 生虎膝骨（另捣碎，研，二两） 怀牛膝（盐水蒸，三两） 制首乌（四两，烘） 川萆薢（盐水炒，二两） 川石斛（八两，熬膏） 赤白茯苓（四两） 柏子霜（二两）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "小黑稆豆皮"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "茯苓"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "熟半夏",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "茯苓",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "，生"
+        },
+        {
+          "herb": "广皮肉",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "川连",
+          "quantity": {
+            "uom": "两",
+            "value": 1
+          },
+          "comment": "姜汁炒，"
+        },
+        {
+          "herb": "枳实",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "麸炒，"
+        },
+        {
+          "herb": "明天麻",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "，煨"
+        },
+        {
+          "herb": "钩藤",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          }
+        },
+        {
+          "herb": "白蒺藜",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          },
+          "comment": "鸡子黄拌煮，洗净炒，去刺，"
+        },
+        {
+          "herb": "地栗粉",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "竹沥"
+        },
+        {
+          "herb": "姜汁"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 近交秋令，燥气加临，先伤于上，是为肺燥之咳。然下焦久虚，厥阴绕咽，少阴循喉，往常口燥舌糜，是下虚阴火泛越。先治时病燥气化火，暂以清润上焦，其本病再议。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "白扁豆",
+          "quantity": {
+            "uom": "钱",
+            "value": 3
+          },
+          "comment": "勿研，"
+        },
+        {
+          "herb": "玉竹",
+          "quantity": {
+            "uom": "钱",
+            "value": 3
+          }
+        },
+        {
+          "herb": "白沙参",
+          "quantity": {
+            "uom": "钱",
+            "value": 2
+          }
+        },
+        {
+          "herb": "麦冬",
+          "quantity": {
+            "uom": "钱",
+            "value": 3
+          },
+          "comment": "去心，"
+        },
+        {
+          "herb": "甜杏仁",
+          "quantity": {
+            "uom": "钱",
+            "value": 2
+          },
+          "comment": "去皮尖，勿研，"
+        },
+        {
+          "herb": "象贝母",
+          "quantity": {
+            "uom": "钱",
+            "value": 2
+          },
+          "comment": "去心，勿研，"
+        },
+        {
+          "herb": "冬桑叶",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          }
+        },
+        {
+          "herb": "卷心竹叶",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "洗白糯米七合，清汤煎。"
+    },
+    {
+      "type": "text",
+      "value": "又 暂服煎方："
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "北沙参",
+          "quantity": {
+            "uom": "钱",
+            "value": 3
+          }
+        },
+        {
+          "herb": "生白扁豆",
+          "quantity": {
+            "uom": "钱",
+            "value": 2
+          }
+        },
+        {
+          "herb": "麦冬",
+          "quantity": {
+            "uom": "钱",
+            "value": 3
+          }
+        },
+        {
+          "herb": "干百合",
+          "quantity": {
+            "uom": "钱",
+            "value": 1.5
+          }
+        },
+        {
+          "herb": "白茯神",
+          "quantity": {
+            "uom": "钱",
+            "value": 1.5
+          }
+        },
+        {
+          "herb": "甜杏仁",
+          "quantity": {
+            "uom": "钱",
+            "value": 1.5
+          },
+          "comment": "去皮尖，"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 痰火上实，清窍为蒙。于暮夜兼进清上方法。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "麦冬",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          }
+        },
+        {
+          "herb": "天冬",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "苡米",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          }
+        },
+        {
+          "herb": "柿霜",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "长条白沙参",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          }
+        },
+        {
+          "herb": "生白扁豆皮",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          }
+        },
+        {
+          "herb": "甜梨汁",
+          "quantity": {
+            "value": 32,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "甘蔗浆",
+          "quantity": {
+            "value": 32,
+            "uom": "两"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "柿霜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 夏热秋燥，阳津阴液更伤，口齿咽喉受病，都属阴火上乘，气热失降使然。进手太阴清燥甘凉方法甚安。其深秋初冬调理大旨，以清上实下，则风熄液润，不致中厥。至冬至一阳初复再议。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "燕窝菜",
+          "quantity": {
+            "value": 16,
+            "uom": "两"
+          },
+          "comment": "洗净，另熬膏，"
+        },
+        {
+          "herb": "甜梨",
+          "quantity": {
+            "uom": "个",
+            "value": 20
+          },
+          "comment": "去皮核，绢袋绞汁，熬膏，"
+        },
+        {
+          "herb": "人参",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          },
+          "comment": "另熬收，"
+        },
+        {
+          "herb": "九制熟地",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "水煮，"
+        },
+        {
+          "herb": "天冬",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "去心，蒸，"
+        },
+        {
+          "herb": "麦冬",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "去心，"
+        },
+        {
+          "herb": "黄芪皮",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "生用，"
+        },
+        {
+          "herb": "炙黑甘草",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "五味",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "，蒸"
+        },
+        {
+          "herb": "云茯神",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          },
+          "comment": "，蒸"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 左关尺脉，独得动数，多语则舌音不清，麻木偏着右肢，心中热炽，难以明状。此阳明脉中空乏，而厥阴之阳挟内风以纠扰，真气不主藏聚，则下无力以行动，虚假之热上泛，为喉燥多咳，即下虚者上必实意。冬至后早服方，从丹溪虎潜法。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "九制熟地",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          },
+          "comment": "照前法制，"
+        },
+        {
+          "herb": "肉苁蓉",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "照前制，"
+        },
+        {
+          "herb": "天冬",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "去心，蒸，烘，"
+        },
+        {
+          "herb": "当归",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "炒焦，"
+        },
+        {
+          "herb": "生白芍",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          }
+        },
+        {
+          "herb": "川斛",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          },
+          "comment": "熬膏，"
+        },
+        {
+          "herb": "黄柏",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "盐水炒，"
+        },
+        {
+          "herb": "怀牛膝",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          },
+          "comment": "盐水蒸，"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "虎骨胶"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 太太诸恙向安，今春三月，阳气正升，肝木主乎气候，肝为风脏，风亦属阳，卦变为巽，两阳相合，其势方张，内风挟阳动旋，脂液暗耗而麻痹不已。独甚于四肢者，风淫末疾之谓也。经云：风淫于内，治以甘寒。夫痰壅无形之火，火灼有形之痰，甘寒生津，痰火风兼治矣。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "天冬",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "麦冬",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          }
+        },
+        {
+          "herb": "长白沙参",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          }
+        },
+        {
+          "herb": "明天麻",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "，煨"
+        },
+        {
+          "herb": "白蒺藜",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "照前制，"
+        },
+        {
+          "herb": "甜梨汁",
+          "quantity": {
+            "value": 16,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "芦根汁",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          },
+          "comment": "流水者可用，"
+        },
+        {
+          "herb": "青蔗浆",
+          "quantity": {
+            "value": 16,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "鲜竹沥",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          }
+        },
+        {
+          "herb": "柿霜",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "沙参"
+        },
+        {
+          "herb": "天麻"
+        },
+        {
+          "herb": "白蒺藜"
+        },
+        {
+          "herb": "柿霜"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 下虚上实，君相火亢，水涸液亏，多有暴怒跌仆之虞。此方滋液救焚，使补力直行下焦，不助上热。议铁瓮申先生琼玉膏方。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "鲜生地"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参",
+          "quantity": {
+            "uom": "两",
+            "value": 6
+          },
+          "comment": "蒸，烘，研细末，"
+        },
+        {
+          "herb": "白茯苓",
+          "quantity": {
+            "uom": "两",
+            "value": 16
+          },
+          "comment": "蒸，研粉，"
+        },
+        {
+          "herb": "真秋石",
+          "quantity": {
+            "uom": "两",
+            "value": 1
+          },
+          "comment": "银罐内煅，候冷研，"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "三味拌入前膏，如干豆沙样，收贮小口瓷瓶内，扎好，勿令泄气，每早百滚水调服五六钱。"
+    },
+    {
+      "type": "text",
+      "value": "又 立冬后三日，诊得左脉小弦动数，右手和平略虚。问得春夏平安，交秋后有头晕，左目流泪，足痿无力，不能行走，舌生红刺，微咳有痰。此皆今年天气大热已久，热则真气泄越，虚则内风再旋。经言痿生大热，热耗津液，而舌刺、咳嗽、流泪者，风阳升于上也，上则下焦无气矣。故补肝肾以摄纳肾气为要，而清上安下，其在甘凉不伤脾胃者宜之。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "制首乌",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "杞子",
+          "quantity": {
+            "uom": "两",
+            "value": 1.5
+          },
+          "comment": "炒，"
+        },
+        {
+          "herb": "天冬",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "去心，"
+        },
+        {
+          "herb": "茺蔚子",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "蒸，"
+        },
+        {
+          "herb": "黄甘菊",
+          "quantity": {
+            "uom": "两",
+            "value": 1.5
+          }
+        },
+        {
+          "herb": "黑稆豆皮",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "茯苓",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "蒸，"
+        },
+        {
+          "herb": "川石斛",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          },
+          "comment": "熬膏，"
+        },
+        {
+          "herb": "虎骨胶",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "，水溶"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "川斛"
+        },
+        {
+          "herb": "虎骨胶"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 久热风动，津液日损，舌刺咳嗽。议以甘药养其胃阴，老年纳谷为宝。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生扁豆",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "麦冬",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "北沙参",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          }
+        },
+        {
+          "herb": "天花粉",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "甘蔗浆",
+          "quantity": {
+            "uom": "两",
+            "value": 12
+          }
+        },
+        {
+          "herb": "柿霜",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "白花百合",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "饴糖"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 液燥下亏，阳挟内风上引，阴不上承，舌络强则言謇，气不注脉则肢痿乏力步趋。凡此皆肝肾脏阴本虚。镇补之中，微逗通阳为法，以脏液虚，不受纯温药耳。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "熟地",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "阿胶",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "女贞实",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "稆豆皮",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "淡肉苁蓉",
+          "quantity": {
+            "uom": "两",
+            "value": 1
+          }
+        },
+        {
+          "herb": "茯神",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "旱莲草",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "川石斛",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "用精羯羊肉胶为丸，早上滚水服四五钱。"
+    },
+    {
+      "type": "text",
+      "value": "又 暂服煎方："
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "沙参"
+        },
+        {
+          "herb": "茺蔚子"
+        },
+        {
+          "herb": "黑稆豆皮"
+        },
+        {
+          "herb": "川斛"
+        },
+        {
+          "herb": "牛膝"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 晚服丸方："
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "九蒸桑叶",
+          "quantity": {
+            "uom": "两",
+            "value": 8
+          }
+        },
+        {
+          "herb": "三角胡麻",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "九制首乌",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          }
+        },
+        {
+          "herb": "白茯神",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          }
+        },
+        {
+          "herb": "人参",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "炙甘草",
+          "quantity": {
+            "uom": "两",
+            "value": 1
+          }
+        },
+        {
+          "herb": "酸枣仁",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          },
+          "comment": "，炒"
+        },
+        {
+          "herb": "苡仁",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂圆肉"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 今年天符岁会，上半年阳气大泄，见病都属肝胃，以厥阴为风脏，而阳明为盛阳耳。阴阳不肯相依，势必暴来厥中。过大暑可免，以暑湿大热，更多开泄，致元气不为相接耳。然此本虚标实，气火升腾所致，经旨以苦寒咸润酸泄，少佐微辛为治，议进补阳明泄厥阴法。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          }
+        },
+        {
+          "herb": "生牡蛎",
+          "quantity": {
+            "uom": "钱",
+            "value": 5
+          }
+        },
+        {
+          "herb": "生白芍",
+          "quantity": {
+            "uom": "钱",
+            "value": 2
+          }
+        },
+        {
+          "herb": "乌梅肉",
+          "quantity": {
+            "value": 0.4,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "川黄连",
+          "quantity": {
+            "value": 0.6,
+            "uom": "两"
+          },
+          "comment": "盐水炒，"
+        },
+        {
+          "herb": "熟半夏",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          },
+          "comment": "醋炒，清水漂洗，"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "上午服。"
+    },
+    {
+      "type": "text",
+      "value": "（丸方） 人参（二两） 茯苓（三两，生） 盐水炒黄连（五钱） 半夏（醋炒，水洗净，一两半） 盐水炒广皮（二两） 枳实（麸炒，一两半） 白蒺藜（鸡子黄制，一两半） 生白芍（一两半） 乌梅肉（蒸，一两）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "竹沥"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 夏月进酸苦泄热，和胃通隧，为阳明厥阴治甚安。入秋凉爽，天人渐有收肃下降之理。缘有年下亏，木少水涵，相火内风旋转，熏灼胃脘，逆冲为呕。舌络被熏，则绛赤如火。消渴便阻，犹剩事耳。凡此仍属中厥根萌，当加慎静养为宜。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生鸡子黄",
+          "quantity": {
+            "uom": "枚",
+            "value": 1
+          }
+        },
+        {
+          "herb": "阿胶",
+          "quantity": {
+            "uom": "钱",
+            "value": 1.5
+          }
+        },
+        {
+          "herb": "生白芍",
+          "quantity": {
+            "uom": "钱",
+            "value": 3
+          }
+        },
+        {
+          "herb": "生地",
+          "quantity": {
+            "uom": "钱",
+            "value": 3
+          }
+        },
+        {
+          "herb": "天冬",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          },
+          "comment": "去心，"
+        },
+        {
+          "herb": "川连",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          },
+          "comment": "，生"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "上午服。"
+    },
+    {
+      "type": "text",
+      "value": "又 心火亢上，皆为营液内耗，先以补心汤，理心之用。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          },
+          "comment": "同煎，"
+        },
+        {
+          "herb": "川连",
+          "quantity": {
+            "value": 0.6,
+            "uom": "两"
+          },
+          "comment": "水炒，"
+        },
+        {
+          "herb": "犀角",
+          "quantity": {
+            "uom": "钱",
+            "value": 2
+          },
+          "comment": "，镑"
+        },
+        {
+          "herb": "玄参",
+          "quantity": {
+            "uom": "钱",
+            "value": 2
+          }
+        },
+        {
+          "herb": "鲜生地",
+          "quantity": {
+            "uom": "钱",
+            "value": 5
+          }
+        },
+        {
+          "herb": "丹参",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          }
+        },
+        {
+          "herb": "卷心竹叶",
+          "quantity": {
+            "uom": "钱",
+            "value": 2
+          }
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "酸枣仁"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "酸枣仁",
+          "quantity": {
+            "uom": "钱",
+            "value": 5
+          },
+          "comment": "炒黑，勿研，"
+        },
+        {
+          "herb": "茯神",
+          "quantity": {
+            "uom": "钱",
+            "value": 3
+          }
+        },
+        {
+          "herb": "知母",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          }
+        },
+        {
+          "herb": "川芎",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "人参",
+          "quantity": {
+            "value": 0.6,
+            "uom": "两"
+          },
+          "comment": "，同煎"
+        },
+        {
+          "herb": "天冬",
+          "quantity": {
+            "uom": "钱",
+            "value": 1
+          },
+          "comment": "去心，"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "陈 脉左数，右弦缓，有年，形盛气衰，冬春之交，真气不相维续，内风日炽，左肢麻木不仁，舌歪言謇，此属中络。调理百日，戒酒肉，可望向愈。（痰火阻络。）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "羚羊角"
+        },
+        {
+          "herb": "陈胆星"
+        },
+        {
+          "herb": "丹皮"
+        },
+        {
+          "herb": "橘红"
+        },
+        {
+          "herb": "连翘心"
+        },
+        {
+          "herb": "石菖蒲"
+        },
+        {
+          "herb": "钩藤"
+        },
+        {
+          "herb": "川斛"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "羚羊角"
+        },
+        {
+          "herb": "玄参"
+        },
+        {
+          "herb": "连翘"
+        },
+        {
+          "herb": "花粉"
+        },
+        {
+          "herb": "川贝母"
+        },
+        {
+          "herb": "橘红"
+        },
+        {
+          "herb": "竹沥"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 丹溪云：麻为气虚，木是湿痰败血。诊左脉濡涩，有年偏枯，是气血皆虚。方书每称左属血虚，右属气虚，未必尽然。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "广皮"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "归身"
+        },
+        {
+          "herb": "白芍"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "桑枝"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "value": "又 经络为痰阻，大便不爽，昨日跌仆气乱，痰出甚艰。转方以宣经隧。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "炒半夏"
+        },
+        {
+          "herb": "石菖蒲"
+        },
+        {
+          "herb": "广橘红"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "胆星"
+        },
+        {
+          "herb": "枳实"
+        },
+        {
+          "herb": "竹沥"
+        },
+        {
+          "herb": "姜汁"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "text",
+      "value": "叶 初春肝风内动，眩晕跌仆，左肢偏痿，舌络不和，呼吸不爽，痰火上蒙，根本下衰。先宜清上痰火。"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "羚羊角"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "橘红"
+        },
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "郁金"
+        },
+        {
+          "herb": "竹沥"
+        },
+        {
+          "herb": "姜汁"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "郁金"
+        },
+        {
+          "herb": "竹沥"
+        },
+        {
+          "herb": "姜汁"
+        },
+        {
+          "herb": "白蒺藜"
+        },
+        {
+          "herb": "钩藤"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "炒半夏"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "钩藤"
+        },
+        {
+          "herb": "橘红"
+        },
+        {
+          "herb": "金石斛"
+        },
+        {
+          "herb": "石菖蒲"
+        },
+        {
+          "herb": "竹沥"
+        },
+        {
+          "herb": "姜汁"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "枳实"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "橘红"
+        },
+        {
+          "herb": "蒺藜"
+        },
+        {
+          "herb": "竹沥"
+        },
+        {
+          "herb": "姜汁"
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "内虚"
+        },
+        {
+          "herb": "细辛"
+        },
+        {
+          "herb": "地黄"
+        },
+        {
+          "herb": "屏风"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "酸枣仁"
+        },
+        {
+          "herb": "芳香",
+          "comment": "类叙述，以便后人观览。余门仿此。华岫云"
+        }
+      ]
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "地黄"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "人参"
+        }
+      ]
+    }
+  ]
+]

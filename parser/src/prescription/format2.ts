@@ -199,13 +199,18 @@ export const token2PrescriptionItems = (
       items.push(item);
       herb = null;
       i = endIndex + 1;
+      continue;
     }
+    ++i;
   }
 
   if (herb) {
     items.push({ herb });
   }
-  return items;
+  if (items.length) {
+    return items;
+  }
+  return null;
 };
 
 export const tryParsePrescription = (
@@ -216,7 +221,8 @@ export const tryParsePrescription = (
     const tokens = parseTokens(text);
     return tokens ? token2PrescriptionItems(tokens, convertUOM) : null;
   } catch (e) {
-    //console.log("Error:", e);
+    console.log(text);
+    console.log("Error:", e);
     return null;
   }
 };
