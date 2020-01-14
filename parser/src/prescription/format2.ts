@@ -201,7 +201,7 @@ export const token2PrescriptionItems = (
       i = endIndex + 1;
       continue;
     }
-    ++i;
+    return null;
   }
 
   if (herb) {
