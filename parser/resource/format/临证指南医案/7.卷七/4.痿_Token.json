@@ -278,12 +278,8 @@
       ]
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "金毛狗脊"
-        }
-      ]
+      "type": "text",
+      "value": "金毛狗脊膏丸。"
     }
   ],
   [
@@ -312,12 +308,8 @@
       "value": "沈（三六） 寝食如常，仪容日瘦，语言出声，舌络牵强，手足痿弱，不堪动作，是肝肾内损，渐及奇经诸脉，乃痿痹之症，未能骤期速功。（肝肾虚）"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "地黄"
-        }
-      ]
+      "type": "text",
+      "value": "地黄饮子去萸味桂。"
     }
   ],
   [
@@ -358,12 +350,8 @@
       ]
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "山药"
-        }
-      ]
+      "type": "text",
+      "value": "山药粉丸。"
     }
   ],
   [

@@ -33,12 +33,8 @@
       "value": "淡生姜粉 半夏 蛤蜊粉 茯苓 桂枝木"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "苡仁"
-        }
-      ]
+      "type": "text",
+      "value": "苡仁煎汤。"
     }
   ],
   [
@@ -47,8 +43,27 @@
       "value": "某（五十） 背寒咳逆，此属饮象，先当辛通饮邪，以降肺气。（饮上逆肺气不降）"
     },
     {
-      "type": "text",
-      "value": "鲜枇杷叶 杏仁 茯苓 橘红 生姜 半夏"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "鲜枇杷叶"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "橘红"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "半夏"
+        }
+      ]
     }
   ],
   [
@@ -151,15 +166,8 @@
       "value": "黄（三四） 身居沿海，氛瘴雾露客邪，侵入清阳，阳伤畏寒，久嗽病患不知却病护身，犹然用力承办，里结饮邪，沉痼不却病。"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "茯苓"
-        },
-        {
-          "herb": "桂枝"
-        }
-      ]
+      "type": "text",
+      "value": "茯苓桂枝汤。"
     }
   ],
   [
@@ -307,15 +315,8 @@
       "value": "生于术 川桂枝 茯苓 淡姜渣 苡仁 泽泻"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "姜"
-        },
-        {
-          "herb": "枣"
-        }
-      ]
+      "type": "text",
+      "value": "姜枣汤法丸。"
     }
   ],
   [
@@ -529,12 +530,8 @@
       "value": "茅术 厚朴 半夏 茯苓 陈皮 淡姜渣 胡芦巴 炙草"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "姜汁"
-        }
-      ]
+      "type": "text",
+      "value": "姜汁泛丸。"
     }
   ],
   [
@@ -1106,12 +1103,8 @@
       ]
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "姜汁"
-        }
-      ]
+      "type": "text",
+      "value": "姜汁法丸。"
     }
   ],
   [
@@ -1232,15 +1225,8 @@
       ]
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "煨姜"
-        },
-        {
-          "herb": "南枣"
-        }
-      ]
+      "type": "text",
+      "value": "煨姜南枣汤丸。"
     }
   ],
   [

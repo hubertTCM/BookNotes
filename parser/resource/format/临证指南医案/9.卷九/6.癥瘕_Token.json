@@ -19,12 +19,8 @@
       "value": "当归 桃仁 茺蔚子 制蒺藜 生鹿角 茯苓"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "香附汁"
-        }
-      ]
+      "type": "text",
+      "value": "香附汁法丸。"
     }
   ],
   [
@@ -53,8 +49,27 @@
       "value": "钦 疝瘕，少腹痛。"
     },
     {
-      "type": "text",
-      "value": "当归 生姜 羊肉 桂枝 小茴 茯苓"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "生姜"
+        },
+        {
+          "herb": "羊肉"
+        },
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "小茴"
+        },
+        {
+          "herb": "茯苓"
+        }
+      ]
     },
     {
       "type": "next",
@@ -82,6 +97,9 @@
         },
         {
           "herb": "生姜"
+        },
+        {
+          "herb": "羊肉"
         }
       ]
     }
@@ -205,15 +223,8 @@
       "value": "生牡蛎 川楝子肉 延胡 桃仁 半夏 茯苓 橘红 白芥子 川连 吴萸"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "香附汁"
-        },
-        {
-          "herb": "姜汁"
-        }
-      ]
+      "type": "text",
+      "value": "香附汁姜汁法丸。"
     }
   ],
   [
@@ -252,6 +263,9 @@
         },
         {
           "herb": "茯苓"
+        },
+        {
+          "herb": "豆皮"
         }
       ]
     }
@@ -262,16 +276,54 @@
       "value": "沈（四十） 肢冷腹痛，有形为瘕，久泻。（厥阴寒滞呕泻）"
     },
     {
-      "type": "text",
-      "value": "当归（炒黑） 小茴（炒黑） 上肉桂 山楂（炒黑） 茯苓"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "当归",
+          "comment": "炒黑"
+        },
+        {
+          "herb": "小茴",
+          "comment": "炒黑"
+        },
+        {
+          "herb": "上肉桂"
+        },
+        {
+          "herb": "山楂",
+          "comment": "炒黑"
+        },
+        {
+          "herb": "茯苓"
+        }
+      ]
     },
     {
       "type": "next",
       "value": "又 冷利有瘕，遇冷则呕。"
     },
     {
-      "type": "text",
-      "value": "吴萸 炒小茴 延胡 茯苓 川楝子 生香附"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "吴萸"
+        },
+        {
+          "herb": "炒小茴"
+        },
+        {
+          "herb": "延胡"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "川楝子"
+        },
+        {
+          "herb": "生香附"
+        }
+      ]
     }
   ],
   [
@@ -280,8 +332,51 @@
       "value": "某 脘中瘕聚。（肝郁犯胃）"
     },
     {
-      "type": "text",
-      "value": "川楝子（一钱） 延胡（一钱） 吴萸（五分） 青皮（七分） 良姜（一钱） 茯苓（三钱）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "川楝子",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "延胡",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "吴萸",
+          "quantity": {
+            "value": 0.05,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "青皮",
+          "quantity": {
+            "value": 0.07,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "良姜",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "茯苓",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          }
+        }
+      ]
     }
   ],
   [
@@ -290,16 +385,117 @@
       "value": "林 脉左弦涩，少腹攻逆，痛即大便，肝气不疏，厥阴滞积。"
     },
     {
-      "type": "text",
-      "value": "香附（一钱半） 鸡肫皮（炙一钱半） 茯苓（一钱半） 麦芽（一钱） 香橼皮（八分） 青皮（五分） 炒楂肉（二钱） 砂仁壳（五分）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "香附",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        },
+        {
+          "herb": "鸡肫皮",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          },
+          "comment": "炙"
+        },
+        {
+          "herb": "茯苓",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        },
+        {
+          "herb": "麦芽",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "香橼",
+          "quantity": {
+            "value": 0.08,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "青皮",
+          "quantity": {
+            "value": 0.05,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "炒楂",
+          "quantity": {
+            "value": 0.2,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "砂仁",
+          "quantity": {
+            "value": 0.05,
+            "uom": "两"
+          }
+        }
+      ]
     },
     {
       "type": "next",
       "value": "又 少腹瘕聚攻逆，身热，或噫，或浊气下泄，则诸恙悉舒，恼怒病发，厥阴肝木郁遏不疏，显露一斑。"
     },
     {
-      "type": "text",
-      "value": "川楝子（一钱） 小茴（五分） 生牡蛎（三钱） 桂枝木（五分） 生白芍（一钱） 青皮（一钱）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "川楝子",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "小茴",
+          "quantity": {
+            "value": 0.05,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "生牡蛎",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "桂枝木",
+          "quantity": {
+            "value": 0.05,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "生白芍",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "青皮",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        }
+      ]
     }
   ],
   [
@@ -359,33 +555,8 @@
       "value": "王（四一） 瘕聚季胁，渐加烦倦减食，入夏土旺气泄，用泄少阳，补太阴方。（胆克脾暑伤气）"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "人参"
-        },
-        {
-          "herb": "茯苓"
-        },
-        {
-          "herb": "炙草"
-        },
-        {
-          "herb": "当归"
-        },
-        {
-          "herb": "丹皮"
-        },
-        {
-          "herb": "生地"
-        },
-        {
-          "herb": "鳖甲"
-        },
-        {
-          "herb": "泽兰"
-        }
-      ]
+      "type": "text",
+      "value": "人参 茯苓 炙草 当归 丹皮 生地 鳖甲 泽兰膏"
     }
   ],
   [
@@ -394,16 +565,51 @@
       "value": "周 痛久在络，凝聚成形，仍属经病，议用河间法。（痰气凝结）"
     },
     {
-      "type": "text",
-      "value": "川楝子 瓜蒌皮 香附汁 延胡 生牡蛎"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "川楝子"
+        },
+        {
+          "herb": "瓜蒌皮"
+        },
+        {
+          "herb": "香附汁"
+        },
+        {
+          "herb": "延胡"
+        },
+        {
+          "herb": "生牡蛎"
+        }
+      ]
     },
     {
       "type": "next",
       "value": "又 理气豁痰，痛止思食，仍以前法参用。"
     },
     {
-      "type": "text",
-      "value": "半夏 瓜蒌皮 香附汁 生牡蛎 橘红 香豉"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "瓜蒌皮"
+        },
+        {
+          "herb": "香附汁"
+        },
+        {
+          "herb": "生牡蛎"
+        },
+        {
+          "herb": "橘红"
+        },
+        {
+          "herb": "香豉"
+        }
+      ]
     }
   ],
   [
@@ -432,8 +638,30 @@
       "value": "王（二一） 初病寒热，半年经水不来，少腹已有瘕形，食又减半，当此年犯干血劳虑。（寒热食减干血劳）"
     },
     {
-      "type": "text",
-      "value": "焦术 茯苓 广皮 香附 当归 南山楂 白芍"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "焦术"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "广皮"
+        },
+        {
+          "herb": "香附"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "南山楂"
+        },
+        {
+          "herb": "白芍"
+        }
+      ]
     }
   ],
   [

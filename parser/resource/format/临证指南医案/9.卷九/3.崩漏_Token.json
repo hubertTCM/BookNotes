@@ -402,12 +402,8 @@
       "value": "程 暴冷阳微后崩。（阳虚）"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "附子"
-        }
-      ]
+      "type": "text",
+      "value": "附子理中汤。"
     }
   ],
   [

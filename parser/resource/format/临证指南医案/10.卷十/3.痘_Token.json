@@ -143,12 +143,8 @@
       "value": "人参 当归 鹿茸 黄芪 龙眼肉 炙草"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "木香"
-        }
-      ]
+      "type": "text",
+      "value": "木香散"
     },
     {
       "type": "text",
@@ -171,12 +167,8 @@
       "value": "肉果 木香 砂仁 枯矾 诃子 龙骨 赤石脂"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "白术"
-        }
-      ]
+      "type": "text",
+      "value": "白术散"
     },
     {
       "type": "text",
@@ -241,6 +233,9 @@
         },
         {
           "herb": "山药"
+        },
+        {
+          "herb": "建莲"
         }
       ]
     },

@@ -141,12 +141,8 @@
       ]
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "通草"
-        }
-      ]
+      "type": "text",
+      "value": "通草汤煎。"
     }
   ],
   [

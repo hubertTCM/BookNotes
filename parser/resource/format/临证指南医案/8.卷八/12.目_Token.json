@@ -41,30 +41,8 @@
       "value": "鲍（氏） 秋风化燥，上焦受邪，目赤珠痛。"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "连翘"
-        },
-        {
-          "herb": "薄荷"
-        },
-        {
-          "herb": "黄芩"
-        },
-        {
-          "herb": "山栀"
-        },
-        {
-          "herb": "夏枯草"
-        },
-        {
-          "herb": "青菊叶"
-        },
-        {
-          "herb": "苦丁茶"
-        }
-      ]
+      "type": "text",
+      "value": "连翘 薄荷 黄芩 山栀 夏枯草 青菊叶 苦丁茶 桑皮"
     }
   ],
   [
@@ -275,8 +253,79 @@
       "value": "某 眦胀目昏，心中嘈杂，当治肝肾。"
     },
     {
-      "type": "text",
-      "value": "熟地（六两） 枸杞子（三两） 桑椹子（二两） 沙苑（二两） 石决明（二两） 茯神（二两） 女贞子（一两半） 青盐（一两） 黄菊花（一两） 川斛（四两）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "熟地",
+          "quantity": {
+            "uom": "两",
+            "value": 6
+          }
+        },
+        {
+          "herb": "枸杞子",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          }
+        },
+        {
+          "herb": "桑椹子",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "沙苑",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "石决明",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "茯神",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "女贞子",
+          "quantity": {
+            "uom": "两",
+            "value": 1.5
+          }
+        },
+        {
+          "herb": "青盐",
+          "quantity": {
+            "uom": "两",
+            "value": 1
+          }
+        },
+        {
+          "herb": "黄菊花",
+          "quantity": {
+            "uom": "两",
+            "value": 1
+          }
+        },
+        {
+          "herb": "川斛",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        }
+      ]
     },
     {
       "type": "text",
@@ -299,36 +348,8 @@
       "value": "某（二五） 遗止，心嘈目泪，仍是阳气过动，当填阴和阳。"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "熟地"
-        },
-        {
-          "herb": "杞子"
-        },
-        {
-          "herb": "天冬"
-        },
-        {
-          "herb": "萸肉"
-        },
-        {
-          "herb": "五味"
-        },
-        {
-          "herb": "生地"
-        },
-        {
-          "herb": "茯苓"
-        },
-        {
-          "herb": "菊花"
-        },
-        {
-          "herb": "山药"
-        }
-      ]
+      "type": "text",
+      "value": "熟地 杞子 天冬 萸肉 五味 生地 茯苓 菊花 山药 蜜丸"
     }
   ],
   [

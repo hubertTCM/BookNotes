@@ -9,12 +9,8 @@
       "value": "川芎 当归 肉桂 生艾 小茴 茯苓 生香附 南山楂"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "益母"
-        }
-      ]
+      "type": "text",
+      "value": "益母膏丸。"
     }
   ],
   [
@@ -109,30 +105,8 @@
       "value": "钱 脉涩，脘闷减食，经水来迟，腹痛坠。"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "柴胡"
-        },
-        {
-          "herb": "炒白芍"
-        },
-        {
-          "herb": "黄芩"
-        },
-        {
-          "herb": "郁金"
-        },
-        {
-          "herb": "香附"
-        },
-        {
-          "herb": "茯苓"
-        },
-        {
-          "herb": "苏梗"
-        }
-      ]
+      "type": "text",
+      "value": "柴胡 炒白芍 黄芩 郁金 香附 茯苓 苏梗 神曲"
     },
     {
       "type": "next",
@@ -205,12 +179,8 @@
       "value": "人参 茯苓 艾叶 制香附 淡苁蓉 淡骨脂 肉桂 当归 鹿角霜 小茴香 紫石英"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "益母"
-        }
-      ]
+      "type": "text",
+      "value": "益母膏丸。"
     }
   ],
   [
@@ -223,12 +193,8 @@
       "value": "半夏 广皮 茯苓 厚朴 茅术 淡吴萸 小香附 山楂肉"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "姜汁"
-        }
-      ]
+      "type": "text",
+      "value": "姜汁法丸。"
     },
     {
       "type": "next",
@@ -249,12 +215,8 @@
       "value": "人参 河车胶 熟地（砂仁制） 归身 白芍 川芎 香附 茯神 肉桂 艾炭 小茴 紫石英"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "益母"
-        }
-      ]
+      "type": "text",
+      "value": "益母膏丸。"
     }
   ],
   [
@@ -369,12 +331,8 @@
       "value": "南山楂 生香附 延胡 当归 青皮 三棱 蓬术 牛膝 川楝子 泽兰 肉桂 炒小茴"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "葱白"
-        }
-      ]
+      "type": "text",
+      "value": "葱白汁丸。"
     }
   ],
   [
@@ -445,15 +403,7 @@
     },
     {
       "type": "next",
-      "value": "又"
-    },
-    {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "柏子仁"
-        }
-      ]
+      "value": "又 柏子仁丸。"
     }
   ],
   [
@@ -498,12 +448,8 @@
       "value": "鲍鱼 生地 淡苁蓉 天冬 当归 柏子仁 炒山楂 牛膝 茯苓"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "红枣"
-        }
-      ]
+      "type": "text",
+      "value": "红枣蕲艾汤法丸。"
     }
   ],
   [
@@ -658,16 +604,37 @@
       "value": "王（十九） 服阿魏丸，高突已平，痛未全止，经闭已有十余月，腹微膨，全属气血凝滞，若不经通，病何以去。（气滞血涩）"
     },
     {
-      "type": "text",
-      "value": "川芎 当归 延胡 桃仁 楂肉 香附 青皮 牛膝"
-    },
-    {
       "type": "prescriptionItems",
       "value": [
         {
-          "herb": "益母"
+          "herb": "川芎"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "延胡"
+        },
+        {
+          "herb": "桃仁"
+        },
+        {
+          "herb": "楂肉"
+        },
+        {
+          "herb": "香附"
+        },
+        {
+          "herb": "青皮"
+        },
+        {
+          "herb": "牛膝"
         }
       ]
+    },
+    {
+      "type": "text",
+      "value": "益母膏丸。"
     }
   ],
   [
@@ -855,7 +822,7 @@
         },
         {
           "herb": "茯苓",
-          "comment": "沉香汁 琥珀末调入"
+          "comment": "调入"
         }
       ]
     }
@@ -942,8 +909,51 @@
       "value": "某 脉弱无力，发热汗出，久咳形冷，减食过半，显然内损成劳，大忌寒凉清热治嗽，姑与建中法，冀得加谷经行，犹可调摄。"
     },
     {
-      "type": "text",
-      "value": "桂枝（五分） 生白芍（一钱半） 炙草（五分） 枣肉（三钱） 饴糖（二钱） 归身（一钱半）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂枝",
+          "quantity": {
+            "value": 0.05,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "生白芍",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        },
+        {
+          "herb": "炙草",
+          "quantity": {
+            "value": 0.05,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "枣",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "饴糖",
+          "quantity": {
+            "value": 0.2,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "归身",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        }
+      ]
     }
   ],
   [

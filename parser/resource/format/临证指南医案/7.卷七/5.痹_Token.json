@@ -204,8 +204,30 @@
       "value": "又 行痹，腹中痛便难，不知饥。"
     },
     {
-      "type": "text",
-      "value": "瓜蒌皮 紫菀 杏仁 郁金 半夏 山栀 桑枝"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "瓜蒌皮"
+        },
+        {
+          "herb": "紫菀"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "郁金"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "山栀"
+        },
+        {
+          "herb": "桑枝"
+        }
+      ]
     }
   ],
   [
@@ -271,27 +293,8 @@
       "value": "又 气中伏邪得宣，右肢痹痛已缓，血分留热壅着，左肢痛势未衰，足微肿，体质阴虚，仍以宣通轻剂。"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "羚羊角"
-        },
-        {
-          "herb": "桂枝木"
-        },
-        {
-          "herb": "片姜黄"
-        },
-        {
-          "herb": "花粉"
-        },
-        {
-          "herb": "木防己"
-        },
-        {
-          "herb": "杏仁"
-        }
-      ]
+      "type": "text",
+      "value": "羚羊角 桂枝木 片姜黄 花粉 木防己 杏仁 桑皮"
     }
   ],
   [
@@ -573,24 +576,8 @@
       "value": "又 术固卫升阳，左肩胛痛未已，当治营中，以辛甘化风法。"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "黄芪"
-        },
-        {
-          "herb": "当归"
-        },
-        {
-          "herb": "炙草"
-        },
-        {
-          "herb": "防风"
-        },
-        {
-          "herb": "桂枝"
-        }
-      ]
+      "type": "text",
+      "value": "黄芪 当归 炙草 防风 桂枝 肉桂"
     }
   ],
   [
@@ -639,8 +626,27 @@
       "value": "又 痛右缓，左痛，湿热未尽，液虚风动也。"
     },
     {
-      "type": "text",
-      "value": "生地 阿胶 龟版 豆皮 茯苓 通草"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "阿胶"
+        },
+        {
+          "herb": "龟版"
+        },
+        {
+          "herb": "豆皮"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "通草"
+        }
+      ]
     }
   ],
   [
@@ -772,15 +778,8 @@
       "value": "人参 茯苓 半夏 广皮 生于术 枳实 川连 泽泻"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "竹沥"
-        },
-        {
-          "herb": "姜汁"
-        }
-      ]
+      "type": "text",
+      "value": "竹沥姜汁法丸。"
     },
     {
       "type": "text",
@@ -850,12 +849,8 @@
       "value": "桃仁 穿山甲 干地龙 抚芎 归须 丹皮 红花 沙苑"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "香附汁"
-        }
-      ]
+      "type": "text",
+      "value": "香附汁丸，夜服。"
     }
   ],
   [
@@ -1130,15 +1125,8 @@
       ]
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "桑枝"
-        },
-        {
-          "herb": "桂枝"
-        }
-      ]
+      "type": "text",
+      "value": "桑枝桂枝汤泛丸。"
     }
   ],
   [

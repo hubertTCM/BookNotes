@@ -15,27 +15,8 @@
       "value": "陈 气热攻冲，扰脘入胁。"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "川连"
-        },
-        {
-          "herb": "牡蛎"
-        },
-        {
-          "herb": "夏枯草"
-        },
-        {
-          "herb": "炒半夏"
-        },
-        {
-          "herb": "香附"
-        },
-        {
-          "herb": "炒白芥"
-        }
-      ]
+      "type": "text",
+      "value": "川连 牡蛎 夏枯草 炒半夏 香附 炒白芥子"
     }
   ],
   [
@@ -106,15 +87,8 @@
       "value": "沈（三十） 左胁下痛，食入则安。（营络虚寒）"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "当归"
-        },
-        {
-          "herb": "桂枝"
-        }
-      ]
+      "type": "text",
+      "value": "当归桂枝汤加肉桂。"
     }
   ],
   [
@@ -173,24 +147,8 @@
       "value": "又 痛止，便难，液耗风动为秘，议用东垣通幽法。"
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "当归"
-        },
-        {
-          "herb": "桃仁"
-        },
-        {
-          "herb": "柏子霜"
-        },
-        {
-          "herb": "火麻仁"
-        },
-        {
-          "herb": "郁李仁"
-        }
-      ]
+      "type": "text",
+      "value": "当归 桃仁 柏子霜 火麻仁 郁李仁 松子肉 红花"
     }
   ],
   [
@@ -412,12 +370,8 @@
       ]
     },
     {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "桂圆肉"
-        }
-      ]
+      "type": "text",
+      "value": "桂圆肉煮厚汁，捣丸。"
     }
   ],
   [

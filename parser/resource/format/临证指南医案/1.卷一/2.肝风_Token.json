@@ -1139,25 +1139,7 @@
     },
     {
       "type": "next",
-      "value": "又"
-    },
-    {
-      "type": "prescriptionItems",
-      "value": [
-        {
-          "herb": "鲜生地"
-        },
-        {
-          "herb": "麦冬",
-          "comment": "朱砂拌"
-        },
-        {
-          "herb": "竹叶心"
-        },
-        {
-          "herb": "知母"
-        }
-      ]
+      "value": "又 鲜生地 麦冬（朱砂拌） 竹叶心 知母 冲冷参汤"
     }
   ],
   [
