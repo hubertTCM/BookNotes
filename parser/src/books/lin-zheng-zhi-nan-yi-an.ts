@@ -1,4 +1,4 @@
-import fs, { readFile } from "fs";
+import fs from "fs";
 import os from "os";
 import path from "path";
 import readline from "readline";
@@ -102,7 +102,7 @@ const groupYiAn = async () => {
 };
 
 type TextToken = {
-  type: "text";
+  type: "text" | "next" | "prescriptionPrefix";
   value: string;
 };
 type PrescriptionItemToken = {
@@ -111,6 +111,7 @@ type PrescriptionItemToken = {
 };
 type Token = TextToken | PrescriptionItemToken;
 
+const prescriptionPrefix: string[] = ["（丸方）"];
 const createTokens = async (filePath: string): Promise<Array<Token[]>> => {
   const readInterface = readline.createInterface({
     input: fs.createReadStream(filePath),
@@ -128,12 +129,44 @@ const createTokens = async (filePath: string): Promise<Array<Token[]>> => {
       tokens = [];
       continue;
     }
+
+    if (line.startsWith("又")) {
+      // 又 生地 阿胶 牡蛎 川斛 知母
+      const secondChar = line.charAt(1);
+      if (secondChar === " " || secondChar === "\u3000") {
+        const prescriptionItems = tryParsePrescription(line.substring(2), convertUom2);
+        if (prescriptionItems !== null) {
+          tokens.push({ type: "next", value: "又" });
+          tokens.push({ type: "prescriptionItems", value: prescriptionItems });
+          continue;
+        }
+        tokens.push({ type: "next", value: line });
+        continue;
+      }
+    }
+    let isPrescriptionWithPrefix = false;
+    for (const prefix of prescriptionPrefix) {
+      if (line.startsWith(prefix)) {
+        const prescriptionItems = tryParsePrescription(line.substring(prefix.length).trim(), convertUom2);
+        if (prescriptionItems === null) {
+          continue;
+        }
+        tokens.push({ type: "prescriptionPrefix", value: prefix });
+        tokens.push({ type: "prescriptionItems", value: prescriptionItems });
+        isPrescriptionWithPrefix = true;
+        break;
+      }
+    }
+    if (isPrescriptionWithPrefix) {
+      continue;
+    }
     const prescriptionItems = tryParsePrescription(line, convertUom2);
     if (prescriptionItems !== null) {
       tokens.push({ type: "prescriptionItems", value: prescriptionItems });
       continue;
     }
     tokens.push({ type: "text", value: line });
+    console.log("*** " + line);
   }
 
   if (tokens.length) {
