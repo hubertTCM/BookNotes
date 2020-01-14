@@ -29,8 +29,52 @@
       "value": "吴 身重不能转移，尻髀板着，必得抚摩少安，大便不通，小溲短少，不饥少饮，此时序湿邪，蒸郁化热，阻于气分，经腑气隧皆阻，病名湿痹。"
     },
     {
-      "type": "text",
-      "value": "木防己（一钱） 杏仁（二钱） 川桂枝（一钱） 石膏（三钱研） 桑叶（一钱） 丹皮（一钱）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "木防己",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "杏仁",
+          "quantity": {
+            "value": 0.2,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "川桂枝",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "石膏",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          },
+          "comment": "研"
+        },
+        {
+          "herb": "桑叶",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "丹皮",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        }
+      ]
     },
     {
       "type": "next",

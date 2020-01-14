@@ -2071,8 +2071,12 @@
       ]
     },
     {
-      "type": "text",
-      "value": "益元散"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "益元散"
+        }
+      ]
     },
     {
       "type": "text",
@@ -2331,8 +2335,21 @@
       "value": "泻白散"
     },
     {
-      "type": "text",
-      "value": "桑皮 地骨皮 甘草 粳米"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桑皮"
+        },
+        {
+          "herb": "地骨皮"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "粳米"
+        }
+      ]
     },
     {
       "type": "text",
@@ -2632,8 +2649,24 @@
       "value": "玉女煎"
     },
     {
-      "type": "text",
-      "value": "生石膏 熟地 麦冬 知母 牛膝"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生石膏"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "知母"
+        },
+        {
+          "herb": "牛膝"
+        }
+      ]
     },
     {
       "type": "text",
@@ -3642,8 +3675,26 @@
       "value": "震灵丹"
     },
     {
-      "type": "text",
-      "value": "禹粮石 赤石脂 紫石英 代赭石（各四两）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "禹粮石"
+        },
+        {
+          "herb": "赤石脂"
+        },
+        {
+          "herb": "紫石英"
+        },
+        {
+          "herb": "代赭石",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          },
+          "comment": "各"
+        }
+      ]
     },
     {
       "type": "text",
@@ -3764,8 +3815,12 @@
       "value": "甘草汤"
     },
     {
-      "type": "text",
-      "value": "生甘草"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生甘草"
+        }
+      ]
     },
     {
       "type": "text",
@@ -4880,8 +4935,33 @@
       "value": "二阴煎"
     },
     {
-      "type": "text",
-      "value": "生地 麦冬 枣仁 甘草 玄参 茯苓 黄芩 木通"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生地"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "枣仁"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "玄参"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "木通"
+        }
+      ]
     },
     {
       "type": "text",

@@ -35,8 +35,65 @@
       "value": "王（六三） 邪郁，偏头痛。"
     },
     {
-      "type": "text",
-      "value": "鲜荷叶边（三钱） 苦丁茶（一钱半） 连翘（一钱半） 黑山栀（一钱） 蔓荆子（一钱） 杏仁（二钱） 木通（八分） 白芷（一分）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "鲜荷叶",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "苦丁茶",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        },
+        {
+          "herb": "连翘",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        },
+        {
+          "herb": "黑山栀",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "蔓荆子",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "杏仁",
+          "quantity": {
+            "value": 0.2,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "木通",
+          "quantity": {
+            "value": 0.08,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "白芷",
+          "quantity": {
+            "value": 0.01,
+            "uom": "两"
+          }
+        }
+      ]
     }
   ],
   [
@@ -45,8 +102,33 @@
       "value": "郁（五十） 风郁头疼。"
     },
     {
-      "type": "text",
-      "value": "鲜荷叶 苦丁茶 淡黄芩 黑山栀 连翘 蔓荆子 木通 白芷"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "鲜荷叶"
+        },
+        {
+          "herb": "苦丁茶"
+        },
+        {
+          "herb": "淡黄芩"
+        },
+        {
+          "herb": "黑山栀"
+        },
+        {
+          "herb": "连翘"
+        },
+        {
+          "herb": "蔓荆子"
+        },
+        {
+          "herb": "木通"
+        },
+        {
+          "herb": "白芷"
+        }
+      ]
     }
   ],
   [
@@ -104,8 +186,33 @@
       "value": "某 暑风湿热，混于上窍，津液无以营运，凝滞，遂偏头痛，舌强干涸，治宜清散。"
     },
     {
-      "type": "text",
-      "value": "连翘 石膏 生甘草 滑石 蔓荆子 羚羊角 荷梗 桑叶"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "连翘"
+        },
+        {
+          "herb": "石膏"
+        },
+        {
+          "herb": "生甘草"
+        },
+        {
+          "herb": "滑石"
+        },
+        {
+          "herb": "蔓荆子"
+        },
+        {
+          "herb": "羚羊角"
+        },
+        {
+          "herb": "荷梗"
+        },
+        {
+          "herb": "桑叶"
+        }
+      ]
     }
   ],
   [

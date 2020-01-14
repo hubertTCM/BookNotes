@@ -25,8 +25,30 @@
       "value": "曹（二二） 清邪在上，必用轻清气药，如苦寒治中下，上结更闭。"
     },
     {
-      "type": "text",
-      "value": "兜铃 牛蒡子 桔梗 生甘草 杏仁 射干 麻黄"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "兜铃"
+        },
+        {
+          "herb": "牛蒡子"
+        },
+        {
+          "herb": "桔梗"
+        },
+        {
+          "herb": "生甘草"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "射干"
+        },
+        {
+          "herb": "麻黄"
+        }
+      ]
     }
   ],
   [
@@ -35,8 +57,30 @@
       "value": "某 经热津消，咳痰痹痛。"
     },
     {
-      "type": "text",
-      "value": "桂枝 桑枝 木防己 生石膏 杏仁 苡仁 花粉"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "桂枝"
+        },
+        {
+          "herb": "桑枝"
+        },
+        {
+          "herb": "木防己"
+        },
+        {
+          "herb": "生石膏"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "苡仁"
+        },
+        {
+          "herb": "花粉"
+        }
+      ]
     },
     {
       "type": "next",
@@ -124,8 +168,51 @@
       "value": "某（二七） 温邪郁肺气痹，咳嗽，寒热头痛，开上焦为主。"
     },
     {
-      "type": "text",
-      "value": "活水芦根（一两） 大杏仁（三钱） 连翘（一钱半） 通草（一钱半） 桑皮（一钱） 桔梗（一钱）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "活水芦根",
+          "quantity": {
+            "uom": "两",
+            "value": 1
+          }
+        },
+        {
+          "herb": "大杏仁",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "连翘",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        },
+        {
+          "herb": "通草",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        },
+        {
+          "herb": "桑皮",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "桔梗",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        }
+      ]
     }
   ],
   [

@@ -5,8 +5,27 @@
       "value": "某（二二） 客邪外侵，头胀，当用辛散。（寒邪客肺）"
     },
     {
-      "type": "text",
-      "value": "苏梗 杏仁 桔梗 桑皮 橘红 连翘"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "苏梗"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "桔梗"
+        },
+        {
+          "herb": "桑皮"
+        },
+        {
+          "herb": "橘红"
+        },
+        {
+          "herb": "连翘"
+        }
+      ]
     }
   ],
   [
@@ -15,8 +34,27 @@
       "value": "某 寒热，头痛脘闷。"
     },
     {
-      "type": "text",
-      "value": "淡豆豉 嫩苏梗 杏仁 桔梗 厚朴 枳壳"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "淡豆豉"
+        },
+        {
+          "herb": "嫩苏梗"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "桔梗"
+        },
+        {
+          "herb": "厚朴"
+        },
+        {
+          "herb": "枳壳"
+        }
+      ]
     }
   ],
   [
@@ -51,8 +89,51 @@
       "value": "某（二八） 劳伤阳气，形寒身热，头疼脘闷，身痛。（劳倦阳虚感寒）"
     },
     {
-      "type": "text",
-      "value": "杏仁（三钱） 川桂枝（八分） 生姜（一钱） 厚朴（一钱） 广皮（一钱） 茯苓皮（三钱）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "杏仁",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "川桂枝",
+          "quantity": {
+            "value": 0.08,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "生姜",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "厚朴",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "广皮",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "茯苓",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          }
+        }
+      ]
     }
   ],
   [
