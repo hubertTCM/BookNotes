@@ -119,6 +119,7 @@ const createTokens = async (filePath: string): Promise<Array<Token[]>> => {
     terminal: false
   });
 
+  const linesWithoutPrescription = [];
   const result: Array<Token[]> = [];
   let tokens: Token[] = [];
   for await (const line of readInterface) {
@@ -166,12 +167,21 @@ const createTokens = async (filePath: string): Promise<Array<Token[]>> => {
       continue;
     }
     tokens.push({ type: "text", value: line });
-    console.log("*** " + line);
+    linesWithoutPrescription.push(line);
   }
 
   if (tokens.length) {
     result.push(tokens);
   }
+
+  const extension = path.extname(filePath);
+  const fileName = path.basename(filePath, extension);
+  const directoryPath = path.dirname(filePath);
+  fs.writeFileSync(path.join(directoryPath, `${fileName}_Token.json`), JSON.stringify(result, null, 2));
+  fs.writeFileSync(
+    path.join(directoryPath, `${fileName}_NoPrescription.json`),
+    linesWithoutPrescription.join(`${os.EOL}${os.EOL}`)
+  );
   return result;
 };
 
