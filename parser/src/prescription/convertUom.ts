@@ -73,8 +73,10 @@ export const convertUom2 = (quantity: Quantity): Quantity => {
       return { value: quantity.value * 16, uom: "两" };
     case "两":
       return { ...quantity };
-    case "分":
+    case "钱":
       return { value: quantity.value / 10.0, uom: "两" };
+    case "分":
+      return { value: quantity.value / 100.0, uom: "两" };
     default:
       return { ...quantity };
   }

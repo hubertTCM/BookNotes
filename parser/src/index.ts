@@ -13,7 +13,7 @@ const majorVersion = parseInt(process.versions.node.split(".")[0], 10);
     console.log(chalk.red.bold("Plase install node 8 or later"));
     process.exit(1);
   }
-  //exportHerbAlias();
+  exportHerbAlias();
   //await exportShl();
   await exportLinZhengZhiNan();
   console.log("done");
