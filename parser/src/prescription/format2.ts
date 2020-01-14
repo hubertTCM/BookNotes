@@ -22,46 +22,53 @@ export const parseTokens = (text: string) => {
 
   let currentTokenValue = "";
   let currentTokenType: Token["type"] | undefined = undefined;
+  const resetCurrentToken = () => {
+    currentTokenType = undefined;
+    currentTokenValue = "";
+  };
   const endNumber = () => {
     if (currentTokenType == "number") {
       tokens.push({ type: "number", value: currentTokenValue });
-      currentTokenValue = "";
-      currentTokenType = undefined;
+      resetCurrentToken();
     }
   };
   const endData = () => {
     if (currentTokenType === "data") {
       tokens.push({ type: "data", value: currentTokenValue });
-      currentTokenValue = "";
-      currentTokenType = undefined;
+      resetCurrentToken();
     }
   };
 
   let i = 0;
+  let isBracketsStarted = false;
   while (i < text.length) {
     const char = text.charAt(i);
     if (char === "（") {
       tokens.push({ type: "bracketsStart", value: char });
-      currentTokenType = undefined;
+      resetCurrentToken();
       ++i;
+      isBracketsStarted = true;
       continue;
     }
     if (char === "）") {
       endNumber();
       endData();
       tokens.push({ type: "bracketsEnd", value: char });
-      currentTokenType = undefined;
+      resetCurrentToken();
       ++i;
+      isBracketsStarted = false;
       continue;
     }
-    const herbData = findHerb(text, i);
-    if (herbData !== null) {
-      endData();
-      endNumber();
-      tokens.push({ type: "herb", value: herbData.herb });
-      i += herbData.length;
-      currentTokenType = undefined;
-      continue;
+    if (!isBracketsStarted) {
+      const herbData = findHerb(text, i);
+      if (herbData !== null) {
+        endData();
+        endNumber();
+        tokens.push({ type: "herb", value: herbData.herb });
+        i += herbData.length;
+        resetCurrentToken();
+        continue;
+      }
     }
 
     const uom = findUom(text, i);
@@ -69,7 +76,7 @@ export const parseTokens = (text: string) => {
       endData();
       endNumber();
       tokens.push({ type: "uom", value: uom });
-      currentTokenType = undefined;
+      resetCurrentToken();
       i += uom.length;
       continue;
     }
@@ -104,6 +111,9 @@ export const parseTokens = (text: string) => {
     currentTokenValue += char;
     ++i;
     continue;
+  }
+  if (currentTokenType && currentTokenValue) {
+    tokens.push({ type: currentTokenType, value: currentTokenValue });
   }
   return tokens;
 };

@@ -68,7 +68,6 @@ const processDirectory = async <T>(directory: string, processFile: (x: string) =
       if (fileName === "debug" || extension === ".json") {
         return false;
       }
-      console.log(`${x.name} -- ${fileName} --${extension}`);
       return true;
     })
     .map(f => path.join(directory, f.name));
@@ -210,10 +209,10 @@ export const exportImpl = async () => {
   console.log("临证指南医案: start");
   await splitToFiles();
   await groupYiAn();
-  const filePath = path.join("./resource", "format", "临证指南医案", "1.卷一", "1.中风.txt");
-  const result = await createTokens(filePath);
-  const toFilePath = path.join("./resource", "format", "临证指南医案", "debug.txt");
-  fs.writeFileSync(toFilePath, JSON.stringify(result, null, 2));
-  await processDirectory(formattedFolder, createTokens);
+  //   const filePath = path.join("./resource", "format", "临证指南医案", "1.卷一", "1.中风.txt");
+  //   const result = await createTokens(filePath);
+  //   const toFilePath = path.join("./resource", "format", "临证指南医案", "debug.txt");
+  //   fs.writeFileSync(toFilePath, JSON.stringify(result, null, 2));
+  await processDirectory(path.join(formattedFolder, "1.卷一"), createTokens);
   console.log("临证指南医案: done");
 };

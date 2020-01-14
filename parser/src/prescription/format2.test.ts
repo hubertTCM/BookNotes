@@ -7,7 +7,7 @@ type TokenTestData = {
 };
 type PrescriptionItemsTestData = {
   source: string;
-  expected: PrescriptionItem[];
+  expected: PrescriptionItem[] | null;
 };
 
 describe("format1", () => {
@@ -83,6 +83,27 @@ describe("format1", () => {
           { type: "uom", value: "斤" },
           { type: "bracketsEnd", value: "）" }
         ]
+      },
+      {
+        source: "人参（一钱秋石一分化水拌烘干同煎） ",
+        expectedTokens: [
+          { type: "herb", value: "人参" },
+          { type: "bracketsStart", value: "（" },
+          { type: "number", value: "一" },
+          { type: "uom", value: "钱" },
+          { type: "data", value: "秋石" },
+          { type: "number", value: "一" },
+          { type: "uom", value: "分" },
+          { type: "data", value: "化水拌烘干同煎" },
+          { type: "bracketsEnd", value: "）" }
+        ]
+      },
+      {
+        source: "黄菊花膏丸",
+        expectedTokens: [
+          { type: "herb", value: "黄菊花" },
+          { type: "data", value: "膏丸" }
+        ]
       }
     ];
     testDataSet.forEach(({ source, expectedTokens }) => {
@@ -116,6 +137,14 @@ describe("format1", () => {
       {
         source: "牛膝 三角胡麻",
         expected: [{ herb: "牛膝" }, { herb: "三角胡麻" }]
+      },
+      {
+        source: "人参（一钱秋石一分化水拌烘干同煎） ",
+        expected: [{ herb: "人参", quantity: { uom: "两", value: 1 }, comment: "秋石一分化水拌烘干同煎" }]
+      },
+      {
+        source: "黄菊花膏丸",
+        expected: null
       }
     ];
 
