@@ -98,8 +98,28 @@
       "value": "又 瘕痛已止，当和营理虚。"
     },
     {
-      "type": "text",
-      "value": "归身 紫石英 白芍（酒炒） 小茴 淡苁蓉 肉桂"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "归身"
+        },
+        {
+          "herb": "紫石英"
+        },
+        {
+          "herb": "白芍",
+          "comment": "酒炒"
+        },
+        {
+          "herb": "小茴"
+        },
+        {
+          "herb": "淡苁蓉"
+        },
+        {
+          "herb": "肉桂"
+        }
+      ]
     },
     {
       "type": "text",

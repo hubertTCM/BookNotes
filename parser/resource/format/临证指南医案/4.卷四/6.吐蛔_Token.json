@@ -212,7 +212,36 @@
     },
     {
       "type": "next",
-      "value": "又 人参 茯苓 炒当归 炒白芍 桂心 炙草 煨姜 南枣"
+      "value": "又"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "炒当归"
+        },
+        {
+          "herb": "炒白芍"
+        },
+        {
+          "herb": "桂心"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "煨姜"
+        },
+        {
+          "herb": "南枣"
+        }
+      ]
     },
     {
       "type": "next",

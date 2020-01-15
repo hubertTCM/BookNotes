@@ -513,8 +513,27 @@
       "value": "张 脉涩，脘痞不饥，口干有痰，当清理上焦。"
     },
     {
-      "type": "text",
-      "value": "枇杷叶 杏仁 山栀 香豆豉 郁金 瓜蒌皮"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "枇杷叶"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "山栀"
+        },
+        {
+          "herb": "香豆豉"
+        },
+        {
+          "herb": "郁金"
+        },
+        {
+          "herb": "瓜蒌皮"
+        }
+      ]
     },
     {
       "type": "text",

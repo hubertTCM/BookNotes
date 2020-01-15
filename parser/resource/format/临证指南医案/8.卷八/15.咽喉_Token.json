@@ -280,8 +280,37 @@
       "value": "又 阴涸于下，阳炽于上，为少阴喉痛，乃损怯之末传矣，用猪肤甘凉益坎，有情之属而效，今肉腠消烁殆尽，下焦易冷，髓空极矣，何暇以痰嗽为理，议滑涩之补味咸入肾可也。"
     },
     {
-      "type": "text",
-      "value": "牛骨髓（四两） 羊骨髓（四两） 猪骨髓（四两） 麋角胶（四两）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "牛骨髓",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "羊骨髓",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "猪骨髓",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "麋角胶",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        }
+      ]
     },
     {
       "type": "text",

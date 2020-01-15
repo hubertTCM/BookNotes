@@ -731,8 +731,25 @@
       "value": "杨（四十） 肝郁乘胃为胀，经年内结有形，用缓消一法。"
     },
     {
-      "type": "text",
-      "value": "生茅术 鸡肫皮 川连 生厚朴 淡姜渣 针砂（制）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生茅术"
+        },
+        {
+          "herb": "鸡肫皮"
+        },
+        {
+          "herb": "川连"
+        },
+        {
+          "herb": "生厚朴"
+        },
+        {
+          "herb": "淡姜",
+          "comment": "制"
+        }
+      ]
     },
     {
       "type": "text",

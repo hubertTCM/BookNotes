@@ -113,8 +113,31 @@
       "value": "张 初受寒湿，久则化热，深入阴分，必暮夜痛甚，医用和血驱风，焉能直入阴分，议东垣滋肾丸，搜其深藏伏邪。"
     },
     {
-      "type": "text",
-      "value": "肉桂（八钱忌见火） 黄柏（四两） 知母（四两）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "肉桂",
+          "quantity": {
+            "value": 0.8,
+            "uom": "两"
+          },
+          "comment": "忌见火"
+        },
+        {
+          "herb": "黄柏",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "知母",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        }
+      ]
     },
     {
       "type": "text",

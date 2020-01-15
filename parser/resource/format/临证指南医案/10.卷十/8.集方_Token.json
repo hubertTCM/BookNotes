@@ -1456,16 +1456,42 @@
       "value": "滋肾丸"
     },
     {
-      "type": "text",
-      "value": "黄柏 知母 肉桂"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "黄柏"
+        },
+        {
+          "herb": "知母"
+        },
+        {
+          "herb": "肉桂"
+        }
+      ]
     },
     {
       "type": "text",
       "value": "斑龙丸"
     },
     {
-      "type": "text",
-      "value": "鹿角胶 鹿角霜 熟地 菟丝子 柏子仁"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "鹿角胶"
+        },
+        {
+          "herb": "鹿角霜"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "菟丝子"
+        },
+        {
+          "herb": "柏子仁"
+        }
+      ]
     },
     {
       "type": "text",
@@ -2087,8 +2113,21 @@
       "value": "大顺散"
     },
     {
-      "type": "text",
-      "value": "干姜 肉桂 杏仁 甘草"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "干姜"
+        },
+        {
+          "herb": "肉桂"
+        },
+        {
+          "herb": "杏仁"
+        },
+        {
+          "herb": "甘草"
+        }
+      ]
     },
     {
       "type": "text",
@@ -2116,8 +2155,15 @@
       "value": "桂苓丸"
     },
     {
-      "type": "text",
-      "value": "肉桂 茯苓"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "肉桂"
+        },
+        {
+          "herb": "茯苓"
+        }
+      ]
     },
     {
       "type": "text",
@@ -2515,8 +2561,15 @@
       "value": "水陆二仙丹"
     },
     {
-      "type": "text",
-      "value": "金樱膏 芡实"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "金樱膏"
+        },
+        {
+          "herb": "芡实"
+        }
+      ]
     },
     {
       "type": "text",
@@ -2742,8 +2795,30 @@
       "value": "青囊斑龙丸"
     },
     {
-      "type": "text",
-      "value": "鹿角胶 鹿角霜 柏子仁 菟丝子 熟地 茯苓 补骨脂"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "鹿角胶"
+        },
+        {
+          "herb": "鹿角霜"
+        },
+        {
+          "herb": "柏子仁"
+        },
+        {
+          "herb": "菟丝子"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "补骨脂"
+        }
+      ]
     },
     {
       "type": "text",
@@ -4125,8 +4200,36 @@
       "value": "洁古芍药汤"
     },
     {
-      "type": "text",
-      "value": "芍药 归尾 黄芩 黄连 大黄 木香 槟榔 甘草 肉桂"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "芍药"
+        },
+        {
+          "herb": "归尾"
+        },
+        {
+          "herb": "黄芩"
+        },
+        {
+          "herb": "黄连"
+        },
+        {
+          "herb": "大黄"
+        },
+        {
+          "herb": "木香"
+        },
+        {
+          "herb": "槟榔"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "肉桂"
+        }
+      ]
     },
     {
       "type": "text",
@@ -4365,8 +4468,21 @@
       "value": "金刚丸"
     },
     {
-      "type": "text",
-      "value": "萆薢 杜仲 肉苁蓉 菟丝子"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "萆薢"
+        },
+        {
+          "herb": "杜仲"
+        },
+        {
+          "herb": "肉苁蓉"
+        },
+        {
+          "herb": "菟丝子"
+        }
+      ]
     },
     {
       "type": "text",
@@ -4543,8 +4659,33 @@
       "value": "苓术菟丝丸"
     },
     {
-      "type": "text",
-      "value": "茯苓 白术 菟丝子 莲肉 山药 炙草 五味子 杜仲"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "菟丝子"
+        },
+        {
+          "herb": "莲肉"
+        },
+        {
+          "herb": "山药"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "五味子"
+        },
+        {
+          "herb": "杜仲"
+        }
+      ]
     },
     {
       "type": "text",
