@@ -108,8 +108,52 @@
       "value": "徐（五六） 老劳咽疼。"
     },
     {
-      "type": "text",
-      "value": "生鸡子白（一枚） 糯稻根须（水洗五钱） 甜北沙参（一钱半） 炒麦冬（三钱） 川石斛（一钱半） 生甘草（三分）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "生鸡子白",
+          "quantity": {
+            "uom": "枚",
+            "value": 1
+          }
+        },
+        {
+          "herb": "糯稻根须",
+          "quantity": {
+            "value": 0.5,
+            "uom": "两"
+          },
+          "comment": "水洗"
+        },
+        {
+          "herb": "甜北沙参",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        },
+        {
+          "herb": "炒麦冬",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "川石斛",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        },
+        {
+          "herb": "生甘草",
+          "quantity": {
+            "value": 0.03,
+            "uom": "两"
+          }
+        }
+      ]
     }
   ],
   [

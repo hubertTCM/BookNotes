@@ -19,8 +19,66 @@
       "value": "何（四一） 右偏风头痛，从牙龈起。（木火上炎）"
     },
     {
-      "type": "text",
-      "value": "炒生地（三钱） 蔓荆子（炒一钱） 黄甘菊（一钱） 茯苓（一钱半） 炒杞子（二钱） 冬桑叶（一钱） 炒丹皮（一钱） 川斛（一钱半）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "炒生地",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "蔓荆子",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          },
+          "comment": "炒"
+        },
+        {
+          "herb": "黄甘菊",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "茯苓",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        },
+        {
+          "herb": "炒杞子",
+          "quantity": {
+            "value": 0.2,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "冬桑叶",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "炒丹皮",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "川斛",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        }
+      ]
     }
   ],
   [

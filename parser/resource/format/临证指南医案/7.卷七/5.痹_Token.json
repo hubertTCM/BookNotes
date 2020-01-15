@@ -448,8 +448,27 @@
       "value": "唐（妪） 右后胁痛连腰胯，发必恶寒逆冷，暖护良久乃温，此脉络中气血不行，遂至凝塞为痛，乃脉络之痹症，从阳维阴维论病。"
     },
     {
-      "type": "text",
-      "value": "鹿角霜 小茴香 当归 川桂枝 沙苑 茯苓"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "鹿角霜"
+        },
+        {
+          "herb": "小茴香"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "川桂枝"
+        },
+        {
+          "herb": "沙苑"
+        },
+        {
+          "herb": "茯苓"
+        }
+      ]
     }
   ],
   [
@@ -607,8 +626,76 @@
       ]
     },
     {
-      "type": "text",
-      "value": "（丸方） 人参（二两） 黄芪（四两） 茯神（二两） 杞子（二两） 鹿角霜（二两） 鹿茸（二两） 归身（三两） 炙草（一两） 菊花炭（二两）"
+      "type": "prescriptionPrefix",
+      "value": "（丸方）"
+    },
+    {
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "黄芪",
+          "quantity": {
+            "uom": "两",
+            "value": 4
+          }
+        },
+        {
+          "herb": "茯神",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "杞子",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "鹿角霜",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "鹿茸",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        },
+        {
+          "herb": "归身",
+          "quantity": {
+            "uom": "两",
+            "value": 3
+          }
+        },
+        {
+          "herb": "炙草",
+          "quantity": {
+            "uom": "两",
+            "value": 1
+          }
+        },
+        {
+          "herb": "菊花炭",
+          "quantity": {
+            "uom": "两",
+            "value": 2
+          }
+        }
+      ]
     },
     {
       "type": "text",
@@ -1045,8 +1132,27 @@
       "value": "又 症已渐安，脉络有流通意，仲景云，经热则痹，络热则痿，知风淫于内，治以甘寒，寒可去热，甘味不伤胃也。"
     },
     {
-      "type": "text",
-      "value": "甜杏仁 连翘 玄参 花粉 绿豆皮 梨汁"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "甜杏仁"
+        },
+        {
+          "herb": "连翘"
+        },
+        {
+          "herb": "玄参"
+        },
+        {
+          "herb": "花粉"
+        },
+        {
+          "herb": "绿豆皮"
+        },
+        {
+          "herb": "梨汁"
+        }
+      ]
     },
     {
       "type": "next",

@@ -2750,16 +2750,81 @@
       "value": "斑龙二至百补丸"
     },
     {
-      "type": "text",
-      "value": "鹿角 黄精 杞子 熟地 菟丝子 金樱子 天冬 麦冬 牛膝 楮实子 龙眼肉"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "鹿角"
+        },
+        {
+          "herb": "黄精"
+        },
+        {
+          "herb": "杞子"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "菟丝子"
+        },
+        {
+          "herb": "金樱子"
+        },
+        {
+          "herb": "天冬"
+        },
+        {
+          "herb": "麦冬"
+        },
+        {
+          "herb": "牛膝"
+        },
+        {
+          "herb": "楮实子"
+        },
+        {
+          "herb": "龙眼肉"
+        }
+      ]
     },
     {
       "type": "text",
       "value": "以上药同鹿角熬成膏，加入炼蜜，调入后药末，杵合为丸。"
     },
     {
-      "type": "text",
-      "value": "鹿角霜 人参 黄芪 芡实 茯苓 山药 知母 熟地 萸肉 五味子"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "鹿角霜"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "芡实"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "山药"
+        },
+        {
+          "herb": "知母"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "萸肉"
+        },
+        {
+          "herb": "五味子"
+        }
+      ]
     },
     {
       "type": "text",
@@ -4224,12 +4289,33 @@
       ]
     },
     {
-      "type": "text",
-      "value": "坎气汤（即坎气丹）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "坎气",
+          "comment": "即坎气丹"
+        }
+      ]
     },
     {
-      "type": "text",
-      "value": "坎气 人乳粉 熟地 人参 枸杞子"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "坎气"
+        },
+        {
+          "herb": "人乳粉"
+        },
+        {
+          "herb": "熟地"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "枸杞子"
+        }
+      ]
     },
     {
       "type": "text",
@@ -5048,8 +5134,36 @@
       "value": "寿脾煎"
     },
     {
-      "type": "text",
-      "value": "人参 白术 炙草 当归 山药 枣仁 炮姜 建莲肉 远志"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "白术"
+        },
+        {
+          "herb": "炙草"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "山药"
+        },
+        {
+          "herb": "枣仁"
+        },
+        {
+          "herb": "炮姜"
+        },
+        {
+          "herb": "建莲肉"
+        },
+        {
+          "herb": "远志"
+        }
+      ]
     },
     {
       "type": "text",

@@ -417,8 +417,27 @@
       "value": "某 积滞久着，胃腑不宣，不时脘痛，已经数载，阳伤奚疑。"
     },
     {
-      "type": "text",
-      "value": "炒半夏 淡干姜 荜茇 草果 广皮 茯苓"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "炒半夏"
+        },
+        {
+          "herb": "淡干姜"
+        },
+        {
+          "herb": "荜茇"
+        },
+        {
+          "herb": "草果"
+        },
+        {
+          "herb": "广皮"
+        },
+        {
+          "herb": "茯苓"
+        }
+      ]
     }
   ],
   [
@@ -641,8 +660,53 @@
       "value": "某（二八） 努力，饥饱失时，好饮冷酒，脉弦硬，中脘痛。"
     },
     {
-      "type": "text",
-      "value": "熟半夏（三钱） 云茯苓（三钱） 桃仁（去皮尖炒研二钱） 良姜（一钱） 延胡（一钱） 红豆蔻（一钱去壳）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "熟半夏",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "云茯苓",
+          "quantity": {
+            "value": 0.3,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "桃仁",
+          "quantity": {
+            "value": 0.2,
+            "uom": "两"
+          },
+          "comment": "去皮尖炒研"
+        },
+        {
+          "herb": "良姜",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "延胡",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "红豆蔻",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          },
+          "comment": "去壳"
+        }
+      ]
     },
     {
       "type": "text",
@@ -659,8 +723,27 @@
       "value": "朱 痛固虚寒，吐痰泄气稍缓，当通阳明，勿杂多歧。（阳虚痰滞）"
     },
     {
-      "type": "text",
-      "value": "人参 半夏 姜汁 淡附子 茯苓 淡干姜"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "姜汁"
+        },
+        {
+          "herb": "淡附子"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "淡干姜"
+        }
+      ]
     }
   ],
   [
@@ -703,8 +786,27 @@
       "value": "又 脉右弦不饥，纳谷不运，吞酸，浊饮尚阻，阳仍不宣。"
     },
     {
-      "type": "text",
-      "value": "半夏 良姜 桂枝木 茯苓 延胡 淡干姜"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "良姜"
+        },
+        {
+          "herb": "桂枝木"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "延胡"
+        },
+        {
+          "herb": "淡干姜"
+        }
+      ]
     }
   ],
   [

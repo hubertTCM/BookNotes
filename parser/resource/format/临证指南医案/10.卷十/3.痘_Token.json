@@ -139,8 +139,27 @@
       "value": "参归鹿茸汤"
     },
     {
-      "type": "text",
-      "value": "人参 当归 鹿茸 黄芪 龙眼肉 炙草"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "鹿茸"
+        },
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "龙眼肉"
+        },
+        {
+          "herb": "炙草"
+        }
+      ]
     },
     {
       "type": "text",
