@@ -29,5 +29,5 @@ export const findMissingHerbs = async () => {
       missingHerbs.push(herb);
     }
   }
-  fs.writeFileSync(toFilePath, missingHerbs.join(os.EOL));
+  fs.writeFileSync(toFilePath, missingHerbs.join(`${os.EOL}、`));
 };
