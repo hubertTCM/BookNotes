@@ -25,7 +25,9 @@ export const parseAliasFromSingleLine = (line: string): HerbAlias | null => {
 
   // remove white space
   const name = cleanValue.substring(0, nameIndex).replace(/\s/g, "");
-
+  if (!name || !name.length) {
+    return null;
+  }
   const aliasPrefix = "处方别名：";
   const aliasIndex = cleanValue.indexOf(aliasPrefix);
   if (aliasIndex <= 0) {
@@ -73,7 +75,9 @@ export const createHerbAlias = async (filePath: string): Promise<HerbAlias[]> =>
     if (herbSection) {
       const herbs = line.trim().split(" ");
       herbs.forEach(herb => {
-        result.push({ name: herb, alias: [] });
+        if (herb && herb.length) {
+          result.push({ name: herb, alias: [] });
+        }
       });
     }
     if (!herbSection) {

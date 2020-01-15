@@ -7,6 +7,7 @@ import { tryConvertToNumber } from "../prescription/utils";
 import { PrescriptionItem } from "../prescription/type";
 import { tryParsePrescription } from "../prescription/format2";
 import { convertUom2 } from "../prescription/convertUom";
+import herbInfo from "../herbs.json";
 
 const readdir = promisify(fs.readdir);
 const formattedFolder = path.join("./resource", "format", "临证指南医案");
@@ -139,6 +140,7 @@ const createTokens = async (filePath: string): Promise<Array<Token[]>> => {
     terminal: false
   });
 
+  const maybePrescription = [];
   const linesWithoutPrescription = [];
   const result: Array<Token[]> = [];
   let tokens: Token[] = [];
@@ -188,6 +190,12 @@ const createTokens = async (filePath: string): Promise<Array<Token[]>> => {
     }
     tokens.push({ type: "text", value: line });
     linesWithoutPrescription.push(line);
+    for (const herb of herbInfo.allHerbNames) {
+      if (line.includes(herb)) {
+        maybePrescription.push(`${herb} --- ${line}`);
+        break;
+      }
+    }
   }
 
   if (tokens.length) {
@@ -201,6 +209,10 @@ const createTokens = async (filePath: string): Promise<Array<Token[]>> => {
   fs.writeFileSync(
     path.join(directoryPath, `${fileName}_NoPrescription.json`),
     linesWithoutPrescription.join(`${os.EOL}${os.EOL}`)
+  );
+  fs.writeFileSync(
+    path.join(directoryPath, `${fileName}_MaybePrescription.json`),
+    maybePrescription.join(`${os.EOL}${os.EOL}`)
   );
   return result;
 };
