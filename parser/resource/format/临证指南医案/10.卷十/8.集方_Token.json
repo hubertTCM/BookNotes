@@ -1345,8 +1345,33 @@
       "value": "天真丸"
     },
     {
-      "type": "text",
-      "value": "精羊肉 肉苁蓉 山药 当归 天冬 黄芪 人参 白术"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "精羊肉"
+        },
+        {
+          "herb": "肉苁蓉"
+        },
+        {
+          "herb": "山药"
+        },
+        {
+          "herb": "当归"
+        },
+        {
+          "herb": "天冬"
+        },
+        {
+          "herb": "黄芪"
+        },
+        {
+          "herb": "人参"
+        },
+        {
+          "herb": "白术"
+        }
+      ]
     },
     {
       "type": "text",
@@ -1763,8 +1788,27 @@
       "value": "温胆汤"
     },
     {
-      "type": "text",
-      "value": "陈皮 半夏 茯苓 甘草 枳实 竹茹"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "陈皮"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "茯苓"
+        },
+        {
+          "herb": "甘草"
+        },
+        {
+          "herb": "枳实"
+        },
+        {
+          "herb": "竹茹"
+        }
+      ]
     },
     {
       "type": "text",
@@ -4910,8 +4954,13 @@
       ]
     },
     {
-      "type": "text",
-      "value": "琥珀黑龙丹（即黑龙丹）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "琥珀",
+          "comment": "即黑龙丹"
+        }
+      ]
     },
     {
       "type": "text",

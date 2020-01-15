@@ -75,8 +75,21 @@
       "value": "黄 痛则气乱发热，头不痛，不渴饮，脉不浮，非外感也，暂用金铃散一剂。"
     },
     {
-      "type": "text",
-      "value": "金铃子 炒延胡 炒桃仁 桂圆"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "金铃子"
+        },
+        {
+          "herb": "炒延胡"
+        },
+        {
+          "herb": "炒桃仁"
+        },
+        {
+          "herb": "桂圆"
+        }
+      ]
     },
     {
       "type": "next",

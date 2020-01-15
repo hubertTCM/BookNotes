@@ -426,8 +426,59 @@
       "value": "又 心中懊恼噎痛，气分热痰未平，用温胆法。"
     },
     {
-      "type": "text",
-      "value": "竹茹（一钱炒黄） 炒半夏（一钱） 茯苓（一钱半） 枳实（一钱） 桔梗（八分） 橘红（一钱） 生姜（三分）"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "竹茹",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          },
+          "comment": "炒黄"
+        },
+        {
+          "herb": "炒半夏",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "茯苓",
+          "quantity": {
+            "uom": "两",
+            "value": 0.6
+          }
+        },
+        {
+          "herb": "枳实",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "桔梗",
+          "quantity": {
+            "value": 0.08,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "橘红",
+          "quantity": {
+            "value": 0.1,
+            "uom": "两"
+          }
+        },
+        {
+          "herb": "生姜",
+          "quantity": {
+            "value": 0.03,
+            "uom": "两"
+          }
+        }
+      ]
     }
   ],
   [
@@ -1044,8 +1095,27 @@
       "value": "唐 积劳内伤，脘闷胁胀，呕吐格拒，眩晕不得卧，阳挟内风暴张，恐其忽然瘈厥，议通胃平肝法。"
     },
     {
-      "type": "text",
-      "value": "小川连 姜汁 半夏 牡蛎 川楝子 生白芍"
+      "type": "prescriptionItems",
+      "value": [
+        {
+          "herb": "小川连"
+        },
+        {
+          "herb": "姜汁"
+        },
+        {
+          "herb": "半夏"
+        },
+        {
+          "herb": "牡蛎"
+        },
+        {
+          "herb": "川楝子"
+        },
+        {
+          "herb": "生白芍"
+        }
+      ]
     }
   ],
   [
